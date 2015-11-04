@@ -3,13 +3,8 @@
 
 DOCKER_GOPKG := github.com/docker/docker
 
-# MUST STAY IN SYNC WITH LIST IN "debian/helpers/download-libcontainer"
-MULTI_ORIG_GOPKGS := \
-	github.com/docker/libnetwork
-
 # the list of Go packages to include in golang-github-docker-docker-dev
-DEV_GOPKGS = \
-	github.com/docker/docker/autogen/dockerversion \
+DEV_GOPKGS := \
 	github.com/docker/docker/pkg
 
 # temporary build path (see http://golang.org/doc/code.html#GOPATH)
@@ -30,19 +25,24 @@ DOCKER_VERSION := $(shell cat VERSION)
 
 export DOCKER_GITCOMMIT := $(shell ./debian/helpers/gitcommit.sh $(DOCKER_VERSION))
 export BUILDTIME := $(shell dpkg-parsechangelog -SDate)
-export DOCKER_INITPATH := /usr/lib/docker.io/dockerinit
 
 # AppArmor can be optionally used in Debian and is there by default in Ubuntu, so we need support for it compiled into our binary
 # same story with SELinux
 export DOCKER_BUILDTAGS := apparmor selinux
 
+# since "gccgo" doesn't ship the "dist" go tool (and isn't likely to start), let's use that for now to detect gc vs gccgo
+DOCKER_BUILD_TARGET := $(shell go tool dist env > /dev/null 2>&1 && echo dynbinary || echo dyngccgo)
+
 
 APPARMOR_RECOMMENDS := $(shell dpkg-vendor --is Ubuntu && echo apparmor)
 BUILT_LIBC := $(shell dpkg-query -f '$${source:Package} (= $${source:Version})' -W libc-dev-bin)
+BUILT_GOLANG := $(shell dpkg-query -f '$${source:Package} (= $${source:Version})' -W $$(dpkg --search $$(readlink -f /usr/bin/go) | cut -d: -f1))
+# TODO reintroduce dh-golang to get mwhudson's Built-Using magic
 
 override_dh_gencontrol:
 	echo 'apparmor:Recommends=$(APPARMOR_RECOMMENDS)' >> debian/docker.io.substvars
 	echo 'libc:Built-Using=$(BUILT_LIBC)' >> debian/docker.io.substvars
+	echo 'golang:Built-Using=$(BUILT_GOLANG)' >> debian/docker.io.substvars
 	dh_gencontrol
 
 
@@ -50,13 +50,15 @@ setup-gopath:
 	# we need to make sure all deps are in our GOPATH
 	mkdir -p "$(OUR_GOPATH)"
 	@set -ex; \
-		for package in $(DOCKER_GOPKG) $(MULTI_ORIG_GOPKGS); do \
-			[ $$package = $(DOCKER_GOPKG) ] \
-				|| for gopath in $(subst :, ,$(GOPATH)); do \
-					if [ -d "$$gopath/src/$$package" ]; then \
-						continue 2; \
-					fi; \
-				done; \
+		for package in $(DOCKER_GOPKG); do \
+			for gopath in $(subst :, ,$(GOPATH)); do \
+				if [ $$package = $(DOCKER_GOPKG) ]; then \
+					continue; \
+				fi; \
+				if [ -d "$$gopath/src/$$package" ]; then \
+					continue 2; \
+				fi; \
+			done; \
 			[ $$package = $(DOCKER_GOPKG) ] \
 				&& src=. \
 				|| src=$$(basename $$package); \
@@ -69,8 +71,8 @@ override_dh_auto_build:
 	
 	./debian/rules setup-gopath
 	
-	# build "docker" and "dockerinit"
-	./hack/make.sh dynbinary
+	# build
+	./hack/make.sh $(DOCKER_BUILD_TARGET)
 	
 	# compile man pages
 	./man/md2man-all.sh -q
@@ -79,11 +81,7 @@ override_dh_auto_build:
 override_dh_auto_install:
 	# install docker binary
 	mkdir -p debian/docker.io/$(dir $(DOCKER_BINPATH))
-	cp -aT bundles/$(DOCKER_VERSION)/dynbinary/docker-$(DOCKER_VERSION) debian/docker.io/$(DOCKER_BINPATH)
-	
-	# install dockerinit binary
-	mkdir -p debian/docker.io/$(dir $(DOCKER_INITPATH))
-	cp -aT bundles/$(DOCKER_VERSION)/dynbinary/dockerinit-$(DOCKER_VERSION) debian/docker.io/$(DOCKER_INITPATH)
+	cp -aT bundles/$(DOCKER_VERSION)/$(DOCKER_BUILD_TARGET)/docker-$(DOCKER_VERSION) debian/docker.io/$(DOCKER_BINPATH)
 	
 	# Most of the source of docker does not make a library,
 	#   so only ship the reusable parts (and in a separate package).
@@ -95,8 +93,7 @@ override_dh_auto_install:
 
 
 override_dh_strip:
-	# the SHA1 of dockerinit is important: don't strip it
-	# also, Go has lots of problems with stripping, so just don't
+	# Go has historically had problems with stripping, so skip it
 
 
 override_dh_auto_test:
@@ -119,11 +116,9 @@ override_dh_auto_clean:
 	
 	# autogen is created by hack/make.sh
 	# bundles is created by hack/make.sh
+	# dockerversion/version_autogen.go is created by hack/make.sh
 	# man/man*/ is created by man/md2man-all.sh
-	rm -rf autogen bundles man/man*/
-	
-	# TODO FIGURE OUT WHY THIS IS CREATED AND SEND A PR UPSTREAM!!!
-	rm -f a.out
+	rm -rf autogen bundles dockerversion/version_autogen.go man/man*/
 
 
 %:

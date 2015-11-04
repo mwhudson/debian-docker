@@ -5,54 +5,87 @@ Maintainer: Paul Tagliamonte <paultag@debian.org>
 Uploaders: Docker Packaging Team <docker-maint@lists.alioth.debian.org>,
            Tianon Gravi <tianon@debian.org>,
            Johan Euphrosine <proppy@google.com>
-# partially generated via https://gist.github.com/tianon/92ebbd1793864b9586bc
 Build-Depends: bash-completion,
-               btrfs-tools,
+               btrfs-progs,
                debhelper (>=9),
                dh-systemd,
                go-md2man (>= 1.0.3~),
                golang-context-dev (>= 0.0~git20140604~) | golang-github-gorilla-context-dev (>= 0.0~git20140604~),
-               golang-dbus-dev (>= 2~) | golang-github-godbus-dbus-dev (>= 2~),
-               golang-etcd-dev (>= 2.0.0~) | golang-github-coreos-go-etcd-dev (>= 2.0.0~),
+               golang-dbus-dev (>= 3~) | golang-github-godbus-dbus-dev (>= 3~),
+               golang-dns-dev (>= 0.0~git20151202~) | golang-github-miekg-dns-dev (>= 0.0~git20151202~),
+               golang-ed25519-dev (>= 0~20140907~) | golang-github-agl-ed25519-dev (>= 0~20140907~),
+               golang-etcd-server-dev (>= 2.2.0~) | golang-github-coreos-etcd-dev (>= 2.2.0~),
                golang-fsnotify-dev (>= 1.2.0~) | golang-gopkg-fsnotify.v1-dev (>= 1.2.0~),
                golang-github-armon-go-metrics-dev (>= 0.0~git20150106~),
-               golang-github-coreos-go-systemd-dev (>= 2~),
-               golang-github-docker-distribution-dev (>= 0.0~git20150827~),
-               golang-github-docker-libkv-dev (>= 0.0~git20150619~),
+               golang-github-aws-aws-sdk-go-dev (>= 0.9.9~),
+               golang-github-boltdb-bolt-dev (>= 1.2.0~),
+               golang-github-coreos-go-systemd-dev (>= 4~),
+               golang-github-deckarep-golang-set-dev (>= 0.0~git20141123~),
+               golang-github-docker-containerd-dev (>= 0.2.1~),
+               golang-github-docker-distribution-dev (>= 0.0~git20160412~),
+               golang-github-docker-engine-api-dev (>= 0.3.3~),
+               golang-github-docker-go-connections-dev (>= 0.2.0~),
+               golang-github-docker-go-dev (>= 0.0~git20151102.0.62e5ec7~),
+               golang-github-docker-go-units-dev (>= 0.0~git20151218~),
+               golang-github-docker-libkv-dev (>= 0.0~git20151015~),
+               golang-github-docker-libnetwork-dev (>= 0.7.0~rc.7~),
                golang-github-docker-libtrust-dev (>= 0.0~git20150526~),
-               golang-github-docker-notary-dev (>= 0.0~git20150801~),
-               golang-github-endophage-gotuf-dev (>= 0.0~git20150811~),
-               golang-github-fluent-fluent-logger-golang-dev (>= 1.0.0~),
+               golang-github-docker-notary-dev (>= 0.2.0~),
+               golang-github-fluent-fluent-logger-golang-dev (>= 1.1.0~),
                golang-github-gorilla-mux-dev (>= 0.0~git20140926~),
-               golang-github-graylog2-go-gelf-dev (>= 0.0~git20150610~),
+               golang-github-graylog2-go-gelf-dev (>= 0.0~git20160209~),
+               golang-github-hashicorp-consul-dev (>= 0.5.2~),
                golang-github-hashicorp-go-msgpack-dev (>= 0.0~git20140221~),
+               golang-github-hashicorp-memberlist-dev (>= 0.0~git20150107~),
                golang-github-hashicorp-serf-dev (>= 0.0~git20150212~),
-               golang-github-mattn-go-sqlite3-dev (>= 0.0~git20150629~),
-               golang-github-opencontainers-runc-dev (>= 0.0.2.1~),
+               golang-github-imdario-mergo-dev (>= 0.2.1~),
+               golang-github-mattn-go-shellwords-dev (>= 1.0.0~),
+               golang-github-mattn-go-sqlite3-dev (>= 1.1.0~),
+               golang-github-miekg-pkcs11-dev (>= 0.0~git20160222~),
+               golang-github-opencontainers-runc-dev (>= 0.0~git20160304~),
+               golang-github-opencontainers-specs-dev (>= 0.0~git20160425~),
+               golang-github-philhofer-fwd-dev (>= 0.0~git20150401~),
+               golang-github-racksec-srslog-dev (>= 0.0~git20160120~),
                golang-github-samuel-go-zookeeper-dev (>= 0.0~git20150415~),
-               golang-github-sirupsen-logrus-dev (>= 0.8.2~),
-               golang-github-tent-canonical-json-go-dev (>= 0.0~git20130607~),
-               golang-github-vbatts-tar-split-dev (>= 0.9.6~),
-               golang-github-vishvananda-netlink-dev (>= 0.0~git20150815~),
-               golang-github-vishvananda-netns-dev (>= 0.0~git20150630~),
+               golang-github-seccomp-libseccomp-golang-dev (>= 0.0~git20150810~),
+               golang-github-sirupsen-logrus-dev (>= 0.9.0~),
+               golang-github-tinylib-msgp-dev (>= 0.0~git20150407~),
+               golang-github-ugorji-go-codec-dev (>= 0.0~git20150803~) | golang-github-ugorji-go-dev (>= 0.0~git20150803~),
+               golang-github-vaughan0-go-ini-dev (>= 0.0~git20130923~),
+               golang-github-vbatts-tar-split-dev (>= 0.9.11~),
+               golang-github-vdemeester-shakers-dev (>= 0.0~git20160210~),
+               golang-github-vishvananda-netlink-dev (>= 0.0~git20160223~),
+               golang-github-vishvananda-netns-dev (>= 0.0~git20150710~),
+               golang-go (>= 2:1.4~) | gccgo (>= 4:5~),
                golang-go-patricia-dev (>= 2.1.0~) | golang-github-tchap-go-patricia-dev (>= 2.1.0~),
                golang-go-zfs-dev (>= 2.1.1~) | golang-github-mistifyio-go-zfs-dev (>= 2.1.1~),
-               golang-gocapability-dev (>= 0.0~git20150506~) | golang-github-syndtr-gocapability-dev (>= 0.0~git20150506~),
-               golang-golang-x-net-dev (>= 0.0~git20150610~),
-               golang-goprotobuf-dev (>= 0.0~git20150325~) | golang-github-golang-protobuf-dev (>= 0.0~git20150325~),
-               golang-gosqlite-dev (>= 0.0~hg20130530~) | golang-code.google-p-gosqlite-dev (>= 0.0~hg20130530~),
+               golang-gocapability-dev (>= 0.0~git20150716~) | golang-github-syndtr-gocapability-dev (>= 0.0~git20150716~),
+               golang-golang-x-net-dev (>= 0.0~git20160407~),
+               golang-golang-x-oauth2-dev (>= 0.0~git20151203~),
+               golang-golang-x-sys-dev (>= 0.0~git20160127~),
+               golang-google-api-dev (>= 0.0~git20151216~),
+               golang-google-cloud-dev (>= 0.0~git20151216~),
+               golang-google-grpc-dev (>= 0.0~git20151216~),
+               golang-goprotobuf-dev (>= 0.0~git20151207~) | golang-github-golang-protobuf-dev (>= 0.0~git20151207~),
                golang-pty-dev (>= 0.0~git20150511~) | golang-github-kr-pty-dev (>= 0.0~git20150511~),
                golang-toml-dev (>= 0.0~git20150127~) | golang-github-burntsushi-toml-dev (>= 0.0~git20150127~),
                libapparmor-dev,
-               libdevmapper-dev (>= 2:1.02.68~)
-Standards-Version: 3.9.6
+               libdevmapper-dev (>= 2:1.02.68~),
+               pkg-config
+Standards-Version: 3.9.8
 Homepage: https://dockerproject.org
-Vcs-Git: git://anonscm.debian.org/docker/docker.io.git
+Vcs-Git: https://anonscm.debian.org/git/docker/docker.io.git
 Vcs-Browser: https://anonscm.debian.org/cgit/docker/docker.io.git
 
 Package: docker.io
 Architecture: linux-any
-Depends: adduser, iptables, ${misc:Depends}, ${perl:Depends}, ${shlibs:Depends}
+Depends: adduser,
+         containerd (>= 0.2.0~),
+         iptables,
+         runc (>= 0.1.0~),
+         ${misc:Depends},
+         ${perl:Depends},
+         ${shlibs:Depends}
 Recommends: ca-certificates,
             cgroupfs-mount | cgroup-lite,
             git,
@@ -60,8 +93,8 @@ Recommends: ca-certificates,
             ${apparmor:Recommends}
 Replaces: docker (<< 1.5~)
 Breaks: docker (<< 1.5~)
-Suggests: aufs-tools, btrfs-tools, debootstrap, lxc, rinse, zfs-fuse | zfsutils
-Built-Using: ${misc:Built-Using}, ${libc:Built-Using}
+Suggests: aufs-tools, btrfs-progs, debootstrap, lxc, rinse, zfs-fuse | zfsutils
+Built-Using: ${misc:Built-Using}, ${libc:Built-Using}, ${golang:Built-Using}
 Description: Linux container runtime
  Docker complements kernel namespacing with a high-level API which operates at
  the process level. It runs unix processes with strong guarantees of isolation

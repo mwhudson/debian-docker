@@ -4,16 +4,14 @@ cgroupfs-mount-convenience-copy.patch
 # reasonable way, remove this patch.
 fatal-error-old-kernels.patch
 
-# Once upstream adds EnvFile, remove this patch.
+# If upstream ever adds EnvFile, remove this patch.
 change-system-unit-env-file.patch
 # See also https://github.com/docker/docker/pull/7220#issuecomment-50076589
 
-# change "github.com/go-check/check" to "gopkg.in/check.v1"
-check-v1.patch
-
-15404--go-1.5.patch
-distribution-2.1.1.patch
-16244--runc-0.0.4.patch
-
 overlay.patch
-cgroupdriver-cgroupfs.patch
+
+21491--systemd-tasksmax.patch
+22000--ignore-invalid-host-header.patch
+remove-docker-prefix.patch
+
+check-v1.patch
