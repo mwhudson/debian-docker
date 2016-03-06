@@ -116,6 +116,11 @@ override_dh_auto_clean:
 	# man/man*/ is created by man/md2man-all.sh
 	rm -rf autogen bundles dockerversion/version_autogen.go man/man*/
 
+override_dh_clean:
+	dh_clean
+	## Remove Files-Excluded (when built from checkout or non-DFSG tarball):
+	$(RM) -rv `perl -0nE 'say $$1 if m{^Files\-Excluded\:\s*(.*?)(?:\n\n|Files:|Comment:)}sm;' debian/copyright`
+	-find vendor/src -mindepth 1 -type d -empty -delete -printf 'removed %p\n'
 
 %:
 	dh $@ --buildsystem=golang --with=systemd,bash-completion,golang --builddirectory='$(OUR_GOPATH)'
