@@ -92,10 +92,6 @@ override_dh_auto_install:
 		done
 
 
-override_dh_strip:
-	# Go has historically had problems with stripping, so skip it
-
-
 override_dh_auto_test:
 
 
