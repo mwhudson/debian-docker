@@ -124,6 +124,19 @@ Description: Docker container engine - Vim highlighting syntax files
 Package: golang-github-docker-docker-dev
 Architecture: all
 Depends: ${misc:Depends}
+    ,golang-github-docker-go-connections-dev
+    ,golang-github-docker-go-units-dev
+    ,golang-github-docker-libkv-dev
+    ,golang-github-fsnotify-fsnotify-dev
+    ,golang-github-gorilla-mux-dev
+    ,golang-github-mattn-go-shellwords-dev
+    ,golang-github-mattn-go-sqlite3-dev
+    ,golang-github-opencontainers-runc-dev
+    ,golang-github-sirupsen-logrus-dev
+    ,golang-github-tchap-go-patricia-dev
+    ,golang-github-vdemeester-shakers-dev
+    ,golang-golang-x-net-dev
+    ,golang-gopkg-check.v1-dev
 Built-Using: ${misc:Built-Using}
 Replaces: golang-docker-dev (<< 1.8.2~ds1-1~)
 Breaks: golang-docker-dev (<< 1.8.2~ds1-1~)
