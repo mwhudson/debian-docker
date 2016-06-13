@@ -14,6 +14,7 @@ overlay.patch
 22000--ignore-invalid-host-header.patch
 23063--update-aws-sdk-go.patch
 remove-docker-prefix.patch
+opencontainer-specs-0.5.0.patch
 opencontainer-specs--no-mountlabel.patch
 
 check-v1.patch
