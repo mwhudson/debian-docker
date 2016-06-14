@@ -12,6 +12,7 @@ overlay.patch
 
 21491--systemd-tasksmax.patch
 22000--ignore-invalid-host-header.patch
+23063--update-aws-sdk-go.patch
 remove-docker-prefix.patch
 
 check-v1.patch
