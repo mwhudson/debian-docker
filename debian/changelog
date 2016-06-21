@@ -11,6 +11,7 @@ docker.io (1.11.2~ds1-1) UNRELEASED; urgency=medium
   * Update "Vcs-Browser" to use https
   * Shrink the Ubuntu delta by pulling in many of the changes
   * Replace "btrfs-tools" relations with "btrfs-progs" (Closes: #824833)
+  * Adjust "repack.sh" to allow keeping minor bits of vendor/
 
  -- Tianon Gravi <tianon@debian.org>  Tue, 01 Dec 2015 01:12:21 -0800
 
