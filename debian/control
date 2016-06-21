@@ -3,7 +3,7 @@ Section: admin
 Priority: optional
 Maintainer: Paul Tagliamonte <paultag@debian.org>
 Uploaders: Docker Packaging Team <docker-maint@lists.alioth.debian.org>,
-           Tianon Gravi <tianon@debian.org>,
+           Tianon Gravi <tianon@debian.org>
 Build-Conflicts: golang-github-docker-docker-dev
 Build-Depends: bash-completion,
                btrfs-progs,
