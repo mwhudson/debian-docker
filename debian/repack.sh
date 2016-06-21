@@ -45,11 +45,11 @@ targetTar="$dir/$dfsgFilename"
 ! grep -qE '^/|^\.\./' "$debDir"/repack/prune/* "$debDir"/repack/keep/* 2>/dev/null
 
 IFS=$'\n'
-prune=( $(cat "$debDir"/repack/prune/*) )
+prune=( $(grep -vE '^#|^$' "$debDir"/repack/prune/*) ) || true
 unset IFS
 
 IFS=$'\n'
-keep=( $(cat "$debDir"/repack/keep/* 2>/dev/null) ) || true
+keep=( $(grep -vE '^#|^$' "$debDir"/repack/keep/* 2>/dev/null) ) || true
 unset IFS
 
 tempDir="$(mktemp -d -t docker-orig-repack-XXXXXXXXXX)"
