@@ -1,3 +1,8 @@
+#!/usr/bin/dh-exec
+
+# docker itself
+bundles/${DOCKER_VERSION}/${DOCKER_BUILD_TARGET}/docker-${DOCKER_VERSION} => usr/bin/docker
+
 contrib/*-integration usr/share/docker.io/contrib/
 contrib/check-config.sh usr/share/docker.io/contrib/
 contrib/completion/zsh/_docker usr/share/zsh/vendor-completions/

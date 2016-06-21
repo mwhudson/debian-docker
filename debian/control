@@ -8,6 +8,7 @@ Build-Conflicts: golang-github-docker-docker-dev
 Build-Depends: bash-completion,
                btrfs-progs,
                debhelper (>=9),
+               dh-exec,
                dh-systemd,
                go-md2man (>= 1.0.3~),
                golang-context-dev (>= 0.0~git20140604~) | golang-github-gorilla-context-dev (>= 0.0~git20140604~),

@@ -1,27 +1,21 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
 
-DOCKER_GOPKG := github.com/docker/docker
-
-# the list of Go packages to include in golang-github-docker-docker-dev
-DEV_GOPKGS := \
-	github.com/docker/docker/pkg
+export DH_GOPKG := github.com/docker/docker
 
 # temporary build path (see http://golang.org/doc/code.html#GOPATH)
 OUR_GOPATH := $(CURDIR)/.gopath
-GOPATH_PACKAGED := /usr/share/gocode
-EXTRA_GOPATH := $(GOPATH_PACKAGED)
+EXTRA_GOPATH := /usr/share/gocode
 
 # if we've got the vendored source not purged, let's use it (normally purged via debian/repack.sh)
 ifneq (, $(wildcard $(CURDIR)/vendor/src))
-	EXTRA_GOPATH := $(CURDIR)/vendor
+	EXTRA_GOPATH := $(CURDIR)/vendor:$(EXTRA_GOPATH)
 endif
 
 export GOPATH := $(OUR_GOPATH):$(EXTRA_GOPATH)
 
 # a few helpful variables for deduplication
-DOCKER_BINPATH := /usr/bin/docker
-DOCKER_VERSION := $(shell cat VERSION)
+export DOCKER_VERSION := $(shell cat VERSION)
 
 export DOCKER_GITCOMMIT := $(shell ./debian/helpers/gitcommit.sh $(DOCKER_VERSION))
 export BUILDTIME := $(shell dpkg-parsechangelog -SDate)
@@ -31,7 +25,7 @@ export BUILDTIME := $(shell dpkg-parsechangelog -SDate)
 export DOCKER_BUILDTAGS := apparmor selinux
 
 # since "gccgo" doesn't ship the "dist" go tool (and isn't likely to start), let's use that for now to detect gc vs gccgo
-DOCKER_BUILD_TARGET := $(shell go tool dist env > /dev/null 2>&1 && echo dynbinary || echo dyngccgo)
+export DOCKER_BUILD_TARGET := $(shell go tool dist env > /dev/null 2>&1 && echo dynbinary || echo dyngccgo)
 
 
 APPARMOR_RECOMMENDS := $(shell dpkg-vendor --is Ubuntu && echo apparmor)
@@ -47,49 +41,18 @@ override_dh_gencontrol:
 
 
 setup-gopath:
-	# we need to make sure all deps are in our GOPATH
-	mkdir -p "$(OUR_GOPATH)"
-	@set -ex; \
-		for package in $(DOCKER_GOPKG); do \
-			for gopath in $(subst :, ,$(GOPATH)); do \
-				if [ $$package = $(DOCKER_GOPKG) ]; then \
-					continue; \
-				fi; \
-				if [ -d "$$gopath/src/$$package" ]; then \
-					continue 2; \
-				fi; \
-			done; \
-			[ $$package = $(DOCKER_GOPKG) ] \
-				&& src=. \
-				|| src=$$(basename $$package); \
-			mkdir -p "$(OUR_GOPATH)/src/$$(dirname $$package)"; \
-			ln -sfT "$$(readlink -f "$$src")" "$(OUR_GOPATH)/src/$$package"; \
-		done
+	# we need to make sure we're in our GOPATH
+	mkdir -p "$(OUR_GOPATH)/src/$$(dirname '$(DH_GOPKG)')"
+	ln -sfT '$(CURDIR)' '$(OUR_GOPATH)/src/$(DH_GOPKG)'
 
-override_dh_auto_build:
+override_dh_auto_build: setup-gopath
 	@bash -c '{ [ "$$DOCKER_GITCOMMIT" ]; } || { echo; echo "error: missing DOCKER_GITCOMMIT - see debian/upstream-version-gitcommits"; echo; exit 2; } >&2'
-	
-	./debian/rules setup-gopath
 	
 	# build
 	./hack/make.sh $(DOCKER_BUILD_TARGET)
 	
 	# compile man pages
 	./man/md2man-all.sh -q
-
-
-override_dh_auto_install:
-	# install docker binary
-	mkdir -p debian/docker.io/$(dir $(DOCKER_BINPATH))
-	cp -aT bundles/$(DOCKER_VERSION)/$(DOCKER_BUILD_TARGET)/docker-$(DOCKER_VERSION) debian/docker.io/$(DOCKER_BINPATH)
-	
-	# Most of the source of docker does not make a library,
-	#   so only ship the reusable parts (and in a separate package).
-	@set -ex; \
-		for package in $(DEV_GOPKGS); do \
-			mkdir -p "debian/golang-github-docker-docker-dev/$(GOPATH_PACKAGED)/src/$$package"; \
-			cp -aT "$$(readlink -f "$(OUR_GOPATH)/src/$$package")" "debian/golang-github-docker-docker-dev/$(GOPATH_PACKAGED)/src/$$package"; \
-		done
 
 
 override_dh_install:
@@ -113,7 +76,7 @@ override_dh_auto_clean:
 	dh_auto_clean
 	
 	# OUR_GOPATH is created by us
-	rm -rf "$(OUR_GOPATH)"
+	rm -rf '$(OUR_GOPATH)'
 	
 	# autogen is created by hack/make.sh
 	# bundles is created by hack/make.sh

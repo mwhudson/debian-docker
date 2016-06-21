@@ -1,0 +1,3 @@
+#!/usr/bin/dh-exec
+
+pkg usr/share/gocode/${DH_GOPKG}/
