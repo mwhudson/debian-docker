@@ -1,4 +1,4 @@
-docker.io (1.8.3~ds1-3) unstable; urgency=medium
+docker.io (1.11.2~ds1-1) unstable; urgency=medium
 
   As of src:linux 4.0+ (specifically, >= 3.18-1~exp1), AUFS support is no longer
   included in official Debian-compiled kernels.  What this means to Docker users
