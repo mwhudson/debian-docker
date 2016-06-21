@@ -155,7 +155,7 @@ Description: Transitional package for golang-github-docker-docker-dev
  This is a transitional package to ease upgrades to the
  golang-github-docker-docker-dev package. It can safely be removed.
 
-Package: docker.io-doc
+Package: docker-doc
 Section: doc
 Architecture: all
 Depends: ${misc:Depends}
