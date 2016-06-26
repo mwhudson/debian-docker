@@ -78,10 +78,10 @@ override_dh_auto_install:
 
 
 override_dh_auto_test:
-	# TODO run unit tests
-	#cd '$(OUR_GOPATH)/src/$(DH_GOPKG)' \
-	#	&& export TESTFLAGS='-test.short' \
-	#	&& bash ./hack/make.sh test-unit
+	# run unit tests
+	cd '$(OUR_GOPATH)/src/$(DH_GOPKG)' \
+		&& export TESTFLAGS='-test.short' \
+		&& bash ./hack/make.sh test-unit
 
 
 override_dh_installinit:

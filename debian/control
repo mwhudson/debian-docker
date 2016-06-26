@@ -7,10 +7,12 @@ Uploaders: Docker Packaging Team <docker-maint@lists.alioth.debian.org>,
 Build-Conflicts: golang-github-docker-docker-dev
 Build-Depends: bash-completion,
                btrfs-progs,
+               ca-certificates,
                debhelper (>= 9),
                dh-exec,
                dh-golang (>= 1.14~),
                dh-systemd,
+               git,
                go-md2man (>= 1.0.3~),
                golang-any (>= 2:1.6~) | golang-1.6-go,
                golang-context-dev (>= 0.0~git20140604~) | golang-github-gorilla-context-dev (>= 0.0~git20140604~),
@@ -72,7 +74,8 @@ Build-Depends: bash-completion,
                golang-toml-dev (>= 0.0~git20150127~) | golang-github-burntsushi-toml-dev (>= 0.0~git20150127~),
                libapparmor-dev,
                libdevmapper-dev (>= 2:1.02.68~),
-               pkg-config
+               pkg-config,
+               procps
 Standards-Version: 3.9.8
 Homepage: https://dockerproject.org
 Vcs-Git: https://anonscm.debian.org/git/docker/docker.io.git
