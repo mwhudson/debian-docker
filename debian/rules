@@ -2,23 +2,23 @@
 # -*- makefile -*-
 
 export DH_GOPKG := github.com/docker/docker
+export DH_GOLANG_INSTALL_ALL := 1
+export DH_GOLANG_EXCLUDES := \
+	integration-cli \
+	vendor
 
 # temporary build path (see http://golang.org/doc/code.html#GOPATH)
 OUR_GOPATH := $(CURDIR)/.gopath
-EXTRA_GOPATH := /usr/share/gocode
+export GOPATH := $(OUR_GOPATH)
 
-# if we've got the vendored source not purged, let's use it (normally purged via debian/repack.sh)
-ifneq (, $(wildcard $(CURDIR)/vendor/src))
-	EXTRA_GOPATH := $(CURDIR)/vendor:$(EXTRA_GOPATH)
-endif
-
-export GOPATH := $(OUR_GOPATH):$(EXTRA_GOPATH)
-
-# a few helpful variables for deduplication
+# helpful variables for deduplication
 export DOCKER_VERSION := $(shell cat VERSION)
 
 export DOCKER_GITCOMMIT := $(shell ./debian/helpers/gitcommit.sh $(DOCKER_VERSION))
 export BUILDTIME := $(shell dpkg-parsechangelog -SDate)
+
+# have "make.sh" keep "bundle/$(DOCKER_VERSION)" around between runs (we clean it up appropriately ourselves)
+export KEEPBUNDLE := 1
 
 # AppArmor can be optionally used in Debian and is there by default in Ubuntu, so we need support for it compiled into our binary
 # same story with SELinux
@@ -26,6 +26,9 @@ export DOCKER_BUILDTAGS := apparmor selinux
 
 # since "gccgo" doesn't ship the "dist" go tool (and isn't likely to start), let's use that for now to detect gc vs gccgo
 export DOCKER_BUILD_TARGET := $(shell go tool dist env > /dev/null 2>&1 && echo dynbinary || echo dyngccgo)
+
+# prefer Go 1.6 explicitly if it's available (golang-1.6-go)
+export PATH := /usr/lib/go-1.6/bin:$(PATH)
 
 
 APPARMOR_RECOMMENDS := $(shell dpkg-vendor --is Ubuntu && echo apparmor)
@@ -40,12 +43,23 @@ override_dh_gencontrol:
 	dh_gencontrol
 
 
-setup-gopath:
-	# we need to make sure we're in our GOPATH
-	mkdir -p "$(OUR_GOPATH)/src/$$(dirname '$(DH_GOPKG)')"
-	ln -sfT '$(CURDIR)' '$(OUR_GOPATH)/src/$(DH_GOPKG)'
+override_dh_auto_configure:
+	dh_auto_configure
+	
+ifneq (, $(wildcard $(CURDIR)/vendor/src))
+	# prefer vendored deps (when they exist)
+	rm -rf '$(OUR_GOPATH)/src/$(DH_GOPKG)/vendor' \
+		&& mkdir '$(OUR_GOPATH)/src/$(DH_GOPKG)/vendor' \
+		&& cd vendor/src \
+		&& cp -r . '$(OUR_GOPATH)/src/$(DH_GOPKG)/vendor'
+endif
+	
+	# make sure the bits modified at build-time are properly in our GOPATH
+	rm -rf '$(OUR_GOPATH)/src/$(DH_GOPKG)/dockerversion'
+	mkdir -p '$(OUR_GOPATH)/src/$(DH_GOPKG)'
+	ln -sfT '$(CURDIR)/dockerversion' '$(OUR_GOPATH)/src/$(DH_GOPKG)/dockerversion'
 
-override_dh_auto_build: setup-gopath
+override_dh_auto_build:
 	@bash -c '{ [ "$$DOCKER_GITCOMMIT" ]; } || { echo; echo "error: missing DOCKER_GITCOMMIT - see debian/upstream-version-gitcommits"; echo; exit 2; } >&2'
 	
 	# build
@@ -59,8 +73,15 @@ override_dh_install:
 	## Do not install extra license files:
 	dh_install -XLICENSE
 
+override_dh_auto_install:
+	# skip dh_auto_install to stop dh_golang trying to copy bits for /usr/share/gocode (we use dh_install/dh-exec for that)
+
 
 override_dh_auto_test:
+	# TODO run unit tests
+	#cd '$(OUR_GOPATH)/src/$(DH_GOPKG)' \
+	#	&& export TESTFLAGS='-test.short' \
+	#	&& bash ./hack/make.sh test-unit
 
 
 override_dh_installinit:
@@ -86,4 +107,4 @@ override_dh_auto_clean:
 
 
 %:
-	dh $@ --with=systemd,bash-completion
+	dh $@ --buildsystem=golang --with=systemd,bash-completion,golang --builddirectory='$(OUR_GOPATH)'

@@ -7,10 +7,12 @@ Uploaders: Docker Packaging Team <docker-maint@lists.alioth.debian.org>,
 Build-Conflicts: golang-github-docker-docker-dev
 Build-Depends: bash-completion,
                btrfs-progs,
-               debhelper (>=9),
+               debhelper (>= 9),
                dh-exec,
+               dh-golang (>= 1.14~),
                dh-systemd,
                go-md2man (>= 1.0.3~),
+               golang-any (>= 2:1.6~) | golang-1.6-go,
                golang-context-dev (>= 0.0~git20140604~) | golang-github-gorilla-context-dev (>= 0.0~git20140604~),
                golang-dbus-dev (>= 3~) | golang-github-godbus-dbus-dev (>= 3~),
                golang-dns-dev (>= 0.0~git20151202~) | golang-github-miekg-dns-dev (>= 0.0~git20151202~),
@@ -56,7 +58,6 @@ Build-Depends: bash-completion,
                golang-github-vdemeester-shakers-dev (>= 0.0~git20160210~),
                golang-github-vishvananda-netlink-dev (>= 0.0~git20160223~),
                golang-github-vishvananda-netns-dev (>= 0.0~git20150710~),
-               golang-go (>= 2:1.4~) | gccgo (>= 4:5~),
                golang-go-patricia-dev (>= 2.1.0~) | golang-github-tchap-go-patricia-dev (>= 2.1.0~),
                golang-go-zfs-dev (>= 2.1.1~) | golang-github-mistifyio-go-zfs-dev (>= 2.1.1~),
                golang-gocapability-dev (>= 0.0~git20150716~) | golang-github-syndtr-gocapability-dev (>= 0.0~git20150716~),
@@ -76,6 +77,7 @@ Standards-Version: 3.9.8
 Homepage: https://dockerproject.org
 Vcs-Git: https://anonscm.debian.org/git/docker/docker.io.git
 Vcs-Browser: https://anonscm.debian.org/cgit/docker/docker.io.git
+XS-Go-Import-Path: github.com/docker/docker
 
 Package: docker.io
 Architecture: linux-any
