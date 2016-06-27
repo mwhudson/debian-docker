@@ -12,6 +12,11 @@ docker.io (1.11.2~ds1-1) UNRELEASED; urgency=medium
   * Replace "btrfs-tools" relations with "btrfs-progs" (Closes: #824833)
   * Adjust "repack.sh" to allow keeping minor bits of vendor/
   * Fix bad URL in README (Closes: #816844); thanks Clint!
+  * Move documentation to dedicated "docker-doc" package
+  * Refresh patches, add minor patch to get unit tests running
+  * Use gccgo on non-golang architectures (Closes: #785093)
+  * Use "dh-golang" to calculate "Built-Using" more accurately
+  * Add simple "basic-smoke" DEP8 test
 
  -- Tianon Gravi <tianon@debian.org>  Tue, 01 Dec 2015 01:12:21 -0800
 
