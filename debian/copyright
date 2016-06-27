@@ -41,10 +41,9 @@ Comment:
  No explicit copyright statement; assuming upstream copyright.
 
 Files: vendor/src/github.com/docker/notary/tuf/*
-Copyright:
-    2015      Docker Inc.
-    2014-2015 Prime Directive, Inc.
-License: BSD-3-clause-PD
+Copyright: 2015      Docker, Inc.
+           2014-2015 Prime Directive, Inc.
+License: BSD-3-clause-Prime
 
 License: Apache-2.0
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -150,7 +149,7 @@ License: BSD-3-clause-Generic
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-License: BSD-3-clause-PD
+License: BSD-3-clause-Prime
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are
  met:
