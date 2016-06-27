@@ -1,7 +1,5 @@
 docker.io (1.11.2~ds1-1) UNRELEASED; urgency=medium
 
-  SEE https://people.debian.org/~tianon/todo-docker.txt FOR STATUS
-
   * Update to 1.11.2 upstream release
     (Closes: #806887, #820149, #822628, #812838)
   * Add NEWS file describing the AUFS issue and the unfortunate possible
