@@ -262,6 +262,43 @@ index bca6825..f9846c6 100644
  	baseLayer, err := ioutil.TempDir("", "docker-changes-test.")
  	defer os.RemoveAll(baseLayer)
  
+diff --git a/pkg/authorization/authz_unix_test.go b/pkg/authorization/authz_unix_test.go
+index 1c6dc8a..93f2eae 100644
+--- a/pkg/authorization/authz_unix_test.go
++++ b/pkg/authorization/authz_unix_test.go
+@@ -28,6 +28,10 @@ import (
+ const pluginAddress = "authzplugin.sock"
+ 
+ func TestAuthZRequestPluginError(t *testing.T) {
++	if testing.Short() {
++		t.Skip("Skipping privileged test in short mode")
++	}
++
+ 	server := authZPluginTestServer{t: t}
+ 	go server.start()
+ 	defer server.stop()
+@@ -59,6 +63,10 @@ func TestAuthZRequestPluginError(t *testing.T) {
+ }
+ 
+ func TestAuthZRequestPlugin(t *testing.T) {
++	if testing.Short() {
++		t.Skip("Skipping privileged test in short mode")
++	}
++
+ 	server := authZPluginTestServer{t: t}
+ 	go server.start()
+ 	defer server.stop()
+@@ -91,6 +99,10 @@ func TestAuthZRequestPlugin(t *testing.T) {
+ }
+ 
+ func TestAuthZResponsePlugin(t *testing.T) {
++	if testing.Short() {
++		t.Skip("Skipping privileged test in short mode")
++	}
++
+ 	server := authZPluginTestServer{t: t}
+ 	go server.start()
+ 	defer server.stop()
 diff --git a/pkg/chrootarchive/archive_test.go b/pkg/chrootarchive/archive_test.go
 index 5fbe208..9b60805 100644
 --- a/pkg/chrootarchive/archive_test.go
