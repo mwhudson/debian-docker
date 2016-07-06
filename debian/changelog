@@ -1,4 +1,4 @@
-docker.io (1.11.2-0ubuntu5) UNRELEASED; urgency=medium
+docker.io (1.11.2-0ubuntu5) yakkety; urgency=medium
 
   * Add 'allow-stderr' to basic-smoke stanza in debian/tests/control to fix
     autopkgtest on some architectures.
