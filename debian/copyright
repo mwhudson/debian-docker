@@ -14,6 +14,8 @@ Copyright: 2013-2014 Daniel Mizyrycki <daniel@docker.com>
            2013-2014 Tianon Gravi <tianon@debian.org>
            2013-2014 Johan Euphrosine <proppy@google.com>
            2014 Prach Pongpanich <prachpub@gmail.com>
+           2016 Tim Potter <timothy.potter@hpe.com>
+           2016 Dmitry Smirnov <onlyjob@debian.org>
 License: Apache-2.0
 
 Files: contrib/init/openrc/docker.initd
