@@ -2,6 +2,8 @@ docker.io (1.11.2~ds1-2) UNRELEASED; urgency=medium
 
   * Add Tim Potter (tpot) and Dmitry Smirnov (onlyjob) to debian/copyright; they
     were instrumental in getting 1.11 into the archive!
+  * Fix golang-github-docker-docker-dev install location (Closes: #830478);
+    thanks nicoo!
 
  -- Tianon Gravi <tianon@debian.org>  Fri, 08 Jul 2016 08:20:30 -0700
 

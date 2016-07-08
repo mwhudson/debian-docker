@@ -1,4 +1,4 @@
 #!/usr/bin/dh-exec
 
-dockerversion usr/share/gocode/${DH_GOPKG}/
-pkg usr/share/gocode/${DH_GOPKG}/
+dockerversion usr/share/gocode/src/${DH_GOPKG}/
+pkg usr/share/gocode/src/${DH_GOPKG}/
