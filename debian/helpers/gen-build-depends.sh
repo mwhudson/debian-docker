@@ -112,6 +112,15 @@ git_version() {
 			if [ "$remoteTag" ]; then
 				gitRef="$remoteTag"
 			fi
+			# TODO get newer (compatible) versions of each of these into the archive
+			case "$goPkg" in
+				github.com/docker/containerd)
+					gitRef='v0.2.1'
+					;;
+				github.com/opencontainers/runc)
+					gitRef='v0.1.0'
+					;;
+			esac
 			;;
 	esac
 
