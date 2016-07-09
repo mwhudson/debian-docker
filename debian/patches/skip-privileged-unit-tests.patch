@@ -2,11 +2,10 @@ Description: allow skipping "privileged" tests with "-test.short"
 Author: Tianon Gravi <tianon@debian.org>
 Forwarded: no
 
-diff --git a/daemon/daemon_test.go b/daemon/daemon_test.go
-index 609ed95..921e400 100644
 --- a/daemon/daemon_test.go
 +++ b/daemon/daemon_test.go
-@@ -155,6 +155,10 @@ func TestValidContainerNames(t *testing.T) {
+@@ -154,8 +154,12 @@
+ 	}
  }
  
  func TestContainerInitDNS(t *testing.T) {
@@ -17,11 +16,11 @@ index 609ed95..921e400 100644
  	tmp, err := ioutil.TempDir("", "docker-container-test-")
  	if err != nil {
  		t.Fatal(err)
-diff --git a/daemon/graphdriver/aufs/aufs_test.go b/daemon/graphdriver/aufs/aufs_test.go
-index b0ddf89..c224c31 100644
+ 	}
 --- a/daemon/graphdriver/aufs/aufs_test.go
 +++ b/daemon/graphdriver/aufs/aufs_test.go
-@@ -28,6 +28,10 @@ func init() {
+@@ -27,8 +27,12 @@
+ 	reexec.Init()
  }
  
  func testInit(dir string, t testing.TB) graphdriver.Driver {
@@ -32,11 +31,11 @@ index b0ddf89..c224c31 100644
  	d, err := Init(dir, nil, nil, nil)
  	if err != nil {
  		if err == graphdriver.ErrNotSupported {
-diff --git a/daemon/graphdriver/devmapper/devmapper_test.go b/daemon/graphdriver/devmapper/devmapper_test.go
-index 5c2abce..2159ccf 100644
+ 			t.Skip(err)
 --- a/daemon/graphdriver/devmapper/devmapper_test.go
 +++ b/daemon/graphdriver/devmapper/devmapper_test.go
-@@ -11,50 +11,70 @@ import (
+@@ -10,52 +10,72 @@
+ 	"github.com/docker/docker/daemon/graphdriver"
  	"github.com/docker/docker/daemon/graphdriver/graphtest"
  )
  
@@ -113,7 +112,9 @@ index 5c2abce..2159ccf 100644
  	driver := graphtest.GetDriver(t, "devicemapper").(*graphtest.Driver).Driver.(*graphdriver.NaiveDiffDriver).ProtoDriver.(*Driver)
  	defer graphtest.PutDriver(t)
  	// make sure data or metadata loopback size are the default size
-@@ -83,6 +103,8 @@ func testChangeLoopBackSize(t *testing.T, delta, expectDataSize, expectMetaDataS
+ 	if s := driver.DeviceSet.Status(); s.Data.Total != uint64(defaultDataLoopbackSize) || s.Metadata.Total != uint64(defaultMetaDataLoopbackSize) {
+@@ -82,8 +102,10 @@
+ }
  
  // Make sure devices.Lock() has been release upon return from cleanupDeletedDevices() function
  func TestDevmapperLockReleasedDeviceDeletion(t *testing.T) {
@@ -122,11 +123,11 @@ index 5c2abce..2159ccf 100644
  	driver := graphtest.GetDriver(t, "devicemapper").(*graphtest.Driver).Driver.(*graphdriver.NaiveDiffDriver).ProtoDriver.(*Driver)
  	defer graphtest.PutDriver(t)
  
-diff --git a/daemon/graphdriver/vfs/vfs_test.go b/daemon/graphdriver/vfs/vfs_test.go
-index 9ecf21d..0902926 100644
+ 	// Call cleanupDeletedDevices() and after the call take and release
 --- a/daemon/graphdriver/vfs/vfs_test.go
 +++ b/daemon/graphdriver/vfs/vfs_test.go
-@@ -10,28 +10,42 @@ import (
+@@ -9,29 +9,43 @@
+ 
  	"github.com/docker/docker/pkg/reexec"
  )
  
@@ -171,11 +172,10 @@ index 9ecf21d..0902926 100644
 +
  	graphtest.PutDriver(t)
  }
-diff --git a/pkg/archive/archive_test.go b/pkg/archive/archive_test.go
-index 495cac8..3c56b0a 100644
 --- a/pkg/archive/archive_test.go
 +++ b/pkg/archive/archive_test.go
-@@ -305,6 +305,10 @@ func TestUntarPathWithInvalidSrc(t *testing.T) {
+@@ -304,8 +304,12 @@
+ 	}
  }
  
  func TestUntarPath(t *testing.T) {
@@ -186,7 +186,9 @@ index 495cac8..3c56b0a 100644
  	tmpFolder, err := ioutil.TempDir("", "docker-archive-test")
  	if err != nil {
  		t.Fatal(err)
-@@ -439,6 +443,10 @@ func TestCopyWithTarInvalidSrc(t *testing.T) {
+ 	}
+@@ -438,8 +442,12 @@
+ 	}
  }
  
  func TestCopyWithTarInexistentDestWillCreateIt(t *testing.T) {
@@ -197,7 +199,9 @@ index 495cac8..3c56b0a 100644
  	tempFolder, err := ioutil.TempDir("", "docker-archive-test")
  	if err != nil {
  		t.Fatal(nil)
-@@ -923,6 +931,11 @@ func TestUntarHardlinkToSymlink(t *testing.T) {
+ 	}
+@@ -922,8 +930,13 @@
+ 	// TODO Windows. There may be a way of running this, but turning off for now
  	if runtime.GOOS == "windows" {
  		t.Skip("hardlinks on Windows")
  	}
@@ -209,11 +213,11 @@ index 495cac8..3c56b0a 100644
  	for i, headers := range [][]*tar.Header{
  		{
  			{
-diff --git a/pkg/archive/archive_unix_test.go b/pkg/archive/archive_unix_test.go
-index 548391b..2663a74 100644
+ 				Name:     "symlink1",
 --- a/pkg/archive/archive_unix_test.go
 +++ b/pkg/archive/archive_unix_test.go
-@@ -150,6 +150,10 @@ func getInode(path string) (uint64, error) {
+@@ -149,8 +149,12 @@
+ 	return statT.Ino, nil
  }
  
  func TestTarWithBlockCharFifo(t *testing.T) {
@@ -224,7 +228,9 @@ index 548391b..2663a74 100644
  	origin, err := ioutil.TempDir("", "docker-test-tar-hardlink")
  	if err != nil {
  		t.Fatal(err)
-@@ -203,6 +207,10 @@ func TestTarWithBlockCharFifo(t *testing.T) {
+ 	}
+@@ -202,8 +206,12 @@
+ }
  
  // TestTarUntarWithXattr is Unix as Lsetxattr is not supported on Windows
  func TestTarUntarWithXattr(t *testing.T) {
@@ -235,11 +241,11 @@ index 548391b..2663a74 100644
  	origin, err := ioutil.TempDir("", "docker-test-untar-origin")
  	if err != nil {
  		t.Fatal(err)
-diff --git a/pkg/archive/changes_test.go b/pkg/archive/changes_test.go
-index bca6825..f9846c6 100644
+ 	}
 --- a/pkg/archive/changes_test.go
 +++ b/pkg/archive/changes_test.go
-@@ -142,6 +142,10 @@ func TestChangesWithNoChanges(t *testing.T) {
+@@ -141,8 +141,12 @@
+ 	}
  }
  
  func TestChangesWithChanges(t *testing.T) {
@@ -250,7 +256,9 @@ index bca6825..f9846c6 100644
  	// TODO Windows. There may be a way of running this, but turning off for now
  	// as createSampleDir uses symlinks.
  	if runtime.GOOS == "windows" {
-@@ -198,6 +202,11 @@ func TestChangesWithChangesGH13590(t *testing.T) {
+ 		t.Skip("symlinks on Windows")
+@@ -197,8 +201,13 @@
+ 	// as createSampleDir uses symlinks.
  	if runtime.GOOS == "windows" {
  		t.Skip("symlinks on Windows")
  	}
@@ -262,11 +270,11 @@ index bca6825..f9846c6 100644
  	baseLayer, err := ioutil.TempDir("", "docker-changes-test.")
  	defer os.RemoveAll(baseLayer)
  
-diff --git a/pkg/authorization/authz_unix_test.go b/pkg/authorization/authz_unix_test.go
-index 1c6dc8a..93f2eae 100644
+ 	dir3 := path.Join(baseLayer, "dir1/dir2/dir3")
 --- a/pkg/authorization/authz_unix_test.go
 +++ b/pkg/authorization/authz_unix_test.go
-@@ -28,6 +28,10 @@ import (
+@@ -27,8 +27,12 @@
+ 
  const pluginAddress = "authzplugin.sock"
  
  func TestAuthZRequestPluginError(t *testing.T) {
@@ -277,7 +285,9 @@ index 1c6dc8a..93f2eae 100644
  	server := authZPluginTestServer{t: t}
  	go server.start()
  	defer server.stop()
-@@ -59,6 +63,10 @@ func TestAuthZRequestPluginError(t *testing.T) {
+ 
+@@ -58,8 +62,12 @@
+ 	}
  }
  
  func TestAuthZRequestPlugin(t *testing.T) {
@@ -288,7 +298,9 @@ index 1c6dc8a..93f2eae 100644
  	server := authZPluginTestServer{t: t}
  	go server.start()
  	defer server.stop()
-@@ -91,6 +99,10 @@ func TestAuthZRequestPlugin(t *testing.T) {
+ 
+@@ -90,8 +98,12 @@
+ 	}
  }
  
  func TestAuthZResponsePlugin(t *testing.T) {
@@ -299,11 +311,11 @@ index 1c6dc8a..93f2eae 100644
  	server := authZPluginTestServer{t: t}
  	go server.start()
  	defer server.stop()
-diff --git a/pkg/chrootarchive/archive_test.go b/pkg/chrootarchive/archive_test.go
-index 5fbe208..9b60805 100644
+ 
 --- a/pkg/chrootarchive/archive_test.go
 +++ b/pkg/chrootarchive/archive_test.go
-@@ -22,7 +22,15 @@ func init() {
+@@ -21,9 +21,17 @@
+ func init() {
  	reexec.Init()
  }
  
@@ -319,7 +331,9 @@ index 5fbe208..9b60805 100644
  	tmpdir, err := ioutil.TempDir("", "docker-TestChrootTarUntar")
  	if err != nil {
  		t.Fatal(err)
-@@ -54,6 +62,8 @@ func TestChrootTarUntar(t *testing.T) {
+ 	}
+@@ -53,8 +61,10 @@
+ 
  // gh#10426: Verify the fix for having a huge excludes list (like on `docker load` with large # of
  // local images)
  func TestChrootUntarWithHugeExcludesList(t *testing.T) {
@@ -328,7 +342,9 @@ index 5fbe208..9b60805 100644
  	tmpdir, err := ioutil.TempDir("", "docker-TestChrootUntarHugeExcludes")
  	if err != nil {
  		t.Fatal(err)
-@@ -88,6 +98,8 @@ func TestChrootUntarWithHugeExcludesList(t *testing.T) {
+ 	}
+@@ -87,8 +97,10 @@
+ 	}
  }
  
  func TestChrootUntarEmptyArchive(t *testing.T) {
@@ -337,7 +353,9 @@ index 5fbe208..9b60805 100644
  	tmpdir, err := ioutil.TempDir("", "docker-TestChrootUntarEmptyArchive")
  	if err != nil {
  		t.Fatal(err)
-@@ -152,6 +164,8 @@ func compareFiles(src string, dest string) error {
+ 	}
+@@ -151,8 +163,10 @@
+ 	return nil
  }
  
  func TestChrootTarUntarWithSymlink(t *testing.T) {
@@ -346,7 +364,9 @@ index 5fbe208..9b60805 100644
  	// TODO Windows: Figure out why this is failing
  	if runtime.GOOS == "windows" {
  		t.Skip("Failing on Windows")
-@@ -178,6 +192,8 @@ func TestChrootTarUntarWithSymlink(t *testing.T) {
+ 	}
+@@ -177,8 +191,10 @@
+ 	}
  }
  
  func TestChrootCopyWithTar(t *testing.T) {
@@ -355,7 +375,9 @@ index 5fbe208..9b60805 100644
  	// TODO Windows: Figure out why this is failing
  	if runtime.GOOS == "windows" {
  		t.Skip("Failing on Windows")
-@@ -228,6 +244,8 @@ func TestChrootCopyWithTar(t *testing.T) {
+ 	}
+@@ -227,8 +243,10 @@
+ 	}
  }
  
  func TestChrootCopyFileWithTar(t *testing.T) {
@@ -364,7 +386,9 @@ index 5fbe208..9b60805 100644
  	tmpdir, err := ioutil.TempDir("", "docker-TestChrootCopyFileWithTar")
  	if err != nil {
  		t.Fatal(err)
-@@ -271,6 +289,8 @@ func TestChrootCopyFileWithTar(t *testing.T) {
+ 	}
+@@ -270,8 +288,10 @@
+ 	}
  }
  
  func TestChrootUntarPath(t *testing.T) {
@@ -373,7 +397,9 @@ index 5fbe208..9b60805 100644
  	// TODO Windows: Figure out why this is failing
  	if runtime.GOOS == "windows" {
  		t.Skip("Failing on Windows")
-@@ -336,6 +356,8 @@ func (s *slowEmptyTarReader) Read(p []byte) (int, error) {
+ 	}
+@@ -335,8 +355,10 @@
+ 	return count, nil
  }
  
  func TestChrootUntarEmptyArchiveFromSlowReader(t *testing.T) {
@@ -382,7 +408,9 @@ index 5fbe208..9b60805 100644
  	tmpdir, err := ioutil.TempDir("", "docker-TestChrootUntarEmptyArchiveFromSlowReader")
  	if err != nil {
  		t.Fatal(err)
-@@ -352,6 +374,8 @@ func TestChrootUntarEmptyArchiveFromSlowReader(t *testing.T) {
+ 	}
+@@ -351,8 +373,10 @@
+ 	}
  }
  
  func TestChrootApplyEmptyArchiveFromSlowReader(t *testing.T) {
@@ -391,7 +419,9 @@ index 5fbe208..9b60805 100644
  	tmpdir, err := ioutil.TempDir("", "docker-TestChrootApplyEmptyArchiveFromSlowReader")
  	if err != nil {
  		t.Fatal(err)
-@@ -368,6 +392,8 @@ func TestChrootApplyEmptyArchiveFromSlowReader(t *testing.T) {
+ 	}
+@@ -367,8 +391,10 @@
+ 	}
  }
  
  func TestChrootApplyDotDotFile(t *testing.T) {
@@ -400,11 +430,11 @@ index 5fbe208..9b60805 100644
  	tmpdir, err := ioutil.TempDir("", "docker-TestChrootApplyDotDotFile")
  	if err != nil {
  		t.Fatal(err)
-diff --git a/pkg/idtools/idtools_unix_test.go b/pkg/idtools/idtools_unix_test.go
-index 540d307..14e0c82 100644
+ 	}
 --- a/pkg/idtools/idtools_unix_test.go
 +++ b/pkg/idtools/idtools_unix_test.go
-@@ -17,6 +17,10 @@ type node struct {
+@@ -16,8 +16,12 @@
+ 	gid int
  }
  
  func TestMkdirAllAs(t *testing.T) {
@@ -415,7 +445,9 @@ index 540d307..14e0c82 100644
  	dirName, err := ioutil.TempDir("", "mkdirall")
  	if err != nil {
  		t.Fatalf("Couldn't create temp dir: %v", err)
-@@ -77,6 +81,9 @@ func TestMkdirAllAs(t *testing.T) {
+ 	}
+@@ -76,8 +80,11 @@
+ 	}
  }
  
  func TestMkdirAllNewAs(t *testing.T) {
@@ -425,7 +457,9 @@ index 540d307..14e0c82 100644
  
  	dirName, err := ioutil.TempDir("", "mkdirnew")
  	if err != nil {
-@@ -137,6 +144,9 @@ func TestMkdirAllNewAs(t *testing.T) {
+ 		t.Fatalf("Couldn't create temp dir: %v", err)
+@@ -136,8 +143,11 @@
+ 	}
  }
  
  func TestMkdirAs(t *testing.T) {
@@ -435,11 +469,11 @@ index 540d307..14e0c82 100644
  
  	dirName, err := ioutil.TempDir("", "mkdir")
  	if err != nil {
-diff --git a/pkg/mount/mount_unix_test.go b/pkg/mount/mount_unix_test.go
-index d45fbc1..c8c0969 100644
+ 		t.Fatalf("Couldn't create temp dir: %v", err)
 --- a/pkg/mount/mount_unix_test.go
 +++ b/pkg/mount/mount_unix_test.go
-@@ -25,6 +25,10 @@ func TestMountOptionsParsing(t *testing.T) {
+@@ -24,8 +24,12 @@
+ 	}
  }
  
  func TestMounted(t *testing.T) {
@@ -450,7 +484,9 @@ index d45fbc1..c8c0969 100644
  	tmp := path.Join(os.TempDir(), "mount-tests")
  	if err := os.MkdirAll(tmp, 0777); err != nil {
  		t.Fatal(err)
-@@ -76,6 +80,10 @@ func TestMounted(t *testing.T) {
+ 	}
+@@ -75,8 +79,12 @@
+ 	}
  }
  
  func TestMountReadonly(t *testing.T) {
@@ -461,11 +497,23 @@ index d45fbc1..c8c0969 100644
  	tmp := path.Join(os.TempDir(), "mount-tests")
  	if err := os.MkdirAll(tmp, 0777); err != nil {
  		t.Fatal(err)
-diff --git a/pkg/mount/sharedsubtree_linux_test.go b/pkg/mount/sharedsubtree_linux_test.go
-index c183794..19c65cc 100644
+ 	}
+@@ -120,8 +128,11 @@
+ 	}
+ }
+ 
+ func TestGetMounts(t *testing.T) {
++	if testing.Short() {
++		t.Skip("Skipping privileged test in short mode")
++	}
+ 	mounts, err := GetMounts()
+ 	if err != nil {
+ 		t.Fatal(err)
+ 	}
 --- a/pkg/mount/sharedsubtree_linux_test.go
 +++ b/pkg/mount/sharedsubtree_linux_test.go
-@@ -11,6 +11,10 @@ import (
+@@ -10,8 +10,12 @@
+ )
  
  // nothing is propagated in or out
  func TestSubtreePrivate(t *testing.T) {
@@ -476,7 +524,9 @@ index c183794..19c65cc 100644
  	tmp := path.Join(os.TempDir(), "mount-tests")
  	if err := os.MkdirAll(tmp, 0777); err != nil {
  		t.Fatal(err)
-@@ -109,6 +113,10 @@ func TestSubtreePrivate(t *testing.T) {
+ 	}
+@@ -108,8 +112,12 @@
+ 
  // Testing that when a target is a shared mount,
  // then child mounts propagate to the source
  func TestSubtreeShared(t *testing.T) {
@@ -487,7 +537,9 @@ index c183794..19c65cc 100644
  	tmp := path.Join(os.TempDir(), "mount-tests")
  	if err := os.MkdirAll(tmp, 0777); err != nil {
  		t.Fatal(err)
-@@ -177,6 +185,10 @@ func TestSubtreeShared(t *testing.T) {
+ 	}
+@@ -176,8 +184,12 @@
+ 
  // testing that mounts to a shared source show up in the slave target,
  // and that mounts into a slave target do _not_ show up in the shared source
  func TestSubtreeSharedSlave(t *testing.T) {
@@ -498,7 +550,9 @@ index c183794..19c65cc 100644
  	tmp := path.Join(os.TempDir(), "mount-tests")
  	if err := os.MkdirAll(tmp, 0777); err != nil {
  		t.Fatal(err)
-@@ -281,6 +293,10 @@ func TestSubtreeSharedSlave(t *testing.T) {
+ 	}
+@@ -280,8 +292,12 @@
+ 	}
  }
  
  func TestSubtreeUnbindable(t *testing.T) {
@@ -509,11 +563,11 @@ index c183794..19c65cc 100644
  	tmp := path.Join(os.TempDir(), "mount-tests")
  	if err := os.MkdirAll(tmp, 0777); err != nil {
  		t.Fatal(err)
-diff --git a/pkg/sysinfo/sysinfo_linux_test.go b/pkg/sysinfo/sysinfo_linux_test.go
-index fae0fdf..26802d3 100644
+ 	}
 --- a/pkg/sysinfo/sysinfo_linux_test.go
 +++ b/pkg/sysinfo/sysinfo_linux_test.go
-@@ -9,6 +9,10 @@ import (
+@@ -8,8 +8,12 @@
+ 	"testing"
  )
  
  func TestReadProcBool(t *testing.T) {
@@ -524,11 +578,11 @@ index fae0fdf..26802d3 100644
  	tmpDir, err := ioutil.TempDir("", "test-sysinfo-proc")
  	if err != nil {
  		t.Fatal(err)
-diff --git a/volume/local/local_test.go b/volume/local/local_test.go
-index 1baa085..94d6b61 100644
+ 	}
 --- a/volume/local/local_test.go
 +++ b/volume/local/local_test.go
-@@ -11,6 +11,9 @@ import (
+@@ -10,8 +10,11 @@
+ 	"github.com/docker/docker/pkg/mount"
  )
  
  func TestRemove(t *testing.T) {
@@ -538,7 +592,9 @@ index 1baa085..94d6b61 100644
  	// TODO Windows: Investigate why this test fails on Windows under CI
  	//               but passes locally.
  	if runtime.GOOS == "windows" {
-@@ -58,6 +61,10 @@ func TestRemove(t *testing.T) {
+ 		t.Skip("Test failing on Windows CI")
+@@ -57,8 +60,12 @@
+ 	}
  }
  
  func TestInitializeWithVolumes(t *testing.T) {
@@ -549,7 +605,9 @@ index 1baa085..94d6b61 100644
  	rootDir, err := ioutil.TempDir("", "local-volume-test")
  	if err != nil {
  		t.Fatal(err)
-@@ -90,6 +97,10 @@ func TestInitializeWithVolumes(t *testing.T) {
+ 	}
+@@ -89,8 +96,12 @@
+ 	}
  }
  
  func TestCreate(t *testing.T) {
@@ -560,7 +618,9 @@ index 1baa085..94d6b61 100644
  	rootDir, err := ioutil.TempDir("", "local-volume-test")
  	if err != nil {
  		t.Fatal(err)
-@@ -156,6 +167,10 @@ func TestValidateName(t *testing.T) {
+ 	}
+@@ -155,8 +166,12 @@
+ 	}
  }
  
  func TestCreateWithOpts(t *testing.T) {
@@ -571,3 +631,39 @@ index 1baa085..94d6b61 100644
  	if runtime.GOOS == "windows" {
  		t.Skip()
  	}
+ 
+--- a/daemon/graphdriver/overlay/overlay_test.go
++++ b/daemon/graphdriver/overlay/overlay_test.go
+@@ -10,20 +10,32 @@
+ 
+ // This avoids creating a new driver for each test if all tests are run
+ // Make sure to put new tests between TestOverlaySetup and TestOverlayTeardown
+ func TestOverlaySetup(t *testing.T) {
++	if testing.Short() {
++		t.Skip("Skipping privileged test in short mode")
++	}
+ 	graphtest.GetDriver(t, "overlay")
+ }
+ 
+ func TestOverlayCreateEmpty(t *testing.T) {
++	if testing.Short() {
++		t.Skip("Skipping privileged test in short mode")
++	}
+ 	graphtest.DriverTestCreateEmpty(t, "overlay")
+ }
+ 
+ func TestOverlayCreateBase(t *testing.T) {
++	if testing.Short() {
++		t.Skip("Skipping privileged test in short mode")
++	}
+ 	graphtest.DriverTestCreateBase(t, "overlay")
+ }
+ 
+ func TestOverlayCreateSnap(t *testing.T) {
++	if testing.Short() {
++		t.Skip("Skipping privileged test in short mode")
++	}
+ 	graphtest.DriverTestCreateSnap(t, "overlay")
+ }
+ 
+ func TestOverlayTeardown(t *testing.T) {
