@@ -48,7 +48,7 @@ Build-Depends: bash-completion,
                golang-github-mattn-go-shellwords-dev (>= 1.0.0~),
                golang-github-mattn-go-sqlite3-dev (>= 1.1.0~),
                golang-github-miekg-pkcs11-dev (>= 0.0~git20160222~),
-               golang-github-opencontainers-runc-dev (>= 0.1.0~)
+               golang-github-opencontainers-runc-dev (>= 0.1.0~),
                golang-github-opencontainers-specs-dev (>= 0.0~git20160422~),
                golang-github-philhofer-fwd-dev (>= 0.0~git20150401~),
                golang-github-racksec-srslog-dev (>= 0.0~git20160120~),
