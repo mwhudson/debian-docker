@@ -1,3 +1,12 @@
+docker.io (1.11.2~ds1-3) unstable; urgency=medium
+
+  * Team upload.
+  * Updated "skip-privileged-unit-tests.patch" to skip more privileged
+    tests in order to fix FTBFS in pbuilder.
+  * Install "opts" directory to -dev package.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Sat, 09 Jul 2016 13:49:02 +1000
+
 docker.io (1.11.2~ds1-2) unstable; urgency=medium
 
   * Add Tim Potter (tpot) and Dmitry Smirnov (onlyjob) to debian/copyright; they
