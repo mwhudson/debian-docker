@@ -1,3 +1,10 @@
+docker.io (1.11.2~ds1-4) UNRELEASED; urgency=medium
+
+  * Add new script to generate Build-Depends based on "go list" instead of
+    "hack/vendor.sh" (and update Build-Depends using it)
+
+ -- Tianon Gravi <tianon@debian.org>  Sat, 09 Jul 2016 03:08:09 -0700
+
 docker.io (1.11.2~ds1-3) unstable; urgency=medium
 
   * Team upload.
