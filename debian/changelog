@@ -1,3 +1,10 @@
+docker.io (1.11.2~ds1-5) UNRELEASED; urgency=medium
+
+  * Skip racy "TestRunCommandWithOutputAndTimeoutKilled" during build (see also
+    https://github.com/docker/docker/issues/22965)
+
+ -- Tianon Gravi <tianon@debian.org>  Tue, 12 Jul 2016 07:40:47 -0700
+
 docker.io (1.11.2~ds1-4) unstable; urgency=medium
 
   [ Tianon Gravi ]
