@@ -7,8 +7,6 @@ docker.io (1.11.2~ds1-4) UNRELEASED; urgency=medium
     upstream's documentation for the recommended alternatives
     ("/etc/docker/daemon.json" and systemd drop-ins)
   * Update gbp.conf for pristine-tar usage now that we're no longer multi-orig
-  * Adjust debhelper relation to account for dh-systemd being part of debhelper
-    proper now (version 9.20160709)
   * Remove "/var/lib/docker" upon purge (Closes: #739257)
 
   [ Dmitry Smirnov ]
