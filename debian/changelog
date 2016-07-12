@@ -1,3 +1,11 @@
+docker.io (1.11.2~ds1-5) UNRELEASED; urgency=medium
+
+  * Add "pkg/integration" to DH_GOLANG_EXCLUDES since it's only imported from
+    the integration tests (and includes at least one racy test; see
+    https://github.com/docker/docker/issues/22965)
+
+ -- Tianon Gravi <tianon@debian.org>  Tue, 12 Jul 2016 07:24:42 -0700
+
 docker.io (1.11.2~ds1-4) unstable; urgency=medium
 
   [ Tianon Gravi ]
