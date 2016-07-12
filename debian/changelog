@@ -1,3 +1,9 @@
+docker.io (1.11.2~ds1-6) UNRELEASED; urgency=medium
+
+  * Add DEP-3 headers for "skip-racy-unit-tests.patch"
+
+ -- Tianon Gravi <tianon@debian.org>  Tue, 12 Jul 2016 07:50:28 -0700
+
 docker.io (1.11.2~ds1-5) unstable; urgency=medium
 
   * Skip racy "TestRunCommandWithOutputAndTimeoutKilled" during build (see also
