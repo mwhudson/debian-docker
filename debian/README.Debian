@@ -18,6 +18,18 @@ GRUB_CMDLINE_LINUX_DEFAULT="cgroup_enable=memory swapaccount=1"
 Then run update-grub, and reboot.
 
 
+It's worth pointing out that upstream maintains a "check-config.sh" script for
+verifying not only proper kernel configuration (which isn't terribly relevant in
+the Debian context), but also the host system configuration, especially and
+including whether a properly mounted cgroup hierarchy can be found.  If you're
+using cgroupfs-mount or systemd, chances are very high that you have one, but if
+not, you're likely to see strange behavior.
+
+In the docker.io package, one can find the "check-config.sh" script under
+"/usr/share/docker.io/contrib/check-config.sh", which when run (does NOT require
+root/sudo) will report on problems with your installation/configuration.
+
+
 As noted in the upstream documentation (https://docs.docker.io), Docker will
 allow non-root users in the "docker" group to access "docker.sock" and thus
 communicate with the daemon.  To add yourself to the "docker" group, use
