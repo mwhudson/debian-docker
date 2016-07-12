@@ -3,14 +3,9 @@
 
 export DH_GOPKG := github.com/docker/docker
 export DH_GOLANG_INSTALL_ALL := 1
-
-# integration-cli is integration tests (can't run unprivileged)
-# pkg/integration is helpers for the integration tests
-# vendor contains only code from Docker's upstreams
 export DH_GOLANG_EXCLUDES := \
-	$(DH_GOPKG)/integration-cli \
-	$(DH_GOPKG)/pkg/integration \
-	$(DH_GOPKG)/vendor
+	integration-cli \
+	vendor
 
 # temporary build path (see http://golang.org/doc/code.html#GOPATH)
 OUR_GOPATH := $(CURDIR)/.gopath
