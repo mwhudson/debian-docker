@@ -97,7 +97,13 @@ Recommends: ca-certificates,
             ${apparmor:Recommends}
 Replaces: docker (<< 1.5~)
 Breaks: docker (<< 1.5~)
-Suggests: aufs-tools, btrfs-progs, debootstrap, lxc, rinse, zfs-fuse | zfsutils
+Suggests: aufs-tools,
+          btrfs-progs,
+          debootstrap,
+          docker-doc,
+          lxc,
+          rinse,
+          zfs-fuse | zfsutils
 Built-Using: ${misc:Built-Using}, ${libc:Built-Using}
 Description: Linux container runtime
  Docker complements kernel namespacing with a high-level API which operates at
