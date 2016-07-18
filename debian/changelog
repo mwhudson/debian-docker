@@ -4,6 +4,7 @@ docker.io (1.11.2~ds1-6) UNRELEASED; urgency=medium
   * Add DEP-3 headers for "skip-racy-unit-tests.patch"
   * Add a note about "check-config.sh" to README.Debian; thanks Tincho!
   * Add "docker-doc" to Suggests (Closes: #831748); thanks Ben!
+  * Remove "lxc" from Suggests (no longer a supported execution backend)
 
   [ Nicolas Braud-Santoni ]
   * Fix /etc/docker permissions (Closes: #831324)

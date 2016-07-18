@@ -101,7 +101,6 @@ Suggests: aufs-tools,
           btrfs-progs,
           debootstrap,
           docker-doc,
-          lxc,
           rinse,
           zfs-fuse | zfsutils
 Built-Using: ${misc:Built-Using}, ${libc:Built-Using}
