@@ -61,7 +61,10 @@ endif
 	rm -rf '$(OUR_GOPATH)/src/$(DH_GOPKG)/bundles'
 	ln -sfT '$(CURDIR)/bundles' '$(OUR_GOPATH)/src/$(DH_GOPKG)/bundles'
 
-override_dh_auto_build:
+override_dh_auto_build-indep:
+	# noop
+
+override_dh_auto_build-arch:
 	@bash -c '{ [ "$$DOCKER_GITCOMMIT" ]; } || { echo; echo "error: missing DOCKER_GITCOMMIT - see debian/upstream-version-gitcommits"; echo; exit 2; } >&2'
 	
 	# build ("cd" first to ensure we build from within GOPATH)
