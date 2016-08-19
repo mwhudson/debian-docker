@@ -52,15 +52,21 @@ ifneq (, $(wildcard $(CURDIR)/vendor/src))
 endif
 	
 	# make sure the bits modified at build-time are properly in our GOPATH
-	rm -rf '$(OUR_GOPATH)/src/$(DH_GOPKG)/dockerversion'
 	mkdir -p '$(OUR_GOPATH)/src/$(DH_GOPKG)'
+	#   dockerversion
+	rm -rf '$(OUR_GOPATH)/src/$(DH_GOPKG)/dockerversion'
 	ln -sfT '$(CURDIR)/dockerversion' '$(OUR_GOPATH)/src/$(DH_GOPKG)/dockerversion'
+	#   bundles
+	mkdir -p bundles
+	rm -rf '$(OUR_GOPATH)/src/$(DH_GOPKG)/bundles'
+	ln -sfT '$(CURDIR)/bundles' '$(OUR_GOPATH)/src/$(DH_GOPKG)/bundles'
 
 override_dh_auto_build:
 	@bash -c '{ [ "$$DOCKER_GITCOMMIT" ]; } || { echo; echo "error: missing DOCKER_GITCOMMIT - see debian/upstream-version-gitcommits"; echo; exit 2; } >&2'
 	
-	# build
-	./hack/make.sh $(DOCKER_BUILD_TARGET)
+	# build ("cd" first to ensure we build from within GOPATH)
+	cd '$(OUR_GOPATH)/src/$(DH_GOPKG)' \
+		&& '$(CURDIR)/hack/make.sh' $(DOCKER_BUILD_TARGET)
 	
 	# compile man pages
 	./man/md2man-all.sh -q
@@ -79,7 +85,7 @@ ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	# run unit tests
 	cd '$(OUR_GOPATH)/src/$(DH_GOPKG)' \
 		&& export TESTFLAGS='-test.short' \
-		&& bash ./hack/make.sh test-unit
+		&& '$(CURDIR)/hack/make.sh' test-unit
 endif
 
 
