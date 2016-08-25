@@ -5,6 +5,8 @@ docker.io (1.11.2~ds1-7) UNRELEASED; urgency=medium
   * Split "dh_auto_build-arch" from "dh_auto_build-indep"
   * Update "debian/watch" to use "uscan.tianon.xyz" so older versions are still
     easily fetchable without excess work outside uscan
+  * Fix d/copyright text about Apache version 2.0 being in
+    "/usr/share/common-licenses/GPL-2" (Closes: #835440); thanks cascardo!
 
  -- Tianon Gravi <tianon@debian.org>  Fri, 19 Aug 2016 12:52:55 -0700
 
