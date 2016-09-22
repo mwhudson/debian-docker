@@ -1,3 +1,13 @@
+docker.io (1.12.3-0ubuntu4~16.04.1) xenial; urgency=medium
+
+  * Backport to Xenial. (LP: #1647376, #1639407)
+  * d/control: Remove version from Build-Depends on dh-golang, only
+    required in Debian.
+  * Install the service file with .install again, fixing service activation
+    on install.
+
+ -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Tue, 27 Sep 2016 12:25:38 +1300
+
 docker.io (1.12.3-0ubuntu4) zesty; urgency=medium
 
   * Explicity depend on the version of runc that was built with seccomp
