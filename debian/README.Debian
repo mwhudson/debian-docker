@@ -1,6 +1,14 @@
 Docker on Debian
 ================
 
+Please refer to upstream's documentation for information about what Docker is,
+how it works, and how to use it: https://docs.docker.com/
+
+The following notes are things that may have impact specifically to use of the
+Docker package in Debian.
+
+--
+
 To enable docker memory limitation, the kernel needs to be loaded with
 boot parameters: cgroup_enable=memory swapaccount=1.
 
@@ -17,6 +25,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="cgroup_enable=memory swapaccount=1"
 
 Then run update-grub, and reboot.
 
+---
 
 It's worth pointing out that upstream maintains a "check-config.sh" script for
 verifying not only proper kernel configuration (which isn't terribly relevant in
@@ -29,6 +38,7 @@ In the docker.io package, one can find the "check-config.sh" script under
 "/usr/share/docker.io/contrib/check-config.sh", which when run (does NOT require
 root/sudo) will report on problems with your installation/configuration.
 
+---
 
 As noted in the upstream documentation (https://docs.docker.io), Docker will
 allow non-root users in the "docker" group to access "docker.sock" and thus
