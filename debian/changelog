@@ -12,6 +12,7 @@ docker.io (1.11.2~ds1-7) UNRELEASED; urgency=medium
     what kinds of things this file includes)
   * Add an explicit note about "systemd.legacy_systemd_cgroup_controller=yes"
     in README.Debian (Closes: #843530)
+  * Add explicit new "golang-golang-x-oauth2-google-dev" package to Depends
 
  -- Tianon Gravi <tianon@debian.org>  Fri, 19 Aug 2016 12:52:55 -0700
 

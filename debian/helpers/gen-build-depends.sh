@@ -163,6 +163,9 @@ declare -A transitionals=(
 	[golang-github-syndtr-gocapability-dev]='golang-gocapability-dev'
 	[golang-github-ugorji-go-dev]='golang-github-ugorji-go-codec-dev'
 	[golang-gopkg-fsnotify.v1-dev]='golang-github-fsnotify-fsnotify-dev'
+
+	# golang-golang-x-oauth2 version 0.0~git20161103.0.36bc617-2 introduced a separate google/ package
+	[golang-golang-x-oauth2-dev]='golang-golang-x-oauth2-google-dev'
 )
 
 for goDep in "${goDeps[@]}"; do
