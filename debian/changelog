@@ -10,6 +10,8 @@ docker.io (1.11.2~ds1-7) UNRELEASED; urgency=medium
   * Add Tim Potter to Uploaders ♥
   * Add a bit more formatting to README.Debian (and a short intro to explain
     what kinds of things this file includes)
+  * Add an explicit note about "systemd.legacy_systemd_cgroup_controller=yes"
+    in README.Debian (Closes: #843530)
 
  -- Tianon Gravi <tianon@debian.org>  Fri, 19 Aug 2016 12:52:55 -0700
 

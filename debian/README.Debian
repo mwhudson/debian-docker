@@ -55,3 +55,14 @@ Docker, please be sure to read the "Docker Security" article in the
 upstream documentation:
 
     https://docs.docker.com/engine/security/security/
+
+---
+
+  rpc error: code = 2 desc = "oci runtime error: could not synchronise with
+  container process: no subsystem for mount"
+
+This message is very likely related to https://bugs.debian.org/843530, and thus
+https://github.com/opencontainers/runc/issues/1175.
+
+Adding "systemd.legacy_systemd_cgroup_controller=yes" to your system boot
+parameters (in Grub, etc) is probably necessary to resolve it.
