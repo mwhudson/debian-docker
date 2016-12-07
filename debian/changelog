@@ -1,5 +1,15 @@
 docker.io (1.11.2~ds1-7) UNRELEASED; urgency=medium
 
+  [ Paul Tagliamonte ]
+  * Remove myself as maintainer, and swap out tpot. Sadly, these days, I'm
+    mostly just in the way, and not actually helping all that much with
+    the Docker packaging. My last upload was basically forever ago, and
+    tianon and tpot have been doing all the work since than. As such, I'm
+    going to make an unilateral executive decision to tell everyone who
+    listens to actually just listen to tpot. I plan to continue to be around in
+    the form of cruft and chaos monkey. You should also listen to tianon.
+
+  [ Tianon Gravi ]
   * Update basic-smoke test with "set -x" for debuggability and proper Depends
   * Build from within GOPATH so Go packages are resolved properly
   * Split "dh_auto_build-arch" from "dh_auto_build-indep"
