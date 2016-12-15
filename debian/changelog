@@ -1,3 +1,9 @@
+docker.io (1.12.3-0ubuntu4~16.10.1) yakkety; urgency=medium
+
+  * Backport to Yakkety. (LP: #1647376, #1639407) 
+
+ -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Thu, 15 Dec 2016 13:30:19 +1300
+
 docker.io (1.12.3-0ubuntu4) zesty; urgency=medium
 
   * Explicity depend on the version of runc that was built with seccomp
