@@ -1,3 +1,9 @@
+docker.io (1.12.3-0ubuntu4~16.10.2) yakkety; urgency=medium
+
+  * Update runc dep to account for its backported version.
+
+ -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Mon, 19 Dec 2016 09:20:48 +1300
+
 docker.io (1.12.3-0ubuntu4~16.10.1) yakkety; urgency=medium
 
   * Backport to Yakkety. (LP: #1647376, #1639407) 
