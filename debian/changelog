@@ -24,6 +24,9 @@ docker.io (1.11.2~ds1-7) UNRELEASED; urgency=medium
     in README.Debian (Closes: #843530)
   * Add explicit new "golang-golang-x-oauth2-google-dev" package to Depends
 
+  [ Tim Potter ]
+  * Add missing "golang-github-docker-go-events-dev" B-D (Closes: #850793)
+
  -- Tianon Gravi <tianon@debian.org>  Fri, 19 Aug 2016 12:52:55 -0700
 
 docker.io (1.11.2~ds1-6) unstable; urgency=medium
