@@ -1,3 +1,9 @@
+docker.io (1.12.6-0ubuntu2~16.10.1) yakkety; urgency=medium
+
+  * Backport to Yakkety. (LP: #1655906)
+
+ -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Fri, 27 Jan 2017 13:43:59 +1300
+
 docker.io (1.12.6-0ubuntu1) zesty; urgency=medium
 
   * Update to 1.12.6 upstream release (LP: #1655906)
