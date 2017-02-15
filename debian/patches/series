@@ -13,3 +13,4 @@ skip-privileged-unit-tests.patch
 skip-racy-unit-tests.patch
 check-v1.patch
 remove-logentries-log-driver.patch
+coreos-go-systemd.patch
