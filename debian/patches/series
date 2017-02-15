@@ -11,3 +11,4 @@ remove-docker-prefix.patch
 
 remove-logentries-log-driver.patch
 coreos-go-systemd.patch
+dockerd-binary-location.patch
