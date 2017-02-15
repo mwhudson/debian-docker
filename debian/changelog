@@ -27,6 +27,7 @@ docker.io (1.13.0~ds1-1) UNRELEASED; urgency=medium
   [ Tim Potter ]
   * Add missing "golang-github-docker-go-events-dev" B-D (Closes: #850793)
   * New upstream version.
+  * Remove logentries.com log driver as upstream module is unlicensed.
 
  -- Tianon Gravi <tianon@debian.org>  Fri, 19 Aug 2016 12:52:55 -0700
 

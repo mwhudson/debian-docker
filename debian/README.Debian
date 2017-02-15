@@ -66,3 +66,14 @@ https://github.com/opencontainers/runc/issues/1175.
 
 Adding "systemd.legacy_systemd_cgroup_controller=yes" to your system boot
 parameters (in Grub, etc) is probably necessary to resolve it.
+
+---
+
+Support for the logentries.com log driver has been removed from the
+Debian version as it contains no license information and is therefore
+not redistributable.
+
+Github issues have been filed upstream:
+
+https://github.com/bsphere/le_go/issues/14
+https://github.com/docker/docker/issues/31020
