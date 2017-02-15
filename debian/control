@@ -98,6 +98,7 @@ Architecture: linux-any
 Depends: adduser,
          containerd (>= 0.2.1~),
          iptables,
+         golang-libnetwork,
          lsb-base,
          runc (>= 0.1.0~),
          ${misc:Depends},
