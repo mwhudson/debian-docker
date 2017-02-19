@@ -9,6 +9,5 @@ change-system-unit-env-file.patch
 remove-docker-prefix.patch
 
 
-remove-logentries-log-driver.patch
 coreos-go-systemd.patch
 dockerd-binary-location.patch
