@@ -1,0 +1,17 @@
+Description: Use bash instead of sh to execute nuke-graph-directory.sh script
+ This script uses bash-isms and so does not work in environments where /bin/sh is
+ not linked to /bin/bash.
+Author: Tim Potter <tpot@hpe.com>
+Forwarded: not-needed, applied in later upstream version
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: docker.io/contrib/nuke-graph-directory.sh
+===================================================================
+--- docker.io.orig/contrib/nuke-graph-directory.sh
++++ docker.io/contrib/nuke-graph-directory.sh
+@@ -1,4 +1,4 @@
+-#!/bin/sh
++#!/usr/bin/env bash
+ set -e
+ 
+ dir="$1"

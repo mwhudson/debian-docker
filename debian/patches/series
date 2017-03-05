@@ -11,3 +11,4 @@ remove-docker-prefix.patch
 
 coreos-go-systemd.patch
 dockerd-binary-location.patch
+nuke-graph-directory-bash.patch
