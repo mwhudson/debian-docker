@@ -21,3 +21,4 @@ opencontainer-specs--no-mountlabel.patch
 skip-privileged-unit-tests.patch
 skip-racy-unit-tests.patch
 check-v1.patch
+nuke-graph-directory-bash.patch

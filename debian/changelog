@@ -26,6 +26,7 @@ docker.io (1.11.2~ds1-7) UNRELEASED; urgency=medium
 
   [ Tim Potter ]
   * Add missing "golang-github-docker-go-events-dev" B-D (Closes: #850793)
+  * Run nuke-graph-directory.sh using bash instead of regular sh.
 
  -- Tianon Gravi <tianon@debian.org>  Fri, 19 Aug 2016 12:52:55 -0700
 
