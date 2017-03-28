@@ -1,0 +1,11 @@
+Index: docker.io/cmd/dockerd/daemon_linux.go
+===================================================================
+--- docker.io.orig/cmd/dockerd/daemon_linux.go
++++ docker.io/cmd/dockerd/daemon_linux.go
+@@ -7,5 +7,5 @@ import systemdDaemon "github.com/coreos/
+ // notifySystem sends a message to the host when the server is ready to be used
+ func notifySystem() {
+ 	// Tell the init daemon we are accepting requests
+-	go systemdDaemon.SdNotify("READY=1")
++	go systemdDaemon.SdNotify(false, "READY=1")
+ }

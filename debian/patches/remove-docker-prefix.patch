@@ -1,26 +1,39 @@
-Description: remove "docker-" prefix on expected "runc" and "containerd" binaries
-Forwarded: not-needed
-Author: Tianon Gravi <tianon@debian.org>
-
-diff --git a/libcontainerd/remote_linux.go b/libcontainerd/remote_linux.go
-index 12ce0e1..cf18865 100644
---- a/libcontainerd/remote_linux.go
-+++ b/libcontainerd/remote_linux.go
-@@ -30,7 +30,7 @@ const (
- 	maxConnectionRetryCount   = 3
- 	connectionRetryDelay      = 3 * time.Second
- 	containerdShutdownTimeout = 15 * time.Second
--	containerdBinary          = "docker-containerd"
-+	containerdBinary          = "containerd"
- 	containerdPidFilename     = "docker-containerd.pid"
- 	containerdSockFilename    = "docker-containerd.sock"
- 	eventTimestampFilename    = "event.ts"
-@@ -349,7 +349,7 @@ func (r *remote) runContainerdDaemon() error {
- 	}
+Index: docker.io/daemon/daemon.go
+===================================================================
+--- docker.io.orig/daemon/daemon.go
++++ docker.io/daemon/daemon.go
+@@ -64,7 +64,7 @@ import (
+ var (
+ 	// DefaultRuntimeBinary is the default runtime to be used by
+ 	// containerd if none is specified
+-	DefaultRuntimeBinary = "docker-runc"
++	DefaultRuntimeBinary = "runc"
  
- 	// Start a new instance
--	args := []string{"-l", r.rpcAddr, "--runtime", "docker-runc", "--start-timeout", "2m"}
-+	args := []string{"-l", r.rpcAddr, "--runtime", "runc", "--start-timeout", "2m"}
- 	if r.debugLog {
- 		args = append(args, "--debug", "--metrics-interval=0")
- 	}
+ 	// DefaultInitBinary is the name of the default init binary
+ 	DefaultInitBinary = "docker-init"
+Index: docker.io/libcontainerd/remote_unix.go
+===================================================================
+--- docker.io.orig/libcontainerd/remote_unix.go
++++ docker.io/libcontainerd/remote_unix.go
+@@ -36,9 +36,9 @@ const (
+ 	maxConnectionRetryCount      = 3
+ 	containerdHealthCheckTimeout = 3 * time.Second
+ 	containerdShutdownTimeout    = 15 * time.Second
+-	containerdBinary             = "docker-containerd"
+-	containerdPidFilename        = "docker-containerd.pid"
+-	containerdSockFilename       = "docker-containerd.sock"
++	containerdBinary             = "containerd"
++	containerdPidFilename        = "containerd.pid"
++	containerdSockFilename       = "containerd.sock"
+ 	containerdStateDir           = "containerd"
+ 	eventTimestampFilename       = "event.ts"
+ )
+@@ -383,7 +383,7 @@ func (r *remote) runContainerdDaemon() e
+ 	if goruntime.GOOS == "solaris" {
+ 		args = append(args, "--shim", "containerd-shim", "--runtime", "runc")
+ 	} else {
+-		args = append(args, "--shim", "docker-containerd-shim")
++		args = append(args, "--shim", "containerd-shim")
+ 		if r.runtime != "" {
+ 			args = append(args, "--runtime")
+ 			args = append(args, r.runtime)

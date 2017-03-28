@@ -1,4 +1,13 @@
-docker.io (1.11.2~ds1-7) UNRELEASED; urgency=medium
+docker.io (1.13.0~ds1-2) UNRELEASED; urgency=medium
+
+  * Re-enable logfiles.com logging support after upstream license
+    change.
+  * Run nuke-graph-directory.sh using bash instead of regular sh.
+  * Fix dockerd location for sysvinit and upstart scripts. (Closes: #858249)
+
+ -- Tim Potter <tpot@hpe.com>  Mon, 20 Feb 2017 10:31:06 +1100
+
+docker.io (1.13.0~ds1-1) experimental; urgency=medium
 
   [ Paul Tagliamonte ]
   * Remove myself as maintainer, and swap out tpot. Sadly, these days, I'm
@@ -26,7 +35,9 @@ docker.io (1.11.2~ds1-7) UNRELEASED; urgency=medium
 
   [ Tim Potter ]
   * Add missing "golang-github-docker-go-events-dev" B-D (Closes: #850793)
-  * Run nuke-graph-directory.sh using bash instead of regular sh.
+  * New upstream version.
+  * Refresh patches and remove obsolete ones.
+  * Remove logentries.com log driver as upstream module is unlicensed.
 
  -- Tianon Gravi <tianon@debian.org>  Fri, 19 Aug 2016 12:52:55 -0700
 

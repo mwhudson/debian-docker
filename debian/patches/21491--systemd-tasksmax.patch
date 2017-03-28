@@ -9,16 +9,15 @@ Signed-off-by: Pierre Carrier <pierre@meteor.com>
  contrib/init/systemd/docker.service | 3 +++
  1 file changed, 3 insertions(+)
 
-diff --git a/contrib/init/systemd/docker.service b/contrib/init/systemd/docker.service
-index 75cb68c..28d2f4e 100644
---- a/contrib/init/systemd/docker.service
-+++ b/contrib/init/systemd/docker.service
-@@ -14,6 +14,9 @@ MountFlags=slave
- LimitNOFILE=1048576
- LimitNPROC=1048576
+Index: docker.io/contrib/init/systemd/docker.service
+===================================================================
+--- docker.io.orig/contrib/init/systemd/docker.service
++++ docker.io/contrib/init/systemd/docker.service
+@@ -19,7 +19,7 @@ LimitNPROC=infinity
  LimitCORE=infinity
-+# Uncomment TasksMax if your systemd version supports it.
-+# Only systemd 226 and above support this version.
+ # Uncomment TasksMax if your systemd version supports it.
+ # Only systemd 226 and above support this version.
+-#TasksMax=infinity
 +TasksMax=infinity
  TimeoutStartSec=0
  # set delegate yes so that systemd does not reset the cgroups of docker containers
