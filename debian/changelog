@@ -1,3 +1,9 @@
+docker.io (1.13.1~ds1-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+
+ -- Tim Potter <tpot@hpe.com>  Mon, 24 Apr 2017 16:50:30 +1000
+
 docker.io (1.13.0~ds1-3) unstable; urgency=medium
 
   * Add api and client directories to dev package.
