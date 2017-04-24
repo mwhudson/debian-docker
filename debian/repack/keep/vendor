@@ -2,4 +2,4 @@
 #vendor/src/github.com/docker/some-library
 
 # notary versioning is a bit complex, so we'll use it vendored for now
-vendor/src/github.com/docker/notary
+vendor/github.com/docker/notary
