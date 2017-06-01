@@ -16,3 +16,4 @@ coreos-go-systemd.patch
 dockerd-binary-location.patch
 nuke-graph-directory-bash.patch
 golang-google-api.patch
+skip-privileged-unit-tests.patch
