@@ -1,0 +1,13 @@
+Index: docker.io/profiles/seccomp/seccomp.go
+===================================================================
+--- docker.io.orig/profiles/seccomp/seccomp.go
++++ docker.io/profiles/seccomp/seccomp.go
+@@ -17,7 +17,7 @@ import (
+ 
+ // GetDefaultProfile returns the default seccomp profile.
+ func GetDefaultProfile(rs *specs.Spec) (*specs.Seccomp, error) {
+-	return setupSeccomp(DefaultProfile(), rs)
++	return setupSeccomp(DefaultProfile(rs), rs)
+ }
+ 
+ // LoadProfile takes a file path and decodes the seccomp profile.
