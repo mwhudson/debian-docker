@@ -1,0 +1,88 @@
+--- a/cli/command/plugin/upgrade.go
++++ b/cli/command/plugin/upgrade.go
+@@ -2,7 +2,7 @@
+ 
+ import (
+ 	"bufio"
+-	"context"
++	"golang.org/x/net/context"
+ 	"fmt"
+ 	"strings"
+ 
+--- a/client/client.go
++++ b/client/client.go
+@@ -19,7 +19,7 @@
+ 	package main
+ 
+ 	import (
+-		"context"
++		"golang.org/x/net/context"
+ 		"fmt"
+ 
+ 		"github.com/docker/docker/api/types"
+--- a/daemon/info_unix.go
++++ b/daemon/info_unix.go
+@@ -3,7 +3,7 @@
+ package daemon
+ 
+ import (
+-	"context"
++	"golang.org/x/net/context"
+ 	"os/exec"
+ 	"strings"
+ 
+--- a/integration-cli/docker_api_attach_test.go
++++ b/integration-cli/docker_api_attach_test.go
+@@ -3,7 +3,7 @@
+ import (
+ 	"bufio"
+ 	"bytes"
+-	"context"
++	"golang.org/x/net/context"
+ 	"io"
+ 	"net"
+ 	"net/http"
+--- a/integration-cli/docker_cli_save_load_unix_test.go
++++ b/integration-cli/docker_cli_save_load_unix_test.go
+@@ -3,7 +3,7 @@
+ package main
+ 
+ import (
+-	"context"
++	"golang.org/x/net/context"
+ 	"fmt"
+ 	"io/ioutil"
+ 	"os"
+--- a/vendor/github.com/docker/swarmkit/manager/logbroker/subscription.go
++++ b/vendor/github.com/docker/swarmkit/manager/logbroker/subscription.go
+@@ -1,7 +1,7 @@
+ package logbroker
+ 
+ import (
+-	"context"
++	"golang.org/x/net/context"
+ 	"fmt"
+ 	"strings"
+ 	"sync"
+--- a/vendor/github.com/docker/swarmkit/manager/state/raft/storage/walwrap.go
++++ b/vendor/github.com/docker/swarmkit/manager/state/raft/storage/walwrap.go
+@@ -1,7 +1,7 @@
+ package storage
+ 
+ import (
+-	"context"
++	"golang.org/x/net/context"
+ 	"io"
+ 	"io/ioutil"
+ 	"os"
+--- a/containerd/runtime/runtime_test.go
++++ b/containerd/runtime/runtime_test.go
+@@ -1,7 +1,7 @@
+ package runtime
+ 
+ import (
+-	"context"
++	"golang.org/x/net/context"
+ 	"flag"
+ 	"fmt"
+ 	"io"
