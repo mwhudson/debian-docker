@@ -1,6 +1,6 @@
 docker.io (1.13.1-0ubuntu1~16.04.1) xenial; urgency=medium
 
-  * Backport to Xenial. (LP: #1655906)
+  * Backport to Xenial. (LP: #1712954)
   * Install the service file with .install again, fixing service activation
     on install.
   * Use golang.org/x/net/context instead of stdlib context to enable building
