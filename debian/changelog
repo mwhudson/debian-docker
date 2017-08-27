@@ -1,3 +1,9 @@
+docker.io (1.13.1-0ubuntu1~17.04.1) xenial; urgency=medium
+
+  * Backport to Zesty. (LP: #1712954)
+
+ -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Mon, 28 Aug 2017 09:42:41 +1200
+
 docker.io (1.13.1-0ubuntu1) artful; urgency=medium
 
   * Update to 1.13.1 upstream release
