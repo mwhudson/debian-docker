@@ -1,16 +1,3 @@
-Index: docker.io/daemon/daemon.go
-===================================================================
---- docker.io.orig/daemon/daemon.go
-+++ docker.io/daemon/daemon.go
-@@ -64,7 +64,7 @@ import (
- var (
- 	// DefaultRuntimeBinary is the default runtime to be used by
- 	// containerd if none is specified
--	DefaultRuntimeBinary = "docker-runc"
-+	DefaultRuntimeBinary = "runc"
- 
- 	// DefaultInitBinary is the name of the default init binary
- 	DefaultInitBinary = "docker-init"
 Index: docker.io/libcontainerd/remote_unix.go
 ===================================================================
 --- docker.io.orig/libcontainerd/remote_unix.go

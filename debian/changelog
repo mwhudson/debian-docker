@@ -1,3 +1,10 @@
+docker.io (1.13.1~ds1-3) UNRELEASED; urgency=medium
+
+  * Switch from "runc" to "docker-runc", updating prefix-removing patch
+    (Closes: #877329)
+
+ -- Tianon Gravi <tianon@debian.org>  Mon, 02 Oct 2017 11:07:13 -0700
+
 docker.io (1.13.1~ds1-2) unstable; urgency=medium
 
   * Make test suite pass by using assorted patches to fix or disable
