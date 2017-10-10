@@ -43,13 +43,19 @@ override_dh_gencontrol:
 override_dh_auto_configure:
 	dh_auto_configure
 	
-ifneq (, $(wildcard $(CURDIR)/vendor/src))
-	# prefer vendored deps (when they exist)
-	rm -rf '$(OUR_GOPATH)/src/$(DH_GOPKG)/vendor' \
-		&& mkdir '$(OUR_GOPATH)/src/$(DH_GOPKG)/vendor' \
-		&& cd vendor/src \
-		&& cp -r . '$(OUR_GOPATH)/src/$(DH_GOPKG)/vendor'
-endif
+	# copy a few vendored bits from docker-runc/docker-containerd
+	set -ex; for pkg in \
+		github.com/opencontainers/runtime-spec \
+	; do \
+		mkdir -p "$(OUR_GOPATH)/src/$(DH_GOPKG)/vendor/$$pkg"; \
+		parentDir="$$(dirname "$(OUR_GOPATH)/src/$(DH_GOPKG)/vendor/$$pkg")"; \
+		if [ -d "/usr/share/gocode/src/github.com/opencontainers/runc/vendor/$$pkg" ]; then \
+			cp -vr "/usr/share/gocode/src/github.com/opencontainers/runc/vendor/$$pkg" "$$parentDir"; \
+		else \
+			[ -d "/usr/share/gocode/src/github.com/docker/containerd/vendor/$$pkg" ]; \
+			cp -vr "/usr/share/gocode/src/github.com/docker/containerd/vendor/$$pkg" "$$parentDir"; \
+		fi; \
+	done
 	
 	# make sure the bits modified at build-time are properly in our GOPATH
 	mkdir -p '$(OUR_GOPATH)/src/$(DH_GOPKG)'

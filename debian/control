@@ -30,8 +30,7 @@ Build-Depends: bash-completion,
                golang-github-coreos-go-systemd-dev (>= 4~),
                golang-github-deckarep-golang-set-dev (>= 0.0~git20141121~),
                golang-github-dnephin-cobra-dev (>= 1.5+git20161103.0.a3c0924~),
-               golang-github-docker-containerd-dev (>= 0.2.3+git20170126.85.aa8187d~ds1~),
-               golang-github-docker-distribution-dev (>= 2.4.1~),
+               golang-github-containerd-docker-containerd-dev (>= 0.2.3+git20170126.85.aa8187d~ds1~),
                golang-github-docker-docker-credential-helpers-dev (>= 0.3.0+git20160906.22.f72c04f~),
                golang-github-docker-engine-api-dev (>= 0.3.3~),
                golang-github-docker-go-connections-dev (>= 0.2.1+git20170204.13.ecb4cb2~),
@@ -97,7 +96,7 @@ XS-Go-Import-Path: github.com/docker/docker
 Package: docker.io
 Architecture: linux-any
 Depends: adduser,
-         containerd (>= 0.2.3+git20170126.85.aa8187d~ds1~),
+         docker-containerd (>= 0.2.3+git20170126.85.aa8187d~ds1~),
          docker-runc (>= 1.0.0~rc2+git20170201.133.9df8b30~),
          golang-libnetwork (>= 0.8.0-dev.2+git20170202.599.45b4086~),
          iptables,

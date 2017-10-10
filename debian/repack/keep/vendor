@@ -3,3 +3,6 @@
 
 # notary versioning is a bit complex, so we'll use it vendored for now
 vendor/github.com/docker/notary
+
+# docker-registry needs a newer commit than the latest release (v2.6.2)
+vendor/github.com/docker/distribution
