@@ -1,7 +1,7 @@
 #!/usr/bin/dh-exec
 
-bundles/${DOCKER_VERSION}/${DOCKER_BUILD_TARGET}-client/docker-${DOCKER_VERSION} => usr/bin/docker
-bundles/${DOCKER_VERSION}/${DOCKER_BUILD_TARGET}-daemon/dockerd-${DOCKER_VERSION} => usr/sbin/dockerd
+bundles/${DOCKER_VERSION}/dynbinary-client/docker-${DOCKER_VERSION} => usr/bin/docker
+bundles/${DOCKER_VERSION}/dynbinary-daemon/dockerd-${DOCKER_VERSION} => usr/sbin/dockerd
 
 contrib/*-integration usr/share/docker.io/contrib/
 contrib/check-config.sh usr/share/docker.io/contrib/

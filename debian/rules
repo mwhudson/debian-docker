@@ -24,9 +24,6 @@ export KEEPBUNDLE := 1
 # same story with SELinux
 export DOCKER_BUILDTAGS := apparmor selinux
 
-# since "gccgo" doesn't ship the "dist" go tool (and isn't likely to start), let's use that for now to detect gc vs gccgo
-export DOCKER_BUILD_TARGET := $(shell go tool dist env > /dev/null 2>&1 && echo dynbinary || echo dyngccgo)
-
 # prefer Go 1.6 explicitly if it's available (golang-1.6-go)
 export PATH := /usr/lib/go-1.6/bin:$(PATH)
 
@@ -75,7 +72,7 @@ override_dh_auto_build-arch:
 	
 	# build ("cd" first to ensure we build from within GOPATH)
 	cd '$(OUR_GOPATH)/src/$(DH_GOPKG)' \
-		&& '$(CURDIR)/hack/make.sh' $(DOCKER_BUILD_TARGET)
+		&& '$(CURDIR)/hack/make.sh' dynbinary
 	
 	# compile man pages
 	./man/md2man-all.sh -q
