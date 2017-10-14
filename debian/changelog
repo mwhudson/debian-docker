@@ -1,11 +1,11 @@
-docker.io (1.13.1~ds2-3) UNRELEASED; urgency=medium
+docker.io (1.13.1~ds2-3) unstable; urgency=medium
 
   * Switch from "runc" to "docker-runc" and "containerd" to
     "docker-containerd", removing prefix-removing patch
     (Closes: #877329, #877892)
   * Update patches, especially test-disablers
 
- -- Tianon Gravi <tianon@debian.org>  Mon, 02 Oct 2017 11:07:13 -0700
+ -- Tianon Gravi <tianon@debian.org>  Sat, 14 Oct 2017 08:58:11 -0700
 
 docker.io (1.13.1~ds1-2) unstable; urgency=medium
 
