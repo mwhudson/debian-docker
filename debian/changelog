@@ -1,3 +1,9 @@
+docker.io (17.03.2-0ubuntu1~17.10.1) artful; urgency=medium
+
+  * Backport to Artful (LP: #1732368)
+
+ -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Fri, 17 Nov 2017 13:38:42 +1300
+
 docker.io (17.03.2-0ubuntu1) bionic; urgency=medium
 
   * Update to 17.03.2 upstream release
