@@ -5,6 +5,9 @@ docker.io (1.13.1~ds2-4) UNRELEASED; urgency=medium
       (https://github.com/moby/moby/pull/25978)
   * Update upstream-version-gitcommits with more upstream versions
 
+  [ Dmitry Smirnov ]
+  * Included "cliconfig" to -dev package.
+
  -- Tianon Gravi <tianon@debian.org>  Sat, 14 Oct 2017 10:12:50 -0700
 
 docker.io (1.13.1~ds2-3) unstable; urgency=medium

@@ -5,3 +5,4 @@ pkg usr/share/gocode/src/${DH_GOPKG}/
 opts usr/share/gocode/src/${DH_GOPKG}/
 api usr/share/gocode/src/${DH_GOPKG}/
 client usr/share/gocode/src/${DH_GOPKG}/
+cliconfig usr/share/gocode/src/${DH_GOPKG}/
