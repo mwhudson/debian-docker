@@ -6,3 +6,5 @@ opts usr/share/gocode/src/${DH_GOPKG}/
 api usr/share/gocode/src/${DH_GOPKG}/
 client usr/share/gocode/src/${DH_GOPKG}/
 cliconfig usr/share/gocode/src/${DH_GOPKG}/
+reference usr/share/gocode/src/${DH_GOPKG}/
+registry usr/share/gocode/src/${DH_GOPKG}/
