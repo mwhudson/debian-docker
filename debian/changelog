@@ -1,4 +1,4 @@
-docker.io (17.03.2-0ubuntu3~16.04.1) UNRELEASED; urgency=medium
+docker.io (17.03.2-0ubuntu3~16.04.1) xenial; urgency=medium
 
   * Backport to Xenial. (LP: #1732368)
   * Install the service file with .install again, fixing service activation
@@ -6,7 +6,7 @@ docker.io (17.03.2-0ubuntu3~16.04.1) UNRELEASED; urgency=medium
   * Use golang.org/x/net/context instead of stdlib context to enable building
     with Go 1.6.
 
- -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Fri, 23 Mar 2018 15:33:48 +1300
+ -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Fri, 23 Mar 2018 15:34:08 +1300
 
 docker.io (17.03.2-0ubuntu3) bionic; urgency=medium
 
