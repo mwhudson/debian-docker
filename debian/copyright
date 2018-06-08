@@ -1,4 +1,4 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Docker
 Upstream-Contact: Docker, Inc. <support@docker.com>
 Source: https://github.com/docker/docker
@@ -13,10 +13,10 @@ Copyright: 2013-2014 Daniel Mizyrycki <daniel@docker.com>
            2012-2014 Michael Stapelberg <stapelberg@debian.org>
            2013-2016 Tianon Gravi <tianon@debian.org>
            2013-2014 Johan Euphrosine <proppy@google.com>
-           2014 Prach Pongpanich <prachpub@gmail.com>
-           2016 Tim Potter <timothy.potter@hpe.com>
-           2016 Dmitry Smirnov <onlyjob@debian.org>
-           2016 Michael Hudson-Doyle <michael.hudson@ubuntu.com>
+           2014      Prach Pongpanich <prachpub@gmail.com>
+           2016      Tim Potter <timothy.potter@hpe.com>
+           2016-2018 Dmitry Smirnov <onlyjob@debian.org>
+           2016      Michael Hudson-Doyle <michael.hudson@ubuntu.com>
 License: Apache-2.0
 
 Files: contrib/init/openrc/docker.initd
