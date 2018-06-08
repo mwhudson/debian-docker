@@ -1,4 +1,4 @@
-docker.io (1.13.1~ds2-4) UNRELEASED; urgency=medium
+docker.io (1.13.1~ds3-1) UNRELEASED; urgency=medium
 
   * Remove gccgo support
     - Removed upstream in commit eda90f63446253f97d2011926555306f2417d208

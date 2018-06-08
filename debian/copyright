@@ -48,6 +48,22 @@ Copyright: 2015      Docker, Inc.
            2014-2015 Prime Directive, Inc.
 License: BSD-3-clause-Prime
 
+Files:
+    vendor/github.com/docker/swarmkit
+Copyright:
+    2016-2018 Docker Inc.
+License: Apache-2.0
+
+Files:
+    vendor/github.com/docker/swarmkit/api/duration/duration.proto
+    vendor/github.com/docker/swarmkit/api/timestamp/timestamp.proto
+    vendor/github.com/docker/swarmkit/protobuf/ptypes/duration.go
+    vendor/github.com/docker/swarmkit/protobuf/ptypes/timestamp.go
+Copyright:
+    2008 Google Inc.
+    2016 The Go Authors
+License: BSD-3-clause-Google
+
 License: Apache-2.0
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
