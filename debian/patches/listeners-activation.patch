@@ -1,0 +1,21 @@
+Last-Update: 2018-06-09
+Forwarded: not-needed
+Author: Dmitry Smirnov <onlyjob@debian.org>
+Description: fixes FTBFS with golang-github-coreos-go-systemd-dev 17
+
+--- a/pkg/listeners/listeners_unix.go
++++ b/pkg/listeners/listeners_unix.go
+@@ -56,11 +56,11 @@
+ 		listeners []net.Listener
+ 	)
+ 	// socket activation
+ 	if tlsConfig != nil {
+-		listeners, err = activation.TLSListeners(false, tlsConfig)
++		listeners, err = activation.TLSListeners(tlsConfig)
+ 	} else {
+-		listeners, err = activation.Listeners(false)
++		listeners, err = activation.Listeners()
+ 	}
+ 	if err != nil {
+ 		return nil, err
+ 	}
