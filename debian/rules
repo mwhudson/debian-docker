@@ -7,6 +7,8 @@ export DH_GOLANG_EXCLUDES := \
 	integration-cli \
 	vendor
 
+export DH_GOLANG_INSTALL_EXTRA := testdata/
+
 # temporary build path (see http://golang.org/doc/code.html#GOPATH)
 OUR_GOPATH := $(CURDIR)/.gopath
 export GOPATH := $(OUR_GOPATH)
@@ -90,9 +92,11 @@ override_dh_auto_install:
 
 
 override_dh_auto_test:
+	DH_GOLANG_EXCLUDES="pkg/tarsum pkg/archive integration-cli" \
+        dh_auto_test -v -- -short
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	# run unit tests
-	cd '$(OUR_GOPATH)/src/$(DH_GOPKG)' \
+	-cd '$(OUR_GOPATH)/src/$(DH_GOPKG)' \
 		&& export TESTFLAGS='-test.short' \
 		&& '$(CURDIR)/hack/make.sh' test-unit
 endif
