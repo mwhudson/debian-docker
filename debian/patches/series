@@ -21,5 +21,8 @@ new-seccomp-format.patch
 fix-template-test.patch
 disable-TestChangesWithChangesGH13590-test.patch
 listeners--30729.patch
+listeners-activation.patch
 go-units-30790.patch
 fix-test-errors.patch
+
+vendor_go-metrics_prometheus-fix_Observer.patch
