@@ -172,7 +172,6 @@ Description: Externally reusable Go packages included with Docker
 
 Package: golang-docker-dev
 Section: oldlibs
-Priority: optional
 Architecture: all
 Depends: golang-github-docker-docker-dev, ${misc:Depends}
 Description: Transitional package for golang-github-docker-docker-dev
