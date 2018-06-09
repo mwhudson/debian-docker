@@ -1,1 +1,2 @@
 docs/*
+vendor/github.com/docker/go-metrics/NOTICE
