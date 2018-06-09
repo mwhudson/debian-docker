@@ -6,6 +6,7 @@ change-system-unit-env-file.patch
 
 
 21491--systemd-tasksmax.patch
+CVE-2017-16539.patch
 
 
 #skip-privileged-unit-tests.patch
