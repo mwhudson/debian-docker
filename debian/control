@@ -2,8 +2,7 @@ Source: docker.io
 Section: admin
 Priority: optional
 Maintainer: Tim Potter <tpot@hpe.com>
-Uploaders: Docker Packaging Team <docker-maint@lists.alioth.debian.org>,
-           Tianon Gravi <tianon@debian.org>,
+Uploaders: Tianon Gravi <tianon@debian.org>,
            Paul Tagliamonte <paultag@debian.org>
 Build-Conflicts: golang-github-docker-docker-dev
 Build-Depends: bash-completion,
