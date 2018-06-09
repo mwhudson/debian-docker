@@ -1,3 +1,10 @@
+docker.io (1.13.1~ds3-2) unstable; urgency=medium
+
+  * Team upload.
+  * Install -dev files from build directory.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Sat, 09 Jun 2018 20:20:53 +1000
+
 docker.io (1.13.1~ds3-1) unstable; urgency=medium
 
   * Team upload.
