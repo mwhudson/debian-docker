@@ -15,6 +15,7 @@ CVE-2017-16539.patch
 coreos-go-systemd.patch
 dockerd-binary-location.patch
 nuke-graph-directory-bash.patch
+nuke-no-prompt.patch
 golang-google-api.patch
 skip-privileged-unit-tests.patch
 fix-test-umasks.patch
