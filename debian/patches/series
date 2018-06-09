@@ -6,6 +6,7 @@ change-system-unit-env-file.patch
 
 
 21491--systemd-tasksmax.patch
+CVE-2017-16539.patch
 
 
 #skip-privileged-unit-tests.patch
@@ -14,6 +15,7 @@ change-system-unit-env-file.patch
 coreos-go-systemd.patch
 dockerd-binary-location.patch
 nuke-graph-directory-bash.patch
+nuke-no-prompt.patch
 golang-google-api.patch
 skip-privileged-unit-tests.patch
 fix-test-umasks.patch
@@ -21,5 +23,8 @@ new-seccomp-format.patch
 fix-template-test.patch
 disable-TestChangesWithChangesGH13590-test.patch
 listeners--30729.patch
+#~listeners-activation.patch
 go-units-30790.patch
 fix-test-errors.patch
+
+vendor_go-metrics_prometheus-fix_Observer.patch

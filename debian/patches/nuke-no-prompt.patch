@@ -1,0 +1,21 @@
+Last-Update: 2018-06-09
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=853258
+Forwarded: not-needed
+Author: Dmitry Smirnov <onlyjob@debian.org>
+Description: remove prompt and delay
+
+--- a/contrib/nuke-graph-directory.sh
++++ b/contrib/nuke-graph-directory.sh
+@@ -27,12 +27,8 @@
+ dir="$(readlink -f "$dir")"
+ 
+ echo
+ echo "Nuking $dir ..."
+-echo '  (if this is wrong, press Ctrl+C NOW!)'
+-echo
+-
+-( set -x; sleep 10 )
+ echo
+ 
+ dir_in_dir() {
+ 	inner="$1"

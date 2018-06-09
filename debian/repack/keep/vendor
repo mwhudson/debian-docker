@@ -6,3 +6,14 @@ vendor/github.com/docker/notary
 
 # docker-registry needs a newer commit than the latest release (v2.6.2)
 vendor/github.com/docker/distribution
+
+# swarmkit is a mess which depends on Docker. To avoir recursive
+# dependencies let's consider swarmkit to be part of Docker for now.
+vendor/github.com/docker/swarmkit
+
+# libcnetwork is a circular dependency.
+vendor/github.com/docker/libnetwork
+
+# Private libraries (used exclusively by Docker), no semantic versioning.
+vendor/github.com/docker/go-events
+vendor/github.com/docker/go-metrics

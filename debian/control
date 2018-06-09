@@ -9,10 +9,9 @@ Build-Conflicts: golang-github-docker-docker-dev
 Build-Depends: bash-completion,
                btrfs-progs,
                ca-certificates,
-               debhelper (>= 9),
+               debhelper (>= 11~),
                dh-exec,
                dh-golang (>= 1.14~),
-               dh-systemd,
                git,
                go-md2man (>= 1.0.3~),
                golang-go (>= 2:1.6~) | golang-1.6-go,
@@ -27,20 +26,17 @@ Build-Depends: bash-completion,
                golang-github-boltdb-bolt-dev (>= 1.2.0~),
                golang-github-bsphere-le-go-dev,
                golang-github-burntsushi-toml-dev (>= 0.0~git20150127~),
-               golang-github-coreos-go-systemd-dev (>= 4~),
+               golang-github-cloudflare-cfssl-dev,
+               golang-github-coreos-go-systemd-dev (>= 16~),
                golang-github-deckarep-golang-set-dev (>= 0.0~git20141121~),
                golang-github-dnephin-cobra-dev (>= 1.5+git20161103.0.a3c0924~),
                golang-github-containerd-docker-containerd-dev (>= 0.2.3+git20170126.85.aa8187d~ds1~),
                golang-github-docker-docker-credential-helpers-dev (>= 0.3.0+git20160906.22.f72c04f~),
-               golang-github-docker-go-connections-dev (>= 0.2.1+git20170204.13.ecb4cb2~),
+               golang-github-docker-go-connections-dev (>= 0.3.0~),
                golang-github-docker-go-dev (>= 0.0~git20151102~),
-               golang-github-docker-go-events-dev,
-               golang-github-docker-go-metrics-dev,
                golang-github-docker-go-units-dev (>= 0.3.1+git20161130.10.e30f1e7),
                golang-github-docker-libkv-dev (>= 0.0~git20151014~),
-               golang-github-docker-libnetwork-dev (>= 0.8.0-dev.2+git20170202.599.45b4086~),
                golang-github-docker-libtrust-dev (>= 0.0~git20150526~),
-               golang-github-docker-swarmkit-dev (>= 1.12.0+git20170201.779.1c7f003d~),
                golang-github-fluent-fluent-logger-golang-dev (>= 1.1.0~),
                golang-github-flynn-archive-go-shlex-dev,
                golang-github-fsnotify-fsnotify-dev (>= 1.2.0~) | golang-gopkg-fsnotify.v1-dev (>= 1.2.0~),
@@ -59,6 +55,8 @@ Build-Depends: bash-completion,
                golang-github-opencontainers-docker-runc-dev (>= 1.0.0~rc2+git20170201.133.9df8b30~),
                golang-github-opencontainers-specs-dev (>= 0.0~git20160422~),
                golang-github-philhofer-fwd-dev (>= 0.0~git20150401~),
+               golang-github-pivotal-golang-clock-dev,
+               golang-github-prometheus-client-golang-dev (>= 0.9.0~),
                golang-github-racksec-srslog-dev (>= 0.0~git20160120~),
                golang-github-samuel-go-zookeeper-dev (>= 0.0~git20150415~),
                golang-github-sirupsen-logrus-dev (>= 0.9.0~),
@@ -80,16 +78,19 @@ Build-Depends: bash-completion,
                golang-google-cloud-dev (>= 0.0~git20151216~),
                golang-google-grpc-dev (>= 0.0~git20151216~),
                golang-gopkg-check.v1-dev (>= 0.0~git20160311~) | golang-github-go-check-check-dev (>= 0.0~git20160311~),
-               golang-goprotobuf-dev (>= 0.0~git20151207~) | golang-github-golang-protobuf-dev (>= 0.0~git20151207~),
+               golang-goprotobuf-dev (>= 0.0~git20151207~),
+# | golang-github-golang-protobuf-dev (>= 0.0~git20151207~),
+               gogoprotobuf,
                libapparmor-dev,
+               libbtrfs-dev,
                libdevmapper-dev (>= 2:1.02.68~),
                pkg-config,
                procps,
                tzdata
-Standards-Version: 3.9.8
+Standards-Version: 4.1.4
 Homepage: https://dockerproject.org
-Vcs-Git: https://anonscm.debian.org/git/docker/docker.io.git
-Vcs-Browser: https://anonscm.debian.org/cgit/docker/docker.io.git
+Vcs-Browser: https://salsa.debian.org/docker-team/docker
+Vcs-Git: https://salsa.debian.org/docker-team/docker.git
 XS-Go-Import-Path: github.com/docker/docker
 
 Package: docker.io
@@ -170,7 +171,6 @@ Description: Externally reusable Go packages included with Docker
 
 Package: golang-docker-dev
 Section: oldlibs
-Priority: extra
 Architecture: all
 Depends: golang-github-docker-docker-dev, ${misc:Depends}
 Description: Transitional package for golang-github-docker-docker-dev

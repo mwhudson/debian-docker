@@ -6,3 +6,7 @@ docs/touch-up.sh
 
 ## Tests that cause issues: (and are difficult to patch instead of removing)
 daemon/graphdriver/devmapper/*_test.go
+cmd/docker/daemon_none_test.go
+
+## generated:
+dockerversion/version_autogen_unix.go

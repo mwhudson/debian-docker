@@ -1,14 +1,42 @@
-docker.io (1.13.1~ds2-4) UNRELEASED; urgency=medium
+docker.io (1.13.1~ds3-2) unstable; urgency=medium
 
-  * Remove gccgo support
-    - Removed upstream in commit eda90f63446253f97d2011926555306f2417d208
-      (https://github.com/moby/moby/pull/25978)
+  * Team upload.
+  * Install -dev files from build directory.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Sat, 09 Jun 2018 20:20:53 +1000
+
+docker.io (1.13.1~ds3-1) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Tianon Gravi ]
+  * Remove gccgo support.
+    Removed upstream in commit eda90f63446253f97d2011926555306f2417d208
+    (https://github.com/moby/moby/pull/25978)
   * Update upstream-version-gitcommits with more upstream versions
 
   [ Dmitry Smirnov ]
-  * Included "cliconfig" to -dev package.
+  * New patch to fix CVE-2017-16539 (Closes: #900140).
+  * New patch to remove 10 seconds delay on purge (Closes: #853258).
+  * debhelper to version 11; compat to version 10.
+  * copyright format URL to HTTPS; bump copyright years.
+  * Standards-Version: 4.1.4.
+  * Vcs URLs to Salsa.
+  * Included "cliconfig" to -dev package (used by "gitlab-runner").
+  * Included "reference" and "registry" into -dev package (used by "nomad").
+  * Removed obsolete "golang-github-docker-engine-api-dev" from Build-Depends.
+  * Use more private libraries to fix build and break circular dependencies:
+    + github.com/docker/swarmkit
+    + github.com/docker/libnetwork
+    + github.com/docker/go-events
+    + github.com/docker/go-metrics
+  * Removed Upstart .conf file.
+  * rules:
+    + better clean, remove generated file(s).
+    + fixed "sirupsen/logrus" imports.
+    + DH_GOLANG_GO_GENERATE = 1
 
- -- Tianon Gravi <tianon@debian.org>  Sat, 14 Oct 2017 10:12:50 -0700
+ -- Dmitry Smirnov <onlyjob@debian.org>  Sat, 09 Jun 2018 14:50:13 +1000
 
 docker.io (1.13.1~ds2-3) unstable; urgency=medium
 
