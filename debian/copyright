@@ -28,7 +28,6 @@ Copyright: 2013 Honza Pokorny
 License: BSD-2-clause
 
 Files:
-    pkg/mflag/*
     pkg/symlink/fs.go
 Copyright: 2014-2016 The Docker & Go Authors
 License: BSD-3-clause-Google
@@ -49,7 +48,7 @@ Copyright: 2015      Docker, Inc.
 License: BSD-3-clause-Prime
 
 Files:
-    vendor/github.com/docker/swarmkit
+    vendor/github.com/docker/swarmkit/*
 Copyright:
     2016-2018 Docker Inc.
 License: Apache-2.0
