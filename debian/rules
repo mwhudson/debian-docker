@@ -129,4 +129,4 @@ override_dh_auto_clean:
 
 
 %:
-	dh $@ --buildsystem=golang --with=systemd,bash-completion,golang --builddirectory='$(OUR_GOPATH)'
+	dh $@ --buildsystem=golang --with=bash-completion,golang --builddirectory='$(OUR_GOPATH)'
