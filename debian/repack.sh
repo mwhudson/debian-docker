@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -u
 
 debDir="$PWD/debian"
 
@@ -13,16 +14,15 @@ if [ '--upstream-version' != "$1" ]; then
 fi
 
 version="$2"
-filename="$3"
 
-if [ -z "$version" ] || [ ! -f "$filename" ]; then
-	exit 1
-fi
+filename="../docker.io_$2.orig.tar.xz"
+[ -s "${filename}" ] || exit 1
 
 debVer="$(dpkg-parsechangelog -l"$debDir/changelog" -SVersion)"
 origVer="${debVer%-*}" # strip everything from the last dash
 origVer="$(echo "$origVer" | sed -r 's/^[0-9]+://')" # strip epoch
 upstreamVer="${origVer%%[+~]ds*}"
+upstreamVer="${upstreamVer%%[+~]dfsg*}"
 dfsgBits="${origVer#$upstreamVer}"
 
 if [ -z "$dfsgBits" ]; then
