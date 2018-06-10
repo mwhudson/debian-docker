@@ -75,7 +75,7 @@ rm -rf "$tempDir/orig"
 subfolderName="${dfsgFilename%.tar.*}"
 mv "$tempDir/repack" "$tempDir/$subfolderName"
 
-tar -czf "$targetTar" -C "$tempDir" "$subfolderName"
+tar -caf "$targetTar" -C "$tempDir" "$subfolderName"
 
 # trap will clean up tempDir
 
