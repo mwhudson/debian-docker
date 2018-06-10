@@ -8,3 +8,4 @@ dockerversion usr/share/gocode/src/${DH_GOPKG}/
 .gopath/src/github.com/docker/docker/cliconfig usr/share/gocode/src/${DH_GOPKG}/
 .gopath/src/github.com/docker/docker/reference usr/share/gocode/src/${DH_GOPKG}/
 .gopath/src/github.com/docker/docker/registry usr/share/gocode/src/${DH_GOPKG}/
+.gopath/src/github.com/docker/docker/runconfig usr/share/gocode/src/${DH_GOPKG}/
