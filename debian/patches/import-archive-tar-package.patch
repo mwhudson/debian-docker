@@ -1,0 +1,50 @@
+Description: Use archive/tar instead of dmcgowan/go-tar
+ It seems that dmcgowan/go-tar is basically ahead of archive/tar, and its
+ purpose is to make the latest tar implementation available to older version
+ of go.
+ .
+ We don't really care since the version of go shipped right now is v1.10,
+ which already provides everything needed.
+Author: Arnaud Rebillout <arnaud.rebillout@collabora.com>
+Forwarded: not-needed
+Last-Update: 2018-03-01
+
+--- a/containerd/archive/tar.go
++++ b/containerd/archive/tar.go
+@@ -1,7 +1,8 @@
+ package archive
+ 
+ import (
++	"archive/tar"
+ 	"context"
+ 	"fmt"
+ 	"io"
+ 	"io/ioutil"
+@@ -14,9 +15,8 @@
+ 	"time"
+ 
+ 	"github.com/containerd/containerd/fs"
+ 	"github.com/containerd/containerd/log"
+-	"github.com/dmcgowan/go-tar"
+ 	"github.com/pkg/errors"
+ )
+ 
+ var bufferPool = &sync.Pool{
+--- a/containerd/archive/tar_unix.go
++++ b/containerd/archive/tar_unix.go
+@@ -2,14 +2,14 @@
+ 
+ package archive
+ 
+ import (
++	"archive/tar"
+ 	"os"
+ 	"sync"
+ 	"syscall"
+ 
+ 	"github.com/containerd/continuity/sysx"
+-	"github.com/dmcgowan/go-tar"
+ 	"github.com/opencontainers/runc/libcontainer/system"
+ 	"github.com/pkg/errors"
+ 	"golang.org/x/sys/unix"
+ )

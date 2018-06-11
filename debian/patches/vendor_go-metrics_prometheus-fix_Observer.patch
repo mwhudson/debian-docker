@@ -5,8 +5,8 @@ Description: fixes FTBFS
  cannot use lt.m.WithLabelValues(labels...) (type prometheus.Observer) as type prometheus.Histogram in field value:
         prometheus.Observer does not implement prometheus.Histogram (missing Collect method)
 
---- a/vendor/github.com/docker/go-metrics/timer.go
-+++ b/vendor/github.com/docker/go-metrics/timer.go
+--- a/components/engine/vendor/github.com/docker/go-metrics/timer.go
++++ b/components/engine/vendor/github.com/docker/go-metrics/timer.go
 @@ -47,9 +47,9 @@
  	lt.m.Collect(c)
  }

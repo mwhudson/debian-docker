@@ -4,8 +4,8 @@ Forwarded: not-needed
 Author: Dmitry Smirnov <onlyjob@debian.org>
 Description: remove prompt and delay
 
---- a/contrib/nuke-graph-directory.sh
-+++ b/contrib/nuke-graph-directory.sh
+--- a/components/engine/contrib/nuke-graph-directory.sh
++++ b/components/engine/contrib/nuke-graph-directory.sh
 @@ -27,12 +27,8 @@
  dir="$(readlink -f "$dir")"
  

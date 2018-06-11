@@ -3,10 +3,8 @@ Author: Tianon Gravi <tianon@debian.org>
 Forwarded: no
 Bug: https://github.com/docker/docker/issues/22965
 
-diff --git a/pkg/integration/utils_test.go b/pkg/integration/utils_test.go
-index d166489..38323ef 100644
---- a/pkg/integration/utils_test.go
-+++ b/pkg/integration/utils_test.go
+--- a/components/engine/pkg/integration/utils_test.go
++++ b/components/engine/pkg/integration/utils_test.go
 @@ -191,6 +191,10 @@ func TestRunCommandWithOutputAndTimeoutFinished(t *testing.T) {
  }
  

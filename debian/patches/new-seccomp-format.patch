@@ -1,13 +1,13 @@
-Index: docker.io/profiles/seccomp/seccomp.go
-===================================================================
---- docker.io.orig/profiles/seccomp/seccomp.go
-+++ docker.io/profiles/seccomp/seccomp.go
-@@ -17,7 +17,7 @@ import (
+--- a/components/engine/profiles/seccomp/seccomp.go
++++ b/components/engine/profiles/seccomp/seccomp.go
+@@ -15,9 +15,9 @@
+ //go:generate go run -tags 'seccomp' generate.go
  
  // GetDefaultProfile returns the default seccomp profile.
- func GetDefaultProfile(rs *specs.Spec) (*specs.Seccomp, error) {
+ func GetDefaultProfile(rs *specs.Spec) (*specs.LinuxSeccomp, error) {
 -	return setupSeccomp(DefaultProfile(), rs)
 +	return setupSeccomp(DefaultProfile(rs), rs)
  }
  
- // LoadProfile takes a file path and decodes the seccomp profile.
+ // LoadProfile takes a json string and decodes the seccomp profile.
+ func LoadProfile(body string, rs *specs.Spec) (*specs.LinuxSeccomp, error) {

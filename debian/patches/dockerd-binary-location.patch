@@ -1,8 +1,7 @@
-Index: docker.io/contrib/init/systemd/docker.service
-===================================================================
---- docker.io.orig/contrib/init/systemd/docker.service
-+++ docker.io/contrib/init/systemd/docker.service
-@@ -10,7 +10,7 @@ Type=notify
+--- a/components/engine/contrib/init/systemd/docker.service
++++ b/components/engine/contrib/init/systemd/docker.service
+@@ -10,9 +10,9 @@
+ # the default is not to use systemd for cgroups because the delegate issues still
  # exists and systemd currently does not support the cgroup feature set required
  # for containers run by docker
  EnvironmentFile=-/etc/default/docker
@@ -11,11 +10,11 @@ Index: docker.io/contrib/init/systemd/docker.service
  ExecReload=/bin/kill -s HUP $MAINPID
  LimitNOFILE=1048576
  # Having non-zero Limit*s causes performance problems due to accounting overhead
-Index: docker.io/contrib/init/sysvinit-debian/docker
-===================================================================
---- docker.io.orig/contrib/init/sysvinit-debian/docker
-+++ docker.io/contrib/init/sysvinit-debian/docker
-@@ -22,7 +22,7 @@ export PATH=/sbin:/bin:/usr/sbin:/usr/bi
+ # in the kernel. We recommend using cgroups to do container-local accounting.
+--- a/components/engine/contrib/init/sysvinit-debian/docker
++++ b/components/engine/contrib/init/sysvinit-debian/docker
+@@ -21,9 +21,9 @@
+ 
  BASE=docker
  
  # modify these in /etc/default/$BASE (/etc/default/docker)
@@ -24,11 +23,11 @@ Index: docker.io/contrib/init/sysvinit-debian/docker
  # This is the pid file managed by docker itself
  DOCKER_PIDFILE=/var/run/$BASE.pid
  # This is the pid file created/managed by start-stop-daemon
-Index: docker.io/contrib/init/upstart/docker.conf
-===================================================================
---- docker.io.orig/contrib/init/upstart/docker.conf
-+++ docker.io/contrib/init/upstart/docker.conf
-@@ -15,7 +15,7 @@ kill timeout 20
+ DOCKER_SSD_PIDFILE=/var/run/$BASE-ssd.pid
+--- a/components/engine/contrib/init/upstart/docker.conf
++++ b/components/engine/contrib/init/upstart/docker.conf
+@@ -14,9 +14,9 @@
+ kill timeout 20
  
  script
  	# modify these in /etc/default/$UPSTART_JOB (/etc/default/docker)
@@ -37,3 +36,4 @@ Index: docker.io/contrib/init/upstart/docker.conf
  	DOCKER_OPTS=
  	if [ -f /etc/default/$UPSTART_JOB ]; then
  		. /etc/default/$UPSTART_JOB
+ 	fi

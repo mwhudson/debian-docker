@@ -1,0 +1,18 @@
+Description: fix man pages build
+Author: Arnaud Rebillout <arnaud.rebillout@collabora.com>
+Forwarded: not-needed
+Last-Update: 2018-04-03
+
+--- a/components/cli/scripts/docs/generate-man.sh
++++ b/components/cli/scripts/docs/generate-man.sh
+@@ -3,9 +3,9 @@
+ set -eu -o pipefail
+ 
+ mkdir -p ./man/man1
+ 
+-go install ./vendor/github.com/cpuguy83/go-md2man
++#go install ./vendor/github.com/cpuguy83/go-md2man
+ 
+ # Generate man pages from cobra commands
+ go build -o /tmp/gen-manpages github.com/docker/cli/man
+ /tmp/gen-manpages --root "$(pwd)" --target "$(pwd)/man/man1"

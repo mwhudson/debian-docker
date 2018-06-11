@@ -1,8 +1,7 @@
-Index: docker.io/pkg/archive/changes_test.go
-===================================================================
---- docker.io.orig/pkg/archive/changes_test.go
-+++ docker.io/pkg/archive/changes_test.go
-@@ -197,6 +197,7 @@ func TestChangesWithChanges(t *testing.T
+--- a/components/engine/pkg/archive/changes_test.go
++++ b/components/engine/pkg/archive/changes_test.go
+@@ -176,8 +176,9 @@
+ }
  
  // See https://github.com/docker/docker/pull/13590
  func TestChangesWithChangesGH13590(t *testing.T) {
@@ -10,3 +9,4 @@ Index: docker.io/pkg/archive/changes_test.go
  	// TODO Windows. There may be a way of running this, but turning off for now
  	// as createSampleDir uses symlinks.
  	if runtime.GOOS == "windows" {
+ 		t.Skip("symlinks on Windows")
