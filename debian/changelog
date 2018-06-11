@@ -1,3 +1,13 @@
+docker.io (1.13.1~ds3-4) unstable; urgency=medium
+
+  * Build with go-1.7 as later versions cause [archive,tarsum] failures
+    (Closes: #901317).
+  * Re-enabled [archive,tarsum] tests.
+  * Build-Depends:
+    = golang-1.7-go | golang-go (>= 2:1.6~)
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Tue, 12 Jun 2018 00:02:27 +1000
+
 docker.io (1.13.1~ds3-3) unstable; urgency=medium
 
   * Removed invalid team email from Uploaders (Closes: #899285).
