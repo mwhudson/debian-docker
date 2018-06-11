@@ -27,9 +27,8 @@ export KEEPBUNDLE := 1
 # same story with SELinux
 export DOCKER_BUILDTAGS := apparmor selinux
 
-# prefer Go 1.6 explicitly if it's available (golang-1.6-go)
-export PATH := /usr/lib/go-1.6/bin:$(PATH)
-
+# prefer Go 1.7 explicitly if it's available (golang-1.7-go)
+export PATH := /usr/lib/go-1.7/bin:$(PATH)
 
 APPARMOR_RECOMMENDS := $(shell dpkg-vendor --is Ubuntu && echo apparmor)
 BUILT_LIBC := $(shell dpkg-query -f '$${source:Package} (= $${source:Version})' -W libc-dev-bin)
@@ -93,7 +92,7 @@ override_dh_auto_install:
 
 
 override_dh_auto_test:
-	DH_GOLANG_EXCLUDES="pkg/tarsum pkg/archive integration-cli" \
+	DH_GOLANG_EXCLUDES="integration-cli" \
         dh_auto_test -v -- -short
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	# run unit tests
@@ -101,7 +100,6 @@ ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 		&& export TESTFLAGS='-test.short' \
 		&& '$(CURDIR)/hack/make.sh' test-unit
 endif
-
 
 override_dh_installinit:
 	dh_installinit --name=docker --no-restart-on-upgrade
