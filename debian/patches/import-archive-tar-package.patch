@@ -1,3 +1,16 @@
+Reviewed-By: Dmitry Smirnov <onlyjob@debian.org>
+Description-Reviewer: THIS PATCH CAUSES TEST FAILURES:
+ TestTarUntar
+ TestTarWithOptions
+ TestApplyLayer
+ TestCopyCaseE
+ TestCopyCaseEFSym
+ TestCopyCaseG
+ TestCopyCaseGFSym
+ TestCopyCaseH
+ TestCopyCaseHFSym
+ TestCopyCaseJ
+ TestCopyCaseJFSym
 Description: Use archive/tar instead of dmcgowan/go-tar
  It seems that dmcgowan/go-tar is basically ahead of archive/tar, and its
  purpose is to make the latest tar implementation available to older version

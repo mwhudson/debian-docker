@@ -10,11 +10,13 @@ cli-fix-manpages-build-script.patch
 
 dockerd-binary-location.patch
 
+go-1.10_archive-tar.patch
 go-1.10_tarsum.patch
+
 go-metrics_prometheus-fix_Observer.patch
 
 import_nvveen-gotty.patch
-import-archive-tar-package.patch
+#:broken:#import-archive-tar-package.patch
 
 #~listeners-activation.patch
 netlink_syscall.patch

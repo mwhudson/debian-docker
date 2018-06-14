@@ -364,7 +364,17 @@ Forwarded: no
  // Fails due to bug in calculating changes after apply
 --- a/engine/pkg/archive/archive_test.go
 +++ b/engine/pkg/archive/archive_test.go
-@@ -428,8 +428,9 @@
+@@ -298,8 +298,9 @@
+ 	}
+ }
+ 
+ func TestUntarPath(t *testing.T) {
++t.Skip("DM - skipping privileged test")
+ 	tmpFolder, err := ioutil.TempDir("", "docker-archive-test")
+ 	require.NoError(t, err)
+ 	defer os.RemoveAll(tmpFolder)
+ 	srcFile := filepath.Join(tmpFolder, "src")
+@@ -428,8 +429,9 @@
  	}
  }
  
@@ -374,7 +384,7 @@ Forwarded: no
  	if err != nil {
  		t.Fatal(nil)
  	}
-@@ -961,8 +962,9 @@
+@@ -961,8 +963,9 @@
  	}
  }
  
@@ -384,6 +394,26 @@ Forwarded: no
  	if runtime.GOOS == "windows" {
  		t.Skip("hardlinks on Windows")
  	}
+@@ -1192,8 +1195,9 @@
+ 	}
+ }
+ 
+ func TestReplaceFileTarWrapper(t *testing.T) {
++t.Skip("DM - skipping privileged test")
+ 	filesInArchive := 20
+ 	testcases := []struct {
+ 		doc       string
+ 		filename  string
+@@ -1246,8 +1250,9 @@
+ 
+ // TestPrefixHeaderReadable tests that files that could be created with the
+ // version of this package that was built with <=go17 are still readable.
+ func TestPrefixHeaderReadable(t *testing.T) {
++t.Skip("DM - skipping privileged test")
+ 	// https://gist.github.com/stevvooe/e2a790ad4e97425896206c0816e1a882#file-out-go
+ 	var testFile = []byte("\x1f\x8b\x08\x08\x44\x21\x68\x59\x00\x03\x74\x2e\x74\x61\x72\x00\x4b\xcb\xcf\x67\xa0\x35\x30\x80\x00\x86\x06\x10\x47\x01\xc1\x37\x40\x00\x54\xb6\xb1\xa1\xa9\x99\x09\x48\x25\x1d\x40\x69\x71\x49\x62\x91\x02\xe5\x76\xa1\x79\x84\x21\x91\xd6\x80\x72\xaf\x8f\x82\x51\x30\x0a\x46\x36\x00\x00\xf0\x1c\x1e\x95\x00\x06\x00\x00")
+ 
+ 	tmpDir, err := ioutil.TempDir("", "prefix-test")
 --- a/engine/pkg/system/rm_test.go
 +++ b/engine/pkg/system/rm_test.go
 @@ -39,8 +39,9 @@
@@ -408,3 +438,47 @@ Forwarded: no
  	daemon.configStore = &config.Config{}
  
  	valuesSet := make(map[string]interface{})
+--- a/engine/pkg/archive/archive_unix_test.go
++++ b/engine/pkg/archive/archive_unix_test.go
+@@ -182,8 +182,9 @@
+ 	return statT.Ino, nil
+ }
+ 
+ func TestTarWithBlockCharFifo(t *testing.T) {
++t.Skip("DM - skipping privileged test")
+ 	origin, err := ioutil.TempDir("", "docker-test-tar-hardlink")
+ 	require.NoError(t, err)
+ 
+ 	defer os.RemoveAll(origin)
+@@ -222,8 +223,9 @@
+ }
+ 
+ // TestTarUntarWithXattr is Unix as Lsetxattr is not supported on Windows
+ func TestTarUntarWithXattr(t *testing.T) {
++t.Skip("DM - skipping privileged test")
+ 	origin, err := ioutil.TempDir("", "docker-test-untar-origin")
+ 	require.NoError(t, err)
+ 	defer os.RemoveAll(origin)
+ 	err = ioutil.WriteFile(filepath.Join(origin, "1"), []byte("hello world"), 0700)
+--- a/engine/pkg/archive/archive_linux_test.go
++++ b/engine/pkg/archive/archive_linux_test.go
+@@ -82,8 +82,9 @@
+ 	}
+ }
+ 
+ func TestOverlayTarUntar(t *testing.T) {
++t.Skip("DM - skipping privileged test")
+ 	oldmask, err := system.Umask(0)
+ 	require.NoError(t, err)
+ 	defer system.Umask(oldmask)
+ 
+@@ -121,8 +122,9 @@
+ 	checkOverlayWhiteout(t, filepath.Join(dst, "d3", "f1"))
+ }
+ 
+ func TestOverlayTarAUFSUntar(t *testing.T) {
++t.Skip("DM - skipping privileged test")
+ 	oldmask, err := system.Umask(0)
+ 	require.NoError(t, err)
+ 	defer system.Umask(oldmask)
+ 
