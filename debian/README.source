@@ -1,0 +1,98 @@
+## Incompetent upstream release process
+
+Upstream is notorious for incredibly sloppy versioning. Docker components
+are inconsistently versioned; don't depend on same version of common
+libraries and different revisions of dependency libraries are privately
+vendored. Basically upstream couldn't care less about consistent, semantic
+versioning and re-usable components. Shameful abomination of good software
+development practices.
+
+Here is how Arnaud Rebillout <arnaud.rebillout@collabora.com>
+describes upstream release process:
+
+> I don't know if you're familiar with
+> the "new" docker release workflow (they started in May 2017). In short:
+>
+> - **github.com/moby/moby** and **github.com/docker/cli** don't see any
+> releases anymore.
+>
+> - **github.com/docker/docker-ce** is the kind of "super repository"
+> that includes both, and where releases are tagged.
+>
+> Their release workflow is very messy:
+>
+> - they just periodically merge moby/moby and docker/cli into docker-ce.
+> - they tag that as a beta or release candidate, merge or cherry pick
+> some more commits, tag again.
+> - after a few rc they tag it as the real release. Done.
+> - they redo these steps every month.
+>
+> It feels a bit wrong to package docker-ce, because docker-ce is really two
+> packages in one: moby/moby and docker/cli.
+>
+> At some point I thought it would have been better to split in two
+> packages, and have one moby-moby package, and one docker-cli package. It
+> would be cleaner to do that, technically. However, we would be bitten by
+> some more circular dependency (maybe, not sure). But more importantly: I
+> didn't find a way to know what commit of moby/moby or docker/cli is in a
+> release of docker-ce. In other words, knowing a tag in docker-ce, you
+> can't deduce the corresponding commit in moby/moby and in docker/cli.
+> They really copy/paste the code into the docker-ce repo, without saying
+> anywhere what commit they're copy pasting. It's a bewildering way of
+> doing things, in the git age.
+
+Upstream tags releases in "github.com/docker/docker-ce" and we have to ship
+matching bundle of Docker engine, and Docker CLI from that repository.
+
+On top of that Docker depends on very particular commits of
+
+  * github.com/docker/libnetwork
+  * github.com/containerd/containerd
+  * github.com/opencontainers/runc
+
+None of the above repositories have relevant tags.
+
+**Docker code base is spread among several name spaces.**
+
+We've made a mistake trying to treat it as several reusable components.
+
+Upstream abuse of versioning practices is a shameful and incompetent
+disgrace. Docker people, if you are reading this I hope you feel sorry.
+I, Dmitry Smirnov <onlyjob@debian.org>, find it difficult to politely
+express how much I despise your release process.
+
+
+## Circular dependencies
+
+Let me explain practical problem with dependencies. Docker and Libnetwork
+both depend on each other and on "sirupsen/logrus". When in the 2018 the
+latter exhibited minor/trivial problem I could not upload neither Docker
+nor Libnetwork because each FTBFS in the "other" dependency.
+
+
+## Docker package vendoring policy
+
+As highlighted above, it is unsustainable and impractical to package
+individual Docker "components". Many libraries of Docker name space are
+only ever used by Docker and depend on "github.com/docker/docker" which
+makes them part of Docker code base.
+
+Combined with upstream resistance to good versioning practices, we have to
+ship Docker bundle producing (only) reusable package from multi upstream
+tarball (MUT) source package.
+
+Some vendored microlibraries, unless semantically versioned, are not
+worth to be introduced as standalone source package.
+
+Therefore "docker.io" source package will ship all essential Docker
+dependencies to avoid circular dependencies. Main criteria for inclusion of
+a dependency library into "docker.io" source package is dependency on
+"github.com/docker/docker". Additional criteria is assessment whether
+Docker dependency is reusable (e.g. semantically versioned and used by
+other packages).
+
+
+## Notable upstream bugs
+
+ https://github.com/docker/distribution/issues/2609
+ https://github.com/moby/moby/issues/37272
