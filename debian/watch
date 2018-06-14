@@ -5,10 +5,21 @@ opts="\
 pgpmode=none,\
 repacksuffix=+dfsg,\
 repack,compression=xz,\
+uversionmangle=s{\-ce}{},\
 dversionmangle=s{[+~](dfsg|ds)\d*}{},\
-" https://uscan.tianon.xyz/github.com/docker/docker \
-  .*/archive/v?(\d[\d\.]+)\.tar\.gz  debian ./debian/repack.sh
+" https://uscan.tianon.xyz/github.com/docker/docker-ce \
+  .*/archive/v?(\d[\d\.]+)(?:\-ce)?\.tar\.gz  debian ./debian/get-orig-source.sh
 
-# /tags paginates too soon, so we lose historical versions too early for tianon's tastes
+# /(releases|tags) paginates too soon on github.com
+# so we lose historical versions too early for tianon's taste.
 # https://github.com/docker/docker/releases
 
+opts="\
+component=tini,\
+pgpmode=none,\
+oversionmangle=s{(.*)}{$1+dfsg},\
+repack,compression=xz,\
+uversionmangle=s{\-ce}{},\
+dversionmangle=s{[+~](dfsg|ds)\d*}{},\
+"  https://uscan.tianon.xyz/github.com/tianon/docker-tini-tags \
+  .*/archive/v?(?:docker\-)(\d[\d\.]+)(?:\-ce)?\.tar\.gz
