@@ -19,6 +19,10 @@ nuke-no-prompt.patch
 golang-google-api.patch
 skip-privileged-unit-tests.patch
 fix-test-umasks.patch
+
+go-1.10_archive-tar.patch
+go-1.10_tarsum.patch
+
 new-seccomp-format.patch
 fix-template-test.patch
 disable-TestChangesWithChangesGH13590-test.patch

@@ -28,7 +28,7 @@ export KEEPBUNDLE := 1
 export DOCKER_BUILDTAGS := apparmor selinux
 
 # prefer Go 1.7 explicitly if it's available (golang-1.7-go)
-export PATH := /usr/lib/go-1.7/bin:$(PATH)
+#export PATH := /usr/lib/go-1.7/bin:$(PATH)
 
 APPARMOR_RECOMMENDS := $(shell dpkg-vendor --is Ubuntu && echo apparmor)
 BUILT_LIBC := $(shell dpkg-query -f '$${source:Package} (= $${source:Version})' -W libc-dev-bin)
