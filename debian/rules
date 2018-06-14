@@ -39,6 +39,12 @@ override_dh_gencontrol:
 	echo 'libc:Built-Using=$(BUILT_LIBC)' >> debian/docker.io.substvars
 	dh_gencontrol
 
+override_dh_clean:
+	dh_clean
+#	-find . -type f -name '*.pb.go' -delete -printf 'removed %p\n'            ## delete generated .pb.go files
+	## Remove Files-Excluded (when built from checkout or non-DFSG tarball):
+	$(RM) -rv `perl -0nE 'say grep { $$_=q{ */}.$$_ } split(/\s+/,$$1) if m{^Files\-Excluded(?:\-\w+)?\:\s*(.*?)(?:\n\n|^Files|^Comment:)}sm;' debian/copyright`
+	-find */vendor -mindepth 1 -type d -empty -delete -printf 'removed %p\n'
 
 override_dh_auto_configure:
 	dh_auto_configure

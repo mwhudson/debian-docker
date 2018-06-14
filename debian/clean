@@ -13,6 +13,7 @@ cmd/docker/daemon_none_test.go
 
 ## Privileged tests:
 engine/builder/remotecontext/tarsum_test.go
+engine/daemon/graphdriver/devmapper/devmapper_test.go
 engine/daemon/graphdriver/quota/projectquota_test.go
 engine/daemon/graphdriver/vfs/vfs_test.go
 engine/plugin/manager_linux_test.go
