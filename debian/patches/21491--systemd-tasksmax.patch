@@ -6,8 +6,8 @@ Origin: https://github.com/docker/docker/pull/21491
 
 Signed-off-by: Pierre Carrier <pierre@meteor.com>
 
---- a/components/engine/contrib/init/systemd/docker.service
-+++ b/components/engine/contrib/init/systemd/docker.service
+--- a/engine/contrib/init/systemd/docker.service
++++ b/engine/contrib/init/systemd/docker.service
 @@ -18,9 +18,9 @@
  LimitNPROC=infinity
  LimitCORE=infinity

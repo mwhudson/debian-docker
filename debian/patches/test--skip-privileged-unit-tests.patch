@@ -2,8 +2,8 @@ Description: allow skipping "privileged" tests with "-test.short"
 Author: Tianon Gravi <tianon@debian.org>
 Forwarded: no
 
---- a/components/engine/builder/dockerfile/evaluator_test.go
-+++ b/components/engine/builder/dockerfile/evaluator_test.go
+--- a/engine/builder/dockerfile/evaluator_test.go
++++ b/engine/builder/dockerfile/evaluator_test.go
 @@ -93,8 +93,9 @@
  	return dispatchTestCases
  }
@@ -14,8 +14,8 @@ Forwarded: no
  
  	for _, testCase := range testCases {
  		executeTestCase(t, testCase)
---- a/components/engine/builder/dockerfile/internals_test.go
-+++ b/components/engine/builder/dockerfile/internals_test.go
+--- a/engine/builder/dockerfile/internals_test.go
++++ b/engine/builder/dockerfile/internals_test.go
 @@ -16,8 +16,9 @@
  	"github.com/stretchr/testify/require"
  )
@@ -56,8 +56,8 @@ Forwarded: no
  	defer cleanup()
  
  	expectedError := "Cannot locate specified Dockerfile: Dockerfile"
---- a/components/engine/daemon/daemon_test.go
-+++ b/components/engine/daemon/daemon_test.go
+--- a/engine/daemon/daemon_test.go
++++ b/engine/daemon/daemon_test.go
 @@ -151,8 +151,9 @@
  	}
  }
@@ -68,8 +68,8 @@ Forwarded: no
  	if err != nil {
  		t.Fatal(err)
  	}
---- a/components/engine/daemon/daemon_unix_test.go
-+++ b/components/engine/daemon/daemon_unix_test.go
+--- a/engine/daemon/daemon_unix_test.go
++++ b/engine/daemon/daemon_unix_test.go
 @@ -274,8 +274,9 @@
  	}
  }
@@ -80,8 +80,8 @@ Forwarded: no
  	if err != nil {
  		t.Fatal(err)
  	}
---- a/components/engine/daemon/graphdriver/overlay2/overlay_test.go
-+++ b/components/engine/daemon/graphdriver/overlay2/overlay_test.go
+--- a/engine/daemon/graphdriver/overlay2/overlay_test.go
++++ b/engine/daemon/graphdriver/overlay2/overlay_test.go
 @@ -48,24 +48,29 @@
  
  // This avoids creating a new driver for each test if all tests are run
@@ -112,35 +112,8 @@ Forwarded: no
  }
  
  func TestOverlayDiffApply10Files(t *testing.T) {
---- a/components/engine/daemon/graphdriver/vfs/vfs_test.go
-+++ b/components/engine/daemon/graphdriver/vfs/vfs_test.go
-@@ -16,20 +16,24 @@
- 
- // This avoids creating a new driver for each test if all tests are run
- // Make sure to put new tests between TestVfsSetup and TestVfsTeardown
- func TestVfsSetup(t *testing.T) {
-+	t.Skip("DM - skipping privileged test")
- 	graphtest.GetDriver(t, "vfs")
- }
- 
- func TestVfsCreateEmpty(t *testing.T) {
-+	t.Skip("DM - skipping privileged test")
- 	graphtest.DriverTestCreateEmpty(t, "vfs")
- }
- 
- func TestVfsCreateBase(t *testing.T) {
-+	t.Skip("DM - skipping privileged test")
- 	graphtest.DriverTestCreateBase(t, "vfs")
- }
- 
- func TestVfsCreateSnap(t *testing.T) {
-+	t.Skip("DM - skipping privileged test")
- 	graphtest.DriverTestCreateSnap(t, "vfs")
- }
- 
- func TestVfsSetQuota(t *testing.T) {
---- a/components/engine/volume/local/local_test.go
-+++ b/components/engine/volume/local/local_test.go
+--- a/engine/volume/local/local_test.go
++++ b/engine/volume/local/local_test.go
 @@ -29,8 +29,9 @@
  
  }
@@ -171,7 +144,17 @@ Forwarded: no
  	if err != nil {
  		t.Fatal(err)
  	}
-@@ -286,8 +289,9 @@
+@@ -180,8 +183,9 @@
+ 	}
+ }
+ 
+ func TestCreateWithOpts(t *testing.T) {
++t.Skip("DM - skipping privileged test")
+ 	if runtime.GOOS == "windows" {
+ 		t.Skip()
+ 	}
+ 	rootDir, err := ioutil.TempDir("", "local-volume-test")
+@@ -286,8 +290,9 @@
  	}
  }
  
@@ -181,8 +164,8 @@ Forwarded: no
  	if err != nil {
  		t.Fatal(err)
  	}
---- a/components/engine/pkg/mount/mount_unix_test.go
-+++ b/components/engine/pkg/mount/mount_unix_test.go
+--- a/engine/pkg/mount/mount_unix_test.go
++++ b/engine/pkg/mount/mount_unix_test.go
 @@ -24,8 +24,9 @@
  	}
  }
@@ -213,8 +196,8 @@ Forwarded: no
  	if err != nil {
  		t.Fatal(err)
  	}
---- a/components/engine/pkg/mount/sharedsubtree_linux_test.go
-+++ b/components/engine/pkg/mount/sharedsubtree_linux_test.go
+--- a/engine/pkg/mount/sharedsubtree_linux_test.go
++++ b/engine/pkg/mount/sharedsubtree_linux_test.go
 @@ -11,8 +11,9 @@
  )
  
@@ -255,8 +238,8 @@ Forwarded: no
  	if err := os.MkdirAll(tmp, 0777); err != nil {
  		t.Fatal(err)
  	}
---- a/components/engine/pkg/chrootarchive/archive_test.go
-+++ b/components/engine/pkg/chrootarchive/archive_test.go
+--- a/engine/pkg/chrootarchive/archive_test.go
++++ b/engine/pkg/chrootarchive/archive_test.go
 @@ -40,8 +40,9 @@
  	return chrootArchiver.CopyWithTar(src, dst)
  }
@@ -287,7 +270,17 @@ Forwarded: no
  	if runtime.GOOS == "windows" {
  		t.Skip("Failing on Windows")
  	}
-@@ -245,8 +248,9 @@
+@@ -195,8 +198,9 @@
+ 	}
+ }
+ 
+ func TestChrootCopyWithTar(t *testing.T) {
++t.Skip("DM - skipping privileged test")
+ 	// TODO Windows: Figure out why this is failing
+ 	if runtime.GOOS == "windows" {
+ 		t.Skip("Failing on Windows")
+ 	}
+@@ -245,8 +249,9 @@
  	}
  }
  
@@ -297,7 +290,7 @@ Forwarded: no
  	if err != nil {
  		t.Fatal(err)
  	}
-@@ -288,8 +292,9 @@
+@@ -288,8 +293,9 @@
  	}
  }
  
@@ -307,7 +300,7 @@ Forwarded: no
  	if runtime.GOOS == "windows" {
  		t.Skip("Failing on Windows")
  	}
-@@ -353,8 +358,9 @@
+@@ -353,8 +359,9 @@
  	return count, nil
  }
  
@@ -317,7 +310,7 @@ Forwarded: no
  	if err != nil {
  		t.Fatal(err)
  	}
-@@ -369,8 +375,9 @@
+@@ -369,8 +376,9 @@
  	}
  }
  
@@ -327,7 +320,7 @@ Forwarded: no
  	if err != nil {
  		t.Fatal(err)
  	}
-@@ -385,8 +392,9 @@
+@@ -385,8 +393,9 @@
  	}
  }
  
@@ -337,8 +330,8 @@ Forwarded: no
  	if err != nil {
  		t.Fatal(err)
  	}
---- a/components/engine/daemon/graphdriver/overlay/overlay_test.go
-+++ b/components/engine/daemon/graphdriver/overlay/overlay_test.go
+--- a/engine/daemon/graphdriver/overlay/overlay_test.go
++++ b/engine/daemon/graphdriver/overlay/overlay_test.go
 @@ -18,24 +18,29 @@
  
  // This avoids creating a new driver for each test if all tests are run
@@ -369,8 +362,8 @@ Forwarded: no
  }
  
  // Fails due to bug in calculating changes after apply
---- a/components/engine/pkg/archive/archive_test.go
-+++ b/components/engine/pkg/archive/archive_test.go
+--- a/engine/pkg/archive/archive_test.go
++++ b/engine/pkg/archive/archive_test.go
 @@ -428,8 +428,9 @@
  	}
  }
@@ -391,3 +384,27 @@ Forwarded: no
  	if runtime.GOOS == "windows" {
  		t.Skip("hardlinks on Windows")
  	}
+--- a/engine/pkg/system/rm_test.go
++++ b/engine/pkg/system/rm_test.go
+@@ -39,8 +39,9 @@
+ 	}
+ }
+ 
+ func TestEnsureRemoveAllWithMount(t *testing.T) {
++t.Skip("DM - skipping privileged test")
+ 	if runtime.GOOS == "windows" {
+ 		t.Skip("mount not supported on Windows")
+ 	}
+ 
+--- a/engine/daemon/reload_test.go
++++ b/engine/daemon/reload_test.go
+@@ -481,8 +481,9 @@
+ 	}
+ }
+ 
+ func TestDaemonReloadNetworkDiagnosticPort(t *testing.T) {
++t.Skip("DM - skipping privileged test")
+ 	daemon := &Daemon{}
+ 	daemon.configStore = &config.Config{}
+ 
+ 	valuesSet := make(map[string]interface{})

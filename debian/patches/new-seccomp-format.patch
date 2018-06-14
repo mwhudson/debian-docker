@@ -1,5 +1,5 @@
---- a/components/engine/profiles/seccomp/seccomp.go
-+++ b/components/engine/profiles/seccomp/seccomp.go
+--- a/engine/profiles/seccomp/seccomp.go
++++ b/engine/profiles/seccomp/seccomp.go
 @@ -15,9 +15,9 @@
  //go:generate go run -tags 'seccomp' generate.go
  

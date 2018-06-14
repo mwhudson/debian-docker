@@ -3,8 +3,8 @@ Description: remove convenience copies of cgroupfs-mount in init.d / upstart
 Forwarded: not-needed
 Bug-Debian: https://bugs.debian.org/783143
 
---- a/components/engine/contrib/init/sysvinit-debian/docker
-+++ b/components/engine/contrib/init/sysvinit-debian/docker
+--- a/engine/contrib/init/sysvinit-debian/docker
++++ b/engine/contrib/init/sysvinit-debian/docker
 @@ -58,39 +58,14 @@
  		exit 1
  	fi
@@ -45,8 +45,8 @@ Bug-Debian: https://bugs.debian.org/783143
  		chgrp docker "$DOCKER_LOGFILE"
  
  		ulimit -n 1048576
---- a/components/engine/contrib/init/upstart/docker.conf
-+++ b/components/engine/contrib/init/upstart/docker.conf
+--- a/engine/contrib/init/upstart/docker.conf
++++ b/engine/contrib/init/upstart/docker.conf
 @@ -12,31 +12,8 @@
  respawn
  

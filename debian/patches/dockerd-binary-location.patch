@@ -1,5 +1,5 @@
---- a/components/engine/contrib/init/systemd/docker.service
-+++ b/components/engine/contrib/init/systemd/docker.service
+--- a/engine/contrib/init/systemd/docker.service
++++ b/engine/contrib/init/systemd/docker.service
 @@ -10,9 +10,9 @@
  # the default is not to use systemd for cgroups because the delegate issues still
  # exists and systemd currently does not support the cgroup feature set required
@@ -11,8 +11,8 @@
  LimitNOFILE=1048576
  # Having non-zero Limit*s causes performance problems due to accounting overhead
  # in the kernel. We recommend using cgroups to do container-local accounting.
---- a/components/engine/contrib/init/sysvinit-debian/docker
-+++ b/components/engine/contrib/init/sysvinit-debian/docker
+--- a/engine/contrib/init/sysvinit-debian/docker
++++ b/engine/contrib/init/sysvinit-debian/docker
 @@ -21,9 +21,9 @@
  
  BASE=docker
@@ -24,8 +24,8 @@
  DOCKER_PIDFILE=/var/run/$BASE.pid
  # This is the pid file created/managed by start-stop-daemon
  DOCKER_SSD_PIDFILE=/var/run/$BASE-ssd.pid
---- a/components/engine/contrib/init/upstart/docker.conf
-+++ b/components/engine/contrib/init/upstart/docker.conf
+--- a/engine/contrib/init/upstart/docker.conf
++++ b/engine/contrib/init/upstart/docker.conf
 @@ -14,9 +14,9 @@
  kill timeout 20
  

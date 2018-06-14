@@ -2,8 +2,8 @@ Description: update several tests for text/path errors
 Author: Tianon Gravi <tianon@debian.org>
 Forwarded: not-needed
 
---- a/components/engine/pkg/authorization/authz_unix_test.go
-+++ b/components/engine/pkg/authorization/authz_unix_test.go
+--- a/engine/pkg/authorization/authz_unix_test.go
++++ b/engine/pkg/authorization/authz_unix_test.go
 @@ -207,8 +207,10 @@
  	if err != nil {
  		t.Fatal(err)

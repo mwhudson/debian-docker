@@ -10,18 +10,22 @@ cli-fix-manpages-build-script.patch
 
 dockerd-binary-location.patch
 
+go-1.10_tarsum.patch
+go-metrics_prometheus-fix_Observer.patch
+
 import_nvveen-gotty.patch
 import-archive-tar-package.patch
 
 #~listeners-activation.patch
+netlink_syscall.patch
 new-seccomp-format.patch
 nuke-no-prompt.patch
 
 proto_libnetwork.patch
+runc_unuse_SIGUNUSED.patch
 
 test--disable-TestChangesWithChangesGH13590.patch
 test--fix-test-errors.patch
 test--skip-privileged-unit-tests.patch
 #test--skip-racy-unit-tests.patch
 
-vendor_go-metrics_prometheus-fix_Observer.patch

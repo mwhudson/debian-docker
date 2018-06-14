@@ -3,8 +3,8 @@ Author: Arnaud Rebillout <arnaud.rebillout@collabora.com>
 Forwarded: not-needed
 Last-Update: 2018-04-03
 
---- a/components/cli/scripts/docs/generate-man.sh
-+++ b/components/cli/scripts/docs/generate-man.sh
+--- a/cli/scripts/docs/generate-man.sh
++++ b/cli/scripts/docs/generate-man.sh
 @@ -3,9 +3,9 @@
  set -eu -o pipefail
  

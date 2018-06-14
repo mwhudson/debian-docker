@@ -1,0 +1,58 @@
+Last-Update: 2018-06-12
+Forwarded: not-needed
+Bug-Upstream: https://github.com/docker/libnetwork/issues/2110
+Author: Dmitry Smirnov <onlyjob@debian.org>
+Description: fixes FTBFS
+ cannot use &tv (type *syscall.Timeval) as type *unix.Timeval
+
+--- a/libnetwork/drivers/overlay/ov_network.go
++++ b/libnetwork/drivers/overlay/ov_network.go
+@@ -26,8 +26,9 @@
+ 	"github.com/sirupsen/logrus"
+ 	"github.com/vishvananda/netlink"
+ 	"github.com/vishvananda/netlink/nl"
+ 	"github.com/vishvananda/netns"
++	"golang.org/x/sys/unix"
+ )
+ 
+ var (
+ 	hostMode    bool
+@@ -704,9 +705,9 @@
+ 		if err != nil {
+ 			return
+ 		}
+ 		// set the receive timeout to not remain stuck on the RecvFrom if the fd gets closed
+-		tv := syscall.NsecToTimeval(soTimeout.Nanoseconds())
++		tv := unix.NsecToTimeval(soTimeout.Nanoseconds())
+ 		err = nlSock.SetReceiveTimeout(&tv)
+ 	})
+ 	n.setNetlinkSocket(nlSock)
+ 
+--- a/libnetwork/ipvs/ipvs.go
++++ b/libnetwork/ipvs/ipvs.go
+@@ -10,8 +10,9 @@
+ 	"fmt"
+ 
+ 	"github.com/vishvananda/netlink/nl"
+ 	"github.com/vishvananda/netns"
++	"golang.org/x/sys/unix"
+ )
+ 
+ const (
+ 	netlinkRecvSocketsTimeout = 3 * time.Second
+@@ -89,13 +90,13 @@
+ 	if err != nil {
+ 		return nil, err
+ 	}
+ 	// Add operation timeout to avoid deadlocks
+-	tv := syscall.NsecToTimeval(netlinkSendSocketTimeout.Nanoseconds())
++	tv := unix.NsecToTimeval(netlinkSendSocketTimeout.Nanoseconds())
+ 	if err := sock.SetSendTimeout(&tv); err != nil {
+ 		return nil, err
+ 	}
+-	tv = syscall.NsecToTimeval(netlinkRecvSocketsTimeout.Nanoseconds())
++	tv = unix.NsecToTimeval(netlinkRecvSocketsTimeout.Nanoseconds())
+ 	if err := sock.SetReceiveTimeout(&tv); err != nil {
+ 		return nil, err
+ 	}
+ 
