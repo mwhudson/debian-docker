@@ -1,7 +1,10 @@
 Last-Update: 2018-06-09
 Forwarded: not-needed
 Author: Dmitry Smirnov <onlyjob@debian.org>
-Description: fix import path
+Description: fix import path [BROKEN]
+ Docker bundles modified version of "github.com/Nvveen/Gotty".
+ This patch causes "panic: runtime error: index out of range"
+ on `docker (pull|build)`.
 
 --- a/engine/pkg/jsonmessage/jsonmessage.go
 +++ b/engine/pkg/jsonmessage/jsonmessage.go

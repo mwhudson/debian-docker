@@ -83,7 +83,7 @@ Files-Excluded:
    ~vendor/github.com/moby
     vendor/github.com/mrunalp/fileutils
     vendor/github.com/ncw/swift
-    vendor/github.com/Nvveen/Gotty
+  ~~vendor/github.com/Nvveen/Gotty
     vendor/github.com/opencontainers
     vendor/github.com/opencontainers/go-digest
     vendor/github.com/opencontainers/image-spec

@@ -14,8 +14,8 @@ go-1.10_tarsum.patch
 
 go-metrics_prometheus-fix_Observer.patch
 
-import_nvveen-gotty.patch
-import-archive-tar.patch
+import_archive-tar.patch
+#import_nvveen-gotty.patch
 
 libnetwork_proto.patch
 #~listeners-activation.patch
@@ -27,6 +27,5 @@ nuke-no-prompt.patch
 
 test--disable-TestChangesWithChangesGH13590.patch
 test--fix-test-errors.patch
-test--skip-TestTarFiles.patch
 test--skip-network-tests.patch
 test--skip-privileged-unit-tests.patch
