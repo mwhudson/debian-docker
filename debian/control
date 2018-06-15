@@ -202,6 +202,15 @@ Description: Transitional package for golang-github-docker-docker-dev
  This is a transitional package to ease upgrades to the
  golang-github-docker-docker-dev package. It can safely be removed.
 
+#Package: golang-github-opencontainers-docker-runc-dev
+#Section: oldlibs
+#Architecture: all
+#Depends: ${misc:Depends}
+#    ,golang-github-opencontainers-runc-dev (>= 1.0.0~)
+#Description: Open Container Project - development files (Docker's version)
+# This is a transitional package to ease upgrades to the
+# "golang-github-opencontainers-runc-dev" package. It can safely be removed.
+
 Package: docker-doc
 Provides: docker.io-doc
 Section: doc
