@@ -1,2 +1,3 @@
-docs/*
-vendor/github.com/docker/go-metrics/NOTICE
+cli/docs/*
+engine/docs/*
+cli/NOTICE containerd/NOTICE engine/NOTICE go-metrics/NOTICE

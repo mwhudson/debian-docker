@@ -1,0 +1,21 @@
+  * copyrights for all components and */vendor/*
+
+  * testing
+    * better testing of components
+
+  * full rebuild of components
+
+  * better cleanup
+    * drop "containerd/docs" due to pre-built .js files?
+
+ * switch the following packages from docker-runc-dev
+   to opencontainers-runc-dev:
+
+    * cadvisor
+    * gitlab-ci-multi-runner
+    * kubernetes
+
+  * request removal of
+    * docker-runc
+    * docker-containerd
+    * golang-libnetwork

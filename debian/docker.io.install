@@ -1,11 +1,29 @@
 #!/usr/bin/dh-exec
 
-.gopath/src/github.com/docker/docker/bundles/${DOCKER_VERSION}/dynbinary-client/docker-${DOCKER_VERSION} => usr/bin/docker
-.gopath/src/github.com/docker/docker/bundles/${DOCKER_VERSION}/dynbinary-daemon/dockerd-${DOCKER_VERSION} => usr/sbin/dockerd
+.gopath/src/github.com/docker/cli/build/*  /usr/bin/
+.gopath/src/github.com/docker/docker/bundles/dynbinary-daemon/dockerd-dev => usr/sbin/dockerd
+#dockerd-${DOCKER_VERSION}
 
-contrib/*-integration usr/share/docker.io/contrib/
-contrib/check-config.sh usr/share/docker.io/contrib/
-contrib/completion/zsh/_docker usr/share/zsh/vendor-completions/
-contrib/init/systemd/docker.socket lib/systemd/system/
-contrib/mk* usr/share/docker.io/contrib/
-contrib/nuke-graph-directory.sh usr/share/docker.io/contrib/
+engine/contrib/*-integration                  usr/share/docker.io/contrib/
+engine/contrib/check-config.sh                usr/share/docker.io/contrib/
+engine/contrib/init/systemd/docker.socket     lib/systemd/system/
+engine/contrib/mk*                            usr/share/docker.io/contrib/
+engine/contrib/nuke-graph-directory.sh        usr/share/docker.io/contrib/
+
+cli/contrib/completion/zsh/_docker         usr/share/zsh/vendor-completions/
+
+.gopath/tini-static => usr/bin/docker-init
+
+
+## libnetwork
+.gopath/bin/proxy =>   usr/sbin/docker-proxy
+.gopath/bin/ovrouter   usr/sbin
+.gopath/bin/dnet       usr/bin
+
+## containerd:
+.gopath/bin/containerd => usr/bin/docker-containerd
+.gopath/bin/containerd-shim => usr/bin/docker-containerd-shim
+.gopath/bin/ctr => usr/bin/docker-containerd-ctr
+
+## runc
+##.gopath/bin/runc => usr/bin/docker-runc

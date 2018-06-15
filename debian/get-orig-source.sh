@@ -62,7 +62,7 @@ drop_files_excluded "${work_dir}"/*/components/*
 ( cd "${work_dir}" && tar -caf "${filename}" . )
 
 ## fetch Docker components:
-for I in docker/go-events docker/go-metrics docker/libnetwork docker/distribution docker/swarmkit containerd/containerd opencontainers/runc; do
+for I in docker/go-events docker/go-metrics docker/libnetwork docker/distribution docker/swarmkit containerd/containerd; do
     printf ":: Processing ${I}\n" 1>&2
     URL="github.com/${I}"
     REV=$( grep "${URL}" "${work_dir}"/*/engine/vendor.conf | head -1 | awk '{print $2}' )

@@ -5,7 +5,7 @@ are inconsistently versioned; don't depend on same version of common
 libraries and different revisions of dependency libraries are privately
 vendored. Basically upstream couldn't care less about consistent, semantic
 versioning and re-usable components. Shameful abomination of good software
-development practices.
+development practices... :(
 
 Here is how Arnaud Rebillout <arnaud.rebillout@collabora.com>
 describes upstream release process:
@@ -90,6 +90,15 @@ a dependency library into "docker.io" source package is dependency on
 "github.com/docker/docker". Additional criteria is assessment whether
 Docker dependency is reusable (e.g. semantically versioned and used by
 other packages).
+
+
+## Bundled versus external libraries
+
+### runc
+
+We should make an effort to use "runc" package which no longer depends
+on Docker since 1.0.0~rc5 (no circular dependency). Upstream is tagging
+releases so it satisfies non-bundling criteria mentioned above.
 
 
 ## Notable upstream bugs

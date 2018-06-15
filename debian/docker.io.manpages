@@ -1,1 +1,1 @@
-man/man*/*
+.gopath/src/github.com/docker/cli/man/man*/*

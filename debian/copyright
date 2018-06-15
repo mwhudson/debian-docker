@@ -13,6 +13,7 @@ Files-Excluded:
     vendor/github.com/Azure
     vendor/github.com/beorn7
     vendor/github.com/boltdb
+    vendor/github.com/bshuster-repo/logrus-logstash-hook
     vendor/github.com/bsphere
     vendor/github.com/bugsnag/bugsnag-go
     vendor/github.com/bugsnag/panicwrap
@@ -34,7 +35,7 @@ Files-Excluded:
     vendor/github.com/deckarep
     vendor/github.com/denverdino/aliyungo
     vendor/github.com/dgrijalva/jwt-go
-  ~~vendor/github.com/dmcgowan/go-tar
+    vendor/github.com/dmcgowan/go-tar
    ~vendor/github.com/docker
     vendor/github.com/docker/distribution
     vendor/github.com/docker/docker
@@ -82,7 +83,7 @@ Files-Excluded:
    ~vendor/github.com/moby
     vendor/github.com/mrunalp/fileutils
     vendor/github.com/ncw/swift
-    vendor/github.com/Nvveen
+    vendor/github.com/Nvveen/Gotty
     vendor/github.com/opencontainers
     vendor/github.com/opencontainers/go-digest
     vendor/github.com/opencontainers/image-spec
@@ -123,6 +124,7 @@ Files-Excluded:
     vendor/golang.org/x
     vendor/google.golang.org
     vendor/gopkg.in
+    vendor/rsc.io/letsencrypt
   ~~vendor/vbom.ml/util/sortorder
 Comment:
  Thanks to custom repack script, Files-Excluded section is applied to all
@@ -145,24 +147,24 @@ Copyright: 2013-2014 Daniel Mizyrycki <daniel@docker.com>
            2016      Michael Hudson-Doyle <michael.hudson@ubuntu.com>
 License: Apache-2.0
 
-Files: contrib/init/openrc/docker.initd
+Files: engine/contrib/init/openrc/docker.initd
 Copyright: 1999-2013 Gentoo Foundation
 License: GPL-2
 
-Files: contrib/syntax/vim/*
+Files: engine/contrib/syntax/vim/*
 Copyright: 2013 Honza Pokorny
 License: BSD-2-clause
 
 Files:
-    pkg/symlink/fs.go
+    engine/pkg/symlink/fs.go
 Copyright: 2014-2016 The Docker & Go Authors
 License: BSD-3-clause-Google
 
-Files: contrib/completion/zsh/*
+Files: cli/contrib/completion/zsh/*
 Copyright: 2013-2014 Felix Riedel
 License: BSD-3-clause-Generic
 
-Files: contrib/selinux/docker-engine-selinux/*
+Files: engine/contrib/selinux/docker-engine-selinux/*
 Copyright: 2012-2016 Docker Inc.
 License: GPL-2
 Comment:
