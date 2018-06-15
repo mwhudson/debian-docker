@@ -1,5 +1,5 @@
-Last-Update: 2018-06-10
-Forwarded: no
+Last-Update: 2018-06-15
+Forwarded: not-needed
 Author: Dmitry Smirnov <onlyjob@debian.org>
 Description: fix generation of .pb.go files.
 
@@ -9,7 +9,7 @@ Description: fix generation of .pb.go files.
  package overlay
  
 -//go:generate protoc -I.:../../Godeps/_workspace/src/github.com/gogo/protobuf  --gogo_out=import_path=github.com/docker/libnetwork/drivers/overlay,Mgogoproto/gogo.proto=github.com/gogo/protobuf/gogoproto:. overlay.proto
-+//go:generate protoc -I.:../../../github.com/gogo/protobuf  --gogo_out=import_path=github.com/docker/libnetwork/drivers/overlay,Mgogoproto/gogo.proto=github.com/gogo/protobuf/gogoproto:. overlay.proto
++//go:generate protoc -I.:../../../../../github.com/gogo/protobuf  --gogo_out=import_path=github.com/docker/libnetwork/drivers/overlay,Mgogoproto/gogo.proto=github.com/gogo/protobuf/gogoproto:. overlay.proto
  
  import (
  	"context"
@@ -25,3 +25,14 @@ Description: fix generation of .pb.go files.
  import (
  	"encoding/json"
  	"fmt"
+--- a/libnetwork/networkdb/networkdb.go
++++ b/libnetwork/networkdb/networkdb.go
+@@ -1,7 +1,7 @@
+ package networkdb
+ 
+-//go:generate protoc -I.:../vendor/github.com/gogo/protobuf --gogo_out=import_path=github.com/docker/libnetwork/networkdb,Mgogoproto/gogo.proto=github.com/gogo/protobuf/gogoproto:. networkdb.proto
++//go:generate protoc -I.:../../../../github.com/gogo/protobuf --gogo_out=import_path=github.com/docker/libnetwork/networkdb,Mgogoproto/gogo.proto=github.com/gogo/protobuf/gogoproto:. networkdb.proto
+ 
+ import (
+ 	"fmt"
+ 	"net"

@@ -384,7 +384,27 @@ Forwarded: no
  	if err != nil {
  		t.Fatal(nil)
  	}
-@@ -961,8 +963,9 @@
+@@ -721,8 +723,9 @@
+ 	}
+ }
+ 
+ func TestTarWithOptionsChownOptsAlwaysOverridesIdPair(t *testing.T) {
++t.Skip("DM - skipping privileged test")
+ 	origin, err := ioutil.TempDir("", "docker-test-tar-chown-opt")
+ 	require.NoError(t, err)
+ 
+ 	defer os.RemoveAll(origin)
+@@ -772,8 +775,9 @@
+ 	}
+ }
+ 
+ func TestTarWithOptions(t *testing.T) {
++t.Skip("DM - skipping privileged test")
+ 	// TODO Windows: Figure out how to fix this test.
+ 	if runtime.GOOS == "windows" {
+ 		t.Skip("Failing on Windows")
+ 	}
+@@ -962,8 +966,9 @@
  	}
  }
  
@@ -394,7 +414,7 @@ Forwarded: no
  	if runtime.GOOS == "windows" {
  		t.Skip("hardlinks on Windows")
  	}
-@@ -1192,8 +1195,9 @@
+@@ -1193,8 +1198,9 @@
  	}
  }
  
@@ -404,7 +424,7 @@ Forwarded: no
  	testcases := []struct {
  		doc       string
  		filename  string
-@@ -1246,8 +1250,9 @@
+@@ -1247,8 +1253,9 @@
  
  // TestPrefixHeaderReadable tests that files that could be created with the
  // version of this package that was built with <=go17 are still readable.
@@ -481,4 +501,26 @@ Forwarded: no
  	oldmask, err := system.Umask(0)
  	require.NoError(t, err)
  	defer system.Umask(oldmask)
+ 
+--- a/cli/cli/command/image/build_test.go
++++ b/cli/cli/command/image/build_test.go
+@@ -22,8 +22,9 @@
+ 	"golang.org/x/net/context"
+ )
+ 
+ func TestRunBuildResetsUidAndGidInContext(t *testing.T) {
++t.Skip("DM - skipping privileged test")
+ 	skip.IfCondition(t, runtime.GOOS == "windows", "uid and gid not relevant on windows")
+ 	dest := fs.NewDir(t, "test-build-context-dest")
+ 	defer dest.Remove()
+ 
+@@ -57,8 +58,9 @@
+ 		assert.Equal(t, uint32(0), fileInfo.Sys().(*syscall.Stat_t).Gid)
+ 	}
+ }
+ func TestRunBuildDockerfileFromStdinWithCompress(t *testing.T) {
++t.Skip("DM - skipping privileged test")
+ 	dest, err := ioutil.TempDir("", "test-build-compress-dest")
+ 	require.NoError(t, err)
+ 	defer os.RemoveAll(dest)
  

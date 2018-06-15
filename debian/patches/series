@@ -5,29 +5,28 @@ cgroupfs-mount-convenience-copy.patch
 change-system-unit-env-file.patch
 # See also https://github.com/docker/docker/pull/7220#issuecomment-50076589
 
-#check-v1.patch
 cli-fix-manpages-build-script.patch
 
 dockerd-binary-location.patch
 
-go-1.10_archive-tar.patch
+go-1.10_archiver-format.patch
 go-1.10_tarsum.patch
 
 go-metrics_prometheus-fix_Observer.patch
 
 import_nvveen-gotty.patch
-#:broken:#import-archive-tar-package.patch
+import-archive-tar.patch
 
+libnetwork_proto.patch
 #~listeners-activation.patch
+
 netlink_syscall.patch
-new-seccomp-format.patch
 nuke-no-prompt.patch
 
-proto_libnetwork.patch
-runc_unuse_SIGUNUSED.patch
+#runc_unuse_SIGUNUSED.patch
 
 test--disable-TestChangesWithChangesGH13590.patch
 test--fix-test-errors.patch
+test--skip-TestTarFiles.patch
+test--skip-network-tests.patch
 test--skip-privileged-unit-tests.patch
-#test--skip-racy-unit-tests.patch
-
