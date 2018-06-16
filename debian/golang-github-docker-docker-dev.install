@@ -3,11 +3,20 @@
 .gopath/src/github.com/docker/cli/cli/config/*      usr/share/gocode/src/github.com/docker/docker/cliconfig/
 
 engine/dockerversion                                usr/share/gocode/src/github.com/docker/docker/
-engine/pkg                                          usr/share/gocode/src/github.com/docker/docker/
 
-.gopath/src/github.com/docker/docker/opts           usr/share/gocode/src/github.com/docker/docker/
+#engine/pkg                                          usr/share/gocode/src/github.com/docker/docker/
+.gopath/src/github.com/docker/docker/pkg            usr/share/gocode/src/github.com/docker/docker/
+
 .gopath/src/github.com/docker/docker/api            usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/client         usr/share/gocode/src/github.com/docker/docker/
+.gopath/src/github.com/docker/docker/opts           usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/reference      usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/registry       usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/runconfig      usr/share/gocode/src/github.com/docker/docker/
+
+engine/vendor/github.com/containerd/continuity/driver      usr/share/gocode/src/github.com/docker/docker/vendor/github.com/containerd/continuity/
+engine/vendor/github.com/containerd/continuity/pathdriver  usr/share/gocode/src/github.com/docker/docker/vendor/github.com/containerd/continuity/
+
+engine/vendor/github.com/gotestyourself/gotestyourself/skip  usr/share/gocode/src/github.com/docker/docker/vendor/github.com/gotestyourself/gotestyourself/
+
+engine/vendor/github.com/Nvveen/Gotty               usr/share/gocode/src/github.com/docker/docker/vendor/github.com/Nvveen/
