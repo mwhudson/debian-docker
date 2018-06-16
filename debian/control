@@ -211,6 +211,35 @@ Description: Transitional package for golang-github-docker-docker-dev
  This is a transitional package to ease upgrades to the
  golang-github-docker-docker-dev package. It can safely be removed.
 
+#Package: golang-github-docker-libnetwork-dev
+#Architecture: all
+#Depends: ${misc:Depends} ,${shlibs:Depends}
+#    ,golang-github-burntsushi-toml-dev
+#    ,golang-github-codegangsta-cli-dev
+#    ,golang-github-coreos-go-systemd-dev
+#       ,golang-dbus-dev (>= 3~)
+#    ,golang-github-deckarep-golang-set-dev
+#    ,golang-github-docker-docker-dev (>= 1.13.1~)
+#    ,golang-github-docker-go-connections-dev
+#    ,golang-github-docker-go-units-dev
+#    ,golang-github-docker-libkv-dev (>= 0.2.0~)
+#    ,golang-github-gorilla-mux-dev
+#    ,golang-github-hashicorp-serf-dev
+#    ,golang-github-opencontainers-runc-dev
+#    ,golang-github-pkg-errors-dev
+#    ,golang-github-sirupsen-logrus-dev (>= 1.0.2~)
+#    ,golang-github-stretchr-testify-dev
+#    ,golang-github-vishvananda-netlink-dev (>= 0.0~git20161111.0~)
+#    ,golang-github-vishvananda-netns-dev
+#Description: Docker Networking
+# Libnetwork provides a native Go implementation for connecting containers
+# .
+# The goal of libnetwork is to deliver a robust Container Network Model
+# that provides a consistent programming interface and the required
+# network abstractions for applications.
+# .
+# This package contains the development files.
+
 #Package: golang-github-opencontainers-docker-runc-dev
 #Section: oldlibs
 #Architecture: all
