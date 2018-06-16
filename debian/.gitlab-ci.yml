@@ -4,12 +4,16 @@ variables:
   PB_RESULT: '${CI_PROJECT_DIR}/../${CI_PROJECT_NAME}_${CI_BUILD_REF}_${CI_JOB_NAME}_${CI_JOB_ID}'
   LINTIAN_CMD: eval lintian --no-tag-display-limit --info --display-info --color=auto --display-experimental --pedantic "${PB_RESULT}"/*.changes
   AUTOPKGTEST_CMD: autopkgtest --user debci --output-dir "${PB_RESULT}"/debci "${PB_RESULT}"/*.changes -- lxc --sudo adt-sid-amd64
-  ORIGTAR_CMD: origtargz --tar-only ; debian/unpack-components.sh
 # PDEBUILD_CMD: eval pdebuild --use-pdebuild-internal --pbuildersatisfydepends "/usr/lib/pbuilder/pbuilder-satisfydepends-classic" --buildresult "${PB_RESULT}" --debbuildopts -sa
   PDEBUILD_CMD: eval pdebuild --use-pdebuild-internal --buildresult "${PB_RESULT}" --debbuildopts -sa
   EATMYDATA: "yes"
   AUTOCLEANAPTCACHE: "yes"
   USE_PDEBUILD_INTERNAL: "yes"
+
+.origtargz:
+  script: &origtargz |
+    origtargz --tar-only
+    debian/unpack-components.sh
 
 .pre_build:
   script: &pre_build |
@@ -63,7 +67,7 @@ testing_unstable-amd64:
   before_script:
     - *pre_build
   script:
-    - ${ORIGTAR_CMD}
+    - *origtargz
     - ${PDEBUILD_CMD} --architecture amd64 -- --basetgz /var/cache/pbuilder/testing_unstable-amd64.tgz
     - ${LINTIAN_CMD}
 
@@ -77,7 +81,7 @@ unstable-i386:
   before_script:
     - *pre_build
   script:
-    - ${ORIGTAR_CMD}
+    - *origtargz
     - ${PDEBUILD_CMD} --architecture i386 -- --basetgz /var/cache/pbuilder/unstable-i386.tgz
 
 unstable-amd64:
@@ -90,6 +94,6 @@ unstable-amd64:
   before_script:
     - *pre_build
   script:
-    - ${ORIGTAR_CMD}
+    - *origtargz
     - ${PDEBUILD_CMD} --architecture amd64 -- --basetgz /var/cache/pbuilder/unstable-amd64.tgz
     - ${LINTIAN_CMD}
