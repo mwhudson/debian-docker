@@ -1,9 +1,10 @@
 Source: docker.io
 Section: admin
 Priority: optional
-Maintainer: Tim Potter <tpot@hpe.com>
-Uploaders: Tianon Gravi <tianon@debian.org>,
-           Paul Tagliamonte <paultag@debian.org>
+Maintainer: Dmitry Smirnov <onlyjob@debian.org>
+Uploaders: Tim Potter <tpot@hpe.com>
+          ,Tianon Gravi <tianon@debian.org>
+          ,Paul Tagliamonte <paultag@debian.org>
 #Build-Conflicts: golang-github-docker-docker-dev
 Build-Depends: debhelper (>= 11~), dh-exec, dh-golang (>= 1.14~),
                bash-completion,
