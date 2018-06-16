@@ -42,7 +42,7 @@ filename="$( readlink -f ../${DEB_SOURCE}_${version}.orig.tar.xz )"
 drop_files_excluded() {
     local work_dir
     for work_dir in $@; do
-        perl -0nE 'say $1 if m{^Files\-Excluded(?:\-\w+)?\:\s*(.*?)(?:\n\n|^Files|^Comment)}sm;' debian/copyright \
+        perl -0nE 'say $1 if m{^Files\-Excluded:\s*(.*?)(?:\n\n|^Files|^Comment)}sm;' debian/copyright \
         | ( cd "${work_dir}" && xargs --no-run-if-empty rm -rf )
     done
 }
@@ -89,7 +89,7 @@ for I in docker/go-events docker/go-metrics docker/libnetwork docker/distributio
 
         mk-origtargz --package docker.io --version ${version} \
           --rename --repack --compression xz --directory .. \
-          --component ${component} \
+          --component ${component} --copyright-file debian/copyright \
         "${FN}"
     fi
 done

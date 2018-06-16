@@ -126,6 +126,10 @@ Files-Excluded:
     vendor/gopkg.in
     vendor/rsc.io/letsencrypt
   ~~vendor/vbom.ml/util/sortorder
+Files-Excluded-containerd:
+    */docs
+Files-Excluded-distribution:
+    */docs
 Comment:
  Thanks to custom repack script, Files-Excluded section is applied to all
  components otherwise individual Files-Excluded-{component} sections would
