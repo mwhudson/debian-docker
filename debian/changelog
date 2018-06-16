@@ -8,6 +8,7 @@ docker.io (17.12.1+dfsg-1) UNRELEASED; urgency=medium
   * New multi-upstream-tarball (MUT) layout, building all docker components
     (containerd, libnetwork) at once; incorporate binaries of
     docker-containerd and libnetwork.
+  * docker-dev to provide libnetwork-dev (a part of Docker).
   * New patches to build on go-1.10.
 
  -- Dmitry Smirnov <onlyjob@debian.org>  Sun, 10 Jun 2018 22:40:06 +1000

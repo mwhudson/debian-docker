@@ -1,3 +1,0 @@
-#!/usr/bin/dh-exec
-
-.gopath/src/github.com/docker/libnetwork/*            usr/share/gocode/src/github.com/docker/libnetwork/
