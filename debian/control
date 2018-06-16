@@ -199,7 +199,7 @@ Depends: ${misc:Depends}
     ,golang-github-deckarep-golang-set-dev
     ,golang-github-docker-go-events-dev
     ,golang-github-gogo-protobuf-dev
-    ,golang-github-hashicorp-memberlist-dev:
+    ,golang-github-hashicorp-memberlist-dev
     ,golang-github-hashicorp-serf-dev
     ,golang-github-vishvananda-netlink-dev (>= 1.0.0~)
     ,golang-github-vishvananda-netns-dev
