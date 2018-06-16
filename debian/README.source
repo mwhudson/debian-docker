@@ -111,8 +111,8 @@ together with docker-runc-dev. Maintainer of reverse runc-dev build-deps
 was very unhappy...
 
 Let me stress it again: Docker should not hijack runc's name space
-"github.com/containerd/containerd". Docker's fork of the latter have its
-own name space: "github.com/docker/containerd".
+"github.com/opencontainers/runc". Docker's fork of the latter have its
+own name space: "github.com/docker/runc".
 
 In the unfortunate situation if we ever have to use bundled runc in Docker
 we should NOT provide docker-runc-dev package ever again (or at least avoid
