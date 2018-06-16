@@ -4,7 +4,7 @@ variables:
   PB_RESULT: '${CI_PROJECT_DIR}/../${CI_PROJECT_NAME}_${CI_BUILD_REF}_${CI_JOB_NAME}_${CI_JOB_ID}'
   LINTIAN_CMD: eval lintian --no-tag-display-limit --info --display-info --color=auto --display-experimental --pedantic "${PB_RESULT}"/*.changes
   AUTOPKGTEST_CMD: autopkgtest --user debci --output-dir "${PB_RESULT}"/debci "${PB_RESULT}"/*.changes -- lxc --sudo adt-sid-amd64
-  ORIGTAR_CMD: origtargz --tar-only
+  ORIGTAR_CMD: origtargz --tar-only && debian/unpack-components.sh
 # PDEBUILD_CMD: eval pdebuild --use-pdebuild-internal --pbuildersatisfydepends "/usr/lib/pbuilder/pbuilder-satisfydepends-classic" --buildresult "${PB_RESULT}" --debbuildopts -sa
   PDEBUILD_CMD: eval pdebuild --use-pdebuild-internal --buildresult "${PB_RESULT}" --debbuildopts -sa
   EATMYDATA: "yes"
