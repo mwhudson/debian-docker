@@ -1,15 +1,16 @@
-docker.io (17.12.1+dfsg-1) UNRELEASED; urgency=medium
+docker.io (17.12.1+dfsg-1) experimental; urgency=medium
 
   * Team upload.
-  * New upstream release [February 2018].
+  * New upstream release [February 2018] (Closes: #850753).
   * Restart on upgrade, like most daemons (Closes: #792327).
     Docker's upgrade tip from 17.12.0 release notes:
       "You must stop all containers and plugins BEFORE upgrading".
   * New multi-upstream-tarball (MUT) layout, building all docker components
-    (containerd, libnetwork) at once; incorporate binaries of
-    docker-containerd and libnetwork.
+    (containerd, libnetwork, swarmkit) at once;
+    incorporated binaries of docker-containerd and libnetwork.
   * docker-dev to provide libnetwork-dev (a part of Docker).
-  * New patches to build on go-1.10.
+  * New patches to build on go-1.10; build with latest Go compiler.
+  * Declared myself as Maintainer.
 
  -- Dmitry Smirnov <onlyjob@debian.org>  Sun, 10 Jun 2018 22:40:06 +1000
 
