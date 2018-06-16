@@ -205,9 +205,9 @@ Depends: ${misc:Depends}
     ,golang-github-vishvananda-netlink-dev (>= 1.0.0~)
     ,golang-github-vishvananda-netns-dev
 Replaces: golang-docker-dev (<< 1.8.2~ds1-1~)
-    ,golang-github-docker-libnetwork-dev (<< 0.8.0~)
+    ,golang-github-docker-libnetwork-dev
 Breaks: golang-docker-dev (<< 1.8.2~ds1-1~)
-    ,golang-github-docker-libnetwork-dev (<< 0.8.0~)
+    ,golang-github-docker-libnetwork-dev
 Provides: golang-github-docker-libnetwork-dev
 Description: reusable Go packages included with Docker
  These packages are intentionally developed by upstream in such a way that they
