@@ -204,7 +204,6 @@ Depends: ${misc:Depends}
     ,golang-github-hashicorp-serf-dev
     ,golang-github-vishvananda-netlink-dev (>= 1.0.0~)
     ,golang-github-vishvananda-netns-dev
-Built-Using: ${misc:Built-Using}
 Replaces: golang-docker-dev (<< 1.8.2~ds1-1~)
     ,golang-github-docker-libnetwork-dev (<< 0.8.0~)
 Breaks: golang-docker-dev (<< 1.8.2~ds1-1~)
