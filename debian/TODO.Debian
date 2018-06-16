@@ -1,22 +1,24 @@
-  * copyrights for all components and */vendor/*
 
-  * testing
-    * better testing of components
+## testing
 
-  * full rebuild of components
+ Better testing of components
 
-  * better cleanup
-    * drop "containerd/docs" due to pre-built .js files?
 
- * switch the following packages from docker-runc-dev
-   to opencontainers-runc-dev:
+## full rebuild of components
 
-    * cadvisor
-    * gitlab-ci-multi-runner
-    * kubernetes
+ Currently re-build is partial.
 
-  * request removal of
-    * docker-runc
-    * docker-containerd
-    * golang-libnetwork
-    * swarmkit
+
+## switch packages from docker-runc-dev to opencontainers-runc-dev
+
+  * cadvisor
+  * gitlab-ci-multi-runner
+  * kubernetes
+
+
+## request removal of
+
+  * docker-runc
+  * docker-containerd
+  * golang-libnetwork
+  * swarmkit
