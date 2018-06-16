@@ -46,9 +46,9 @@ matching bundle of Docker engine, and Docker CLI from that repository.
 
 On top of that Docker depends on very particular commits of
 
-  * github.com/docker/libnetwork
   * github.com/containerd/containerd
-  * github.com/opencontainers/runc
+  * github.com/docker/libnetwork
+  * github.com/docker/swarmkit
 
 None of the above repositories have relevant tags.
 
