@@ -234,10 +234,6 @@ Copyright:
 License: BSD-2-clause
 
 Files:
-    swarmkit/api/duration/duration.proto
-    swarmkit/api/timestamp/timestamp.proto
-    swarmkit/protobuf/ptypes/duration.go
-    swarmkit/protobuf/ptypes/timestamp.go
     */vendor/github.com/bugsnag/osext/osext*
     */vendor/github.com/containerd/continuity/sysx/asm.s
 Copyright:
