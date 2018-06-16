@@ -1,12 +1,8 @@
-#!/usr/bin/dh-exec
-
 .gopath/src/github.com/docker/cli/cli/config/*      usr/share/gocode/src/github.com/docker/docker/cliconfig/
 
 engine/dockerversion                                usr/share/gocode/src/github.com/docker/docker/
 
-#engine/pkg                                          usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/pkg            usr/share/gocode/src/github.com/docker/docker/
-
 .gopath/src/github.com/docker/docker/api            usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/client         usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/opts           usr/share/gocode/src/github.com/docker/docker/
