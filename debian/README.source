@@ -123,6 +123,10 @@ Do not be mislead by particular (random) RUNC_COMMIT that Docker expects
 (e.g. `docker info`, "engine/vendor.conf") - we can/should not comply with
 upstream's systematic abuse of versioning.
 
+Perhaps expected commits are not to be trusted at all: for instance in
+17.12.1, CONTAINERD_COMMIT in "engine/hack/dockerfile/binaries-commits"
+does not match any of containerd commits in "engine/vendor.conf".
+
 
 ## Notable upstream bugs
 
