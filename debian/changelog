@@ -12,7 +12,7 @@ docker.io (17.12.1+dfsg-1) experimental; urgency=medium
   * New patches to build on go-1.10; build with latest Go compiler.
   * Declared myself as Maintainer.
 
- -- Dmitry Smirnov <onlyjob@debian.org>  Sun, 10 Jun 2018 22:40:06 +1000
+ -- Dmitry Smirnov <onlyjob@debian.org>  Sat, 16 Jun 2018 20:05:48 +1000
 
 docker.io (1.13.1~ds3-4) unstable; urgency=medium
 
