@@ -67,7 +67,8 @@ express how much I despise your release process.
 Let me explain practical problem with dependencies. Docker and Libnetwork
 both depend on each other and on "sirupsen/logrus". When in the 2018 the
 latter exhibited minor/trivial problem I could not upload neither Docker
-nor Libnetwork because each FTBFS in the "other" dependency.
+nor Libnetwork because each FTBFS in the "other" dependency. That's why
+starting with 17.12.1 libnetwork has been incorporated into "docker.io".
 
 
 ## Docker package vendoring policy
@@ -89,7 +90,9 @@ dependencies to avoid circular dependencies. Main criteria for inclusion of
 a dependency library into "docker.io" source package is dependency on
 "github.com/docker/docker". Additional criteria is assessment whether
 Docker dependency is reusable (e.g. semantically versioned and used by
-other packages).
+other packages). Age of tags is to be considered as Docker team stopped
+tagging most of their dependencies in favour of vendoring them by some
+random commit.
 
 
 ## Bundled versus external libraries
@@ -114,7 +117,7 @@ Let me stress it again: Docker should not hijack runc's name space
 "github.com/opencontainers/runc". Docker's fork of the latter have its
 own name space: "github.com/docker/runc".
 
-In the unfortunate situation if we ever have to use bundled runc in Docker
+In the unfortunate situation if we ever have to use bundled runc in Docker,
 we should NOT provide docker-runc-dev package ever again (or at least avoid
 Conflicts with runc-dev at all costs). I suggest testing runc package for
 run-time compatibility with Docker. That works well with Docker 17.12.1.
