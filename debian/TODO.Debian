@@ -19,3 +19,4 @@
     * docker-runc
     * docker-containerd
     * golang-libnetwork
+    * swarmkit
