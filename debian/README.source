@@ -96,9 +96,31 @@ other packages).
 
 ### runc
 
-We should make an effort to use "runc" package which no longer depends
-on Docker since 1.0.0~rc5 (no circular dependency). Upstream is tagging
-releases so it satisfies non-bundling criteria mentioned above.
+We should make an effort to use "runc" package which no longer depends on
+Docker since 1.0.0~rc5 (no circular/mutual dependency). runc upstream is
+tagging releases so it satisfies non-bundling criteria mentioned above.
+
+In 2017 all reverse build-deps of runc-dev were broken when Balint Reczey
+<rbalint@ubuntu.com> forked "runc" source package as "docker-runc"
+versioned to match Docker expectations.
+New package "golang-github-opencontainers-docker-runc-dev" had explicit
+Conflits with "golang-github-opencontainers-runc-dev" effectively hijacking
+runc because all packages depending on runc-dev also depend on docker-dev
+(which depends on docker-runc-dev) hence runc-dev could not be installed
+together with docker-runc-dev. Maintainer of reverse runc-dev build-deps
+was very unhappy...
+
+Let me stress it again: Docker should not hijack runc's name space
+"github.com/containerd/containerd".
+
+In the unfortunate situation if we ever have to use bundled runc in Docker
+we should NOT provide docker-runc-dev package ever again (or at least avoid
+Conflicts with runc-dev at all costs). I suggest testing runc package for
+run-time compatibility with Docker. That works well with Docker 17.12.1.
+
+Do not be mislead by particular (random) RUNC_COMMIT that Docker expects
+(e.g. `docker info`, "engine/vendor.conf") - we can/should not comply with
+upstream's systematic abuse of versioning.
 
 
 ## Notable upstream bugs
