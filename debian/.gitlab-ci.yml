@@ -10,9 +10,10 @@ variables:
   AUTOCLEANAPTCACHE: "yes"
   USE_PDEBUILD_INTERNAL: "yes"
 
-.origtargz: &origtargz
-  - origtargz --tar-only
-  - debian/unpack-components.sh
+.origtargz:
+  script: &origtargz |
+    origtargz --tar-only
+    debian/unpack-components.sh
 
 .pre_build:
   script: &pre_build |
@@ -66,7 +67,7 @@ testing_unstable-amd64:
   before_script:
     - *pre_build
   script:
-    - <<*origtargz
+    - *origtargz
     - ${PDEBUILD_CMD} --architecture amd64 -- --basetgz /var/cache/pbuilder/testing_unstable-amd64.tgz
     - ${LINTIAN_CMD}
 
@@ -80,7 +81,7 @@ unstable-i386:
   before_script:
     - *pre_build
   script:
-    - <<*origtargz
+    - *origtargz
     - ${PDEBUILD_CMD} --architecture i386 -- --basetgz /var/cache/pbuilder/unstable-i386.tgz
 
 unstable-amd64:
@@ -93,6 +94,6 @@ unstable-amd64:
   before_script:
     - *pre_build
   script:
-    - <<*origtargz
+    - *origtargz
     - ${PDEBUILD_CMD} --architecture amd64 -- --basetgz /var/cache/pbuilder/unstable-amd64.tgz
     - ${LINTIAN_CMD}
