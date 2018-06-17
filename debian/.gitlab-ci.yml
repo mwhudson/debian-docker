@@ -66,7 +66,7 @@ testing_unstable-amd64:
   before_script:
     - *pre_build
   script:
-    - *origtargz
+    - <<*origtargz
     - ${PDEBUILD_CMD} --architecture amd64 -- --basetgz /var/cache/pbuilder/testing_unstable-amd64.tgz
     - ${LINTIAN_CMD}
 
@@ -80,7 +80,7 @@ unstable-i386:
   before_script:
     - *pre_build
   script:
-    - *origtargz
+    - <<*origtargz
     - ${PDEBUILD_CMD} --architecture i386 -- --basetgz /var/cache/pbuilder/unstable-i386.tgz
 
 unstable-amd64:
@@ -93,6 +93,6 @@ unstable-amd64:
   before_script:
     - *pre_build
   script:
-    - *origtargz
+    - <<*origtargz
     - ${PDEBUILD_CMD} --architecture amd64 -- --basetgz /var/cache/pbuilder/unstable-amd64.tgz
     - ${LINTIAN_CMD}
