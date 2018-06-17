@@ -15,8 +15,14 @@ if ls ../${DEB_SOURCE}_${DEB_VERSION_UPSTREAM}.orig-*.tar.* 2>>/dev/null; then
     for T in ../${DEB_SOURCE}_${DEB_VERSION_UPSTREAM}.orig-*.tar.*; do
         C="${T##*.orig-}"
         C="${C%%.tar*}"
-        [ -d "${C}" ] || mkdir -p "${C}"
-        tar xf ${T} -C "${C}" --strip-components=2
+        mkdir -p "${C}"
+        tar xf ${T} -C "${C}" --strip-components=1
+        if [ "$(ls -m ${C})" == "${C}" ]; then
+            ## --strip-components=1 did not work.
+            mv "${C}" "${C}.tmp"
+            mv "${C}.tmp/${C}" .
+            rmdir "${C}.tmp"
+        fi
     done
 else
     printf "W: no components to extract.\n"
