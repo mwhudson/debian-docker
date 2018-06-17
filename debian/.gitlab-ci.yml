@@ -10,10 +10,9 @@ variables:
   AUTOCLEANAPTCACHE: "yes"
   USE_PDEBUILD_INTERNAL: "yes"
 
-.origtargz:
-  script: &origtargz
-    - origtargz --tar-only
-    - debian/unpack-components.sh
+.origtargz: &origtargz
+  - origtargz --tar-only
+  - debian/unpack-components.sh
 
 .pre_build:
   script: &pre_build |
