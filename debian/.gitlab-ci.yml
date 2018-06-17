@@ -11,9 +11,9 @@ variables:
   USE_PDEBUILD_INTERNAL: "yes"
 
 .origtargz:
-  script: &origtargz |
-    origtargz --tar-only
-    debian/unpack-components.sh
+  script: &origtargz
+    - origtargz --tar-only
+    - debian/unpack-components.sh
 
 .pre_build:
   script: &pre_build |
