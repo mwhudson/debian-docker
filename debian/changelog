@@ -1,3 +1,14 @@
+docker.io (18.03.1+dfsg-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+  * renamed udev file.
+  * rules:
+    + properly pass daemon version.
+    + re-work override_dh_auto_configure; serious fixes.
+  * override dh-exec-subst-unknown-variable DOCKER_VERSION
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Tue, 19 Jun 2018 04:04:32 +1000
+
 docker.io (17.12.1+dfsg-4) experimental; urgency=medium
 
   * golang-github-docker-docker-dev:

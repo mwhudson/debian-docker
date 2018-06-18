@@ -20,9 +20,9 @@ Signed-off-by: Sebastiaan van Stijn <github@gone.nl>
 
 --- a/engine/pkg/archive/archive.go
 +++ b/engine/pkg/archive/archive.go
-@@ -14,8 +14,9 @@
- 	"path/filepath"
+@@ -16,8 +16,9 @@
  	"runtime"
+ 	"strconv"
  	"strings"
  	"syscall"
 +	"time"
@@ -30,7 +30,7 @@ Signed-off-by: Sebastiaan van Stijn <github@gone.nl>
  	"github.com/docker/docker/pkg/fileutils"
  	"github.com/docker/docker/pkg/idtools"
  	"github.com/docker/docker/pkg/ioutils"
-@@ -319,8 +320,12 @@
+@@ -359,8 +360,12 @@
  	hdr, err := tar.FileInfoHeader(fi, link)
  	if err != nil {
  		return nil, err
@@ -43,7 +43,7 @@ Signed-off-by: Sebastiaan van Stijn <github@gone.nl>
  	name, err = canonicalTarName(name, fi.IsDir())
  	if err != nil {
  		return nil, fmt.Errorf("tar: cannot canonicalize path: %v", err)
-@@ -1111,8 +1116,12 @@
+@@ -1157,8 +1162,12 @@
  			hdr, err := tar.FileInfoHeader(srcSt, "")
  			if err != nil {
  				return err

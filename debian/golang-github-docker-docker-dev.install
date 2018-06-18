@@ -1,16 +1,19 @@
+## CLI:
 .gopath/src/github.com/docker/cli/cli/config              usr/share/gocode/src/github.com/docker/cli/cli/
 .gopath/src/github.com/docker/cli/opts                    usr/share/gocode/src/github.com/docker/cli/
-.gopath/src/github.com/docker/cli/internal/test/testutil  usr/share/gocode/src/github.com/docker/cli/internal/test/
 
-## compatibility with older Docker
+
+## Legacy / compatibility with older Docker:
 .gopath/src/github.com/docker/cli/cli/config/*      usr/share/gocode/src/github.com/docker/docker/cliconfig/
 #.gopath/src/github.com/docker/cli/cli/config/*      usr/share/gocode/src/github.com/docker/docker/cli/config/
 
-engine/dockerversion                                usr/share/gocode/src/github.com/docker/docker/
 
+## Engine
+engine/dockerversion                                usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/api            usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/cli            usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/client         usr/share/gocode/src/github.com/docker/docker/
+.gopath/src/github.com/docker/docker/errdefs        usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/opts           usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/pkg            usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/reference      usr/share/gocode/src/github.com/docker/docker/

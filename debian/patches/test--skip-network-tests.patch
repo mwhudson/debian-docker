@@ -5,8 +5,8 @@ Description: disable failing test due to dependency on network.
 
 --- a/cli/cli/command/image/push_test.go
 +++ b/cli/cli/command/image/push_test.go
-@@ -13,8 +13,9 @@
- 	"github.com/stretchr/testify/assert"
+@@ -12,8 +12,9 @@
+ 	"github.com/pkg/errors"
  )
  
  func TestNewPushCommandErrors(t *testing.T) {

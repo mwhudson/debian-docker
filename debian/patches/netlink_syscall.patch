@@ -17,7 +17,7 @@ Description: fixes FTBFS
  
  var (
  	hostMode    bool
-@@ -704,9 +705,9 @@
+@@ -706,9 +707,9 @@
  		if err != nil {
  			return
  		}
