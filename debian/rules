@@ -34,7 +34,7 @@ export KEEPBUNDLE := 1
 
 # AppArmor can be optionally used in Debian and is there by default in Ubuntu, so we need support for it compiled into our binary
 # same story with SELinux
-export DOCKER_BUILDTAGS := apparmor selinux
+export DOCKER_BUILDTAGS := apparmor seccomp selinux ambient
 
 ## prefer Go 1.7 explicitly if it's available (golang-1.7-go)
 #export PATH := /usr/lib/go-1.7/bin:$(PATH)
@@ -105,7 +105,7 @@ override_dh_auto_build-arch: $(OUR_GOPATH)/tini-static
 
 	export DH_GOPKG="github.com/containerd/containerd" ;\
         export REV="`grep $${DH_GOPKG} engine/vendor.conf | head -1 | awk '{print $$2}'`" ;\
-        dh_auto_build -v -- -tags "apparmor seccomp" \
+        dh_auto_build -v -- -tags "$(DOCKER_BUILDTAGS)" \
           -ldflags "-X $${DH_GOPKG}/version.Version=$(DOCKER_VERSION) -X $${DH_GOPKG}/version.Revision=$${REV}"
 
 	DH_GOPKG="github.com/docker/go-events"                 dh_auto_build -v
