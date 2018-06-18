@@ -7,10 +7,11 @@
 
 engine/dockerversion                                usr/share/gocode/src/github.com/docker/docker/
 
-.gopath/src/github.com/docker/docker/pkg            usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/api            usr/share/gocode/src/github.com/docker/docker/
+.gopath/src/github.com/docker/docker/cli            usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/client         usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/opts           usr/share/gocode/src/github.com/docker/docker/
+.gopath/src/github.com/docker/docker/pkg            usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/reference      usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/registry       usr/share/gocode/src/github.com/docker/docker/
 .gopath/src/github.com/docker/docker/runconfig      usr/share/gocode/src/github.com/docker/docker/
