@@ -1,3 +1,8 @@
+.gopath/src/github.com/docker/cli/opts              usr/share/gocode/src/github.com/docker/cli/
+.gopath/src/github.com/docker/cli/internal          usr/share/gocode/src/github.com/docker/cli/
+.gopath/src/github.com/docker/cli/cli/config        usr/share/gocode/src/github.com/docker/cli/cli/
+
+## compatibility
 .gopath/src/github.com/docker/cli/cli/config/*      usr/share/gocode/src/github.com/docker/docker/cliconfig/
 
 engine/dockerversion                                usr/share/gocode/src/github.com/docker/docker/
