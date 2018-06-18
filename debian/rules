@@ -47,6 +47,7 @@ BUILT_LIBC := $(shell dpkg-query -f '$${source:Package} (= $${source:Version})' 
 
 override_dh_clean:
 	dh_clean
+	$(RM) -v -r autogen bundles man/man*/
 #	-find . -type f -name '*.pb.go' -delete -printf 'removed %p\n'            ## delete generated .pb.go files
 	## Remove Files-Excluded (when built from checkout or non-DFSG tarball):
 	$(RM) -rv `perl -0nE 'say grep { $$_=q{ */}.$$_ } split(/\s+/,$$1) if m{^Files\-Excluded:\s*(.*?)(?:\n\n|^Files|^Comment:)}sm;' debian/copyright`
@@ -55,35 +56,59 @@ override_dh_clean:
 override_dh_auto_clean:
 	dh_auto_clean
 	
-	# autogen is created by hack/make.sh
-	# bundles is created by hack/make.sh
-	# dockerversion/version_autogen.go is created by hack/make.sh
-	# man/man*/ is created by man/md2man-all.sh
-	$(RM) -v -r autogen bundles dockerversion/version_autogen.go man/man*/
 
 override_dh_auto_configure:
-	mkdir -pv $(OUR_GOPATH)/src/github.com/docker/cli             && cp -r cli/*           $(OUR_GOPATH)/src/github.com/docker/cli/
-	mkdir -pv $(OUR_GOPATH)/src/github.com/docker/docker          && cp -r engine/*        $(OUR_GOPATH)/src/github.com/docker/docker/
-	mkdir -pv $(OUR_GOPATH)/src/github.com/docker/libnetwork      && cp -r libnetwork/*    $(OUR_GOPATH)/src/github.com/docker/libnetwork/
-	mkdir -pv $(OUR_GOPATH)/src/github.com/docker/swarmkit        && cp -r swarmkit/*      $(OUR_GOPATH)/src/github.com/docker/swarmkit/
-	mkdir -pv $(OUR_GOPATH)/src/github.com/docker/distribution    && cp -r distribution/*  $(OUR_GOPATH)/src/github.com/docker/distribution/
-	mkdir -pv $(OUR_GOPATH)/src/github.com/docker/go-events       && cp -r go-events/*     $(OUR_GOPATH)/src/github.com/docker/go-events/
-	mkdir -pv $(OUR_GOPATH)/src/github.com/docker/go-metrics      && cp -r go-metrics/*    $(OUR_GOPATH)/src/github.com/docker/go-metrics/
-	mkdir -pv $(OUR_GOPATH)/src/github.com/containerd/containerd  && cp -r containerd/*    $(OUR_GOPATH)/src/github.com/containerd/containerd/
-	if [ -d "vendor" ]; then cp -r vendor/*  $(OUR_GOPATH)/src/ ;fi
-#	    cp -r containerd/vendor/github.com/containerd/continuity    $(OUR_GOPATH)/src/github.com/containerd/
-#	    cp -r engine/vendor/github.com/docker/distribution          $(OUR_GOPATH)/src/github.com/docker/
-	DH_GOPKG="github.com/docker/docker0none0" dh_auto_configure     # Prepare builddirectory but throw away sourcedirectory.
-	
-#	# make sure the bits modified at build-time are properly in our GOPATH
-#	mkdir -p '$(OUR_GOPATH)/src/$(DH_GOPKG)'
-#	#   dockerversion
-#	rm -rf '$(OUR_GOPATH)/src/$(DH_GOPKG)/dockerversion'
-#	ln -sfT '$(CURDIR)/dockerversion' '$(OUR_GOPATH)/src/$(DH_GOPKG)/dockerversion'
-#	#   bundles
-#	mkdir -p bundles
-#	rm -rf '$(OUR_GOPATH)/src/$(DH_GOPKG)/bundles'
-#	cp -r '$(CURDIR)/bundles' '$(OUR_GOPATH)/src/$(DH_GOPKG)/'
+## dh_auto_configure symlinks dirs from "/usr/share/gocode/src" into
+## $(OUR_GOPATH) unless folders already exist there in which case files
+## are copied. Pre-making directories allows us to use debhelper to
+## create proper GOPATH source tree yet have certain directories writable
+## even if they are provided by already installed package.
+	mkdir -pv $(OUR_GOPATH)/src/github.com/docker/cli
+	mkdir -pv $(OUR_GOPATH)/src/github.com/docker/docker
+	mkdir -pv $(OUR_GOPATH)/src/github.com/docker/libnetwork
+	mkdir -pv $(OUR_GOPATH)/src/github.com/docker/swarmkit
+	mkdir -pv $(OUR_GOPATH)/src/github.com/docker/distribution
+	mkdir -pv $(OUR_GOPATH)/src/github.com/docker/go-events
+	mkdir -pv $(OUR_GOPATH)/src/github.com/docker/go-metrics
+	mkdir -pv $(OUR_GOPATH)/src/github.com/containerd/containerd
+
+#	## Prepare builddirectory but throw away sourcedirectory.
+	DH_GOPKG="__IGNORE__" dh_auto_configure
+
+## Each package must be removed from working tree first, in case some
+## of the packages that we are going to build are already installed.
+## This is also useful for building in unclean environment.
+##
+## This is _necessary_ to avoid merging packages that we build with
+## pre-installed packages. See #827226 for details.
+## Debhelper knows only about "main" DH_GOPKG package but we build several
+## and we have to ensure that build tree is properly prepared.
+	$(RM) -r              $(OUR_GOPATH)/src/github.com/docker/cli
+	cp -ra  cli           $(OUR_GOPATH)/src/github.com/docker/cli
+
+	$(RM) -r              $(OUR_GOPATH)/src/github.com/docker/docker
+	cp -ra  engine        $(OUR_GOPATH)/src/github.com/docker/docker
+
+	$(RM) -r              $(OUR_GOPATH)/src/github.com/docker/libnetwork
+	cp -ra  libnetwork    $(OUR_GOPATH)/src/github.com/docker/libnetwork
+
+	$(RM) -r              $(OUR_GOPATH)/src/github.com/docker/swarmkit
+	cp -ra  swarmkit      $(OUR_GOPATH)/src/github.com/docker/swarmkit
+
+	$(RM) -r              $(OUR_GOPATH)/src/github.com/docker/distribution
+	cp -ra  distribution  $(OUR_GOPATH)/src/github.com/docker/distribution
+
+	$(RM) -r              $(OUR_GOPATH)/src/github.com/docker/go-events
+	cp -ra  go-events     $(OUR_GOPATH)/src/github.com/docker/go-events
+
+	$(RM) -r              $(OUR_GOPATH)/src/github.com/docker/go-metrics
+	cp -ra  go-metrics    $(OUR_GOPATH)/src/github.com/docker/go-metrics
+
+	$(RM) -r              $(OUR_GOPATH)/src/github.com/containerd/containerd
+	cp -ra  containerd    $(OUR_GOPATH)/src/github.com/containerd/containerd
+
+#	cp -ra  containerd/vendor/github.com/containerd/continuity    $(OUR_GOPATH)/src/github.com/containerd/
+#	cp -ra  engine/vendor/github.com/docker/distribution          $(OUR_GOPATH)/src/github.com/docker/
 
 override_dh_auto_build-indep:
 	# noop
@@ -93,7 +118,7 @@ $(OUR_GOPATH)/tini-static:
 	dh_auto_build -v --buildsystem=cmake --sourcedirectory=tini
 
 override_dh_auto_build-arch: $(OUR_GOPATH)/tini-static
-	## order is important:
+## order is important:
 
 ##	## FIXME: DH_GOLANG_BUILDPKG --> DH_GOPKG
 	DH_GOLANG_BUILDPKG="github.com/docker/distribution"    dh_auto_build -v
@@ -128,8 +153,6 @@ override_dh_auto_test:
         dh_auto_test -v --max-parallel=4 -- -short
 
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
-	.gopath/bin/containerd -version
-
 	## Test engine:
 #	cd '$(OUR_GOPATH)/src/$(DH_GOPKG)' \
 #        && TESTFLAGS='-test.short' ./hack/make.sh test-unit
@@ -139,6 +162,8 @@ ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	## Test CLI:
 	cd $(OUR_GOPATH)/src/github.com/docker/cli \
         && DISABLE_WARN_OUTSIDE_CONTAINER=1 $(MAKE) test-unit
+
+	.gopath/bin/containerd -version
 endif
 
 override_dh_install:
@@ -146,7 +171,8 @@ override_dh_install:
 	dh_install -XLICENSE
 
 override_dh_auto_install:
-	# skip dh_auto_install to stop dh_golang trying to copy bits for /usr/share/gocode (we use dh_install/dh-exec for that)
+	## skip dh_auto_install to stop dh_golang trying to copy bits
+	## for /usr/share/gocode (we use dh_install/dh-exec for that)
 
 override_dh_installinit:
 	dh_installinit -v --name=docker
