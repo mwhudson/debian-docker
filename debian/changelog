@@ -1,3 +1,14 @@
+docker.io (17.12.1+dfsg-3) experimental; urgency=medium
+
+  * Removed versioning from -dev Breaks/Replaces: libnetwork-dev
+    (Closes: #901694).
+  * Build with consistent tags "apparmor seccomp selinux ambient"
+    (Closes: #901743).
+    Thanks, Laurent Bigonville.
+  * New patch to fix FTBFS on mips* architectures.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Mon, 18 Jun 2018 12:05:10 +1000
+
 docker.io (17.12.1+dfsg-2) experimental; urgency=medium
 
   * New patch to disable TestGetRootUIDGID, failing in sbuild.
