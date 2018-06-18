@@ -1,2 +1,2 @@
 ## Files-Excluded leftovers:
-source-contains-empty-directory
+source-contains-empty-directory */vendor/*
