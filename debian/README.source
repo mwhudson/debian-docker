@@ -1,3 +1,19 @@
+## "stable" versus "edge" releases
+
+As per [1]:
+
+  * Stable gives you reliable updates every quarter.
+  * Edge gives you new features every month.
+
+This package should only ever ship "stable" Community Edition (CE)
+releases.
+
+See [2] for details.
+
+[1]: https://docs.docker.com/install/
+[2]: https://docs.docker.com/release-notes/docker-ce/
+
+
 ## Incompetent upstream release process
 
 Upstream is notorious for incredibly sloppy versioning. Docker components
