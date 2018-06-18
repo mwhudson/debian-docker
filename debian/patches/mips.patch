@@ -1,0 +1,22 @@
+Last-Update: 2018-03-18
+Forwarded: not-needed
+Author: Dmitry Smirnov <onlyjob@debian.org>
+Bug-Upstream: https://github.com/moby/moby/issues/28058
+Description: fix FTBFS on mips
+~~~~
+github.com/docker/docker/pkg/system/stat_linux.go:13:7: cannot use s.Rdev (type uint32) as type uint64 in field value
+~~~~
+
+--- a/engine/pkg/system/stat_linux.go
++++ b/engine/pkg/system/stat_linux.go
+@@ -7,9 +7,9 @@
+ 	return &StatT{size: s.Size,
+ 		mode: s.Mode,
+ 		uid:  s.Uid,
+ 		gid:  s.Gid,
+-		rdev: s.Rdev,
++		rdev: uint64(s.Rdev),
+ 		mtim: s.Mtim}, nil
+ }
+ 
+ // FromStatT converts a syscall.Stat_t type to a system.Stat_t type

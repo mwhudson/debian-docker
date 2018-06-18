@@ -20,6 +20,8 @@ import_archive-tar.patch
 libnetwork_proto.patch
 #~listeners-activation.patch
 
+mips.patch
+
 netlink_syscall.patch
 nuke-no-prompt.patch
 
