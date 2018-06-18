@@ -11,9 +11,9 @@
 
 ## switch packages from docker-runc-dev to opencontainers-runc-dev
 
-  * cadvisor
-  * gitlab-ci-multi-runner
-  * kubernetes
+  * cadvisor [committed]
+  * gitlab-ci-multi-runner [WIP]
+  * kubernetes [committed]
 
 
 ## request removal of
