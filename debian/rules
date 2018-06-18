@@ -14,20 +14,20 @@ export DH_GOLANG_GO_GENERATE := 1
 export DH_GOLANG_INSTALL_ALL := 1
 export DH_GOLANG_INSTALL_EXTRA := testdata/
 export DH_GOLANG_EXCLUDES := \
-	integration-cli \
-	vendor
+    integration-cli \
+    vendor
 
 # temporary build path (see http://golang.org/doc/code.html#GOPATH)
 OUR_GOPATH := $(CURDIR)/.gopath
 export GOPATH := $(OUR_GOPATH)
 
 export DOCKER_VERSION := $(shell cat VERSION)
-$(warn DOCKER_VERSION=$(DOCKER_VERSION))
+$(info DOCKER_VERSION=$(DOCKER_VERSION))
 export DOCKER_GITCOMMIT := $(shell ./debian/helpers/gitcommit.sh $(DOCKER_VERSION))
 ifndef DOCKER_GITCOMMIT
   $(error Missing DOCKER_GITCOMMIT - see debian/upstream-version-gitcommits)
 endif
-$(warn DOCKER_GITCOMMIT=$(DOCKER_GITCOMMIT))
+$(info DOCKER_GITCOMMIT=$(DOCKER_GITCOMMIT))
 
 export BUILDTIME := $(shell dpkg-parsechangelog -SDate)
 
