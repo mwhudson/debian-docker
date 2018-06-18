@@ -22,10 +22,12 @@ OUR_GOPATH := $(CURDIR)/.gopath
 export GOPATH := $(OUR_GOPATH)
 
 export DOCKER_VERSION := $(shell cat VERSION)
+$(warn DOCKER_VERSION=$(DOCKER_VERSION))
 export DOCKER_GITCOMMIT := $(shell ./debian/helpers/gitcommit.sh $(DOCKER_VERSION))
 ifndef DOCKER_GITCOMMIT
   $(error Missing DOCKER_GITCOMMIT - see debian/upstream-version-gitcommits)
 endif
+$(warn DOCKER_GITCOMMIT=$(DOCKER_GITCOMMIT))
 
 export BUILDTIME := $(shell dpkg-parsechangelog -SDate)
 
@@ -113,7 +115,7 @@ override_dh_auto_build-arch: $(OUR_GOPATH)/tini-static
 	
 ##	build ("cd" first to ensure we build from within GOPATH)
 	cd '$(OUR_GOPATH)/src/github.com/docker/docker' \
-        && ./hack/make.sh dynbinary
+        && VERSION=$(DOCKER_VERSION) ./hack/make.sh dynbinary
 	
 	cd '$(OUR_GOPATH)/src/github.com/docker/cli' \
         && DISABLE_WARN_OUTSIDE_CONTAINER=1 LDFLAGS='' \

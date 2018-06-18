@@ -1,8 +1,7 @@
 #!/usr/bin/dh-exec
 
 .gopath/src/github.com/docker/cli/build/*  /usr/bin/
-.gopath/src/github.com/docker/docker/bundles/dynbinary-daemon/dockerd-dev => usr/sbin/dockerd
-#dockerd-${DOCKER_VERSION}
+.gopath/src/github.com/docker/docker/bundles/dynbinary-daemon/dockerd-${DOCKER_VERSION} => usr/sbin/dockerd
 
 engine/contrib/*-integration                  usr/share/docker.io/contrib/
 engine/contrib/check-config.sh                usr/share/docker.io/contrib/
