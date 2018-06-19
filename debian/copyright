@@ -286,12 +286,9 @@ License: BSD-3-Clause~Google
 
 Files:
     */vendor/github.com/gotestyourself/gotestyourself/*
-Copyright: N/A
+Copyright: 2018 gotest.tools authors
 License: Apache-2.0
-Comment: The upstream distribution does not contain an explicit statement of
- copyright ownership. Pursuant to the Berne Convention for the Protection of
- Literary and Artistic Works, it is assumed that all content is copyright by
- its respective authors unless otherwise stated.
+Comment: https://github.com/gotestyourself/gotest.tools/issues/100
 
 Files:
     */vendor/github.com/gregjones/httpcache/*
