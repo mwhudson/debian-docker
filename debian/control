@@ -9,7 +9,6 @@ Uploaders: Tim Potter <tpot@hpe.com>
 Build-Depends: debhelper (>= 11~), dh-exec, dh-golang (>= 1.14~),
                bash-completion,
                ca-certificates,
-               cmake,
                git,
                golang-go (>= 2:1.6~),
                go-md2man (>= 1.0.3~),
@@ -145,6 +144,7 @@ Package: docker.io
 Architecture: linux-any
 Depends: adduser,
          runc (>= 1.0.0~),
+         tini,
          iptables,
          lsb-base,
          ${misc:Depends},

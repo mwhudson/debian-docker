@@ -11,8 +11,6 @@ engine/contrib/nuke-graph-directory.sh        usr/share/docker.io/contrib/
 
 cli/contrib/completion/zsh/_docker         usr/share/zsh/vendor-completions/
 
-.gopath/tini-static => usr/bin/docker-init
-
 
 ## libnetwork
 .gopath/bin/proxy =>   usr/sbin/docker-proxy

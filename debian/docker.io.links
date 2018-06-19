@@ -1,1 +1,2 @@
-/usr/sbin/runc  /usr/sbin/docker-runc
+/usr/sbin/runc          /usr/sbin/docker-runc
+/usr/bin/tini-static    /usr/bin/docker-init

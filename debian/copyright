@@ -181,11 +181,6 @@ Comment:
  No explicit copyright statement; assuming upstream copyright.
 
 Files:
-    tini/*
-Copyright: 2015 Thomas Orozco <thomas@orozco.fr>
-License: Expat
-
-Files:
     */vendor/github.com/theupdateframework/notary/tuf/*
 Copyright:
     2015      Docker, Inc.

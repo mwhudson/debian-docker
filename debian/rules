@@ -113,11 +113,7 @@ override_dh_auto_configure:
 override_dh_auto_build-indep:
 	# noop
 
-$(OUR_GOPATH)/tini-static:
-	dh_auto_configure -v --buildsystem=cmake --sourcedirectory=tini
-	dh_auto_build -v --buildsystem=cmake --sourcedirectory=tini
-
-override_dh_auto_build-arch: $(OUR_GOPATH)/tini-static
+override_dh_auto_build-arch:
 ## order is important:
 
 ##	## FIXME: DH_GOLANG_BUILDPKG --> DH_GOPKG
