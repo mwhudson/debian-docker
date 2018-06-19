@@ -309,7 +309,6 @@ Files:
     */vendor/github.com/ishidawataru/sctp/*
 Copyright: N/A
 License: Apache-2.0
-Comment:
 Comment: The upstream distribution does not contain an explicit statement of
  copyright ownership. Pursuant to the Berne Convention for the Protection of
  Literary and Artistic Works, it is assumed that all content is copyright by
