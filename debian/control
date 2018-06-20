@@ -73,9 +73,9 @@ Build-Depends: debhelper (>= 11~), dh-exec, dh-golang (>= 1.14~),
     golang-github-graylog2-go-gelf-dev,
     golang-github-grpc-ecosystem-go-grpc-prometheus-dev,
     golang-github-hashicorp-go-msgpack-dev,
-    golang-github-hashicorp-memberlist-dev,
+    golang-github-hashicorp-memberlist-dev (>= 0.1.0~),
     golang-github-hashicorp-serf-dev,
-    golang-github-imdario-mergo-dev,
+    golang-github-imdario-mergo-dev (>= 0.3.3~),
     golang-github-json-iterator-go-dev,
     golang-github-kr-pty-dev,
     golang-github-mattn-go-shellwords-dev,
@@ -220,7 +220,7 @@ Depends: ${misc:Depends}
     ,golang-github-deckarep-golang-set-dev
     ,golang-github-docker-go-events-dev
     ,golang-github-gogo-protobuf-dev
-    ,golang-github-hashicorp-memberlist-dev
+    ,golang-github-hashicorp-memberlist-dev (>= 0.1.0~)
     ,golang-github-hashicorp-serf-dev
     ,golang-github-vishvananda-netlink-dev (>= 1.0.0~)
     ,golang-github-vishvananda-netns-dev
