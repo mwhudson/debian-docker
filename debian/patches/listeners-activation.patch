@@ -3,8 +3,8 @@ Forwarded: not-needed
 Author: Dmitry Smirnov <onlyjob@debian.org>
 Description: fixes FTBFS with golang-github-coreos-go-systemd-dev 17
 
---- a/pkg/listeners/listeners_unix.go
-+++ b/pkg/listeners/listeners_unix.go
+--- a/engine/pkg/listeners/listeners_unix.go
++++ b/engine/pkg/listeners/listeners_unix.go
 @@ -56,11 +56,11 @@
  		listeners []net.Listener
  	)

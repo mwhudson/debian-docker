@@ -1,0 +1,5 @@
+## Files-Excluded leftovers:
+source-contains-empty-directory */vendor/*
+
+## Acknowledged:
+dh-exec-subst-unknown-variable debian/docker.io.install DOCKER_VERSION

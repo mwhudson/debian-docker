@@ -16,12 +16,12 @@ Signed-off-by: Sebastiaan van Stijn <github@gone.nl>
 Upstream-commit: a422774e593b33bd287d9890544ad9e09b380d8c
 Component: engine
 ---
- components/pkg/tarsum/tarsum.go      | 22 ++++++++++++++--------
- components/pkg/tarsum/tarsum_test.go | 16 ++++++++--------
+ components/engine/pkg/tarsum/tarsum.go      | 22 ++++++++++++++--------
+ components/engine/pkg/tarsum/tarsum_test.go | 16 ++++++++--------
  2 files changed, 22 insertions(+), 16 deletions(-)
 
---- a/pkg/tarsum/tarsum.go
-+++ b/pkg/tarsum/tarsum.go
+--- a/engine/pkg/tarsum/tarsum.go
++++ b/engine/pkg/tarsum/tarsum.go
 @@ -159,8 +159,13 @@
  func (sth simpleTHash) Hash() hash.Hash { return sth.h() }
  
@@ -49,7 +49,7 @@ Component: engine
  			if err != nil {
  				if err == io.EOF {
  					if err := ts.tarW.Close(); err != nil {
-@@ -231,31 +240,28 @@
+@@ -231,31 +240,27 @@
  					if err := ts.writer.Close(); err != nil {
  						return 0, err
  					}
@@ -60,7 +60,7 @@ Component: engine
 -				return n, err
 +				return 0, err
  			}
- 			ts.currentFile = path.Clean(currentHeader.Name)
+ 			ts.currentFile = path.Join(".", path.Join("/", currentHeader.Name))
  			if err := ts.encodeHeader(currentHeader); err != nil {
  				return 0, err
  			}
@@ -71,7 +71,6 @@ Component: engine
 -				return 0, err
 -			}
 -			ts.tarW.Flush()
-+
  			if _, err := io.Copy(ts.writer, ts.bufTar); err != nil {
  				return 0, err
  			}
@@ -85,7 +84,7 @@ Component: engine
  
  	// Filling the hash buffer
  	if _, err = ts.h.Write(buf2[:n]); err != nil {
-@@ -265,9 +271,8 @@
+@@ -265,9 +270,8 @@
  	// Filling the tar writer
  	if _, err = ts.tarW.Write(buf2[:n]); err != nil {
  		return 0, err
@@ -95,9 +94,9 @@ Component: engine
  	// Filling the output writer
  	if _, err = io.Copy(ts.writer, ts.bufTar); err != nil {
  		return 0, err
---- a/pkg/tarsum/tarsum_test.go
-+++ b/pkg/tarsum/tarsum_test.go
-@@ -65,21 +65,21 @@
+--- a/engine/pkg/tarsum/tarsum_test.go
++++ b/engine/pkg/tarsum/tarsum_test.go
+@@ -68,21 +68,21 @@
  		tarsum:  "tarsum+sha256:8bf12d7e67c51ee2e8306cba569398b1b9f419969521a12ffb9d8875e8836738"},
  	{
  		// this tar has two files with the same path
@@ -123,7 +122,7 @@ Component: engine
  		options: &sizedOptions{1, 1024 * 1024, false, false}, // a 1mb file (in memory)
  		tarsum:  "tarsum+md5:0d7529ec7a8360155b48134b8e599f53",
  		hash:    md5THash,
-@@ -442,9 +442,9 @@
+@@ -435,9 +435,9 @@
  			},
  			[]byte(""),
  		},
@@ -134,7 +133,7 @@ Component: engine
  			&tar.Header{
  				Name:     "another.txt",
  				Uid:      1000,
-@@ -458,9 +458,9 @@
+@@ -451,9 +451,9 @@
  			},
  			[]byte("test"),
  		},
@@ -145,7 +144,7 @@ Component: engine
  			&tar.Header{
  				Name:     "xattrs.txt",
  				Uid:      1000,
-@@ -476,9 +476,9 @@
+@@ -469,9 +469,9 @@
  			},
  			[]byte("test"),
  		},
@@ -156,7 +155,7 @@ Component: engine
  			&tar.Header{
  				Name:     "xattrs.txt",
  				Uid:      1000,
-@@ -494,9 +494,9 @@
+@@ -487,9 +487,9 @@
  			},
  			[]byte("test"),
  		},

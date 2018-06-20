@@ -1,12 +1,22 @@
 ## Useless non-doc files:
-docs/.gitignore
-docs/Dockerfile
-docs/Makefile
-docs/touch-up.sh
+engine/docs/.gitignore
+engine/docs/Dockerfile
+engine/docs/Makefile
+engine/docs/touch-up.sh
+
+## generated:
+engine/dockerversion/version_autogen_unix.go
+engine/dockerversion/version_autogen.go
 
 ## Tests that cause issues: (and are difficult to patch instead of removing)
 daemon/graphdriver/devmapper/*_test.go
 cmd/docker/daemon_none_test.go
 
-## generated:
-dockerversion/version_autogen_unix.go
+## Privileged tests:
+cli/cli/command/image/build_linux_test.go
+engine/builder/remotecontext/tarsum_test.go
+engine/daemon/graphdriver/devmapper/devmapper_test.go
+engine/daemon/graphdriver/quota/projectquota_test.go
+engine/daemon/graphdriver/vfs/vfs_test.go
+engine/pkg/chrootarchive/archive_test.go
+engine/plugin/manager_linux_test.go

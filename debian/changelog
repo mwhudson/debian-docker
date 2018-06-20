@@ -1,3 +1,57 @@
+docker.io (18.03.1+dfsg-1) experimental; urgency=medium
+
+  * New upstream release [April 2018].
+  * rules:
+    + properly pass daemon version.
+    + re-work override_dh_auto_configure with important fixes.
+  * New patch to disable unreliable TestAdapterReadLogs.
+  * Use packaged "tini", don't build it.
+    Thanks, Arnaud Rebillout.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Tue, 19 Jun 2018 13:43:57 +1000
+
+docker.io (17.12.1+dfsg-4) experimental; urgency=medium
+
+  * golang-github-docker-docker-dev:
+    + install only selected "libnetwork" components.
+    + install missing "docker/cli" components.
+    + install "docker/docker/cli".
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Mon, 18 Jun 2018 19:32:51 +1000
+
+docker.io (17.12.1+dfsg-3) experimental; urgency=medium
+
+  * Removed versioning from -dev Breaks/Replaces: libnetwork-dev
+    (Closes: #901694).
+  * Build with consistent tags "apparmor seccomp selinux ambient"
+    (Closes: #901743).
+    Thanks, Laurent Bigonville.
+  * New patch to fix FTBFS on mips* architectures.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Mon, 18 Jun 2018 12:05:10 +1000
+
+docker.io (17.12.1+dfsg-2) experimental; urgency=medium
+
+  * New patch to disable TestGetRootUIDGID, failing in sbuild.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Sat, 16 Jun 2018 21:31:51 +1000
+
+docker.io (17.12.1+dfsg-1) experimental; urgency=medium
+
+  * Team upload.
+  * New upstream release [February 2018] (Closes: #850753).
+  * Restart on upgrade, like most daemons (Closes: #792327).
+    Docker's upgrade tip from 17.12.0 release notes:
+      "You must stop all containers and plugins BEFORE upgrading".
+  * New multi-upstream-tarball (MUT) layout, building all docker components
+    (containerd, libnetwork, swarmkit) at once;
+    incorporated binaries of docker-containerd and libnetwork.
+  * docker-dev to provide libnetwork-dev (a part of Docker).
+  * New patches to build on go-1.10; build with latest Go compiler.
+  * Declared myself as Maintainer.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Sat, 16 Jun 2018 20:05:48 +1000
+
 docker.io (1.13.1~ds3-4) unstable; urgency=medium
 
   * Build with go-1.7 as later versions cause [archive,tarsum] failures

@@ -1,0 +1,169 @@
+## "stable" versus "edge" releases
+
+As per [1]:
+
+  * Stable gives you reliable updates every quarter.
+  * Edge gives you new features every month.
+
+This package should only ever ship "stable" Community Edition (CE)
+releases.
+
+See [2] for details.
+
+Unfortunately version number semantics do not allow to deduce whether
+release is "stable" or "edge"...
+
+[1]: https://docs.docker.com/install/
+[2]: https://docs.docker.com/release-notes/docker-ce/
+
+
+## Incompetent upstream release process
+
+Upstream is notorious for incredibly sloppy versioning. Docker components
+are inconsistently versioned; don't depend on same version of common
+libraries and different revisions of dependency libraries are privately
+vendored. Basically upstream couldn't care less about consistent, semantic
+versioning and re-usable components. Shameful abomination of good software
+development practices... :(
+
+**An overview of the various docker repositories**
+
+Some repositories used to release on a regular basis, then stopped:
+
+  * https://github.com/moby/moby          : last release on Jun 28, 2017
+  * https://github.com/docker/distribution: last release on Jul 21, 2017
+  * https://github.com/docker/libnetwork  : last release on May 8, 2016
+
+This seem to be due to the split between Moby and Docker, although it is highly
+undocumented. For the Moby repository, you have to dig up this kind of thread:
+"https://github.com/moby/moby/issues/33951#issuecomment-312995683"
+
+Some repositories never really had any releases:
+
+  * https://github.com/docker/cli
+  * https://github.com/docker/go-events
+  * https://github.com/docker/swarmkit
+
+**The docker-ce super repository**
+
+docker-ce is the super repository from where Docker Community Edition is
+produced, and this is where things get messy.
+
+Basically this is where the code from the docker engine (github.com/moby/moby)
+docker client (github.com/docker/cli) is pulled together. But how? Looking at
+the git history, we can see cherry-picked commits, merge requests, standalone
+commits, and probably other things... In the end, when a docker-ce version is
+released, it doesn't seem to correspond to a particular commit of moby/moby or
+docker/cli.
+
+At some point I thought we should ignore docker-ce, and instead package
+moby/moby and docker/cli separately. But because of the workflow described
+above, I now think it's a very bad idea. We have no idea of which version of
+moby/moby and docker/cli work together (no semantic versions), and we can't
+really find this information from a tag in docker-ce.
+
+So we'd better package docker-ce instead.
+
+**Docker-ce releases**
+
+Upstream tags releases in "github.com/docker/docker-ce" and we have to ship
+matching bundle of Docker engine, and Docker CLI from that repository.
+
+Docker-ce releases monthly, with a 2 or 3 release candidates before the
+final release. Other than quarterly "stable" releases there doesn't seem to
+be any long-term releases. The fact that there are release candidates
+probably indicates that bugs are reported, test suites are run, and things
+are fixed between various rc (hopefully).
+
+On top of that Docker depends on very particular commits of
+
+  * github.com/containerd/containerd
+  * github.com/docker/libnetwork
+  * github.com/docker/swarmkit
+
+None of the above repositories have relevant tags.
+
+**Docker code base is spread among several name spaces.**
+
+We've made a mistake trying to treat it as several reusable components.
+
+Upstream abuse of versioning practices is a shameful and incompetent
+disgrace. Docker people, if you are reading this I hope you feel sorry.
+I, Dmitry Smirnov <onlyjob@debian.org>, find it difficult to politely
+express how much I despise your release process.
+
+
+## Circular dependencies
+
+Let me explain practical problem with dependencies. Docker and Libnetwork
+both depend on each other and on "sirupsen/logrus". When in the 2018 the
+latter exhibited minor/trivial problem I could not upload neither Docker
+nor Libnetwork because each FTBFS in the "other" dependency. That's why
+starting with 17.12.1 libnetwork has been incorporated into "docker.io".
+
+
+## Docker package vendoring policy
+
+As highlighted above, it is unsustainable and impractical to package
+individual Docker "components". Many libraries of Docker name space are
+only ever used by Docker and depend on "github.com/docker/docker" which
+makes them part of Docker code base.
+
+Combined with upstream resistance to good versioning practices, we have to
+ship Docker bundle producing (only) reusable package from multi upstream
+tarball (MUT) source package.
+
+Some vendored microlibraries, unless semantically versioned, are not
+worth to be introduced as standalone source package.
+
+Therefore "docker.io" source package will ship all essential Docker
+dependencies to avoid circular dependencies. Main criteria for inclusion of
+a dependency library into "docker.io" source package is dependency on
+"github.com/docker/docker". Additional criteria is assessment whether
+Docker dependency is reusable (e.g. semantically versioned and used by
+other packages). Age of tags is to be considered as Docker team stopped
+tagging most of their dependencies in favour of vendoring them by some
+random commit.
+
+
+## Bundled versus external libraries
+
+### runc
+
+We should make an effort to use "runc" package which no longer depends on
+Docker since 1.0.0~rc5 (no circular/mutual dependency). runc upstream is
+tagging releases so it satisfies non-bundling criteria mentioned above.
+
+In 2017 all reverse build-deps of runc-dev were broken when Balint Reczey
+<rbalint@ubuntu.com> forked "runc" source package as "docker-runc"
+versioned to match Docker expectations.
+New package "golang-github-opencontainers-docker-runc-dev" had explicit
+Conflits with "golang-github-opencontainers-runc-dev" effectively hijacking
+runc because all packages depending on runc-dev also depend on docker-dev
+(which depends on docker-runc-dev) hence runc-dev could not be installed
+together with docker-runc-dev. Maintainer of reverse runc-dev build-deps
+was very unhappy...
+
+Let me stress it again: Docker should not hijack runc's name space
+"github.com/opencontainers/runc". Docker's fork of the latter have its
+own name space: "github.com/docker/runc".
+
+In the unfortunate situation if we ever have to use bundled runc in Docker,
+we should NOT provide docker-runc-dev package ever again (or at least avoid
+Conflicts with runc-dev at all costs). I suggest testing runc package for
+run-time compatibility with Docker. That works well with Docker 17.12.1.
+
+Do not be mislead by particular (random) RUNC_COMMIT that Docker expects
+(e.g. `docker info`, "engine/vendor.conf") - we can/should not comply with
+upstream's systematic abuse of versioning.
+
+Perhaps expected commits are not to be trusted at all: for instance in
+17.12.1, CONTAINERD_COMMIT in "engine/hack/dockerfile/binaries-commits"
+does not match any of containerd commits in "engine/vendor.conf".
+
+
+## Notable upstream bugs
+
+ https://github.com/moby/moby/issues/37272
+ https://github.com/docker/distribution/issues/2623
+ https://github.com/docker/distribution/issues/2609

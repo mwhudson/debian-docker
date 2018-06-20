@@ -2,66 +2,319 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Docker
 Upstream-Contact: Docker, Inc. <support@docker.com>
 Source: https://github.com/docker/docker
+Files-Excluded:
+    components/packaging
+    vendor/github.com/howeyc/gopass/terminal_solaris.go
+    vendor/github.com/howeyc/gopass/OPENSOLARIS.LICENSE
+    vendor/k8s.io/kubernetes/third_party/protobuf
+    vendor/archive/tar
+    vendor/cloud.google.com
+    vendor/github.com/agl
+    vendor/github.com/armon
+    vendor/github.com/armon
+    vendor/github.com/aws
+    vendor/github.com/Azure
+    vendor/github.com/beorn7
+    vendor/github.com/blang/semver
+    vendor/github.com/boltdb
+    vendor/github.com/bshuster-repo/logrus-logstash-hook
+    vendor/github.com/bsphere
+    vendor/github.com/bugsnag/bugsnag-go
+    vendor/github.com/bugsnag/panicwrap
+    vendor/github.com/BurntSushi
+    vendor/github.com/cloudflare
+    vendor/github.com/codegangsta
+    vendor/github.com/containerd/btrfs
+    vendor/github.com/containerd/cgroups
+    vendor/github.com/containerd/console
+    vendor/github.com/containerd/containerd
+  ~~vendor/github.com/containerd/continuity
+    vendor/github.com/containerd/fifo
+    vendor/github.com/containerd/go-runc
+    vendor/github.com/containerd/typeurl
+    vendor/github.com/containernetworking/cni
+    vendor/github.com/coreos
+    vendor/github.com/cpuguy83
+    vendor/github.com/davecgh
+    vendor/github.com/davecgh/go-spew
+    vendor/github.com/deckarep
+    vendor/github.com/denverdino/aliyungo
+    vendor/github.com/dgrijalva/jwt-go
+    vendor/github.com/dmcgowan/go-tar
+    vendor/github.com/docker/distribution
+    vendor/github.com/docker/docker
+    vendor/github.com/docker/docker-credential-helpers
+    vendor/github.com/docker/go
+    vendor/github.com/docker/goamz
+    vendor/github.com/docker/go-connections
+    vendor/github.com/docker/go-events
+    vendor/github.com/docker/go-metrics
+    vendor/github.com/docker/go-units
+    vendor/github.com/docker/libkv
+    vendor/github.com/docker/libnetwork
+    vendor/github.com/docker/libtrust
+    vendor/github.com/docker/spdystream
+    vendor/github.com/docker/swarmkit
+    vendor/github.com/dustin
+    vendor/github.com/emicklei
+    vendor/github.com/fluent
+    vendor/github.com/flynn-archive
+    vendor/github.com/fsnotify
+    vendor/github.com/garyburd/redigo
+    vendor/github.com/ghodss/yaml
+    vendor/github.com/go-check
+    vendor/github.com/go-openapi
+    vendor/github.com/godbus
+    vendor/github.com/gogo
+    vendor/github.com/go-ini
+  ~~vendor/github.com/golang/gddo
+    vendor/github.com/golang/glog
+    vendor/github.com/golang/protobuf
+    vendor/github.com/google
+    vendor/github.com/googleapis/gax-go
+    vendor/github.com/googleapis/gnostic
+    vendor/github.com/gorilla
+  ~~vendor/github.com/gotestyourself/gotestyourself
+   ~vendor/github.com/Graylog2/go-gelf
+    vendor/github.com/grpc-ecosystem/go-grpc-prometheus
+    vendor/github.com/grpc-ecosystem/grpc-gateway
+    vendor/github.com/hashicorp
+    vendor/github.com/imdario
+    vendor/github.com/inconshreveable
+    vendor/github.com/jmespath
+    vendor/github.com/json-iterator
+    vendor/github.com/juju/ratelimit
+   ~vendor/k8s.io
+    vendor/github.com/kr
+    vendor/github.com/mailru/easyjson
+    vendor/github.com/mattn
+    vendor/github.com/matttproud
+    vendor/github.com/matttproud/golang_protobuf_extensions
+    vendor/github.com/Microsoft
+    vendor/github.com/miekg
+    vendor/github.com/mistifyio
+    vendor/github.com/mitchellh
+   ~vendor/github.com/moby
+    vendor/github.com/mrunalp/fileutils
+    vendor/github.com/ncw/swift
+  ~~vendor/github.com/Nvveen/Gotty
+    vendor/github.com/opencontainers/go-digest
+    vendor/github.com/opencontainers/image-spec
+    vendor/github.com/opencontainers/runc
+    vendor/github.com/opencontainers/runtime-spec
+    vendor/github.com/opencontainers/selinux/go-selinux
+    vendor/github.com/pborman
+    vendor/github.com/peterbourgon
+    vendor/github.com/philhofer
+    vendor/github.com/pivotal-golang
+    vendor/github.com/pkg/errors
+    vendor/github.com/pmezard
+    vendor/github.com/pmezard/go-difflib
+    vendor/github.com/prometheus
+    vendor/github.com/RackSec
+    vendor/github.com/rcrowley/go-metrics
+    vendor/github.com/russross
+    vendor/github.com/samuel
+    vendor/github.com/sean-
+    vendor/github.com/seccomp
+    vendor/github.com/shurcooL
+    vendor/github.com/sirupsen
+    vendor/github.com/spf13
+    vendor/github.com/stevvooe
+    vendor/github.com/stevvooe/ttrpc
+    vendor/github.com/stretchr
+    vendor/github.com/syndtr
+    vendor/github.com/tchap
+    vendor/github.com/theupdateframework/notary
+    vendor/github.com/tinylib
+   ~vendor/github.com/tonistiigi/fsutil
+    vendor/github.com/ugorji
+    vendor/github.com/urfave/cli
+    vendor/github.com/vbatts
+    vendor/github.com/vdemeester
+    vendor/github.com/vishvananda/netlink
+    vendor/github.com/vishvananda/netns
+    vendor/github.com/xeipuuv
+    vendor/github.com/xenolf/lego
+    vendor/golang.org/x
+    vendor/google.golang.org
+    vendor/gopkg.in
+    vendor/rsc.io/letsencrypt
+  ~~vendor/vbom.ml/util/sortorder
+Files-Excluded-containerd:
+    */docs
+Files-Excluded-distribution:
+    */docs
+Comment:
+ Thanks to custom repack script, Files-Excluded section is applied to all
+ components otherwise individual Files-Excluded-{component} sections would
+ contain too much duplication.
 
 Files: *
-Copyright: 2012-2016 Docker, Inc. <support@docker.com>
+Copyright: 2012-2018 Docker, Inc. <support@docker.com>
 License: Apache-2.0
 
-Files: debian/*
-Copyright: 2013-2014 Daniel Mizyrycki <daniel@docker.com>
-           2013-2014 Paul Tagliamonte <paultag@debian.org>
-           2012-2014 Michael Stapelberg <stapelberg@debian.org>
-           2013-2016 Tianon Gravi <tianon@debian.org>
-           2013-2014 Johan Euphrosine <proppy@google.com>
-           2014      Prach Pongpanich <prachpub@gmail.com>
-           2016      Tim Potter <timothy.potter@hpe.com>
-           2016-2018 Dmitry Smirnov <onlyjob@debian.org>
-           2016      Michael Hudson-Doyle <michael.hudson@ubuntu.com>
-License: Apache-2.0
-
-Files: contrib/init/openrc/docker.initd
+Files: engine/contrib/init/openrc/docker.initd
 Copyright: 1999-2013 Gentoo Foundation
 License: GPL-2
 
-Files: contrib/syntax/vim/*
+Files: engine/contrib/syntax/vim/*
 Copyright: 2013 Honza Pokorny
 License: BSD-2-clause
 
 Files:
-    pkg/symlink/fs.go
+    engine/pkg/symlink/fs.go
 Copyright: 2014-2016 The Docker & Go Authors
 License: BSD-3-clause-Google
 
-Files: contrib/completion/zsh/*
+Files: cli/contrib/completion/zsh/*
 Copyright: 2013-2014 Felix Riedel
 License: BSD-3-clause-Generic
 
-Files: contrib/selinux/docker-engine-selinux/*
+Files:
+    engine/contrib/selinux-fedora-24/docker-engine-selinux/*
+    engine/contrib/selinux-oraclelinux-7/docker-engine-selinux/*
 Copyright: 2012-2016 Docker Inc.
 License: GPL-2
 Comment:
  No explicit copyright statement; assuming upstream copyright.
 
-Files: vendor/github.com/docker/notary/tuf/*
-Copyright: 2015      Docker, Inc.
-           2014-2015 Prime Directive, Inc.
-License: BSD-3-clause-Prime
+Files:
+    */vendor/vbom.ml/util/*
+Copyright:
+    2015 Frits van Bommel
+License: Expat
 
 Files:
-    vendor/github.com/docker/swarmkit/*
+    */vendor/github.com/Graylog2/go-gelf/*
 Copyright:
-    2016-2018 Docker Inc.
+    2012 SocialCode
+License: Expat
+
+Files:
+    */vendor/github.com/tonistiigi/fsutil/*
+Copyright: 2017 Tõnis Tiigi <tonistiigi@gmail.com>
+License: Expat
+
+Files:
+    */vendor/github.com/phayes/permbits/*
+Copyright: 2016 Patrick D Hayes
+License: Expat
+
+Files:
+    */vendor/github.com/Nvveen/Gotty/*
+Copyright: 2012  Neal van Veen <nealvanveen@gmail.com>
+License: BSD-2-clause~freebsd
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+  1. Redistributions of source code must retain the above copyright notice, this
+     list of conditions and the following disclaimer.
+  2. Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
+     and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ .
+ The views and conclusions contained in the software and documentation are those
+ of the authors and should not be interpreted as representing official policies,
+ either expressed or implied, of the FreeBSD Project.
+
+Files:
+    */vendor/github.com/yvasiyarov/*
+Copyright:
+    2012 Richard Crowley
+    2013 Yuriy Vasiyarov
+License: BSD-2-clause
+
+Files:
+    */vendor/github.com/bugsnag/osext/osext*
+    */vendor/github.com/containerd/continuity/sysx/asm.s
+Copyright:
+    2008      Google Inc.
+    2014-2016 The Go Authors
+License: BSD-3-clause-Google
+
+Files:
+    */vendor/github.com/howeyc/gopass/*
+Copyright: 2012 Chris Howey
+License: ISC
+ Permission to use, copy, modify, and/or distribute this software for
+ any purpose with or without fee is hereby granted, provided that the
+ above copyright notice and this permission notice appear in all
+ copies.
+ ․
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+Files:
+    */vendor/github.com/PuerkitoBio/purell/*
+Copyright: 2012 Martin Angers
+License: BSD-3-Clause
+
+Files:
+    */vendor/github.com/PuerkitoBio/urlesc/*
+Copyright: 2009-2012 The Go Authors
+License: BSD-3-Clause~Google
+
+Files:
+    */vendor/github.com/gotestyourself/gotestyourself/*
+Copyright: 2018 gotest.tools authors
+License: Apache-2.0
+Comment: https://github.com/gotestyourself/gotest.tools/issues/100
+
+Files:
+    */vendor/github.com/gregjones/httpcache/*
+Copyright: 2012 Greg Jones <greg.jones@gmail.com>
+License: Expat
+
+Files:
+    */vendor/k8s.io/*
+Copyright: 2014-2017 The Kubernetes Authors.
 License: Apache-2.0
 
 Files:
-    vendor/github.com/docker/swarmkit/api/duration/duration.proto
-    vendor/github.com/docker/swarmkit/api/timestamp/timestamp.proto
-    vendor/github.com/docker/swarmkit/protobuf/ptypes/duration.go
-    vendor/github.com/docker/swarmkit/protobuf/ptypes/timestamp.go
+    */vendor/k8s.io/apimachinery/third_party/forked/golang/reflect/deep_equal.go
+Copyright: 2009 The Go Authors
+License: BSD-3-Clause~Google
+
+Files:
+    */vendor/github.com/ishidawataru/sctp/*
+Copyright: N/A
+License: Apache-2.0
+Comment: The upstream distribution does not contain an explicit statement of
+ copyright ownership. Pursuant to the Berne Convention for the Protection of
+ Literary and Artistic Works, it is assumed that all content is copyright by
+ its respective authors unless otherwise stated.
+ .
+ https://github.com/ishidawataru/sctp/issues/23
+
+Files: debian/*
 Copyright:
-    2008 Google Inc.
-    2016 The Go Authors
-License: BSD-3-clause-Google
+    2016-2018 Dmitry Smirnov <onlyjob@debian.org>
+    2013-2014 Daniel Mizyrycki <daniel@docker.com>
+    2013-2014 Paul Tagliamonte <paultag@debian.org>
+    2012-2014 Michael Stapelberg <stapelberg@debian.org>
+    2013-2016 Tianon Gravi <tianon@debian.org>
+    2013-2014 Johan Euphrosine <proppy@google.com>
+    2014      Prach Pongpanich <prachpub@gmail.com>
+    2016      Tim Potter <timothy.potter@hpe.com>
+    2016      Michael Hudson-Doyle <michael.hudson@ubuntu.com>
+License: Apache-2.0
 
 License: Apache-2.0
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -167,21 +420,67 @@ License: BSD-3-clause-Generic
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-License: BSD-3-clause-Prime
+License: Expat
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ .
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+
+License: BSD-3-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ ․
+  1. Redistributions of source code must retain the above copyright notice,
+     this list of conditions and the following disclaimer.
+ ․
+  2. Redistributions in binary form must reproduce the above copyright
+     notice, this list of conditions and the following disclaimer in the
+     documentation and/or other materials provided with the distribution.
+ ․
+  3. Neither the name of the copyright holder nor the names of its
+     contributors may be used to endorse or promote products derived from
+     this software without specific prior written permission.
+ ․
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+
+License: BSD-3-Clause~Google
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are
  met:
- .
+ ․
    * Redistributions of source code must retain the above copyright
      notice, this list of conditions and the following disclaimer.
    * Redistributions in binary form must reproduce the above
      copyright notice, this list of conditions and the following disclaimer
      in the documentation and/or other materials provided with the
      distribution.
-   * Neither the name of Prime Directive, Inc. nor the names of its
+   * Neither the name of Google Inc. nor the names of its
      contributors may be used to endorse or promote products derived from
      this software without specific prior written permission.
- .
+ ․
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR

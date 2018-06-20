@@ -1,0 +1,32 @@
+
+## testing
+
+ Better testing of components
+
+
+## full rebuild of components
+
+ Currently re-build is partial.
+
+
+## switch packages from docker-runc-dev to opencontainers-runc-dev
+
+  * cadvisor [committed]
+  * gitlab-ci-multi-runner [WIP]
+  * kubernetes [committed]
+
+
+## request removal of
+
+  * docker-runc
+  * docker-containerd
+  * golang-libnetwork
+  * swarmkit
+
+
+## "pass" annoyance
+
+GPG-agent is asking for password for every invocation of `docker` command.
+
+  * https://github.com/docker/cli/issues/699
+  * https://github.com/docker/docker-credential-helpers/issues/96

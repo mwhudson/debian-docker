@@ -5,15 +5,11 @@ Subject: [PATCH] docker.service: don't limit tasks
 Origin: https://github.com/docker/docker/pull/21491
 
 Signed-off-by: Pierre Carrier <pierre@meteor.com>
----
- contrib/init/systemd/docker.service | 3 +++
- 1 file changed, 3 insertions(+)
 
-Index: docker.io/contrib/init/systemd/docker.service
-===================================================================
---- docker.io.orig/contrib/init/systemd/docker.service
-+++ docker.io/contrib/init/systemd/docker.service
-@@ -19,7 +19,7 @@ LimitNPROC=infinity
+--- a/engine/contrib/init/systemd/docker.service
++++ b/engine/contrib/init/systemd/docker.service
+@@ -18,9 +18,9 @@
+ LimitNPROC=infinity
  LimitCORE=infinity
  # Uncomment TasksMax if your systemd version supports it.
  # Only systemd 226 and above support this version.
@@ -22,3 +18,4 @@ Index: docker.io/contrib/init/systemd/docker.service
  TimeoutStartSec=0
  # set delegate yes so that systemd does not reset the cgroups of docker containers
  Delegate=yes
+ # kill only the docker process, not all processes in the cgroup

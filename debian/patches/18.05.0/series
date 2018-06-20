@@ -6,13 +6,8 @@ change-system-unit-env-file.patch
 # See also https://github.com/docker/docker/pull/7220#issuecomment-50076589
 
 cli-fix-manpages-build-script.patch
-cli-notary.patch
 
 dockerd-binary-location.patch
-engine-test-noinstall.patch
-
-go-1.10_archiver-format.patch
-go-1.10_tarsum.patch
 
 go-metrics_prometheus-fix_Observer.patch
 
@@ -31,7 +26,6 @@ nuke-no-prompt.patch
 
 test--disable-TestChangesWithChangesGH13590.patch
 test--fix-test-errors.patch
-test--skip-TestAdapterReadLogs.patch
 test--skip-TestGetRootUIDGID.patch
 test--skip-network-tests.patch
 test--skip-privileged-unit-tests.patch
