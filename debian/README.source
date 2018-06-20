@@ -10,6 +10,9 @@ releases.
 
 See [2] for details.
 
+Unfortunately version number semantics do not allow to deduce whether
+release is "stable" or "edge"...
+
 [1]: https://docs.docker.com/install/
 [2]: https://docs.docker.com/release-notes/docker-ce/
 
@@ -66,10 +69,11 @@ So we'd better package docker-ce instead.
 Upstream tags releases in "github.com/docker/docker-ce" and we have to ship
 matching bundle of Docker engine, and Docker CLI from that repository.
 
-Docker-ce releases monthly, with a 2 or 3 release candidates before the final
-release. There doesn't seem to be any long-term release, it looks more like a
-monthly tag. The fact that there are release candidates makes me hope that bugs
-are reported, test suites are run, and things are fixed between various rc.
+Docker-ce releases monthly, with a 2 or 3 release candidates before the
+final release. Other than quarterly "stable" releases there doesn't seem to
+be any long-term releases. The fact that there are release candidates
+probably indicates that bugs are reported, test suites are run, and things
+are fixed between various rc (hopefully).
 
 On top of that Docker depends on very particular commits of
 
