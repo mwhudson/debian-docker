@@ -1,6 +1,11 @@
 #!/bin/bash
 : <<=cut
 
+=head1 DESCRIPTION
+
+This script is called by uscan(1) as per "debian/watch" to download Multi
+Upstream Tarball (MUT) components.
+
 =head1 COPYRIGHT
 
 Copyright: 2018 Dmitry Smirnov <onlyjob@member.fsf.org>
