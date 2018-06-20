@@ -6,7 +6,6 @@ docker.io (18.03.1+dfsg1-2) unstable; urgency=medium
   * Removed "golang-github-hashicorp-consul-dev" from Build-Depends.
 
   [ Arnaud Rebillout ]
-  * Install systemd socket through dh_installsystemd.
   * Fix bash completion install.
   * d/control: depend on golang-any.
   * d/README.source: re-write part about docker-ce upstream workflow.
