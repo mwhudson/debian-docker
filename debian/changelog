@@ -1,3 +1,19 @@
+docker.io (18.03.1+dfsg1-2) unstable; urgency=medium
+
+  [ Dmitry Smirnov ]
+  * Upload to unstable.
+  * Un-bundle "googleapis-gnostic-dev" and "docker-notary-dev".
+  * Removed "golang-github-hashicorp-consul-dev" from Build-Depends.
+
+  [ Arnaud Rebillout ]
+  * Install systemd socket through dh_installsystemd.
+  * Fix bash completion install.
+  * d/control: depend on golang-any.
+  * d/README.source: re-write part about docker-ce upstream workflow.
+  * Set required version for imdario-mergo and hashicorp-memberlist.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Wed, 20 Jun 2018 23:40:47 +1000
+
 docker.io (18.03.1+dfsg-1) experimental; urgency=medium
 
   * New upstream release [April 2018].
