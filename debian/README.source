@@ -149,5 +149,6 @@ does not match any of containerd commits in "engine/vendor.conf".
 
 ## Notable upstream bugs
 
- https://github.com/docker/distribution/issues/2609
  https://github.com/moby/moby/issues/37272
+ https://github.com/docker/distribution/issues/2623
+ https://github.com/docker/distribution/issues/2609
