@@ -53,10 +53,6 @@ override_dh_clean:
 	$(RM) -rv `perl -0nE 'say grep { $$_=q{ */}.$$_ } split(/\s+/,$$1) if m{^Files\-Excluded:\s*(.*?)(?:\n\n|^Files|^Comment:)}sm;' debian/copyright`
 	-find */vendor -mindepth 1 -type d -empty -delete -printf 'removed %p\n'
 
-override_dh_auto_clean:
-	dh_auto_clean
-	
-
 override_dh_auto_configure:
 ## dh_auto_configure symlinks dirs from "/usr/share/gocode/src" into
 ## $(OUR_GOPATH) unless folders already exist there in which case files
