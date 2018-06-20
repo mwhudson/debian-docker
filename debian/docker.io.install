@@ -5,7 +5,6 @@
 
 engine/contrib/*-integration                  usr/share/docker.io/contrib/
 engine/contrib/check-config.sh                usr/share/docker.io/contrib/
-engine/contrib/init/systemd/docker.socket     lib/systemd/system/
 engine/contrib/mk*                            usr/share/docker.io/contrib/
 engine/contrib/nuke-graph-directory.sh        usr/share/docker.io/contrib/
 
