@@ -1,7 +1,13 @@
 #!/bin/bash
 : <<=cut
 
+=head1 DESCRIPTION
+
 Unpack MUT components.
+
+=head1 SYNOPSIS
+
+ ./debian/unpack-components.sh
 
 =cut
 
