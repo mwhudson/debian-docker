@@ -1,3 +1,28 @@
+docker.io (18.03.1+dfsg1-3) unstable; urgency=medium
+
+  [ Dmitry Smirnov ]
+  * Replaced upstream SysV init file with an improved one.
+      * --remove-pidfile on stop (Closes: #764921)
+      * don't fail when removed (Closes: #841282)
+      * fixed exit status:
+          + don't fail to stop when already stopped
+          + don't fail to start when already started
+      * removed useless check_init()
+    Thanks, Sam Morris.
+  * postinst: create "docker" group when needed (Closes: #821078).
+  * README.source: added comment to clarify upstream version numbering.
+    Thanks, Tianon Gravi
+  * README.source: added link describing upstream life cycle & release
+    policy. Thanks, Tianon Gravi.
+
+  [ Arnaud Rebillout ]
+  * Added myself to uploaders.
+  * Bumped compat to 11 to allow installling the systemd socket
+    file automatically with dh_installsystemd.
+  * Installed systemd socket through dh_installsystemd.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Thu, 21 Jun 2018 21:27:32 +1000
+
 docker.io (18.03.1+dfsg1-2) unstable; urgency=medium
 
   [ Dmitry Smirnov ]
