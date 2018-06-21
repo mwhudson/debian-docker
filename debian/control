@@ -162,7 +162,9 @@ Suggests: aufs-tools,
           btrfs-progs,
           debootstrap,
           docker-doc,
+          e2fsprogs,
           rinse,
+          xfsprogs,
           zfs-fuse | zfsutils
 Built-Using: ${libc:Built-Using}, ${misc:Built-Using}
 Description: Linux container runtime
