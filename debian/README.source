@@ -10,8 +10,15 @@ releases.
 
 See [2] for details.
 
-Unfortunately version number semantics do not allow to deduce whether
-release is "stable" or "edge"...
+Docker version numbers are derived from date, e.g. `date +%g.%m`.
+
+If the month is evenly divisible by 3, it's "stable" (and supported for 4
+months), so 17.03, 17.06, 17.09, 17.12, etc (and they have one month of
+support overlap).
+
+The every-month releases are "edge" (17.04, 17.05, etc), are only supported
+for the duration of their release month, and stable releases are considered
+edge releases as well (but have longer support cycles as noted above).
 
 [1]: https://docs.docker.com/install/
 [2]: https://docs.docker.com/release-notes/docker-ce/
