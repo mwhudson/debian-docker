@@ -2,7 +2,8 @@ Source: docker.io
 Section: admin
 Priority: optional
 Maintainer: Dmitry Smirnov <onlyjob@debian.org>
-Uploaders: Tim Potter <tpot@hpe.com>
+Uploaders: Arnaud Rebillout <arnaud.rebillout@collabora.com>
+          ,Tim Potter <tpot@hpe.com>
           ,Tianon Gravi <tianon@debian.org>
           ,Paul Tagliamonte <paultag@debian.org>
 #Build-Conflicts: golang-github-docker-docker-dev
