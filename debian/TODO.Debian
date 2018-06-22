@@ -16,10 +16,10 @@
 
 ## request removal of
 
-  * docker-runc
-  * docker-containerd
-  * golang-libnetwork
-  * swarmkit
+  * docker-runc [#902059]
+  * docker-containerd [#902087]
+  * golang-libnetwork [#902058]
+  * swarmkit [#902086]
 
 
 ## "pass" annoyance
