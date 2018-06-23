@@ -139,11 +139,14 @@ override_dh_auto_build-arch:
 #	# compile man pages
 #	./man/md2man-all.sh -q
 
-override_dh_auto_test:
-###     [[[ DO NOT DISABLE TESTS ]]]  [[[ DO *NOT* DISABLE TESTS ]]]
+override_dh_auto_test-indep:
 	DH_GOLANG_EXCLUDES="integration-cli integration test/integration" \
         dh_auto_test -v --max-parallel=4 -- -short
 
+override_dh_auto_test-arch:
+###     [[[ DO NOT DISABLE TESTS ]]]  [[[ DO *NOT* DISABLE TESTS ]]]
+	DH_GOLANG_EXCLUDES="integration-cli integration test/integration" \
+        dh_auto_test -v --max-parallel=4 -- -short
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	## Test engine:
 #	cd '$(OUR_GOPATH)/src/$(DH_GOPKG)' \
