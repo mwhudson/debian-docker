@@ -57,7 +57,7 @@ dpkg-control:
 
 ## Build
 
-source-only:
+unstable-binary-indep:
   stage: build
   tags:
     - pbuilder
@@ -68,7 +68,7 @@ source-only:
     - *pre_build
   script:
     - *origtargz
-    - ${PDEBUILD_CMD} --architecture amd64 -- --binary-indep --basetgz /var/cache/pbuilder/testing_unstable-amd64.tgz
+    - ${PDEBUILD_CMD} --debbuildopts "" --architecture amd64 -- --binary-indep --basetgz /var/cache/pbuilder/testing_unstable-amd64.tgz
 
 testing_unstable-amd64:
   stage: build
