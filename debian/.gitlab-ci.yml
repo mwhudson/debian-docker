@@ -5,9 +5,8 @@ variables:
   LINTIAN_CMD: eval lintian --no-tag-display-limit --info --display-info --color=auto --display-experimental --pedantic "${PB_RESULT}"/*.changes
   AUTOPKGTEST_CMD: autopkgtest --user debci --output-dir "${PB_RESULT}"/debci "${PB_RESULT}"/*.changes -- lxc --sudo adt-sid-amd64
 # PDEBUILD_CMD: eval pdebuild --use-pdebuild-internal --pbuildersatisfydepends "/usr/lib/pbuilder/pbuilder-satisfydepends-classic" --buildresult "${PB_RESULT}" --debbuildopts -sa
-  PDEBUILD_CMD: eval pdebuild --use-pdebuild-internal --buildresult "${PB_RESULT}"
+  PDEBUILD_CMD: eval pdebuild --use-pdebuild-internal --buildresult "${PB_RESULT}" --debbuildopts -sa
   EATMYDATA: "yes"
-  DEBBUILDOPTS: "-sa"
   AUTOCLEANAPTCACHE: "yes"
   USE_PDEBUILD_INTERNAL: "yes"
 
@@ -69,7 +68,7 @@ source-only:
     - *pre_build
   script:
     - *origtargz
-    - ${PDEBUILD_CMD} --debbuildopts "-A" --architecture amd64 -- --basetgz /var/cache/pbuilder/testing_unstable-amd64.tgz
+    - ${PDEBUILD_CMD} --architecture amd64 -- --binary-indep --basetgz /var/cache/pbuilder/testing_unstable-amd64.tgz
 
 testing_unstable-amd64:
   stage: build
