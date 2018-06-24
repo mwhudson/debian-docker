@@ -1,3 +1,11 @@
+docker.io (18.03.1+dfsg1-4) unstable; urgency=medium
+
+  * Suggests += "e2fsprogs, xfsprogs" (Closes: #887222).
+  * rules: fixed test failure on binary-indep build (Closes: #902206).
+    Thanks, Santiago Vila.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Sun, 24 Jun 2018 23:22:51 +1000
+
 docker.io (18.03.1+dfsg1-3) unstable; urgency=medium
 
   [ Dmitry Smirnov ]
