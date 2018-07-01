@@ -152,6 +152,7 @@ Recommends: ${apparmor:Recommends}
     ,ca-certificates
     ,cgroupfs-mount
     ,git
+    ,needrestart (>= 3.1~)
     ,xz-utils
 Replaces: docker (<< 1.5~) ,docker-containerd ,docker-runc ,golang-libnetwork
 Breaks: docker (<< 1.5~) ,docker-containerd ,docker-runc ,golang-libnetwork
