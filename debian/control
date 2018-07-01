@@ -46,7 +46,7 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-denverdino-aliyungo-dev
     ,golang-github-dgrijalva-jwt-go-dev
     ,golang-github-dgrijalva-jwt-go-v3-dev
-    ,golang-github-docker-docker-credential-helpers-dev (>= 0.6.0~)
+    ,golang-github-docker-docker-credential-helpers-dev (>= 0.6.1~)
     ,golang-github-docker-goamz-dev
     ,golang-github-docker-go-connections-dev (>= 0.3.0~)
     ,golang-github-docker-go-dev
@@ -197,7 +197,7 @@ Architecture: all
 Depends: ${misc:Depends}
     ,golang-github-azure-go-ansiterm-dev
     ,golang-github-docker-distribution-dev
-    ,golang-github-docker-docker-credential-helpers-dev
+    ,golang-github-docker-docker-credential-helpers-dev (>= 0.6.1~)
     ,golang-github-docker-go-connections-dev
     ,golang-github-docker-go-units-dev
     ,golang-github-docker-libkv-dev

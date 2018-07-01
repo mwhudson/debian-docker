@@ -1,0 +1,42 @@
+Bug-Upstream: https://github.com/docker/cli/issues/699
+Bug-Debian: https://bugs.debian.org/902258
+Origin: upstream, https://github.com/docker/cli/pull/1160/commits/056015c3d8be264d54a1f826d68234572b261b89
+From 056015c3d8be264d54a1f826d68234572b261b89 Mon Sep 17 00:00:00 2001
+From: Euan Kemp <euank@euank.com>
+Date: Fri, 29 Jun 2018 02:18:04 -0700
+Subject: [PATCH] config/credentials: don't run 'pass' to detect it
+
+'CheckInitialized' in the credential-helper library actually invokes
+`pass`, which isn't desirable (see #699).
+
+This moves the check to be simpler, and then pass will only be invoked
+when it's needed (such as for `docker login` or when pulling from a
+private registry).
+
+This logic could also reasonably live in the credential-helper library,
+but it's simple enough it seems fine in either location.
+
+Signed-off-by: Euan Kemp <euank@euank.com>
+---
+ cli/config/credentials/default_store_linux.go      |   5 +-
+ .../docker-credential-helpers/pass/pass_linux.go   | 207 ---------------------
+ 2 files changed, 2 insertions(+), 210 deletions(-)
+ delete mode 100644 vendor/github.com/docker/docker-credential-helpers/pass/pass_linux.go
+
+--- a/cli/cli/config/credentials/default_store_linux.go
++++ b/cli/cli/config/credentials/default_store_linux.go
+@@ -1,12 +1,12 @@
+ package credentials
+ 
+ import (
+-	"github.com/docker/docker-credential-helpers/pass"
++	"os/exec"
+ )
+ 
+ func defaultCredentialsStore() string {
+-	if pass.PassInitialized {
++	if _, err := exec.LookPath("pass"); err == nil {
+ 		return "pass"
+ 	}
+ 
+ 	return "secretservice"
