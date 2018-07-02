@@ -1,3 +1,17 @@
+docker.io (18.03.1+dfsg1-5) unstable; urgency=medium
+
+  * New upstream patch to prevent needless calls to `pass` (Closes: #902258).
+  * Do not automatically restart daemon on upgrade (Closes: #786724).
+  * Recommends += "needrestart".
+
+    "needrestart" prompts to restart "docker" daemon on upgrade. This way
+    running containers won't be killed on upgrade until user choses to
+    restart Docker.
+    Not restarting Docker on upgrade may break CLI when it disagrees with
+    running daemon regarding API version.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Mon, 02 Jul 2018 14:56:46 +1000
+
 docker.io (18.03.1+dfsg1-4) unstable; urgency=medium
 
   * Suggests += "e2fsprogs, xfsprogs" (Closes: #887222).
