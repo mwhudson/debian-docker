@@ -76,7 +76,7 @@ for I in docker/go-events docker/go-metrics docker/libnetwork docker/distributio
         exit 1
     fi
     component=${I##*/}
-    FN="$( readlink -f ../docker.io_${version}.orig-${component}.tar.gz )"
+    FN="$( readlink -f ../${DEB_SOURCE}_${version}.orig-${component}.tar.gz )"
 
     if [ ! -s "${FN}" ]; then
         wget --tries=3 --timeout=40 --read-timeout=40 --continue \
@@ -92,7 +92,7 @@ for I in docker/go-events docker/go-metrics docker/libnetwork docker/distributio
         ( cd "${component_dir}" && tar -caf "${FN}" . )
         rm -rf "${component_dir}"
 
-        mk-origtargz --package docker.io --version ${version} \
+        mk-origtargz --package ${DEB_SOURCE} --version ${version} \
           --rename --repack --compression xz --directory .. \
           --component ${component} --copyright-file debian/copyright \
         "${FN}"
