@@ -24,7 +24,6 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
 #   ,golang-glog-dev
 ##
     ,golang-dbus-dev (>= 4.1.0~)
-    ,golang-ed25519-dev
     ,golang-etcd-server-dev
     ,golang-github-armon-go-metrics-dev
     ,golang-github-aws-aws-sdk-go-dev
