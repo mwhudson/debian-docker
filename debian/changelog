@@ -1,3 +1,10 @@
+docker.io (18.03.1+dfsg1-6) unstable; urgency=medium
+
+  * Removed obsolete "golang-ed25519-dev" from Build-Depends.
+  * Standards-Version: 4.1.5.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Wed, 11 Jul 2018 20:15:24 +1000
+
 docker.io (18.03.1+dfsg1-5) unstable; urgency=medium
 
   * New upstream patch to prevent needless calls to `pass` (Closes: #902258).
