@@ -6,7 +6,7 @@ Description: disable failing test due to dependency on network.
 --- a/cli/cli/command/image/push_test.go
 +++ b/cli/cli/command/image/push_test.go
 @@ -12,8 +12,9 @@
- 	"github.com/pkg/errors"
+ 	"gotest.tools/assert"
  )
  
  func TestNewPushCommandErrors(t *testing.T) {

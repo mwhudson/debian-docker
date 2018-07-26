@@ -5,7 +5,7 @@ Description: disable test, does not appear to work under pbuilder.
 
 --- a/engine/pkg/archive/changes_test.go
 +++ b/engine/pkg/archive/changes_test.go
-@@ -176,8 +176,9 @@
+@@ -177,8 +177,9 @@
  }
  
  // See https://github.com/docker/docker/pull/13590

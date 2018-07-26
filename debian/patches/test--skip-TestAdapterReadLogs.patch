@@ -26,13 +26,13 @@ Description: disable unreliable test, failing randomly on multiple architectures
 
 --- a/engine/daemon/logger/adapter_test.go
 +++ b/engine/daemon/logger/adapter_test.go
-@@ -108,8 +108,9 @@
+@@ -137,8 +137,9 @@
  	return a
  }
  
  func TestAdapterReadLogs(t *testing.T) {
 +t.Skip("DM - skipping dodgy test")
- 	l := newMockPluginAdapter(t)
+ 	plugin := newMockLoggingPlugin()
+ 	l := newMockPluginAdapter(plugin)
  
  	testMsg := []Message{
- 		{Line: []byte("Are you the keymaker?"), Timestamp: time.Now()},

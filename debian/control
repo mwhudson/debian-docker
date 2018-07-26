@@ -15,26 +15,19 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-any (>= 2:1.10~)
     ,go-md2man (>= 1.0.3~)
     ,gogoprotobuf, libprotobuf-dev
-##18.05.0 deps:
-#   ,golang-github-appc-cni-dev
-#   ,golang-github-blang-semver-dev
-#   ,golang-github-docker-spdystream-dev
-#   ,golang-github-grpc-ecosystem-grpc-gateway-dev
-#   ,golang-github-juju-ratelimit-dev
-#   ,golang-github-mailru-easyjson-dev
-#   ,golang-glog-dev
-##
     ,golang-dbus-dev (>= 4.1.0~)
     ,golang-etcd-server-dev
+#   ,golang-github-appc-cni-dev (>= 0.6.0~)
     ,golang-github-armon-go-metrics-dev
     ,golang-github-aws-aws-sdk-go-dev
     ,golang-github-azure-go-ansiterm-dev
+    ,golang-github-blang-semver-dev
     ,golang-github-boltdb-bolt-dev
     ,golang-github-bshuster-repo-logrus-logstash-hook-dev
     ,golang-github-bsphere-le-go-dev
     ,golang-github-burntsushi-toml-dev
     ,golang-github-cloudflare-cfssl-dev
-    ,golang-github-containerd-btrfs-dev
+    ,golang-github-containerd-btrfs-dev (>= 0.0~git20180306~)
     ,golang-github-containerd-cgroups-dev
     ,golang-github-containerd-console-dev
     ,golang-github-containerd-fifo-dev
@@ -54,6 +47,7 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-docker-libkv-dev
     ,golang-github-docker-libtrust-dev
     ,golang-github-docker-notary-dev (>= 0.6.1~) | golang-github-theupdateframework-notary-dev
+    ,golang-github-docker-spdystream-dev
     ,golang-github-emicklei-go-restful-dev
     ,golang-github-emicklei-go-restful-swagger12-dev
     ,golang-github-fluent-fluent-logger-golang-dev (>= 1.3.0~)
@@ -65,6 +59,7 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-googleapis-gnostic-dev
     ,golang-github-google-go-cmp-dev (>= 0.2.0~)
     ,golang-github-google-gofuzz-dev
+    ,golang-github-google-shlex-dev
     ,golang-github-go-openapi-jsonpointer-dev
     ,golang-github-go-openapi-jsonreference-dev
     ,golang-github-go-openapi-spec-dev
@@ -73,16 +68,21 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-gorilla-mux-dev
     ,golang-github-graylog2-go-gelf-dev
     ,golang-github-grpc-ecosystem-go-grpc-prometheus-dev
+#   ,golang-github-grpc-ecosystem-grpc-gateway-dev
     ,golang-github-hashicorp-go-msgpack-dev
     ,golang-github-hashicorp-memberlist-dev (>= 0.1.0~)
     ,golang-github-hashicorp-serf-dev
     ,golang-github-imdario-mergo-dev (>= 0.3.3~)
     ,golang-github-json-iterator-go-dev
+#   ,golang-github-juju-ratelimit-dev
     ,golang-github-kr-pty-dev
+#   ,golang-github-mailru-easyjson-dev
     ,golang-github-mattn-go-shellwords-dev
     ,golang-github-mattn-go-sqlite3-dev
     ,golang-github-miekg-dns-dev
     ,golang-github-miekg-pkcs11-dev
+#   ,golang-github-modern-go-concurrent-dev
+    ,golang-github-modern-go-reflect2-dev
     ,golang-github-mrunalp-fileutils-dev
     ,golang-github-ncw-swift-dev
 #~  ,golang-github-nvveen-gotty-dev
@@ -91,6 +91,7 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-opencontainers-runc-dev (>= 1.0.0~)
     ,golang-github-opencontainers-selinux-dev
     ,golang-github-opencontainers-specs-dev (>= 1.0.1~)
+#   ,golang-github-opentracing-opentracing-go-dev
     ,golang-github-pborman-uuid-dev
     ,golang-github-peterbourgon-diskv-dev (>= 2.0.1~)
     ,golang-github-philhofer-fwd-dev
@@ -116,6 +117,7 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-vishvananda-netlink-dev (>= 1.0.0~)
     ,golang-github-vishvananda-netns-dev (>= 0.0~git20170707~)
     ,golang-github-xenolf-lego-dev
+#   ,golang-glog-dev
     ,golang-gocapability-dev
     ,golang-golang-x-net-dev
     ,golang-golang-x-oauth2-google-dev | golang-golang-x-oauth2-dev

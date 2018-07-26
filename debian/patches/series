@@ -1,5 +1,4 @@
 21491--systemd-tasksmax.patch
-699.patch
 cgroupfs-mount-convenience-copy.patch
 
 # If upstream ever adds EnvFile, remove this patch.
@@ -7,17 +6,12 @@ change-system-unit-env-file.patch
 # See also https://github.com/docker/docker/pull/7220#issuecomment-50076589
 
 cli-fix-manpages-build-script.patch
-cli-notary.patch
 
 dockerd-binary-location.patch
 engine-test-noinstall.patch
 
-go-1.10_archiver-format.patch
-go-1.10_tarsum.patch
-
 go-metrics_prometheus-fix_Observer.patch
 
-import_archive-tar.patch
 #import_nvveen-gotty.patch
 
 libnetwork_proto.patch

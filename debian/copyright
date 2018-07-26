@@ -30,7 +30,7 @@ Files-Excluded:
     vendor/github.com/containerd/containerd
   ~~vendor/github.com/containerd/continuity
     vendor/github.com/containerd/fifo
-    vendor/github.com/containerd/go-runc
+  ~~vendor/github.com/containerd/go-runc
     vendor/github.com/containerd/typeurl
     vendor/github.com/containernetworking/cni
     vendor/github.com/coreos
@@ -65,7 +65,8 @@ Files-Excluded:
     vendor/github.com/go-check
     vendor/github.com/go-openapi
     vendor/github.com/godbus
-    vendor/github.com/gogo
+  ~~vendor/github.com/gogo/googleapis
+    vendor/github.com/gogo/protobuf
     vendor/github.com/go-ini
   ~~vendor/github.com/golang/gddo
     vendor/github.com/golang/glog
@@ -76,13 +77,14 @@ Files-Excluded:
     vendor/github.com/gorilla
   ~~vendor/github.com/gotestyourself/gotestyourself
    ~vendor/github.com/Graylog2/go-gelf
+  ~~vendor/github.com/grpc-ecosystem/grpc-opentracing
     vendor/github.com/grpc-ecosystem/go-grpc-prometheus
     vendor/github.com/grpc-ecosystem/grpc-gateway
     vendor/github.com/hashicorp
     vendor/github.com/imdario
     vendor/github.com/inconshreveable
     vendor/github.com/jmespath
-    vendor/github.com/json-iterator
+   ~vendor/github.com/json-iterator::#904103
     vendor/github.com/juju/ratelimit
    ~vendor/k8s.io
     vendor/github.com/kr
@@ -95,6 +97,8 @@ Files-Excluded:
     vendor/github.com/mistifyio
     vendor/github.com/mitchellh
    ~vendor/github.com/moby
+  vendor/github.com/modern-go/concurrent
+  vendor/github.com/modern-go/reflect2
     vendor/github.com/mrunalp/fileutils
     vendor/github.com/ncw/swift
   ~~vendor/github.com/Nvveen/Gotty
@@ -102,6 +106,7 @@ Files-Excluded:
     vendor/github.com/opencontainers/image-spec
     vendor/github.com/opencontainers/runc
     vendor/github.com/opencontainers/runtime-spec
+    vendor/github.com/opencontainers/selinux
     vendor/github.com/opencontainers/selinux/go-selinux
     vendor/github.com/pborman
     vendor/github.com/peterbourgon
@@ -178,6 +183,38 @@ Copyright: 2012-2016 Docker Inc.
 License: GPL-2
 Comment:
  No explicit copyright statement; assuming upstream copyright.
+
+Files:
+    vendor/github.com/grpc-ecosystem/grpc-opentracing/*
+FIXME
+
+Files:
+    vendor/github.com/morikuni/aec/*
+FIXME
+
+Files:
+    vendor/gotest.tools/*
+FIXME
+
+Files:
+    vendor/github.com/containernetworking/plugins/*
+FIXME
+
+Files:
+    vendor/github.com/opencontainers/runtime-tools/*
+FIXME
+
+Files:
+    vendor/go.opencensus.io/*
+FIXME
+
+Files:
+    vendor/github.com/fernet/fernet-go/*
+FIXME
+
+Files:
+    vendor/github.com/ishidawataru/sctp/*
+FIXME
 
 Files:
     */vendor/vbom.ml/util/*
@@ -284,7 +321,7 @@ License: Expat
 
 Files:
     */vendor/k8s.io/*
-Copyright: 2014-2017 The Kubernetes Authors.
+Copyright: 2014-2018 The Kubernetes Authors.
 License: Apache-2.0
 
 Files:

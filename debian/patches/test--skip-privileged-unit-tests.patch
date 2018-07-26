@@ -2,22 +2,10 @@ Description: allow skipping "privileged" tests with "-test.short"
 Author: Tianon Gravi <tianon@debian.org>
 Forwarded: no
 
---- a/engine/builder/dockerfile/evaluator_test.go
-+++ b/engine/builder/dockerfile/evaluator_test.go
-@@ -93,8 +93,9 @@
- 	return dispatchTestCases
- }
- 
- func TestDispatch(t *testing.T) {
-+t.Skip("DM - skipping privileged test")
- 	testCases := initDispatchTestCases()
- 
- 	for _, testCase := range testCases {
- 		executeTestCase(t, testCase)
 --- a/engine/builder/dockerfile/internals_test.go
 +++ b/engine/builder/dockerfile/internals_test.go
-@@ -16,8 +16,9 @@
- 	is "github.com/gotestyourself/gotestyourself/assert/cmp"
+@@ -18,8 +18,9 @@
+ 	"gotest.tools/skip"
  )
  
  func TestEmptyDockerfile(t *testing.T) {
@@ -26,7 +14,7 @@ Forwarded: no
  	defer cleanup()
  
  	createTestTempFile(t, contextDir, builder.DefaultDockerfileName, "", 0777)
-@@ -25,8 +26,9 @@
+@@ -27,8 +28,9 @@
  	readAndCheckDockerfile(t, "emptyDockerfile", contextDir, "", "the Dockerfile (Dockerfile) cannot be empty")
  }
  
@@ -36,7 +24,7 @@ Forwarded: no
  	defer cleanup()
  
  	createTestSymlink(t, contextDir, builder.DefaultDockerfileName, "/etc/passwd")
-@@ -40,8 +42,9 @@
+@@ -42,8 +44,9 @@
  	readAndCheckDockerfile(t, "symlinkDockerfile", contextDir, builder.DefaultDockerfileName, expectedError)
  }
  
@@ -46,7 +34,7 @@ Forwarded: no
  	defer cleanup()
  
  	expectedError := "Forbidden path outside the build context: ../../Dockerfile ()"
-@@ -49,8 +52,9 @@
+@@ -51,8 +54,9 @@
  	readAndCheckDockerfile(t, "DockerfileOutsideTheBuildContext", contextDir, "../../Dockerfile", expectedError)
  }
  
@@ -56,21 +44,9 @@ Forwarded: no
  	defer cleanup()
  
  	expectedError := "Cannot locate specified Dockerfile: Dockerfile"
---- a/engine/daemon/daemon_test.go
-+++ b/engine/daemon/daemon_test.go
-@@ -152,8 +152,9 @@
- 	}
- }
- 
- func TestContainerInitDNS(t *testing.T) {
-+	t.Skip("DM - skipping privileged test")
- 	tmp, err := ioutil.TempDir("", "docker-container-test-")
- 	if err != nil {
- 		t.Fatal(err)
- 	}
 --- a/engine/daemon/graphdriver/overlay2/overlay_test.go
 +++ b/engine/daemon/graphdriver/overlay2/overlay_test.go
-@@ -48,24 +48,29 @@
+@@ -36,24 +36,29 @@
  
  // This avoids creating a new driver for each test if all tests are run
  // Make sure to put new tests between TestOverlaySetup and TestOverlayTeardown
@@ -102,17 +78,17 @@ Forwarded: no
  func TestOverlayDiffApply10Files(t *testing.T) {
 --- a/engine/volume/local/local_test.go
 +++ b/engine/volume/local/local_test.go
-@@ -29,8 +29,9 @@
+@@ -30,8 +30,9 @@
  
  }
  
  func TestRemove(t *testing.T) {
 +t.Skip("DM - skipping privileged test")
- 	// TODO Windows: Investigate why this test fails on Windows under CI
- 	//               but passes locally.
- 	if runtime.GOOS == "windows" {
- 		t.Skip("Test failing on Windows CI")
-@@ -76,8 +77,9 @@
+ 	skip.If(t, runtime.GOOS == "windows", "FIXME: investigate why this test fails on CI")
+ 	rootDir, err := ioutil.TempDir("", "local-volume-test")
+ 	if err != nil {
+ 		t.Fatal(err)
+@@ -73,8 +74,9 @@
  	}
  }
  
@@ -122,7 +98,7 @@ Forwarded: no
  	if err != nil {
  		t.Fatal(err)
  	}
-@@ -108,8 +110,9 @@
+@@ -105,8 +107,9 @@
  	}
  }
  
@@ -132,26 +108,16 @@ Forwarded: no
  	if err != nil {
  		t.Fatal(err)
  	}
-@@ -180,8 +183,9 @@
+@@ -177,8 +180,9 @@
  	}
  }
  
  func TestCreateWithOpts(t *testing.T) {
 +t.Skip("DM - skipping privileged test")
- 	if runtime.GOOS == "windows" {
- 		t.Skip()
- 	}
+ 	skip.If(t, runtime.GOOS == "windows")
+ 	skip.If(t, os.Getuid() != 0, "requires mounts")
  	rootDir, err := ioutil.TempDir("", "local-volume-test")
-@@ -286,8 +290,9 @@
- 	}
- }
- 
- func TestRealodNoOpts(t *testing.T) {
-+t.Skip("DM - skipping privileged test")
- 	rootDir, err := ioutil.TempDir("", "volume-test-reload-no-opts")
  	if err != nil {
- 		t.Fatal(err)
- 	}
 --- a/engine/pkg/mount/mount_unix_test.go
 +++ b/engine/pkg/mount/mount_unix_test.go
 @@ -24,8 +24,9 @@
@@ -160,27 +126,27 @@ Forwarded: no
  
  func TestMounted(t *testing.T) {
 +t.Skip("DM - skipping privileged test")
- 	tmp := path.Join(os.TempDir(), "mount-tests")
- 	if err := os.MkdirAll(tmp, 0777); err != nil {
- 		t.Fatal(err)
+ 	if os.Getuid() != 0 {
+ 		t.Skip("root required")
  	}
-@@ -75,8 +76,9 @@
+ 
+@@ -79,8 +80,9 @@
  	}
  }
  
  func TestMountReadonly(t *testing.T) {
 +t.Skip("DM - skipping privileged test")
- 	tmp := path.Join(os.TempDir(), "mount-tests")
- 	if err := os.MkdirAll(tmp, 0777); err != nil {
- 		t.Fatal(err)
+ 	if os.Getuid() != 0 {
+ 		t.Skip("root required")
  	}
-@@ -120,8 +122,9 @@
+ 
+@@ -128,8 +130,9 @@
  	}
  }
  
  func TestGetMounts(t *testing.T) {
 +t.Skip("DM - skipping privileged test")
- 	mounts, err := GetMounts()
+ 	mounts, err := GetMounts(nil)
  	if err != nil {
  		t.Fatal(err)
  	}
@@ -192,40 +158,40 @@ Forwarded: no
  // nothing is propagated in or out
  func TestSubtreePrivate(t *testing.T) {
 +t.Skip("DM - skipping privileged test")
- 	tmp := path.Join(os.TempDir(), "mount-tests")
- 	if err := os.MkdirAll(tmp, 0777); err != nil {
- 		t.Fatal(err)
+ 	if os.Getuid() != 0 {
+ 		t.Skip("root required")
  	}
-@@ -109,8 +110,9 @@
+ 
+@@ -113,8 +114,9 @@
  
  // Testing that when a target is a shared mount,
  // then child mounts propagate to the source
  func TestSubtreeShared(t *testing.T) {
 +t.Skip("DM - skipping privileged test")
- 	tmp := path.Join(os.TempDir(), "mount-tests")
- 	if err := os.MkdirAll(tmp, 0777); err != nil {
- 		t.Fatal(err)
+ 	if os.Getuid() != 0 {
+ 		t.Skip("root required")
  	}
-@@ -177,8 +179,9 @@
+ 
+@@ -185,8 +187,9 @@
  
  // testing that mounts to a shared source show up in the slave target,
  // and that mounts into a slave target do _not_ show up in the shared source
  func TestSubtreeSharedSlave(t *testing.T) {
 +t.Skip("DM - skipping privileged test")
- 	tmp := path.Join(os.TempDir(), "mount-tests")
- 	if err := os.MkdirAll(tmp, 0777); err != nil {
- 		t.Fatal(err)
+ 	if os.Getuid() != 0 {
+ 		t.Skip("root required")
  	}
-@@ -281,8 +284,9 @@
+ 
+@@ -293,8 +296,9 @@
  	}
  }
  
  func TestSubtreeUnbindable(t *testing.T) {
 +t.Skip("DM - skipping privileged test")
- 	tmp := path.Join(os.TempDir(), "mount-tests")
- 	if err := os.MkdirAll(tmp, 0777); err != nil {
- 		t.Fatal(err)
+ 	if os.Getuid() != 0 {
+ 		t.Skip("root required")
  	}
+ 
 --- a/engine/daemon/graphdriver/overlay/overlay_test.go
 +++ b/engine/daemon/graphdriver/overlay/overlay_test.go
 @@ -18,24 +18,29 @@
@@ -260,7 +226,7 @@ Forwarded: no
  // Fails due to bug in calculating changes after apply
 --- a/engine/pkg/archive/archive_test.go
 +++ b/engine/pkg/archive/archive_test.go
-@@ -262,8 +262,9 @@
+@@ -263,8 +263,9 @@
  	}
  }
  
@@ -270,27 +236,17 @@ Forwarded: no
  	assert.NilError(t, err)
  	defer os.RemoveAll(tempFolder)
  	invalidDestFolder := filepath.Join(tempFolder, "invalidDest")
-@@ -303,8 +304,9 @@
- 	}
- }
- 
- func TestUntarPath(t *testing.T) {
-+t.Skip("DM - skipping privileged test")
- 	tmpFolder, err := ioutil.TempDir("", "docker-archive-test")
- 	assert.NilError(t, err)
- 	defer os.RemoveAll(tmpFolder)
- 	srcFile := filepath.Join(tmpFolder, "src")
-@@ -433,8 +435,9 @@
+@@ -435,8 +436,9 @@
  	}
  }
  
  func TestCopyWithTarInexistentDestWillCreateIt(t *testing.T) {
 +t.Skip("DM - skipping privileged test")
+ 	skip.If(t, os.Getuid() != 0, "skipping test that requires root")
  	tempFolder, err := ioutil.TempDir("", "docker-archive-test")
  	if err != nil {
  		t.Fatal(nil)
- 	}
-@@ -725,8 +728,9 @@
+@@ -728,8 +730,9 @@
  	}
  }
  
@@ -300,7 +256,7 @@ Forwarded: no
  	assert.NilError(t, err)
  
  	defer os.RemoveAll(origin)
-@@ -776,8 +780,9 @@
+@@ -779,8 +782,9 @@
  	}
  }
  
@@ -310,17 +266,17 @@ Forwarded: no
  	if runtime.GOOS == "windows" {
  		t.Skip("Failing on Windows")
  	}
-@@ -966,8 +971,9 @@
+@@ -969,8 +973,9 @@
  	}
  }
  
  func TestUntarHardlinkToSymlink(t *testing.T) {
 +t.Skip("DM - skipping privileged test")
  	// TODO Windows. There may be a way of running this, but turning off for now
- 	if runtime.GOOS == "windows" {
- 		t.Skip("hardlinks on Windows")
- 	}
-@@ -1197,8 +1203,9 @@
+ 	skip.If(t, runtime.GOOS == "windows", "hardlinks on Windows")
+ 	skip.If(t, os.Getuid() != 0, "skipping test that requires root")
+ 	for i, headers := range [][]*tar.Header{
+@@ -1199,8 +1204,9 @@
  	}
  }
  
@@ -330,31 +286,9 @@ Forwarded: no
  	testcases := []struct {
  		doc       string
  		filename  string
-@@ -1251,8 +1258,9 @@
- 
- // TestPrefixHeaderReadable tests that files that could be created with the
- // version of this package that was built with <=go17 are still readable.
- func TestPrefixHeaderReadable(t *testing.T) {
-+t.Skip("DM - skipping privileged test")
- 	// https://gist.github.com/stevvooe/e2a790ad4e97425896206c0816e1a882#file-out-go
- 	var testFile = []byte("\x1f\x8b\x08\x08\x44\x21\x68\x59\x00\x03\x74\x2e\x74\x61\x72\x00\x4b\xcb\xcf\x67\xa0\x35\x30\x80\x00\x86\x06\x10\x47\x01\xc1\x37\x40\x00\x54\xb6\xb1\xa1\xa9\x99\x09\x48\x25\x1d\x40\x69\x71\x49\x62\x91\x02\xe5\x76\xa1\x79\x84\x21\x91\xd6\x80\x72\xaf\x8f\x82\x51\x30\x0a\x46\x36\x00\x00\xf0\x1c\x1e\x95\x00\x06\x00\x00")
- 
- 	tmpDir, err := ioutil.TempDir("", "prefix-test")
---- a/engine/daemon/reload_test.go
-+++ b/engine/daemon/reload_test.go
-@@ -482,8 +482,9 @@
- 	}
- }
- 
- func TestDaemonReloadNetworkDiagnosticPort(t *testing.T) {
-+t.Skip("DM - skipping privileged test")
- 	daemon := &Daemon{}
- 	daemon.configStore = &config.Config{}
- 
- 	valuesSet := make(map[string]interface{})
 --- a/engine/pkg/archive/archive_linux_test.go
 +++ b/engine/pkg/archive/archive_linux_test.go
-@@ -82,8 +82,9 @@
+@@ -84,8 +84,9 @@
  	}
  }
  
@@ -364,7 +298,7 @@ Forwarded: no
  	assert.NilError(t, err)
  	defer system.Umask(oldmask)
  
-@@ -121,8 +122,9 @@
+@@ -123,8 +124,9 @@
  	checkOverlayWhiteout(t, filepath.Join(dst, "d3", "f1"))
  }
  
@@ -376,111 +310,13 @@ Forwarded: no
  
 --- a/cli/cli/command/image/build_test.go
 +++ b/cli/cli/command/image/build_test.go
-@@ -20,8 +20,9 @@
- 	"golang.org/x/net/context"
+@@ -22,8 +22,9 @@
+ 	"gotest.tools/skip"
  )
  
  func TestRunBuildDockerfileFromStdinWithCompress(t *testing.T) {
 +t.Skip("DM - skipping privileged test")
- 	dest, err := ioutil.TempDir("", "test-build-compress-dest")
- 	assert.NilError(t, err)
- 	defer os.RemoveAll(dest)
- 
-@@ -72,8 +73,9 @@
- 	assert.Check(t, is.DeepEqual([]string{dockerfileName, ".dockerignore", "foo"}, actual))
- }
- 
- func TestRunBuildDockerfileOutsideContext(t *testing.T) {
-+t.Skip("DM - skipping privileged test")
- 	dir := fs.NewDir(t, t.Name(),
- 		fs.WithFile("data", "data file"),
- 	)
- 	defer dir.Remove()
-@@ -128,8 +130,9 @@
- // to clone the remote repo.
- // TODO: test "context selection" logic directly when runBuild is refactored
- // to support testing (ex: docker/cli#294)
- func TestRunBuildFromGitHubSpecialCase(t *testing.T) {
-+t.Skip("DM - skipping privileged test")
- 	cmd := NewBuildCommand(test.NewFakeCli(nil))
- 	// Clone a small repo that exists so git doesn't prompt for credentials
- 	cmd.SetArgs([]string{"github.com/docker/for-win"})
- 	cmd.SetOutput(ioutil.Discard)
---- a/engine/daemon/daemon_unix_test.go
-+++ b/engine/daemon/daemon_unix_test.go
-@@ -274,8 +274,9 @@
- 	}
- }
- 
- func TestMigratePre17Volumes(t *testing.T) {
-+t.Skip("DM - skipping privileged test")
- 	rootDir, err := ioutil.TempDir("", "test-daemon-volumes")
- 	if err != nil {
- 		t.Fatal(err)
- 	}
---- a/engine/pkg/archive/archive_unix_test.go
-+++ b/engine/pkg/archive/archive_unix_test.go
-@@ -182,8 +182,9 @@
- 	return statT.Ino, nil
- }
- 
- func TestTarWithBlockCharFifo(t *testing.T) {
-+t.Skip("DM - skipping privileged test")
- 	origin, err := ioutil.TempDir("", "docker-test-tar-hardlink")
- 	assert.NilError(t, err)
- 
- 	defer os.RemoveAll(origin)
-@@ -222,8 +223,9 @@
- }
- 
- // TestTarUntarWithXattr is Unix as Lsetxattr is not supported on Windows
- func TestTarUntarWithXattr(t *testing.T) {
-+t.Skip("DM - skipping privileged test")
- 	origin, err := ioutil.TempDir("", "docker-test-untar-origin")
- 	assert.NilError(t, err)
- 	defer os.RemoveAll(origin)
- 	err = ioutil.WriteFile(filepath.Join(origin, "1"), []byte("hello world"), 0700)
---- a/engine/pkg/system/rm_test.go
-+++ b/engine/pkg/system/rm_test.go
-@@ -39,8 +39,9 @@
- 	}
- }
- 
- func TestEnsureRemoveAllWithMount(t *testing.T) {
-+t.Skip("DM - skipping privileged test")
- 	if runtime.GOOS == "windows" {
- 		t.Skip("mount not supported on Windows")
- 	}
- 
---- a/engine/volume/store/store_test.go
-+++ b/engine/volume/store/store_test.go
-@@ -325,8 +325,9 @@
- 	}
- }
- 
- func TestRefDerefRemove(t *testing.T) {
-+t.Skip("DM - skipping privileged test")
- 	t.Parallel()
- 
- 	driverName := "test-ref-deref-remove"
- 	s, cleanup := setupTest(t, driverName)
-@@ -344,8 +345,9 @@
- 	assert.NilError(t, err)
- }
- 
- func TestGet(t *testing.T) {
-+t.Skip("DM - skipping privileged test")
- 	t.Parallel()
- 
- 	driverName := "test-get"
- 	s, cleanup := setupTest(t, driverName)
-@@ -369,8 +371,9 @@
- 	assert.NilError(t, err)
- }
- 
- func TestGetWithRef(t *testing.T) {
-+t.Skip("DM - skipping privileged test")
- 	t.Parallel()
- 
- 	driverName := "test-get-with-ref"
- 	s, cleanup := setupTest(t, driverName)
+ 	buffer := new(bytes.Buffer)
+ 	fakeBuild := newFakeBuild()
+ 	fakeImageBuild := func(ctx context.Context, context io.Reader, options types.ImageBuildOptions) (types.ImageBuildResponse, error) {
+ 		tee := io.TeeReader(context, buffer)
