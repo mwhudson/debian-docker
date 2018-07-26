@@ -11,17 +11,15 @@
 
 ## switch packages from docker-runc-dev to opencontainers-runc-dev
 
-  * cadvisor [committed]
-  * gitlab-ci-multi-runner [WIP]
-  * kubernetes [committed]
+  * kubernetes [partially done, needs more work]
 
 
 ## request removal of
 
-  * docker-runc
-  * docker-containerd
-  * golang-libnetwork
-  * swarmkit
+  * docker-runc [#902059]
+  * docker-containerd [#902087]
+  * golang-libnetwork [#902058]
+  * swarmkit [#902086]
 
 
 ## "pass" annoyance

@@ -1,3 +1,72 @@
+docker.io (18.03.1+dfsg1-6) unstable; urgency=medium
+
+  * Removed obsolete "golang-ed25519-dev" from Build-Depends.
+  * Standards-Version: 4.1.5.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Wed, 11 Jul 2018 20:15:24 +1000
+
+docker.io (18.03.1+dfsg1-5) unstable; urgency=medium
+
+  * New upstream patch to prevent needless calls to `pass` (Closes: #902258).
+  * Do not automatically restart daemon on upgrade (Closes: #786724).
+  * Recommends += "needrestart".
+
+    "needrestart" prompts to restart "docker" daemon on upgrade. This way
+    running containers won't be killed on upgrade until user choses to
+    restart Docker.
+    Not restarting Docker on upgrade may break CLI when it disagrees with
+    running daemon regarding API version.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Mon, 02 Jul 2018 14:56:46 +1000
+
+docker.io (18.03.1+dfsg1-4) unstable; urgency=medium
+
+  * Suggests += "e2fsprogs, xfsprogs" (Closes: #887222).
+  * rules: fixed test failure on binary-indep build (Closes: #902206).
+    Thanks, Santiago Vila.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Sun, 24 Jun 2018 23:22:51 +1000
+
+docker.io (18.03.1+dfsg1-3) unstable; urgency=medium
+
+  [ Dmitry Smirnov ]
+  * Replaced upstream SysV init file with an improved one.
+      * --remove-pidfile on stop (Closes: #764921)
+      * don't fail when removed (Closes: #841282)
+      * fixed exit status:
+          + don't fail to stop when already stopped
+          + don't fail to start when already started
+      * removed useless check_init()
+    Thanks, Sam Morris.
+  * postinst: create "docker" group when needed (Closes: #821078).
+  * README.source: added comment to clarify upstream version numbering.
+    Thanks, Tianon Gravi
+  * README.source: added link describing upstream life cycle & release
+    policy. Thanks, Tianon Gravi.
+
+  [ Arnaud Rebillout ]
+  * Added myself to uploaders.
+  * Bumped compat to 11 to allow installling the systemd socket
+    file automatically with dh_installsystemd.
+  * Installed systemd socket through dh_installsystemd.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Thu, 21 Jun 2018 21:27:32 +1000
+
+docker.io (18.03.1+dfsg1-2) unstable; urgency=medium
+
+  [ Dmitry Smirnov ]
+  * Upload to unstable.
+  * Un-bundle "googleapis-gnostic-dev" and "docker-notary-dev".
+  * Removed "golang-github-hashicorp-consul-dev" from Build-Depends.
+
+  [ Arnaud Rebillout ]
+  * Fix bash completion install.
+  * d/control: depend on golang-any.
+  * d/README.source: re-write part about docker-ce upstream workflow.
+  * Set required version for imdario-mergo and hashicorp-memberlist.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Wed, 20 Jun 2018 23:40:47 +1000
+
 docker.io (18.03.1+dfsg-1) experimental; urgency=medium
 
   * New upstream release [April 2018].
