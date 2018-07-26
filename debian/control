@@ -81,6 +81,7 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-mattn-go-sqlite3-dev
     ,golang-github-miekg-dns-dev
     ,golang-github-miekg-pkcs11-dev
+    ,golang-github-mitchellh-hashstructure-dev
 #   ,golang-github-modern-go-concurrent-dev
     ,golang-github-modern-go-reflect2-dev
     ,golang-github-mrunalp-fileutils-dev
