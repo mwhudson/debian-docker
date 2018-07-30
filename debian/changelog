@@ -2,26 +2,6 @@ docker.io (18.06.0+dfsg1-1) UNRELEASED; urgency=medium
 
   * New upstream release [July 2018].
 
-  [[ FTBFS :: FIXME ]]
-
-~~~~
-# github.com/docker/docker/vendor/github.com/moby/buildkit/util/libcontainer_specconv
-vendor/github.com/moby/buildkit/util/libcontainer_specconv/example.go:25:13: undefined: user.SubID
-vendor/github.com/moby/buildkit/util/libcontainer_specconv/example.go:26:13: undefined: user.SubID
-vendor/github.com/moby/buildkit/util/libcontainer_specconv/example.go:27:13: undefined: user.IDMap
-vendor/github.com/moby/buildkit/util/libcontainer_specconv/example.go:28:13: undefined: user.IDMap
-# github.com/docker/docker/vendor/github.com/moby/buildkit/cache/contenthash
-vendor/github.com/moby/buildkit/cache/contenthash/checksum.go:437:15: root.Seek undefined (type *iradix.Node has no field or method Seek)
-vendor/github.com/moby/buildkit/cache/contenthash/checksum.go:455:16: root.Seek undefined (type *iradix.Node has no field or method Seek)
-# github.com/docker/docker/daemon/listeners
-daemon/listeners/listeners_linux.go:65:43: not enough arguments in call to activation.TLSListeners
-        have (*tls.Config)
-        want (bool, *tls.Config)
-daemon/listeners/listeners_linux.go:67:40: not enough arguments in call to activation.Listeners
-        have ()
-        want (bool)
-~~~
-
  -- Dmitry Smirnov <onlyjob@debian.org>  Thu, 19 Jul 2018 23:01:33 +1000
 
 docker.io (18.03.1+dfsg1-6) unstable; urgency=medium
