@@ -83,7 +83,16 @@ Files-Excluded:
   ~~vendor/github.com/grpc-ecosystem/grpc-opentracing
     vendor/github.com/grpc-ecosystem/go-grpc-prometheus
     vendor/github.com/grpc-ecosystem/grpc-gateway
-    vendor/github.com/hashicorp
+    vendor/github.com/hashicorp/consul
+    vendor/github.com/hashicorp/errwrap
+  ~~vendor/github.com/hashicorp/go-immutable-radix
+    vendor/github.com/hashicorp/go-memdb
+    vendor/github.com/hashicorp/go-msgpack
+    vendor/github.com/hashicorp/go-multierror
+    vendor/github.com/hashicorp/go-sockaddr
+    vendor/github.com/hashicorp/golang-lru
+    vendor/github.com/hashicorp/memberlist
+    vendor/github.com/hashicorp/serf
     vendor/github.com/imdario
     vendor/github.com/inconshreveable
     vendor/github.com/jmespath
