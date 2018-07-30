@@ -32,7 +32,7 @@ Files-Excluded:
     vendor/github.com/containerd/fifo
   ~~vendor/github.com/containerd/go-runc
     vendor/github.com/containerd/typeurl
-    vendor/github.com/containernetworking/cni
+  ~~vendor/github.com/containernetworking/cni
     vendor/github.com/coreos
     vendor/github.com/cpuguy83
     vendor/github.com/davecgh
