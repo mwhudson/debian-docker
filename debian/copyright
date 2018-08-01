@@ -96,7 +96,7 @@ Files-Excluded:
     vendor/github.com/imdario
     vendor/github.com/inconshreveable
     vendor/github.com/jmespath
-   ~vendor/github.com/json-iterator::#904103
+    vendor/github.com/json-iterator
     vendor/github.com/juju/ratelimit
    ~vendor/k8s.io
     vendor/github.com/kr
