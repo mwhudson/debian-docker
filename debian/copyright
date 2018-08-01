@@ -33,7 +33,10 @@ Files-Excluded:
   ~~vendor/github.com/containerd/go-runc
     vendor/github.com/containerd/typeurl
   ~~vendor/github.com/containernetworking/cni
-    vendor/github.com/coreos
+    vendor/github.com/coreos/etcd
+    vendor/github.com/coreos/go-semver
+  ~~vendor/github.com/coreos/go-systemd
+    vendor/github.com/coreos/pkg
     vendor/github.com/cpuguy83
     vendor/github.com/davecgh
     vendor/github.com/davecgh/go-spew

@@ -33,7 +33,7 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-containerd-fifo-dev
     ,golang-github-containerd-go-runc-dev
     ,golang-github-containerd-typeurl-dev
-    ,golang-github-coreos-go-systemd-dev (>= 16~)
+#    ,golang-github-coreos-go-systemd-dev (>= 17~)
     ,golang-github-davecgh-go-spew-dev
     ,golang-github-deckarep-golang-set-dev
     ,golang-github-denverdino-aliyungo-dev
