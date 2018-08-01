@@ -1,0 +1,47 @@
+Description: moby/buildkit: disable rootless
+ This feature requires commit ad0f5255 from opencontainers/runc,
+ which is currently on the master branch and unreleased.
+ .
+ This patch can be dropped when runc releases a successor of version
+ 1.0.0-rc5.
+Author: Arnaud Rebillout <arnaud.rebillout@collabora.com>
+Origin: vendor, Debian
+Forwarded: not-needed
+Last-Update: 2018-08-01
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/engine/vendor/github.com/moby/buildkit/executor/runcexecutor/executor.go
++++ b/engine/vendor/github.com/moby/buildkit/executor/runcexecutor/executor.go
+@@ -21,7 +21,7 @@
+ 	"github.com/moby/buildkit/executor"
+ 	"github.com/moby/buildkit/executor/oci"
+ 	"github.com/moby/buildkit/identity"
+-	"github.com/moby/buildkit/util/libcontainer_specconv"
++//	"github.com/moby/buildkit/util/libcontainer_specconv"
+ 	"github.com/moby/buildkit/util/system"
+ 	"github.com/opencontainers/runtime-spec/specs-go"
+ 	"github.com/pkg/errors"
+@@ -170,14 +170,15 @@
+ 	}
+ 
+ 	if w.rootless {
+-		specconv.ToRootless(spec, nil)
+-		// TODO(AkihiroSuda): keep Cgroups enabled if /sys/fs/cgroup/cpuset/buildkit exists and writable
+-		spec.Linux.CgroupsPath = ""
+-		// TODO(AkihiroSuda): ToRootless removes netns, but we should readd netns here
+-		// if either SUID or userspace NAT is configured on the host.
+-		if err := setOOMScoreAdj(spec); err != nil {
+-			return err
+-		}
++		return errors.New("not implemented")
++//		specconv.ToRootless(spec, nil)
++//		// TODO(AkihiroSuda): keep Cgroups enabled if /sys/fs/cgroup/cpuset/buildkit exists and writable
++//		spec.Linux.CgroupsPath = ""
++//		// TODO(AkihiroSuda): ToRootless removes netns, but we should readd netns here
++//		// if either SUID or userspace NAT is configured on the host.
++//		if err := setOOMScoreAdj(spec); err != nil {
++//			return err
++//		}
+ 	}
+ 
+ 	if err := json.NewEncoder(f).Encode(spec); err != nil {

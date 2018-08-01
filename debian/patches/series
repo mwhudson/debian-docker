@@ -1,3 +1,4 @@
+moby-buildkit-disable-stuff.patch
 21491--systemd-tasksmax.patch
 cgroupfs-mount-convenience-copy.patch
 
