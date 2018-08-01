@@ -320,6 +320,16 @@ Forwarded: no
  	fakeBuild := newFakeBuild()
  	fakeImageBuild := func(ctx context.Context, context io.Reader, options types.ImageBuildOptions) (types.ImageBuildResponse, error) {
  		tee := io.TeeReader(context, buffer)
+@@ -119,8 +120,9 @@
+ // to clone the remote repo.
+ // TODO: test "context selection" logic directly when runBuild is refactored
+ // to support testing (ex: docker/cli#294)
+ func TestRunBuildFromGitHubSpecialCase(t *testing.T) {
++t.Skip("DM - disabled due to network access")
+ 	cmd := NewBuildCommand(test.NewFakeCli(nil))
+ 	// Clone a small repo that exists so git doesn't prompt for credentials
+ 	cmd.SetArgs([]string{"github.com/docker/for-win"})
+ 	cmd.SetOutput(ioutil.Discard)
 --- a/engine/daemon/oci_linux_test.go
 +++ b/engine/daemon/oci_linux_test.go
 @@ -88,8 +88,9 @@
