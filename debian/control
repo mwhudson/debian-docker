@@ -92,7 +92,8 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-opencontainers-runc-dev (>= 1.0.0~)
     ,golang-github-opencontainers-selinux-dev
     ,golang-github-opencontainers-specs-dev (>= 1.0.1~)
-#   ,golang-github-opentracing-opentracing-go-dev
+    ,golang-github-opentracing-contrib-go-stdlib-dev
+    ,golang-github-opentracing-opentracing-go-dev
     ,golang-github-pborman-uuid-dev
     ,golang-github-peterbourgon-diskv-dev (>= 2.0.1~)
     ,golang-github-philhofer-fwd-dev

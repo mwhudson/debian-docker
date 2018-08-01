@@ -120,6 +120,8 @@ Files-Excluded:
     vendor/github.com/opencontainers/runtime-spec
     vendor/github.com/opencontainers/selinux
     vendor/github.com/opencontainers/selinux/go-selinux
+    vendor/github.com/opentracing-contrib/go-stdlib
+    vendor/github.com/opentracing/opentracing-go
     vendor/github.com/pborman
     vendor/github.com/peterbourgon
     vendor/github.com/philhofer
