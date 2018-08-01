@@ -29,5 +29,6 @@ test--disable-TestChangesWithChangesGH13590.patch
 test--fix-test-errors.patch
 test--skip-TestAdapterReadLogs.patch
 test--skip-TestGetRootUIDGID.patch
+test--skip-TestStateRunStop.patch
 test--skip-network-tests.patch
 test--skip-privileged-unit-tests.patch
