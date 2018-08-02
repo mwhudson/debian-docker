@@ -44,6 +44,28 @@ DEB_SOURCE="$( dpkg-parsechangelog -SSource )"
 filename="$( readlink -f ../${DEB_SOURCE}_${version}.orig.tar.xz )"
 [ -s "${filename}" ] || exit 1
 
+get_vendor_tree() {
+    # Get the list of vendor directories. For github.com repositories, we want to descend
+    # 2 levels down the directory, so that we get a list of go packages.
+    local top_dirs=""
+    local github_dirs=""
+
+    for dir in "$@"; do
+        if [ -d $dir ]; then
+            top_dirs="$top_dirs $dir"
+	fi
+        if [ -d $dir/github.com ]; then
+            github_dirs="$github_dirs $dir/github.com"
+	fi
+    done
+
+    local top_vendored_dirs=$( find $top_dirs -mindepth 1 -maxdepth 1 -type d | grep -v 'github.com' )
+    local github_vendored_dirs=$( find $github_dirs -mindepth 2 -maxdepth 2 -type d )
+    printf "${top_vendored_dirs}\n${github_vendored_dirs}" \
+        | sed 's;^.*/vendor/;vendor/;' \
+        | sort | uniq
+}
+
 drop_files_excluded() {
     local work_dir
     for work_dir in $@; do
@@ -54,10 +76,12 @@ drop_files_excluded() {
 
 ## extract main tarball:
 work_dir="$( mktemp -d -t get-orig-source_${DEB_SOURCE}_XXXXXXXX )"
+mkdir ${work_dir}/vendoring
 trap "rm -rf '${work_dir}'" EXIT
 tar -xf "${filename}" -C "${work_dir}"
 
 ## Docker specific:
+get_vendor_tree ${work_dir}/*/components/*/vendor > ${work_dir}/vendoring/docker.list
 drop_files_excluded "${work_dir}"/*/components/*
 
 #### Move components one level up
@@ -87,6 +111,9 @@ for I in docker/go-events docker/go-metrics docker/libnetwork docker/distributio
         mkdir "${component_dir}"/${component}
         tar -xf "${FN}" -C "${component_dir}"/${component} --strip-components=1
 
+        if [ -d "${component_dir}"/${component}/vendor ]; then
+            get_vendor_tree "${component_dir}"/${component}/vendor > ${work_dir}/vendoring/${component}.list
+        fi
         drop_files_excluded "${component_dir}"/${component}
 
         ( cd "${component_dir}" && tar -caf "${FN}" . )
@@ -99,5 +126,13 @@ for I in docker/go-events docker/go-metrics docker/libnetwork docker/distributio
     fi
 done
 #####
+
+echo ""
+echo "Here's a tentative list for your Files-Excluded list, in d/copyright."
+echo "Use it with care"
+echo ""
+
+echo "Files-Excluded:"
+cat ${work_dir}/vendoring/* | sort | uniq | sed 's/^/    /'
 
 rm -rf "${work_dir}"
