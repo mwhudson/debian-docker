@@ -3,6 +3,7 @@ Upstream-Name: Docker
 Upstream-Contact: Docker, Inc. <support@docker.com>
 Source: https://github.com/docker/docker
 Files-Excluded:
+    vendor/archive
     vendor/cloud.google.com
     vendor/github.com/agl/ed25519
     vendor/github.com/armon/go-metrics
@@ -22,21 +23,21 @@ Files-Excluded:
     vendor/github.com/BurntSushi/toml
     vendor/github.com/cloudflare/cfssl
     vendor/github.com/codegangsta/cli
-    vendor/github.com/containerd/aufs
+  ~~vendor/github.com/containerd/aufs
     vendor/github.com/containerd/btrfs
     vendor/github.com/containerd/cgroups
     vendor/github.com/containerd/console
     vendor/github.com/containerd/containerd
   ~~vendor/github.com/containerd/continuity
-    vendor/github.com/containerd/cri
+  ~~vendor/github.com/containerd/cri
     vendor/github.com/containerd/fifo
-    vendor/github.com/containerd/go-cni
+  ~~vendor/github.com/containerd/go-cni
   ~~vendor/github.com/containerd/go-runc
-    vendor/github.com/containerd/ttrpc
+  ~~vendor/github.com/containerd/ttrpc
     vendor/github.com/containerd/typeurl
-    vendor/github.com/containerd/zfs
+  ~~vendor/github.com/containerd/zfs
   ~~vendor/github.com/containernetworking/cni
-    vendor/github.com/containernetworking/plugins
+  ~~vendor/github.com/containernetworking/plugins
     vendor/github.com/coreos/etcd
     vendor/github.com/coreos/go-semver
   ~~vendor/github.com/coreos/go-systemd
@@ -63,7 +64,7 @@ Files-Excluded:
     vendor/github.com/dustin/go-humanize
     vendor/github.com/emicklei/go-restful
     vendor/github.com/emicklei/go-restful-swagger12
-    vendor/github.com/fernet/fernet-go
+  ~~vendor/github.com/fernet/fernet-go
     vendor/github.com/fluent/fluent-logger-golang
     vendor/github.com/flynn-archive/go-shlex
     vendor/github.com/fsnotify/fsnotify
@@ -93,7 +94,7 @@ Files-Excluded:
     vendor/github.com/gorilla/handlers
     vendor/github.com/gorilla/mux
   ~~vendor/github.com/Graylog2/go-gelf
-    vendor/github.com/gregjones/httpcache
+  ~~vendor/github.com/gregjones/httpcache
     vendor/github.com/grpc-ecosystem/go-grpc-prometheus
     vendor/github.com/grpc-ecosystem/grpc-gateway
   ~~vendor/github.com/grpc-ecosystem/grpc-opentracing
@@ -107,10 +108,10 @@ Files-Excluded:
     vendor/github.com/hashicorp/go-sockaddr
     vendor/github.com/hashicorp/memberlist
     vendor/github.com/hashicorp/serf
-    vendor/github.com/howeyc/gopass
+  ~~vendor/github.com/howeyc/gopass
     vendor/github.com/imdario/mergo
     vendor/github.com/inconshreveable/mousetrap
-    vendor/github.com/ishidawataru/sctp
+  ~~vendor/github.com/ishidawataru/sctp
     vendor/github.com/jmespath/go-jmespath
     vendor/github.com/json-iterator/go
     vendor/github.com/juju/ratelimit
@@ -129,20 +130,20 @@ Files-Excluded:
   ~~vendor/github.com/moby/buildkit
     vendor/github.com/modern-go/concurrent
     vendor/github.com/modern-go/reflect2
-    vendor/github.com/morikuni/aec
+  ~~vendor/github.com/morikuni/aec
     vendor/github.com/ncw/swift
   ~~vendor/github.com/Nvveen/Gotty
     vendor/github.com/opencontainers/go-digest
     vendor/github.com/opencontainers/image-spec
     vendor/github.com/opencontainers/runc
     vendor/github.com/opencontainers/runtime-spec
-    vendor/github.com/opencontainers/runtime-tools
+  ~~vendor/github.com/opencontainers/runtime-tools
     vendor/github.com/opencontainers/selinux
     vendor/github.com/opentracing-contrib/go-stdlib
     vendor/github.com/opentracing/opentracing-go
     vendor/github.com/pborman/uuid
     vendor/github.com/peterbourgon/diskv
-    vendor/github.com/phayes/permbits
+  ~~vendor/github.com/phayes/permbits
     vendor/github.com/philhofer/fwd
     vendor/github.com/pivotal-golang/clock
     vendor/github.com/pkg/errors
@@ -188,8 +189,9 @@ Files-Excluded:
     vendor/google.golang.org
     vendor/go.opencensus.io
     vendor/gopkg.in
-    vendor/gotest.tools
+  ~~vendor/gotest.tools
   ~~vendor/k8s.io
+    vendor/rsc.io
   ~~vendor/vbom.ml
 Files-Excluded-containerd:
     */docs
