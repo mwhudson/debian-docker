@@ -206,11 +206,25 @@ Files: *
 Copyright: 2012-2018 Docker, Inc. <support@docker.com>
 License: Apache-2.0
 
-Files: engine/contrib/init/openrc/docker.initd
+Files:
+    cli/contrib/completion/zsh/*
+Copyright: 2013-2014 Felix Riedel
+License: BSD-3-clause-Generic
+
+Files:
+    engine/contrib/init/openrc/docker.initd
 Copyright: 1999-2013 Gentoo Foundation
 License: GPL-2
 
-Files: engine/contrib/syntax/vim/*
+Files:
+    engine/contrib/selinux-fedora-24/docker-engine-selinux/*
+    engine/contrib/selinux-oraclelinux-7/docker-engine-selinux/*
+Copyright: 2012-2016 Docker Inc.
+License: GPL-2
+Comment: No explicit copyright statement; assuming upstream copyright.
+
+Files:
+    engine/contrib/syntax/vim/*
 Copyright: 2013 Honza Pokorny
 License: BSD-2-clause
 
@@ -219,24 +233,106 @@ Files:
 Copyright: 2014-2016 The Docker & Go Authors
 License: BSD-3-clause-Google
 
-Files: cli/contrib/completion/zsh/*
-Copyright: 2013-2014 Felix Riedel
-License: BSD-3-clause-Generic
+Files:
+    */vendor/github.com/bugsnag/osext/osext*
+    */vendor/github.com/containerd/continuity/sysx/asm.s
+Copyright:
+    2008      Google Inc.
+    2014-2016 The Go Authors
+License: BSD-3-clause-Google
 
 Files:
-    engine/contrib/selinux-fedora-24/docker-engine-selinux/*
-    engine/contrib/selinux-oraclelinux-7/docker-engine-selinux/*
-Copyright: 2012-2016 Docker Inc.
-License: GPL-2
-Comment:
- No explicit copyright statement; assuming upstream copyright.
+    vendor/github.com/containernetworking/plugins/*
+FIXME
+
+Files:
+    vendor/github.com/fernet/fernet-go/*
+Copyright: 2013 Keith Rarick
+License: Expat
+
+Files:
+    */vendor/github.com/gotestyourself/gotestyourself/*
+Copyright: 2018 gotest.tools authors
+License: Apache-2.0
+Comment: https://github.com/gotestyourself/gotest.tools/issues/100
+
+Files:
+    */vendor/github.com/Graylog2/go-gelf/*
+Copyright: 2012 SocialCode
+License: Expat
+
+Files:
+    */vendor/github.com/gregjones/httpcache/*
+Copyright: 2012 Greg Jones <greg.jones@gmail.com>
+License: Expat
 
 Files:
     vendor/github.com/grpc-ecosystem/grpc-opentracing/*
 FIXME
 
 Files:
+    */vendor/github.com/howeyc/gopass/*
+Copyright: 2012 Chris Howey
+License: ISC
+
+Files:
+    vendor/github.com/ishidawataru/sctp/*
+Copyright: 2017 Wataru Ishida
+License: Apache-2.0
+
+Files:
+    */vendor/github.com/ishidawataru/sctp/*
+Copyright: N/A
+License: Apache-2.0
+Comment: The upstream distribution does not contain an explicit statement of
+ copyright ownership. Pursuant to the Berne Convention for the Protection of
+ Literary and Artistic Works, it is assumed that all content is copyright by
+ its respective authors unless otherwise stated.
+ .
+ https://github.com/ishidawataru/sctp/issues/23
+
+Files:
     vendor/github.com/morikuni/aec/*
+FIXME
+
+Files:
+    */vendor/github.com/Nvveen/Gotty/*
+Copyright: 2012  Neal van Veen <nealvanveen@gmail.com>
+License: BSD-2-clause~freebsd
+
+Files:
+    vendor/github.com/opencontainers/runtime-tools/*
+FIXME
+
+Files:
+    */vendor/github.com/phayes/permbits/*
+Copyright: 2016 Patrick D Hayes
+License: Expat
+
+Files:
+    */vendor/github.com/PuerkitoBio/purell/*
+Copyright: 2012 Martin Angers
+License: BSD-3-Clause
+
+Files:
+    */vendor/github.com/PuerkitoBio/urlesc/*
+Copyright: 2009-2012 The Go Authors
+License: BSD-3-clause-Google
+
+Files:
+    */vendor/github.com/tonistiigi/fsutil/*
+Copyright: 2017 Tõnis Tiigi <tonistiigi@gmail.com>
+License: Expat
+
+Files:
+    */vendor/github.com/yvasiyarov/*
+Copyright:
+    2012 Richard Crowley
+    2013 Yuriy Vasiyarov
+License: BSD-2-clause
+
+Files:
+    vendor/go.opencensus.io/*
 FIXME
 
 Files:
@@ -250,96 +346,6 @@ Copyright: 2013 Patrick Mezard
 License: BDS-3-clause-Generic
 
 Files:
-    vendor/github.com/containernetworking/plugins/*
-FIXME
-
-Files:
-    vendor/github.com/opencontainers/runtime-tools/*
-FIXME
-
-Files:
-    vendor/go.opencensus.io/*
-FIXME
-
-Files:
-    vendor/github.com/fernet/fernet-go/*
-Copyright: 2013 Keith Rarick
-License: Expat
-
-Files:
-    vendor/github.com/ishidawataru/sctp/*
-Copyright: 2017 Wataru Ishida
-License: Apache-2.0
-
-Files:
-    */vendor/vbom.ml/util/*
-Copyright:
-    2015 Frits van Bommel
-License: Expat
-
-Files:
-    */vendor/github.com/Graylog2/go-gelf/*
-Copyright:
-    2012 SocialCode
-License: Expat
-
-Files:
-    */vendor/github.com/tonistiigi/fsutil/*
-Copyright: 2017 Tõnis Tiigi <tonistiigi@gmail.com>
-License: Expat
-
-Files:
-    */vendor/github.com/phayes/permbits/*
-Copyright: 2016 Patrick D Hayes
-License: Expat
-
-Files:
-    */vendor/github.com/Nvveen/Gotty/*
-Copyright: 2012  Neal van Veen <nealvanveen@gmail.com>
-License: BSD-2-clause~freebsd
-
-Files:
-    */vendor/github.com/yvasiyarov/*
-Copyright:
-    2012 Richard Crowley
-    2013 Yuriy Vasiyarov
-License: BSD-2-clause
-
-Files:
-    */vendor/github.com/bugsnag/osext/osext*
-    */vendor/github.com/containerd/continuity/sysx/asm.s
-Copyright:
-    2008      Google Inc.
-    2014-2016 The Go Authors
-License: BSD-3-clause-Google
-
-Files:
-    */vendor/github.com/howeyc/gopass/*
-Copyright: 2012 Chris Howey
-License: ISC
-
-Files:
-    */vendor/github.com/PuerkitoBio/purell/*
-Copyright: 2012 Martin Angers
-License: BSD-3-Clause
-
-Files:
-    */vendor/github.com/PuerkitoBio/urlesc/*
-Copyright: 2009-2012 The Go Authors
-License: BSD-3-clause-Google
-
-Files:
-    */vendor/github.com/gotestyourself/gotestyourself/*
-Copyright: 2018 gotest.tools authors
-License: Apache-2.0
-Comment: https://github.com/gotestyourself/gotest.tools/issues/100
-
-Files:
-    */vendor/github.com/gregjones/httpcache/*
-Copyright: 2012 Greg Jones <greg.jones@gmail.com>
-License: Expat
-
-Files:
     */vendor/k8s.io/*
 Copyright: 2014-2018 The Kubernetes Authors.
 License: Apache-2.0
@@ -350,15 +356,9 @@ Copyright: 2009 The Go Authors
 License: BSD-3-clause-Google
 
 Files:
-    */vendor/github.com/ishidawataru/sctp/*
-Copyright: N/A
-License: Apache-2.0
-Comment: The upstream distribution does not contain an explicit statement of
- copyright ownership. Pursuant to the Berne Convention for the Protection of
- Literary and Artistic Works, it is assumed that all content is copyright by
- its respective authors unless otherwise stated.
- .
- https://github.com/ishidawataru/sctp/issues/23
+    */vendor/vbom.ml/util/*
+Copyright: 2015 Frits van Bommel
+License: Expat
 
 Files: debian/*
 Copyright:
