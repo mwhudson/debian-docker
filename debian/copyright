@@ -243,10 +243,11 @@ License: BSD-3-clause-Google
 
 Files:
     vendor/github.com/containernetworking/plugins/*
-FIXME
+Copyright: 2015-2017 CNI authors
+License: Apache-2.0
 
 Files:
-    vendor/github.com/fernet/fernet-go/*
+    */vendor/github.com/fernet/fernet-go/*
 Copyright: 2013 Keith Rarick
 License: Expat
 
@@ -261,18 +262,14 @@ Copyright: 2012 Greg Jones <greg.jones@gmail.com>
 License: Expat
 
 Files:
-    vendor/github.com/grpc-ecosystem/grpc-opentracing/*
-FIXME
+    */vendor/github.com/grpc-ecosystem/grpc-opentracing/*
+Copyright: 2016, gRPC Ecosystem
+License: BSD-3-clause-GRPC-Opentracing
 
 Files:
     */vendor/github.com/howeyc/gopass/*
 Copyright: 2012 Chris Howey
 License: ISC
-
-Files:
-    vendor/github.com/ishidawataru/sctp/*
-Copyright: 2017 Wataru Ishida
-License: Apache-2.0
 
 Files:
     */vendor/github.com/ishidawataru/sctp/*
@@ -287,7 +284,8 @@ Comment: The upstream distribution does not contain an explicit statement of
 
 Files:
     vendor/github.com/morikuni/aec/*
-FIXME
+Copyright: 2016 Taihei Morikuni
+License: Expat
 
 Files:
     */vendor/github.com/Nvveen/Gotty/*
@@ -296,7 +294,8 @@ License: BSD-2-clause~freebsd
 
 Files:
     vendor/github.com/opencontainers/runtime-tools/*
-FIXME
+Copyright: 2015 The Linux Foundation
+License: Apache-2.0
 
 Files:
     */vendor/github.com/phayes/permbits/*
@@ -324,10 +323,6 @@ Copyright:
     2012 Richard Crowley
     2013 Yuriy Vasiyarov
 License: BSD-2-clause
-
-Files:
-    vendor/go.opencensus.io/*
-FIXME
 
 Files:
     vendor/gotest.tools/*
@@ -504,6 +499,32 @@ License: BSD-3-clause-Google
  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: BSD-3-clause-GRPC-Opentracing
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+ * Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+ .
+ * Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+ .
+ * Neither the name of grpc-opentracing nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 License: Expat
