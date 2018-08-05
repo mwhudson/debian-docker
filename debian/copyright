@@ -251,12 +251,6 @@ Copyright: 2013 Keith Rarick
 License: Expat
 
 Files:
-    */vendor/github.com/gotestyourself/gotestyourself/*
-Copyright: 2018 gotest.tools authors
-License: Apache-2.0
-Comment: https://github.com/gotestyourself/gotest.tools/issues/100
-
-Files:
     */vendor/github.com/Graylog2/go-gelf/*
 Copyright: 2012 SocialCode
 License: Expat
