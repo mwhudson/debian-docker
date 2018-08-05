@@ -241,7 +241,13 @@ FIXME
 
 Files:
     vendor/gotest.tools/*
-FIXME
+Copyright: 2018 gotest.tools authors
+License: Apache-2.0
+
+Files:
+    vendor/gotest.tools/internal/difflib/*
+Copyright: 2013 Patrick Mezard
+License: BDS-3-clause-Generic
 
 Files:
     vendor/github.com/containernetworking/plugins/*
@@ -257,11 +263,13 @@ FIXME
 
 Files:
     vendor/github.com/fernet/fernet-go/*
-FIXME
+Copyright: 2013 Keith Rarick
+License: Expat
 
 Files:
     vendor/github.com/ishidawataru/sctp/*
-FIXME
+Copyright: 2017 Wataru Ishida
+License: Apache-2.0
 
 Files:
     */vendor/vbom.ml/util/*
