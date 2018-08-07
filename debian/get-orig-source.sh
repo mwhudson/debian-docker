@@ -72,6 +72,7 @@ drop_files_excluded() {
         perl -0nE 'say $1 if m{^Files\-Excluded:\s*(.*?)(?:\n\n|^Files|^Comment)}sm;' debian/copyright \
         | ( cd "${work_dir}" && xargs --no-run-if-empty rm -rf )
     done
+    find "${work_dir}"/vendor -mindepth 1 -type d -empty -delete -printf 'removed %p\n'
 }
 
 ## extract main tarball:
