@@ -332,7 +332,7 @@ License: Apache-2.0
 Files:
     vendor/gotest.tools/internal/difflib/*
 Copyright: 2013 Patrick Mezard
-License: BDS-3-clause-Generic
+License: BSD-3-clause-Generic
 
 Files:
     */vendor/k8s.io/*
