@@ -3,6 +3,7 @@ Upstream-Name: Docker
 Upstream-Contact: Docker, Inc. <support@docker.com>
 Source: https://github.com/docker/docker
 Files-Excluded:
+    components/packaging
     vendor/archive
     vendor/cloud.google.com
     vendor/github.com/agl/ed25519
