@@ -3,7 +3,10 @@ Upstream-Name: Docker
 Upstream-Contact: Docker, Inc. <support@docker.com>
 Source: https://github.com/docker/docker
 Files-Excluded:
-    components/packaging
+  components/packaging
+  vendor/github.com/howeyc/gopass/terminal_solaris.go
+  vendor/github.com/howeyc/gopass/OPENSOLARIS.LICENSE
+  vendor/k8s.io/*/third_party/protobuf
     vendor/archive
     vendor/cloud.google.com
     vendor/github.com/agl/ed25519
