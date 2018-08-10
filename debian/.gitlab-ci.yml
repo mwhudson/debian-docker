@@ -68,7 +68,7 @@ unstable-binary-indep:
     - *pre_build
   script:
     - *origtargz
-    - pdebuild --debbuildopts "-A" --use-pdebuild-internal --buildresult "${PB_RESULT}" --architecture amd64 -- --binary-indep --basetgz /var/cache/pbuilder/testing_unstable-amd64.tgz
+    - pdebuild --debbuildopts "-A" --use-pdebuild-internal --buildresult "${PB_RESULT}" --architecture all -- --binary-indep --basetgz /var/cache/pbuilder/testing_unstable-amd64.tgz
 
 testing_unstable-amd64:
   stage: build
