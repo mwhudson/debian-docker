@@ -20,11 +20,3 @@
   * docker-containerd [#902087]
   * golang-libnetwork [#902058]
   * swarmkit [#902086]
-
-
-## "pass" annoyance
-
-GPG-agent is asking for password for every invocation of `docker` command.
-
-  * https://github.com/docker/cli/issues/699
-  * https://github.com/docker/docker-credential-helpers/issues/96
