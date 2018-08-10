@@ -77,3 +77,23 @@ Github issues have been filed upstream:
 
 https://github.com/bsphere/le_go/issues/14
 https://github.com/docker/docker/issues/31020
+
+---
+
+## Restart dilemma
+
+Restarting Docker daemon terminates all running containers. Therefore
+automatic restart is not an option as containers may be killed during
+unattended upgrade, etc.
+
+This is Docker's design flaw and upstream gave up on idea of restoring
+state of running containers on upgrade, bluntly stating "You must stop all
+containers and plugins BEFORE upgrading" in release notes.
+
+** "rkt" container runtime is free from that flaw. **
+
+Not restarting Docker daemon on upgrade can make CLI unusable until daemon
+restart due to mismatch between CLI and running Daemon versions.
+
+Fortunately recommended "needrestart" package show interactive prompt to
+restart Docker daemon after upgrade.
