@@ -76,7 +76,7 @@ Files-Excluded:
     vendor/github.com/ghodss/yaml
     vendor/github.com/go-check/check
     vendor/github.com/godbus/dbus
-  ~~vendor/github.com/gogo/googleapis
+    vendor/github.com/gogo/googleapis
     vendor/github.com/gogo/protobuf
     vendor/github.com/go-ini/ini
   ~~vendor/github.com/golang/gddo
@@ -193,7 +193,7 @@ Files-Excluded:
     vendor/google.golang.org
     vendor/go.opencensus.io
     vendor/gopkg.in
-  ~~vendor/gotest.tools
+    vendor/gotest.tools
   ~~vendor/k8s.io
     vendor/rsc.io
   ~~vendor/vbom.ml

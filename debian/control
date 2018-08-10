@@ -55,6 +55,7 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-fsnotify-fsnotify-dev
     ,golang-github-garyburd-redigo-dev
     ,golang-github-ghodss-yaml-dev
+    ,golang-github-gogo-googleapis-dev
     ,golang-github-googleapis-gax-go-dev
     ,golang-github-googleapis-gnostic-dev
     ,golang-github-google-go-cmp-dev (>= 0.2.0~)
@@ -66,6 +67,7 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-go-openapi-swag-dev
     ,golang-github-gorilla-context-dev
     ,golang-github-gorilla-mux-dev
+    ,golang-github-gotestyourself-gotest.tools-dev
     ,golang-github-graylog2-go-gelf-dev
     ,golang-github-grpc-ecosystem-go-grpc-prometheus-dev
 #   ,golang-github-grpc-ecosystem-grpc-gateway-dev
