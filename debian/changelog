@@ -1,12 +1,15 @@
-docker.io (18.06.0+dfsg1-1) UNRELEASED; urgency=medium
+docker.io (18.06.0+dfsg1-1) experimental; urgency=medium
 
   * New upstream release [July 2018].
 
   [ Arnaud Rebillout ]
   * get-orig-source: print the list of directories vendored by upstream.
-  * Added copyrights.
 
- -- Dmitry Smirnov <onlyjob@debian.org>  Tue, 07 Aug 2018 15:16:08 +1000
+  [ Dmitry Smirnov ]
+  * README.source: noted duration of upstream support.
+  * README.Debian: added note about restart dilemma.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Fri, 10 Aug 2018 19:07:41 +1000
 
 docker.io (18.03.1+dfsg1-6) unstable; urgency=medium
 
