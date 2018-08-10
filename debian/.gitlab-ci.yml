@@ -110,3 +110,18 @@ unstable-amd64:
     - *origtargz
     - ${PDEBUILD_CMD} --architecture amd64 -- --basetgz /var/cache/pbuilder/unstable-amd64.tgz
     - ${LINTIAN_CMD}
+
+experimental-amd64:
+  stage: build
+  tags:
+    - pbuilder
+    - amd64
+  dependencies: []
+  allow_failure: false
+  before_script:
+    - *pre_build
+  script:
+    - *origtargz
+    - ${PDEBUILD_CMD} --architecture amd64 -- --basetgz /var/cache/pbuilder/experimental-amd64.tgz
+    - ${LINTIAN_CMD}
+
