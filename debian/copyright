@@ -44,7 +44,7 @@ Files-Excluded:
   ~~vendor/github.com/containernetworking/plugins
     vendor/github.com/coreos/etcd
     vendor/github.com/coreos/go-semver
-  ~~vendor/github.com/coreos/go-systemd
+    vendor/github.com/coreos/go-systemd
     vendor/github.com/coreos/pkg
     vendor/github.com/cpuguy83/go-md2man
     vendor/github.com/davecgh/go-spew
