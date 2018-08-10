@@ -1,28 +1,19 @@
 ## "stable" versus "edge" releases
 
-As per [1]:
-
-  * Stable gives you reliable updates every quarter.
-  * Edge gives you new features every month.
+As per [1], starting with Docker 18.09, CE "stable" releases will be
+supported for 7 months. See [2] for details.
 
 This package should only ever ship "stable" Community Edition (CE)
 releases.
 
-See [2] for details.
-
 Docker version numbers are derived from date, e.g. `date +%g.%m`.
 
-If the month is evenly divisible by 3, it's "stable" (and supported for 4
-months), so 17.03, 17.06, 17.09, 17.12, etc (and they have one month of
-support overlap).
-
 The every-month releases are "edge" (17.04, 17.05, etc), are only supported
-for the duration of their release month, and stable releases are considered
-edge releases as well (but have longer support cycles as noted above).
+for the duration of their release month. Stable releases have longer
+support cycles. Monthly "Edge" releases should be avoided.
 
 [1]: https://docs.docker.com/install/
 [2]: https://docs.docker.com/release-notes/docker-ce/
-[3]: https://blog.docker.com/2017/03/docker-enterprise-edition/
 
 
 ## Incompetent upstream release process
