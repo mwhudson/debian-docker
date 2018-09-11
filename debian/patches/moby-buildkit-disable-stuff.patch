@@ -12,36 +12,30 @@ Last-Update: 2018-08-01
 This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
 --- a/engine/vendor/github.com/moby/buildkit/executor/runcexecutor/executor.go
 +++ b/engine/vendor/github.com/moby/buildkit/executor/runcexecutor/executor.go
-@@ -21,7 +21,7 @@
+@@ -20,9 +20,9 @@
+ 	"github.com/moby/buildkit/cache"
  	"github.com/moby/buildkit/executor"
  	"github.com/moby/buildkit/executor/oci"
  	"github.com/moby/buildkit/identity"
--	"github.com/moby/buildkit/util/libcontainer_specconv"
-+//	"github.com/moby/buildkit/util/libcontainer_specconv"
+-	rootlessspecconv "github.com/moby/buildkit/util/rootless/specconv"
++//	rootlessspecconv "github.com/moby/buildkit/util/rootless/specconv"
  	"github.com/moby/buildkit/util/system"
  	"github.com/opencontainers/runtime-spec/specs-go"
  	"github.com/pkg/errors"
-@@ -170,14 +170,15 @@
+ 	"github.com/sirupsen/logrus"
+@@ -174,11 +174,12 @@
+ 	if err := setOOMScoreAdj(spec); err != nil {
+ 		return err
  	}
- 
  	if w.rootless {
--		specconv.ToRootless(spec, nil)
--		// TODO(AkihiroSuda): keep Cgroups enabled if /sys/fs/cgroup/cpuset/buildkit exists and writable
--		spec.Linux.CgroupsPath = ""
--		// TODO(AkihiroSuda): ToRootless removes netns, but we should readd netns here
--		// if either SUID or userspace NAT is configured on the host.
--		if err := setOOMScoreAdj(spec); err != nil {
+-		if err := rootlessspecconv.ToRootless(spec); err != nil {
 -			return err
 -		}
-+		return errors.New("not implemented")
-+//		specconv.ToRootless(spec, nil)
-+//		// TODO(AkihiroSuda): keep Cgroups enabled if /sys/fs/cgroup/cpuset/buildkit exists and writable
-+//		spec.Linux.CgroupsPath = ""
-+//		// TODO(AkihiroSuda): ToRootless removes netns, but we should readd netns here
-+//		// if either SUID or userspace NAT is configured on the host.
-+//		if err := setOOMScoreAdj(spec); err != nil {
++return errors.New("not implemented")
++//		if err := rootlessspecconv.ToRootless(spec); err != nil {
 +//			return err
 +//		}
  	}
  
  	if err := json.NewEncoder(f).Encode(spec); err != nil {
+ 		return err

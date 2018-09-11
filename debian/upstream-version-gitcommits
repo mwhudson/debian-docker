@@ -1,6 +1,7 @@
 # To determine the proper value for this, download
 # https://download.docker.com/linux/static/CHANNEL/x86_64/docker-VERSION-ce.tgz
 # extract "docker", run "./docker -v", which will list the exact build hash needed.
+# https://github.com/docker/docker-ce/releases
 
 0.5.3: 17c92b8
 0.6.0: f4a4f1c
@@ -87,3 +88,4 @@
 18.03.0-ce: 0520e24
 18.03.1-ce: 9ee9f40
 18.06.0-ce: 0ffa825
+18.06.1-ce: e68fc7a
