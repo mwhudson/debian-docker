@@ -24,6 +24,7 @@ engine/dockerversion                                usr/share/gocode/src/github.
 ## Libnetwork:
 .gopath/src/github.com/docker/libnetwork/datastore        usr/share/gocode/src/github.com/docker/libnetwork/
 .gopath/src/github.com/docker/libnetwork/discoverapi      usr/share/gocode/src/github.com/docker/libnetwork/
+.gopath/src/github.com/docker/libnetwork/ipamutils        usr/share/gocode/src/github.com/docker/libnetwork/
 .gopath/src/github.com/docker/libnetwork/ns               usr/share/gocode/src/github.com/docker/libnetwork/
 .gopath/src/github.com/docker/libnetwork/options          usr/share/gocode/src/github.com/docker/libnetwork/
 .gopath/src/github.com/docker/libnetwork/testutils        usr/share/gocode/src/github.com/docker/libnetwork/
