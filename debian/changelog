@@ -1,3 +1,10 @@
+docker.io (18.06.1+dfsg1-2) unstable; urgency=medium
+
+  * Tighten versioned dependency on "runc".
+  * dev: install "libnetwork/ipamutils".
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Sun, 16 Sep 2018 13:21:33 +1000
+
 docker.io (18.06.1+dfsg1-1) unstable; urgency=medium
 
   [ Dmitry Smirnov ]
