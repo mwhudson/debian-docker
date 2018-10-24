@@ -1,3 +1,18 @@
+docker.io (18.06.1-0ubuntu1~16.04.1) xenial; urgency=medium
+
+  * Backport to Xenial (LP: #1794396). Includes fixes for
+    - "No option to configure docker.io for restart on package upgrade"
+      (LP: #1784602)
+    - "docker.io install fails when docker group exists" (LP: #1769911)
+  * Revert "Let dh_systemd install .service file: replace .install file entry
+    with symlink".
+  * Build with the freshly backported golang-1.10-go package.
+  * Relax the build dependency on debhelper.
+  * Build depend on btrfs-tools, not libbtrfs-dev or btrfs-progs.
+  * Re-add build-depends on dh-systemd.
+
+ -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Wed, 24 Oct 2018 15:41:16 +1300
+
 docker.io (18.06.1-0ubuntu1) cosmic; urgency=medium
 
   * Update to 18.06.1 upstream release (LP: #1794396)
