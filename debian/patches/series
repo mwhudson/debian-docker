@@ -27,6 +27,7 @@ nuke-no-prompt.patch
 #runc_unuse_SIGUNUSED.patch
 
 test--disable-TestChangesWithChangesGH13590.patch
+test--fix-pkg-tarsum-unit-test-for-go-1.11.patch
 test--fix-test-errors.patch
 test--skip-TestAdapterReadLogs.patch
 test--skip-TestGetRootUIDGID.patch
