@@ -9,6 +9,7 @@ change-system-unit-env-file.patch
 cli-fix-manpages-build-script.patch
 daemon-fix-cluster-controller-debug-message-go-1.11.patch
 daemon-fix-graphdriver-wrapf-go-1.11.patch
+daemon-fix-logger-debug-messages-go-1.11.patch
 daemon-fix-some-wrapf-warnf-errors-go-1.11.patch
 
 dockerd-binary-location.patch
