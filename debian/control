@@ -92,6 +92,7 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-opencontainers-go-digest-dev
     ,golang-github-opencontainers-image-spec-dev (>= 1.0.1~)
     ,golang-github-opencontainers-runc-dev (>= 1.0.0~rc5~)
+    ,golang-github-opencontainers-runtime-tools-dev
     ,golang-github-opencontainers-selinux-dev
     ,golang-github-opencontainers-specs-dev (>= 1.0.1~)
     ,golang-github-opentracing-contrib-go-stdlib-dev

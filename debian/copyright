@@ -143,7 +143,7 @@ Files-Excluded:
     vendor/github.com/opencontainers/image-spec
     vendor/github.com/opencontainers/runc
     vendor/github.com/opencontainers/runtime-spec
-  ~~vendor/github.com/opencontainers/runtime-tools
+    vendor/github.com/opencontainers/runtime-tools
     vendor/github.com/opencontainers/selinux
     vendor/github.com/opentracing-contrib/go-stdlib
     vendor/github.com/opentracing/opentracing-go
@@ -297,11 +297,6 @@ Files:
     */vendor/github.com/Nvveen/Gotty/*
 Copyright: 2012  Neal van Veen <nealvanveen@gmail.com>
 License: BSD-2-clause~freebsd
-
-Files:
-    vendor/github.com/opencontainers/runtime-tools/*
-Copyright: 2015 The Linux Foundation
-License: Apache-2.0
 
 Files:
     */vendor/github.com/phayes/permbits/*
