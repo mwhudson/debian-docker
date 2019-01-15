@@ -7,6 +7,7 @@ change-system-unit-env-file.patch
 # See also https://github.com/docker/docker/pull/7220#issuecomment-50076589
 
 cli-fix-manpages-build-script.patch
+daemon-fix-some-wrapf-warnf-errors-go-1.11.patch
 
 dockerd-binary-location.patch
 engine-test-noinstall.patch
