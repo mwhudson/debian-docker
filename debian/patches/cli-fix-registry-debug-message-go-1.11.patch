@@ -1,0 +1,26 @@
+From: Kir Kolyshkin <kolyshkin@gmail.com>
+Date: Tue, 9 Oct 2018 23:36:04 -0700
+Subject: [PATCH] cli/registry: fix a Debugf statement
+
+Fix this warning from go-1.11
+
+> cli/registry/client/fetcher.go:234: Debugf format %s has arg
+> repoEndpoint of wrong type client.repositoryEndpoint
+
+Signed-off-by: Kir Kolyshkin <kolyshkin@gmail.com>
+Origin: upstream, https://github.com/docker/cli/commit/51848bf
+---
+ cli/registry/client/fetcher.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/cli/cli/registry/client/fetcher.go
++++ b/cli/cli/registry/client/fetcher.go
+@@ -231,7 +231,7 @@
+ 		repoEndpoint := repositoryEndpoint{endpoint: endpoint, info: repoInfo}
+ 		repo, err := c.getRepositoryForReference(ctx, namedRef, repoEndpoint)
+ 		if err != nil {
+-			logrus.Debugf("error with repo endpoint %s: %s", repoEndpoint, err)
++			logrus.Debugf("error %s with repo endpoint %+v", err, repoEndpoint)
+ 			if _, ok := err.(ErrHTTPProto); ok {
+ 				continue
+ 			}
