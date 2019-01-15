@@ -4,8 +4,7 @@ Forwarded: no
 
 --- a/engine/builder/dockerfile/internals_test.go
 +++ b/engine/builder/dockerfile/internals_test.go
-@@ -18,8 +18,9 @@
- 	"gotest.tools/skip"
+@@ -19,6 +19,7 @@
  )
  
  func TestEmptyDockerfile(t *testing.T) {
@@ -13,9 +12,7 @@ Forwarded: no
  	contextDir, cleanup := createTestTempDir(t, "", "builder-dockerfile-test")
  	defer cleanup()
  
- 	createTestTempFile(t, contextDir, builder.DefaultDockerfileName, "", 0777)
-@@ -27,8 +28,9 @@
- 	readAndCheckDockerfile(t, "emptyDockerfile", contextDir, "", "the Dockerfile (Dockerfile) cannot be empty")
+@@ -28,6 +29,7 @@
  }
  
  func TestSymlinkDockerfile(t *testing.T) {
@@ -23,9 +20,7 @@ Forwarded: no
  	contextDir, cleanup := createTestTempDir(t, "", "builder-dockerfile-test")
  	defer cleanup()
  
- 	createTestSymlink(t, contextDir, builder.DefaultDockerfileName, "/etc/passwd")
-@@ -42,8 +44,9 @@
- 	readAndCheckDockerfile(t, "symlinkDockerfile", contextDir, builder.DefaultDockerfileName, expectedError)
+@@ -43,6 +45,7 @@
  }
  
  func TestDockerfileOutsideTheBuildContext(t *testing.T) {
@@ -33,9 +28,7 @@ Forwarded: no
  	contextDir, cleanup := createTestTempDir(t, "", "builder-dockerfile-test")
  	defer cleanup()
  
- 	expectedError := "Forbidden path outside the build context: ../../Dockerfile ()"
-@@ -51,8 +54,9 @@
- 	readAndCheckDockerfile(t, "DockerfileOutsideTheBuildContext", contextDir, "../../Dockerfile", expectedError)
+@@ -52,6 +55,7 @@
  }
  
  func TestNonExistingDockerfile(t *testing.T) {
@@ -43,11 +36,9 @@ Forwarded: no
  	contextDir, cleanup := createTestTempDir(t, "", "builder-dockerfile-test")
  	defer cleanup()
  
- 	expectedError := "Cannot locate specified Dockerfile: Dockerfile"
 --- a/engine/daemon/graphdriver/overlay2/overlay_test.go
 +++ b/engine/daemon/graphdriver/overlay2/overlay_test.go
-@@ -36,24 +36,29 @@
- 
+@@ -37,22 +37,27 @@
  // This avoids creating a new driver for each test if all tests are run
  // Make sure to put new tests between TestOverlaySetup and TestOverlayTeardown
  func TestOverlaySetup(t *testing.T) {
@@ -75,11 +66,9 @@ Forwarded: no
  	graphtest.DriverTestDeepLayerRead(t, 128, driverName)
  }
  
- func TestOverlayDiffApply10Files(t *testing.T) {
 --- a/engine/volume/local/local_test.go
 +++ b/engine/volume/local/local_test.go
-@@ -30,8 +30,9 @@
- 
+@@ -31,6 +31,7 @@
  }
  
  func TestRemove(t *testing.T) {
@@ -87,9 +76,7 @@ Forwarded: no
  	skip.If(t, runtime.GOOS == "windows", "FIXME: investigate why this test fails on CI")
  	rootDir, err := ioutil.TempDir("", "local-volume-test")
  	if err != nil {
- 		t.Fatal(err)
-@@ -73,8 +74,9 @@
- 	}
+@@ -74,6 +75,7 @@
  }
  
  func TestInitializeWithVolumes(t *testing.T) {
@@ -97,9 +84,7 @@ Forwarded: no
  	rootDir, err := ioutil.TempDir("", "local-volume-test")
  	if err != nil {
  		t.Fatal(err)
- 	}
-@@ -105,8 +107,9 @@
- 	}
+@@ -106,6 +108,7 @@
  }
  
  func TestCreate(t *testing.T) {
@@ -107,9 +92,7 @@ Forwarded: no
  	rootDir, err := ioutil.TempDir("", "local-volume-test")
  	if err != nil {
  		t.Fatal(err)
- 	}
-@@ -177,8 +180,9 @@
- 	}
+@@ -178,6 +181,7 @@
  }
  
  func TestCreateWithOpts(t *testing.T) {
@@ -117,11 +100,9 @@ Forwarded: no
  	skip.If(t, runtime.GOOS == "windows")
  	skip.If(t, os.Getuid() != 0, "requires mounts")
  	rootDir, err := ioutil.TempDir("", "local-volume-test")
- 	if err != nil {
 --- a/engine/pkg/mount/mount_unix_test.go
 +++ b/engine/pkg/mount/mount_unix_test.go
-@@ -24,8 +24,9 @@
- 	}
+@@ -25,6 +25,7 @@
  }
  
  func TestMounted(t *testing.T) {
@@ -129,9 +110,7 @@ Forwarded: no
  	if os.Getuid() != 0 {
  		t.Skip("root required")
  	}
- 
-@@ -79,8 +80,9 @@
- 	}
+@@ -80,6 +81,7 @@
  }
  
  func TestMountReadonly(t *testing.T) {
@@ -139,9 +118,7 @@ Forwarded: no
  	if os.Getuid() != 0 {
  		t.Skip("root required")
  	}
- 
-@@ -128,8 +130,9 @@
- 	}
+@@ -129,6 +131,7 @@
  }
  
  func TestGetMounts(t *testing.T) {
@@ -149,11 +126,9 @@ Forwarded: no
  	mounts, err := GetMounts(nil)
  	if err != nil {
  		t.Fatal(err)
- 	}
 --- a/engine/pkg/mount/sharedsubtree_linux_test.go
 +++ b/engine/pkg/mount/sharedsubtree_linux_test.go
-@@ -11,8 +11,9 @@
- )
+@@ -12,6 +12,7 @@
  
  // nothing is propagated in or out
  func TestSubtreePrivate(t *testing.T) {
@@ -161,9 +136,7 @@ Forwarded: no
  	if os.Getuid() != 0 {
  		t.Skip("root required")
  	}
- 
-@@ -113,8 +114,9 @@
- 
+@@ -114,6 +115,7 @@
  // Testing that when a target is a shared mount,
  // then child mounts propagate to the source
  func TestSubtreeShared(t *testing.T) {
@@ -171,9 +144,7 @@ Forwarded: no
  	if os.Getuid() != 0 {
  		t.Skip("root required")
  	}
- 
-@@ -185,8 +187,9 @@
- 
+@@ -186,6 +188,7 @@
  // testing that mounts to a shared source show up in the slave target,
  // and that mounts into a slave target do _not_ show up in the shared source
  func TestSubtreeSharedSlave(t *testing.T) {
@@ -181,9 +152,7 @@ Forwarded: no
  	if os.Getuid() != 0 {
  		t.Skip("root required")
  	}
- 
-@@ -293,8 +296,9 @@
- 	}
+@@ -294,6 +297,7 @@
  }
  
  func TestSubtreeUnbindable(t *testing.T) {
@@ -191,11 +160,9 @@ Forwarded: no
  	if os.Getuid() != 0 {
  		t.Skip("root required")
  	}
- 
 --- a/engine/daemon/graphdriver/overlay/overlay_test.go
 +++ b/engine/daemon/graphdriver/overlay/overlay_test.go
-@@ -18,24 +18,29 @@
- 
+@@ -19,22 +19,27 @@
  // This avoids creating a new driver for each test if all tests are run
  // Make sure to put new tests between TestOverlaySetup and TestOverlayTeardown
  func TestOverlaySetup(t *testing.T) {
@@ -223,11 +190,9 @@ Forwarded: no
  	graphtest.DriverTestDeepLayerRead(t, 50, "overlay")
  }
  
- // Fails due to bug in calculating changes after apply
 --- a/engine/pkg/archive/archive_test.go
 +++ b/engine/pkg/archive/archive_test.go
-@@ -263,8 +263,9 @@
- 	}
+@@ -264,6 +264,7 @@
  }
  
  func TestUntarPathWithInvalidDest(t *testing.T) {
@@ -235,9 +200,7 @@ Forwarded: no
  	tempFolder, err := ioutil.TempDir("", "docker-archive-test")
  	assert.NilError(t, err)
  	defer os.RemoveAll(tempFolder)
- 	invalidDestFolder := filepath.Join(tempFolder, "invalidDest")
-@@ -435,8 +436,9 @@
- 	}
+@@ -436,6 +437,7 @@
  }
  
  func TestCopyWithTarInexistentDestWillCreateIt(t *testing.T) {
@@ -245,9 +208,7 @@ Forwarded: no
  	skip.If(t, os.Getuid() != 0, "skipping test that requires root")
  	tempFolder, err := ioutil.TempDir("", "docker-archive-test")
  	if err != nil {
- 		t.Fatal(nil)
-@@ -728,8 +730,9 @@
- 	}
+@@ -729,6 +731,7 @@
  }
  
  func TestTarWithOptionsChownOptsAlwaysOverridesIdPair(t *testing.T) {
@@ -255,9 +216,7 @@ Forwarded: no
  	origin, err := ioutil.TempDir("", "docker-test-tar-chown-opt")
  	assert.NilError(t, err)
  
- 	defer os.RemoveAll(origin)
-@@ -779,8 +782,9 @@
- 	}
+@@ -780,6 +783,7 @@
  }
  
  func TestTarWithOptions(t *testing.T) {
@@ -265,9 +224,7 @@ Forwarded: no
  	// TODO Windows: Figure out how to fix this test.
  	if runtime.GOOS == "windows" {
  		t.Skip("Failing on Windows")
- 	}
-@@ -969,8 +973,9 @@
- 	}
+@@ -970,6 +974,7 @@
  }
  
  func TestUntarHardlinkToSymlink(t *testing.T) {
@@ -275,9 +232,7 @@ Forwarded: no
  	// TODO Windows. There may be a way of running this, but turning off for now
  	skip.If(t, runtime.GOOS == "windows", "hardlinks on Windows")
  	skip.If(t, os.Getuid() != 0, "skipping test that requires root")
- 	for i, headers := range [][]*tar.Header{
-@@ -1199,8 +1204,9 @@
- 	}
+@@ -1200,6 +1205,7 @@
  }
  
  func TestReplaceFileTarWrapper(t *testing.T) {
@@ -285,11 +240,9 @@ Forwarded: no
  	filesInArchive := 20
  	testcases := []struct {
  		doc       string
- 		filename  string
 --- a/engine/pkg/archive/archive_linux_test.go
 +++ b/engine/pkg/archive/archive_linux_test.go
-@@ -84,8 +84,9 @@
- 	}
+@@ -85,6 +85,7 @@
  }
  
  func TestOverlayTarUntar(t *testing.T) {
@@ -297,9 +250,7 @@ Forwarded: no
  	oldmask, err := system.Umask(0)
  	assert.NilError(t, err)
  	defer system.Umask(oldmask)
- 
-@@ -123,8 +124,9 @@
- 	checkOverlayWhiteout(t, filepath.Join(dst, "d3", "f1"))
+@@ -124,6 +125,7 @@
  }
  
  func TestOverlayTarAUFSUntar(t *testing.T) {
@@ -307,11 +258,9 @@ Forwarded: no
  	oldmask, err := system.Umask(0)
  	assert.NilError(t, err)
  	defer system.Umask(oldmask)
- 
 --- a/cli/cli/command/image/build_test.go
 +++ b/cli/cli/command/image/build_test.go
-@@ -22,8 +22,9 @@
- 	"gotest.tools/skip"
+@@ -23,6 +23,7 @@
  )
  
  func TestRunBuildDockerfileFromStdinWithCompress(t *testing.T) {
@@ -319,9 +268,7 @@ Forwarded: no
  	buffer := new(bytes.Buffer)
  	fakeBuild := newFakeBuild()
  	fakeImageBuild := func(ctx context.Context, context io.Reader, options types.ImageBuildOptions) (types.ImageBuildResponse, error) {
- 		tee := io.TeeReader(context, buffer)
-@@ -119,8 +120,9 @@
- // to clone the remote repo.
+@@ -120,6 +121,7 @@
  // TODO: test "context selection" logic directly when runBuild is refactored
  // to support testing (ex: docker/cli#294)
  func TestRunBuildFromGitHubSpecialCase(t *testing.T) {
@@ -329,11 +276,9 @@ Forwarded: no
  	cmd := NewBuildCommand(test.NewFakeCli(nil))
  	// Clone a small repo that exists so git doesn't prompt for credentials
  	cmd.SetArgs([]string{"github.com/docker/for-win"})
- 	cmd.SetOutput(ioutil.Discard)
 --- a/engine/daemon/oci_linux_test.go
 +++ b/engine/daemon/oci_linux_test.go
-@@ -88,8 +88,9 @@
- 	}
+@@ -89,6 +89,7 @@
  }
  
  func TestGetSourceMount(t *testing.T) {
@@ -341,4 +286,3 @@ Forwarded: no
  	// must be able to find source mount for /
  	mnt, _, err := getSourceMount("/")
  	assert.NilError(t, err)
- 	assert.Equal(t, mnt, "/")
