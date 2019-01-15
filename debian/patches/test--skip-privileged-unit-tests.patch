@@ -286,3 +286,21 @@ Forwarded: no
  	// must be able to find source mount for /
  	mnt, _, err := getSourceMount("/")
  	assert.NilError(t, err)
+--- a/engine/layer/mount_test.go
++++ b/engine/layer/mount_test.go
+@@ -12,6 +12,7 @@
+ )
+ 
+ func TestMountInit(t *testing.T) {
++	t.Skip("DM - skipping privileged test")
+ 	// TODO Windows: Figure out why this is failing
+ 	if runtime.GOOS == "windows" {
+ 		t.Skip("Failing on Windows")
+@@ -120,6 +121,7 @@
+ }
+ 
+ func TestMountChanges(t *testing.T) {
++	t.Skip("DM - skipping privileged test")
+ 	// TODO Windows: Figure out why this is failing
+ 	if runtime.GOOS == "windows" {
+ 		t.Skip("Failing on Windows")
