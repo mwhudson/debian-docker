@@ -1,3 +1,9 @@
+docker.io (18.09.1+dfsg1-1) UNRELEASED; urgency=medium
+
+  * New upstream release [January 2019].
+
+ -- Arnaud Rebillout <arnaud.rebillout@collabora.com>  Thu, 17 Jan 2019 17:03:05 +0700
+
 docker.io (18.06.1+dfsg1-3) unstable; urgency=medium
 
   * Import upstream patch to use iptables-legacy (Closes: #911808).
