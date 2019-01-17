@@ -1,4 +1,4 @@
-docker.io (18.06.1+dfsg1-3) unstable; urgency=medium
+docker.io (18.06.1+dfsg1-3) UNRELEASED; urgency=medium
 
   * Non-maintainer upload.
   * Import upstream patch to use iptables-legacy (Closes: #911808).
