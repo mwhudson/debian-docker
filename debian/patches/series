@@ -21,6 +21,7 @@ libnetwork_proto.patch
 #~listeners-activation.patch
 
 mips.patch
+mips-add-specific-signal-file.patch
 
 netlink_syscall.patch
 nuke-no-prompt.patch
