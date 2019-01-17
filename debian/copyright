@@ -6,14 +6,13 @@ Files-Excluded:
   .github
   .gitignore
   components/packaging
-  vendor/github.com/howeyc/gopass/terminal_solaris.go
-  vendor/github.com/howeyc/gopass/OPENSOLARIS.LICENSE
   vendor/k8s.io/*/third_party/protobuf
     vendor/archive
     vendor/cloud.google.com
     vendor/github.com/agl/ed25519
     vendor/github.com/armon/go-metrics
     vendor/github.com/armon/go-radix
+  ~~vendor/github.com/asaskevich/govalidator
     vendor/github.com/aws/aws-sdk-go
     vendor/github.com/Azure/azure-sdk-for-go
     vendor/github.com/Azure/go-ansiterm
@@ -65,11 +64,11 @@ Files-Excluded:
     vendor/github.com/docker/libkv
     vendor/github.com/docker/libnetwork
     vendor/github.com/docker/libtrust
+  ~~vendor/github.com/docker/licensing
     vendor/github.com/docker/spdystream
     vendor/github.com/docker/swarmkit
     vendor/github.com/dustin/go-humanize
     vendor/github.com/emicklei/go-restful
-    vendor/github.com/emicklei/go-restful-swagger12
   ~~vendor/github.com/fernet/fernet-go
     vendor/github.com/fluent/fluent-logger-golang
     vendor/github.com/flynn-archive/go-shlex
@@ -87,15 +86,10 @@ Files-Excluded:
     vendor/github.com/googleapis/gax-go
     vendor/github.com/googleapis/gnostic
     vendor/github.com/google/btree
-    vendor/github.com/google/certificate-transparency
     vendor/github.com/google/certificate-transparency-go
     vendor/github.com/google/go-cmp
     vendor/github.com/google/gofuzz
     vendor/github.com/google/shlex
-    vendor/github.com/go-openapi/jsonpointer
-    vendor/github.com/go-openapi/jsonreference
-    vendor/github.com/go-openapi/spec
-    vendor/github.com/go-openapi/swag
     vendor/github.com/gorilla/context
     vendor/github.com/gorilla/handlers
     vendor/github.com/gorilla/mux
@@ -112,17 +106,15 @@ Files-Excluded:
     vendor/github.com/hashicorp/go-msgpack
     vendor/github.com/hashicorp/go-multierror
     vendor/github.com/hashicorp/go-sockaddr
+  ~~vendor/github.com/hashicorp/go-version
     vendor/github.com/hashicorp/memberlist
     vendor/github.com/hashicorp/serf
-  ~~vendor/github.com/howeyc/gopass
     vendor/github.com/imdario/mergo
     vendor/github.com/inconshreveable/mousetrap
   ~~vendor/github.com/ishidawataru/sctp
     vendor/github.com/jmespath/go-jmespath
     vendor/github.com/json-iterator/go
-    vendor/github.com/juju/ratelimit
     vendor/github.com/kr/pty
-    vendor/github.com/mailru/easyjson
     vendor/github.com/mattn/go-shellwords
     vendor/github.com/matttproud/golang_protobuf_extensions
     vendor/github.com/Microsoft/go-winio
@@ -158,12 +150,11 @@ Files-Excluded:
     vendor/github.com/prometheus/client_model
     vendor/github.com/prometheus/common
     vendor/github.com/prometheus/procfs
-    vendor/github.com/PuerkitoBio/purell
-    vendor/github.com/PuerkitoBio/urlesc
     vendor/github.com/RackSec/srslog
     vendor/github.com/rcrowley/go-metrics
     vendor/github.com/russross/blackfriday
     vendor/github.com/samuel/go-zookeeper
+  ~~vendor/github.com/satori/go.uuid
     vendor/github.com/sean-/seed
     vendor/github.com/seccomp/libseccomp-golang
     vendor/github.com/shurcooL/sanitized_anchor_name
@@ -191,6 +182,7 @@ Files-Excluded:
     vendor/github.com/yvasiyarov/go-metrics
     vendor/github.com/yvasiyarov/gorelic
     vendor/github.com/yvasiyarov/newrelic_platform_go
+  ~~vendor/go.etcd.io
     vendor/golang.org
     vendor/google.golang.org
     vendor/go.opencensus.io
@@ -271,11 +263,6 @@ Files:
     */vendor/github.com/grpc-ecosystem/grpc-opentracing/*
 Copyright: 2016, gRPC Ecosystem
 License: BSD-3-clause-GRPC-Opentracing
-
-Files:
-    */vendor/github.com/howeyc/gopass/*
-Copyright: 2012 Chris Howey
-License: ISC
 
 Files:
     */vendor/github.com/ishidawataru/sctp/*
