@@ -17,7 +17,7 @@ Description: fixes FTBFS
  
  var (
  	hostMode    bool
-@@ -730,9 +731,9 @@
+@@ -759,9 +760,9 @@
  		if err != nil {
  			return
  		}
@@ -26,7 +26,7 @@ Description: fixes FTBFS
 +		tv := unix.NsecToTimeval(soTimeout.Nanoseconds())
  		err = nlSock.SetReceiveTimeout(&tv)
  	})
- 	n.setNetlinkSocket(nlSock)
+ 	n.nlSocket = nlSock
  
 --- a/libnetwork/ipvs/ipvs.go
 +++ b/libnetwork/ipvs/ipvs.go

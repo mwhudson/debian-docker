@@ -4,8 +4,7 @@ Forwarded: not-needed
 
 --- a/engine/pkg/authorization/authz_unix_test.go
 +++ b/engine/pkg/authorization/authz_unix_test.go
-@@ -267,8 +267,10 @@
- 	if err != nil {
+@@ -346,6 +346,8 @@
  		t.Fatal(err)
  	}
  
@@ -14,4 +13,3 @@ Forwarded: not-needed
  	client, err := plugins.NewClient("unix:///"+path.Join(pwd, pluginAddress), &tlsconfig.Options{InsecureSkipVerify: true})
  	if err != nil {
  		t.Fatalf("Failed to create client %v", err)
- 	}

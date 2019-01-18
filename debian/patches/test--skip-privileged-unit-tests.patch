@@ -260,7 +260,7 @@ Forwarded: no
  	defer system.Umask(oldmask)
 --- a/cli/cli/command/image/build_test.go
 +++ b/cli/cli/command/image/build_test.go
-@@ -23,6 +23,7 @@
+@@ -25,6 +25,7 @@
  )
  
  func TestRunBuildDockerfileFromStdinWithCompress(t *testing.T) {
@@ -268,7 +268,7 @@ Forwarded: no
  	buffer := new(bytes.Buffer)
  	fakeBuild := newFakeBuild()
  	fakeImageBuild := func(ctx context.Context, context io.Reader, options types.ImageBuildOptions) (types.ImageBuildResponse, error) {
-@@ -120,6 +121,7 @@
+@@ -122,6 +123,7 @@
  // TODO: test "context selection" logic directly when runBuild is refactored
  // to support testing (ex: docker/cli#294)
  func TestRunBuildFromGitHubSpecialCase(t *testing.T) {
