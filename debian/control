@@ -49,7 +49,6 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-docker-notary-dev (>= 0.6.1~) | golang-github-theupdateframework-notary-dev
     ,golang-github-docker-spdystream-dev
     ,golang-github-emicklei-go-restful-dev
-    ,golang-github-emicklei-go-restful-swagger12-dev
     ,golang-github-fluent-fluent-logger-golang-dev (>= 1.3.0~)
     ,golang-github-flynn-archive-go-shlex-dev
     ,golang-github-fsnotify-fsnotify-dev
@@ -61,11 +60,6 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-google-go-cmp-dev (>= 0.2.0~)
     ,golang-github-google-gofuzz-dev
     ,golang-github-google-shlex-dev
-    ,golang-github-go-openapi-jsonpointer-dev
-    ,golang-github-go-openapi-jsonreference-dev
-    ,golang-github-go-openapi-spec-dev
-    ,golang-github-go-openapi-swag-dev
-    ,golang-github-gorilla-context-dev
     ,golang-github-gorilla-mux-dev
     ,golang-github-gotestyourself-gotest.tools-dev
     ,golang-github-graylog2-go-gelf-dev
@@ -76,9 +70,7 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-hashicorp-serf-dev
     ,golang-github-imdario-mergo-dev (>= 0.3.3~)
     ,golang-github-json-iterator-go-dev (>= 1.1.4~)
-#   ,golang-github-juju-ratelimit-dev
     ,golang-github-kr-pty-dev
-#   ,golang-github-mailru-easyjson-dev
     ,golang-github-mattn-go-shellwords-dev
     ,golang-github-mattn-go-sqlite3-dev
     ,golang-github-miekg-dns-dev
