@@ -1,0 +1,41 @@
+From: Arnaud Rebillout <arnaud.rebillout@collabora.com>
+Date: Fri, 18 Jan 2019 14:59:52 +0700
+Subject: Fix FindCgroupMountpoint for opencontainers-runc up to 1.0.0-rc6
+
+Upstream vendors runc at 96ec2177 (2018-12-04), on branch master, after
+1.0.0-rc6, and before any other release. Until runc upstream issue a new
+release, and this new release is shipped in Debian, we'll need to apply
+this patch.
+
+This patch basically reverts moby's commit 78045a54 (2018-12-08).
+
+Origin: vendor, Debian
+Forwarded: not-needed, Debian-specific
+Signed-off-by: Arnaud Rebillout <arnaud.rebillout@collabora.com>
+---
+ engine/daemon/daemon_unix.go        | 2 +-
+ engine/pkg/sysinfo/sysinfo_linux.go | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+--- a/engine/daemon/daemon_unix.go
++++ b/engine/daemon/daemon_unix.go
+@@ -1480,7 +1480,7 @@
+ 	// for the period and runtime as this limits what the children can be set to.
+ 	daemon.initCgroupsPath(filepath.Dir(path))
+ 
+-	mnt, root, err := cgroups.FindCgroupMountpointAndRoot("", "cpu")
++	mnt, root, err := cgroups.FindCgroupMountpointAndRoot("cpu")
+ 	if err != nil {
+ 		return err
+ 	}
+--- a/engine/pkg/sysinfo/sysinfo_linux.go
++++ b/engine/pkg/sysinfo/sysinfo_linux.go
+@@ -227,7 +227,7 @@
+ 
+ // checkCgroupPids reads the pids information from the pids cgroup mount point.
+ func checkCgroupPids(quiet bool) cgroupPids {
+-	_, err := cgroups.FindCgroupMountpoint("", "pids")
++	_, err := cgroups.FindCgroupMountpoint("pids")
+ 	if err != nil {
+ 		if !quiet {
+ 			logrus.Warn(err)
