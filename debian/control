@@ -121,7 +121,7 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-golang-x-time-dev
     ,golang-google-api-dev
     ,golang-google-cloud-dev
-    ,golang-google-grpc-dev
+    ,golang-google-grpc-dev (>= 1.12.0~)
     ,golang-gopkg-check.v1-dev
     ,golang-gopkg-inf.v0-dev
     ,golang-goprotobuf-dev (>= 0.0~git20151207~)
@@ -212,7 +212,7 @@ Depends: ${misc:Depends}
     ,golang-github-tchap-go-patricia-dev
     ,golang-golang-x-net-dev
     ,golang-golang-x-sys-dev
-    ,golang-google-grpc-dev
+    ,golang-google-grpc-dev (>= 1.12.0~)
     ,golang-gopkg-check.v1-dev
 # libnetwork:
     ,golang-dbus-dev (>= 3~)
