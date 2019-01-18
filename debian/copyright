@@ -12,7 +12,7 @@ Files-Excluded:
     vendor/github.com/agl/ed25519
     vendor/github.com/armon/go-metrics
     vendor/github.com/armon/go-radix
-  ~~vendor/github.com/asaskevich/govalidator
+    vendor/github.com/asaskevich/govalidator
     vendor/github.com/aws/aws-sdk-go
     vendor/github.com/Azure/azure-sdk-for-go
     vendor/github.com/Azure/go-ansiterm

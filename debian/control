@@ -19,6 +19,7 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-etcd-server-dev
 #   ,golang-github-appc-cni-dev (>= 0.6.0~)
     ,golang-github-armon-go-metrics-dev
+    ,golang-github-asaskevich-govalidator-dev
     ,golang-github-aws-aws-sdk-go-dev
     ,golang-github-azure-go-ansiterm-dev
     ,golang-github-blang-semver-dev
