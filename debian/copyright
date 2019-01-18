@@ -159,7 +159,7 @@ Files-Excluded:
     vendor/github.com/seccomp/libseccomp-golang
     vendor/github.com/shurcooL/sanitized_anchor_name
     vendor/github.com/sirupsen/logrus
-    vendor/github.com/spf13/cobra
+  ~~vendor/github.com/spf13/cobra
   ~~vendor/github.com/spf13/pflag
     vendor/github.com/stevvooe/resumable
     vendor/github.com/stretchr/testify

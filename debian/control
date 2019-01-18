@@ -101,7 +101,7 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-samuel-go-zookeeper-dev
     ,golang-github-seccomp-libseccomp-golang-dev (>= 0.9.0)
     ,golang-github-sirupsen-logrus-dev (>= 1.0.2~)
-    ,golang-github-spf13-cobra-dev (>= 0.0.2~)
+#    ,golang-github-spf13-cobra-dev (>= 0.0.2~)
 #    ,golang-github-spf13-pflag-dev
     ,golang-github-stevvooe-ttrpc-dev
     ,golang-github-tchap-go-patricia-dev
