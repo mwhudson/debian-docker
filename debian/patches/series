@@ -27,6 +27,7 @@ nuke-no-prompt.patch
 runc-findcgroupmountpoint.patch
 
 test--disable-TestChangesWithChangesGH13590.patch
+test--disable-containerizedengine-update-test.patch
 test--fix-test-errors.patch
 test--skip-TestAdapterReadLogs.patch
 test--skip-TestGetRootUIDGID.patch
