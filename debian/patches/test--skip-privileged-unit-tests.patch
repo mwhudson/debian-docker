@@ -304,3 +304,13 @@ Forwarded: no
  	// TODO Windows: Figure out why this is failing
  	if runtime.GOOS == "windows" {
  		t.Skip("Failing on Windows")
+--- a/engine/daemon/graphdriver/aufs/aufs_test.go
++++ b/engine/daemon/graphdriver/aufs/aufs_test.go
+@@ -31,6 +31,7 @@
+ }
+ 
+ func testInit(dir string, t testing.TB) graphdriver.Driver {
++	t.Skip("DM - skipping privileged test")
+ 	d, err := Init(dir, nil, nil, nil)
+ 	if err != nil {
+ 		if err == graphdriver.ErrNotSupported {
