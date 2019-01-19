@@ -26,10 +26,10 @@ nuke-no-prompt.patch
 #runc_unuse_SIGUNUSED.patch
 runc-findcgroupmountpoint.patch
 
-test--disable-TestChangesWithChangesGH13590.patch
 test--disable-containerizedengine-update-test.patch
 test--fix-test-errors.patch
 test--skip-TestAdapterReadLogs.patch
+test--skip-TestChangesWithChangesGH13590.patch
 test--skip-TestGetRootUIDGID.patch
 test--skip-TestStateRunStop.patch
 test--skip-network-tests.patch
