@@ -154,7 +154,7 @@ Files-Excluded:
     vendor/github.com/rcrowley/go-metrics
     vendor/github.com/russross/blackfriday
     vendor/github.com/samuel/go-zookeeper
-  ~~vendor/github.com/satori/go.uuid
+    vendor/github.com/satori/go.uuid
     vendor/github.com/sean-/seed
     vendor/github.com/seccomp/libseccomp-golang
     vendor/github.com/shurcooL/sanitized_anchor_name

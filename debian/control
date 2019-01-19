@@ -100,6 +100,7 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-rcrowley-go-metrics-dev
     ,golang-github-rsc-letsencrypt-dev
     ,golang-github-samuel-go-zookeeper-dev
+    ,golang-github-satori-go.uuid-dev
     ,golang-github-seccomp-libseccomp-golang-dev (>= 0.9.0)
     ,golang-github-sirupsen-logrus-dev (>= 1.0.2~)
 #    ,golang-github-spf13-cobra-dev (>= 0.0.2~)
