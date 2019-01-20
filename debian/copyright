@@ -240,7 +240,7 @@ Copyright:
 License: BSD-3-clause-Google
 
 Files:
-    vendor/github.com/containernetworking/plugins/*
+    */vendor/github.com/containernetworking/plugins/*
 Copyright: 2015-2017 CNI authors
 License: Apache-2.0
 
