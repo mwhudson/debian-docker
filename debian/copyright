@@ -106,7 +106,7 @@ Files-Excluded:
     vendor/github.com/hashicorp/go-msgpack
     vendor/github.com/hashicorp/go-multierror
     vendor/github.com/hashicorp/go-sockaddr
-  ~~vendor/github.com/hashicorp/go-version
+    vendor/github.com/hashicorp/go-version
     vendor/github.com/hashicorp/memberlist
     vendor/github.com/hashicorp/serf
     vendor/github.com/imdario/mergo

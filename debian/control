@@ -67,6 +67,7 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-grpc-ecosystem-go-grpc-prometheus-dev
 #   ,golang-github-grpc-ecosystem-grpc-gateway-dev
     ,golang-github-hashicorp-go-msgpack-dev
+    ,golang-github-hashicorp-go-version-dev
     ,golang-github-hashicorp-memberlist-dev (>= 0.1.0~)
     ,golang-github-hashicorp-serf-dev
     ,golang-github-imdario-mergo-dev (>= 0.3.3~)
