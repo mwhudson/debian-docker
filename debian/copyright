@@ -182,7 +182,7 @@ Files-Excluded:
     vendor/github.com/yvasiyarov/go-metrics
     vendor/github.com/yvasiyarov/gorelic
     vendor/github.com/yvasiyarov/newrelic_platform_go
-  ~~vendor/go.etcd.io
+    vendor/go.etcd.io
     vendor/golang.org
     vendor/google.golang.org
     vendor/go.opencensus.io
