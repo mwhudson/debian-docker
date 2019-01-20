@@ -245,6 +245,11 @@ Copyright: 2015-2017 CNI authors
 License: Apache-2.0
 
 Files:
+    */vendor/github.com/docker/licensing
+Copyright: 2013-2017 Docker, Inc.
+License: Apache-2.0
+
+Files:
     */vendor/github.com/fernet/fernet-go/*
 Copyright: 2013 Keith Rarick
 License: Expat
