@@ -94,7 +94,7 @@ Files-Excluded:
     vendor/github.com/gorilla/handlers
     vendor/github.com/gorilla/mux
   ~~vendor/github.com/Graylog2/go-gelf
-  ~~vendor/github.com/gregjones/httpcache
+    vendor/github.com/gregjones/httpcache
     vendor/github.com/grpc-ecosystem/go-grpc-prometheus
     vendor/github.com/grpc-ecosystem/grpc-gateway
   ~~vendor/github.com/grpc-ecosystem/grpc-opentracing
@@ -257,11 +257,6 @@ License: Expat
 Files:
     */vendor/github.com/Graylog2/go-gelf/*
 Copyright: 2012 SocialCode
-License: Expat
-
-Files:
-    */vendor/github.com/gregjones/httpcache/*
-Copyright: 2012 Greg Jones <greg.jones@gmail.com>
 License: Expat
 
 Files:

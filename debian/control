@@ -65,6 +65,7 @@ Build-Depends: debhelper (>= 11~) ,dh-exec ,dh-golang (>= 1.14~)
     ,golang-github-gorilla-mux-dev
     ,golang-github-gotestyourself-gotest.tools-dev
     ,golang-github-graylog2-go-gelf-dev
+    ,golang-github-gregjones-httpcache-dev
     ,golang-github-grpc-ecosystem-go-grpc-prometheus-dev
 #   ,golang-github-grpc-ecosystem-grpc-gateway-dev
     ,golang-github-hashicorp-go-msgpack-dev
