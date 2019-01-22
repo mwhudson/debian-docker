@@ -20,8 +20,8 @@ go-metrics_prometheus-fix_Observer.patch
 libnetwork_proto.patch
 #~listeners-activation.patch
 
-mips.patch
 mips-add-specific-signal-file.patch
+mips-fix-devnumber.patch
 
 netlink_syscall.patch
 nuke-no-prompt.patch
