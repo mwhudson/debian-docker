@@ -1,0 +1,56 @@
+From: Arnaud Rebillout <arnaud.rebillout@collabora.com>
+Date: Tue, 22 Jan 2019 12:22:52 +0700
+Subject: Build against google-grpc 1.11, where md.Get() does not exist.
+
+This patch is based on the commit that introduced md.Get() in google-grpc:
+<https://github.com/grpc/grpc-go/commit/291de7f0>.
+
+Please drop this patch as soon as we build docker against google-grpc >= 1.12.
+
+Origin: vendor, Debian
+Forwarded: not-needed, Debian-specific
+Signed-off-by: Arnaud Rebillout <arnaud.rebillout@collabora.com>
+---
+ client/buildid/metadata.go | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+--- a/cli/vendor/github.com/moby/buildkit/client/buildid/metadata.go
++++ b/cli/vendor/github.com/moby/buildkit/client/buildid/metadata.go
+@@ -2,6 +2,7 @@
+ 
+ import (
+ 	"context"
++	"strings"
+ 
+ 	"google.golang.org/grpc/metadata"
+ )
+@@ -21,7 +22,8 @@
+ 		return ""
+ 	}
+ 
+-	if ids := md.Get(metadataKey); len(ids) == 1 {
++	k := strings.ToLower(metadataKey)
++	if ids := md[k]; len(ids) == 1 {
+ 		return ids[0]
+ 	}
+ 
+--- a/engine/vendor/github.com/moby/buildkit/client/buildid/metadata.go
++++ b/engine/vendor/github.com/moby/buildkit/client/buildid/metadata.go
+@@ -2,6 +2,7 @@
+ 
+ import (
+ 	"context"
++	"strings"
+ 
+ 	"google.golang.org/grpc/metadata"
+ )
+@@ -21,7 +22,8 @@
+ 		return ""
+ 	}
+ 
+-	if ids := md.Get(metadataKey); len(ids) == 1 {
++	k := strings.ToLower(metadataKey)
++	if ids := md[k]; len(ids) == 1 {
+ 		return ids[0]
+ 	}
+ 
