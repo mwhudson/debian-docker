@@ -291,6 +291,21 @@ Copyright: 2016 Patrick D Hayes
 License: Expat
 
 Files:
+    */vendor/github.com/spf13/cobra/*
+Copyright:
+    2013 Steve Francia <spf@spf13.com>
+    2015 Red Hat Inc.
+    2016 French Ben
+License: Apache-2.0
+
+Files:
+    */vendor/github.com/spf13/pflag/*
+Copyright:
+    2012      The Go Authors
+    2012–2015 Alex Ogier <alex.ogier@gmail.com>
+License: BSD-3-clause-Google
+
+Files:
     */vendor/github.com/tonistiigi/fsutil/*
 Copyright: 2017 Tõnis Tiigi <tonistiigi@gmail.com>
 License: Expat
