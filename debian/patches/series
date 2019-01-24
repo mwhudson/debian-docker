@@ -15,18 +15,13 @@ engine-test-noinstall.patch
 
 go-metrics_prometheus-fix_Observer.patch
 
-#import_nvveen-gotty.patch
-
 libnetwork_proto.patch
-#~listeners-activation.patch
 
 mips-add-specific-signal-file.patch
 mips-fix-devnumber.patch
 
 netlink_syscall.patch
 nuke-no-prompt.patch
-
-#runc_unuse_SIGUNUSED.patch
 
 test--disable-containerizedengine-update-test.patch
 test--fix-test-errors.patch
