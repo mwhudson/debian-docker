@@ -1,3 +1,7 @@
+## Debian CI:
+debian/.gitlab-ci.yml
+debian/.yamllint
+
 ## Useless non-doc files:
 engine/docs/.gitignore
 engine/docs/Dockerfile
