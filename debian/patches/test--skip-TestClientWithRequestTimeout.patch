@@ -1,0 +1,20 @@
+From: Arnaud Rebillout <arnaud.rebillout@collabora.com>
+Date: Thu, 24 Jan 2019 15:22:58 +0700
+Subject: Skip TestClientWithRequestTimeout
+
+This test seems to be flaky. Please follow-up upstream for more details:
+<https://github.com/moby/moby/issues/38587>
+
+Origin: vendor, Debian
+Forwarded: not-needed, Debian-specific
+Signed-off-by: Arnaud Rebillout <arnaud.rebillout@collabora.com>
+--- a/engine/pkg/plugins/client_test.go
++++ b/engine/pkg/plugins/client_test.go
+@@ -237,6 +237,7 @@
+ }
+ 
+ func TestClientWithRequestTimeout(t *testing.T) {
++	t.skip("DM - skipping flaky test")
+ 	timeout := 1 * time.Millisecond
+ 	testHandler := func(w http.ResponseWriter, r *http.Request) {
+ 		time.Sleep(timeout + 1*time.Millisecond)

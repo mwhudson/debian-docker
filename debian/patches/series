@@ -26,6 +26,7 @@ test--disable-containerizedengine-update-test.patch
 test--fix-test-errors.patch
 test--skip-TestAdapterReadLogs.patch
 test--skip-TestChangesWithChangesGH13590.patch
+test--skip-TestClientWithRequestTimeout.patch
 test--skip-TestGetRootUIDGID.patch
 test--skip-TestStateRunStop.patch
 test--skip-network-tests.patch
