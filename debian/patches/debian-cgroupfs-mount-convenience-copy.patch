@@ -5,7 +5,7 @@ Bug-Debian: https://bugs.debian.org/783143
 
 --- a/engine/contrib/init/sysvinit-debian/docker
 +++ b/engine/contrib/init/sysvinit-debian/docker
-@@ -58,39 +58,14 @@
+@@ -59,37 +59,12 @@
  		exit 1
  	fi
  }
@@ -47,7 +47,7 @@ Bug-Debian: https://bugs.debian.org/783143
  		ulimit -n 1048576
 --- a/engine/contrib/init/upstart/docker.conf
 +++ b/engine/contrib/init/upstart/docker.conf
-@@ -12,31 +12,8 @@
+@@ -13,29 +13,6 @@
  respawn
  
  kill timeout 20
