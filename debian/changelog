@@ -1,3 +1,10 @@
+docker.io (18.09.1+dfsg1-2) UNRELEASED; urgency=medium
+
+  * Bump runc requirement to 1.0.0~rc6.
+  * Tidy up patches.
+
+ -- Arnaud Rebillout <arnaud.rebillout@collabora.com>  Thu, 24 Jan 2019 12:11:07 +0700
+
 docker.io (18.09.1+dfsg1-1) experimental; urgency=medium
 
   * New upstream release [January 2019].
