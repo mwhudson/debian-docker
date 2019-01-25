@@ -1,7 +1,7 @@
 Source: docker.io
 Section: admin
 Priority: optional
-Standards-Version: 4.1.5
+Standards-Version: 4.3.0
 Maintainer: Dmitry Smirnov <onlyjob@debian.org>
 Uploaders: Arnaud Rebillout <arnaud.rebillout@collabora.com>
           ,Tim Potter <tpot@hpe.com>
