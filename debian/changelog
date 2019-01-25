@@ -1,10 +1,15 @@
-docker.io (18.09.1+dfsg1-2) UNRELEASED; urgency=medium
+docker.io (18.09.1+dfsg1-2) unstable; urgency=medium
 
+  [ Dmitry Smirnov ]
+  * Standards-Version: 4.3.0.
+  * Upload to unstable.
+
+  [ Arnaud Rebillout ]
   * Bump runc requirement to 1.0.0~rc6.
+  * Add patch to skip flaky test.
   * Tidy up patches.
-  * Add patch to skip flaky test. 
 
- -- Arnaud Rebillout <arnaud.rebillout@collabora.com>  Thu, 24 Jan 2019 15:32:53 +0700
+ -- Arnaud Rebillout <arnaud.rebillout@collabora.com>  Sat, 26 Jan 2019 10:58:39 +1100
 
 docker.io (18.09.1+dfsg1-1) experimental; urgency=medium
 
