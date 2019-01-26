@@ -5,7 +5,7 @@ Bug-Debian: https://bugs.debian.org/783143
 
 --- a/engine/contrib/init/sysvinit-debian/docker
 +++ b/engine/contrib/init/sysvinit-debian/docker
-@@ -59,37 +59,12 @@
+@@ -58,39 +58,14 @@
  		exit 1
  	fi
  }
@@ -47,7 +47,7 @@ Bug-Debian: https://bugs.debian.org/783143
  		ulimit -n 1048576
 --- a/engine/contrib/init/upstart/docker.conf
 +++ b/engine/contrib/init/upstart/docker.conf
-@@ -13,29 +13,6 @@
+@@ -12,31 +12,8 @@
  respawn
  
  kill timeout 20
@@ -77,5 +77,5 @@ Bug-Debian: https://bugs.debian.org/783143
 -
  script
  	# modify these in /etc/default/$UPSTART_JOB (/etc/default/docker)
- 	DOCKERD=/usr/bin/dockerd
+ 	DOCKERD=/usr/sbin/dockerd
  	DOCKER_OPTS=

@@ -3,7 +3,7 @@ Description: FHS compliance.
 
 --- a/engine/contrib/init/systemd/docker.service
 +++ b/engine/contrib/init/systemd/docker.service
-@@ -11,7 +11,7 @@
+@@ -10,9 +10,9 @@
  # the default is not to use systemd for cgroups because the delegate issues still
  # exists and systemd currently does not support the cgroup feature set required
  # for containers run by docker
@@ -16,7 +16,7 @@ Description: FHS compliance.
  # in the kernel. We recommend using cgroups to do container-local accounting.
 --- a/engine/contrib/init/sysvinit-debian/docker
 +++ b/engine/contrib/init/sysvinit-debian/docker
-@@ -22,7 +22,7 @@
+@@ -21,9 +21,9 @@
  
  BASE=docker
  
@@ -29,8 +29,8 @@ Description: FHS compliance.
  DOCKER_SSD_PIDFILE=/var/run/$BASE-ssd.pid
 --- a/engine/contrib/init/upstart/docker.conf
 +++ b/engine/contrib/init/upstart/docker.conf
-@@ -38,7 +38,7 @@
- kill timeout 20
+@@ -37,9 +37,9 @@
+ end script
  
  script
  	# modify these in /etc/default/$UPSTART_JOB (/etc/default/docker)
