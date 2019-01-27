@@ -1,0 +1,45 @@
+Last-Update: 2019-01-27
+Forwarded: not-needed
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=920597
+Author: Dmitry Smirnov <onlyjob@debian.org>
+Description: "fix" containerd executable name.
+
+--- a/engine/hack/make/.binary-setup
++++ b/engine/hack/make/.binary-setup
+@@ -1,9 +1,9 @@
+ #!/usr/bin/env bash
+ 
+ DOCKER_DAEMON_BINARY_NAME='dockerd'
+ DOCKER_RUNC_BINARY_NAME='runc'
+-DOCKER_CONTAINERD_BINARY_NAME='containerd'
++DOCKER_CONTAINERD_BINARY_NAME='docker-containerd'
+ DOCKER_CONTAINERD_CTR_BINARY_NAME='ctr'
+ DOCKER_CONTAINERD_SHIM_BINARY_NAME='containerd-shim'
+ DOCKER_PROXY_BINARY_NAME='docker-proxy'
+ DOCKER_INIT_BINARY_NAME='docker-init'
+--- a/engine/daemon/daemon.go
++++ b/engine/daemon/daemon.go
+@@ -978,9 +978,9 @@
+ 	})
+ 
+ 	go d.execCommandGC()
+ 
+-	d.containerd, err = libcontainerd.NewClient(ctx, d.containerdCli, filepath.Join(config.ExecRoot, "containerd"), ContainersNamespace, d)
++	d.containerd, err = libcontainerd.NewClient(ctx, d.containerdCli, filepath.Join(config.ExecRoot, "docker-containerd"), ContainersNamespace, d)
+ 	if err != nil {
+ 		return nil, err
+ 	}
+ 
+--- a/engine/libcontainerd/supervisor/remote_daemon.go
++++ b/engine/libcontainerd/supervisor/remote_daemon.go
+@@ -26,9 +26,9 @@
+ 	healthCheckTimeout      = 3 * time.Second
+ 	shutdownTimeout         = 15 * time.Second
+ 	startupTimeout          = 15 * time.Second
+ 	configFile              = "containerd.toml"
+-	binaryName              = "containerd"
++	binaryName              = "docker-containerd"
+ 	pidFile                 = "containerd.pid"
+ )
+ 
+ type pluginConfigs struct {

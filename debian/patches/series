@@ -2,6 +2,7 @@ debian-systemd-unit-tasksmax.patch
 # If upstream ever adds EnvFile, remove this patch.
 # (see also https://github.com/docker/docker/pull/7220#issuecomment-50076589)
 debian-systemd-unit-environment-file.patch
+debian-containerd-name.patch
 debian-dockerd-binary-location.patch
 debian-cgroupfs-mount-convenience-copy.patch
 debian-nuke-no-prompt.patch
