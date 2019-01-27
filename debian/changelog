@@ -1,3 +1,10 @@
+docker.io (18.09.1+dfsg1-4) unstable; urgency=medium
+
+  * Updated "containerd" executable name patch;
+    renamed "containerd-shim" executable (Closes: #920597).
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Mon, 28 Jan 2019 10:16:28 +1100
+
 docker.io (18.09.1+dfsg1-3) unstable; urgency=medium
 
   * New patch to fix name of the "containerd" executable (Closes: #920597).

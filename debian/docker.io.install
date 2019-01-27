@@ -18,7 +18,7 @@ cli/contrib/completion/zsh/_docker         usr/share/zsh/vendor-completions/
 
 ## containerd:
 .gopath/bin/containerd => usr/bin/docker-containerd
-.gopath/bin/containerd-shim => usr/bin/docker-containerd-shim
+.gopath/bin/containerd-shim => usr/bin/containerd-shim
 .gopath/bin/ctr => usr/bin/docker-containerd-ctr
 
 ## runc

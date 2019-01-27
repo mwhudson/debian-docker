@@ -43,3 +43,16 @@ Description: "fix" containerd executable name.
  )
  
  type pluginConfigs struct {
+--- a/containerd/cmd/containerd-shim/main_unix.go
++++ b/containerd/cmd/containerd-shim/main_unix.go
+@@ -69,9 +69,9 @@
+ 	flag.StringVar(&criuFlag, "criu", "", "path to criu binary")
+ 	flag.BoolVar(&systemdCgroupFlag, "systemd-cgroup", false, "set runtime to use systemd-cgroup")
+ 	// currently, the `containerd publish` utility is embedded in the daemon binary.
+ 	// The daemon invokes `containerd-shim -containerd-binary ...` with its own os.Executable() path.
+-	flag.StringVar(&containerdBinaryFlag, "containerd-binary", "containerd", "path to containerd binary (used for `containerd publish`)")
++	flag.StringVar(&containerdBinaryFlag, "containerd-binary", "docker-containerd", "path to containerd binary (used for `containerd publish`)")
+ 	flag.Parse()
+ }
+ 
+ func main() {
